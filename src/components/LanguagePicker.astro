@@ -1,0 +1,29 @@
+---
+import { languages, getLangFromUrl } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const pathWithoutLang = Astro.url.pathname.replace(`/${lang}`, '');
+---
+
+<div class="relative inline-block text-left group">
+  <button type="button" class="inline-flex justify-center w-full rounded-md border border-slate-700 shadow-sm px-4 py-2 bg-slate-900 text-sm font-bold text-slate-300 hover:bg-slate-800 hover:text-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-400/30 transition-colors duration-200 cursor-pointer">
+    {languages[lang]}
+    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+    </svg>
+  </button>
+
+  <div class="origin-top-right absolute right-0 pt-2 w-36 hidden group-hover:block z-10">
+    <div class="rounded-md shadow-lg bg-slate-900 ring-1 ring-amber-400/30 py-1" role="menu" aria-orientation="vertical">
+      {Object.entries(languages).map(([key, label]) => (
+        <a
+          href={`/${key}${pathWithoutLang}`}
+          class="block px-4 py-2 text-sm font-bold text-slate-300 hover:bg-slate-800 hover:text-amber-300 transition-colors duration-200 cursor-pointer"
+          role="menuitem"
+        >
+          {label}
+        </a>
+      ))}
+    </div>
+  </div>
+</div>

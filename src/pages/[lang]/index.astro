@@ -1,0 +1,325 @@
+---
+import '../../styles/global.css';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PerformanceChart from '../../components/charts/PerformanceChart.astro';
+import TeamStatsTable from '../../components/TeamStatsTable.astro';
+import { languages, useTeamTranslations, useSportTranslations, useTranslations } from '../../i18n/ui';
+import { getDetailedTeamStats, getDynamicTeamStats, type ScoreData } from '../../utils/calculateStats';
+import standingsData from '../../data/worldCupStandings.json';
+import matchPredictions from '../../data/matchPredictions.json';
+import humanPredictions from '../../data/humanPredictions.json';
+import GoogleAnalytics from '../../components/GoogleAnalytics.astro';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+const tTeam = useTeamTranslations(lang);
+const tSport = useSportTranslations(lang);
+
+// Fetch real odds and scores data
+const API_KEY = import.meta.env.ODDS_API_KEY || '';
+let matches: any[] = [];
+let recentScores: ScoreData[] = [];
+let oddsFetchError = false;
+
+const SPORT_KEY = 'soccer_fifa_world_cup';
+
+if (API_KEY) {
+  try {
+    const oddsRes = await fetch(`https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/odds/?apiKey=${API_KEY}&regions=eu&markets=h2h`);
+    if (oddsRes.ok) {
+      matches = await oddsRes.json();
+      matches = matches.slice(0, 24);
+    } else {
+      oddsFetchError = true;
+    }
+  } catch (e) {
+    oddsFetchError = true;
+  }
+
+  try {
+    const scoresRes = await fetch(`https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/scores/?apiKey=${API_KEY}&daysFrom=3`);
+    if (scoresRes.ok) {
+      recentScores = await scoresRes.json();
+    }
+  } catch (e) {
+    console.error("Scores fetch failed", e);
+  }
+}
+
+if (!API_KEY || oddsFetchError || matches.length === 0) {
+  matches = Array(6).fill(null).map((_, i) => ({
+    id: `mock-${i}`,
+    sport_title: "Soccer",
+    commence_time: "TBD",
+    home_team: "TBD Home",
+    away_team: "TBD Away",
+    bookmakers: []
+  }));
+}
+
+// Group matches by World Cup Group
+const groupedMatches = standingsData.map(group => {
+  const groupMatches = matches.filter(m =>
+    group.teams.some(t => t.name === m.home_team) ||
+    group.teams.some(t => t.name === m.away_team)
+  );
+  return { ...group, matches: groupMatches };
+}).filter(g => g.matches.length > 0);
+
+const matchedIds = new Set(groupedMatches.flatMap(g => g.matches.map(m => m.id)));
+const otherMatches = matches.filter(m => !matchedIds.has(m.id));
+if (otherMatches.length > 0) {
+  groupedMatches.push({
+    group: "Other Matches",
+    teams: [],
+    matches: otherMatches
+  });
+}
+
+const getOdds = (bookmakers: any, teamName: string) => {
+  if (!bookmakers || bookmakers.length === 0) return "TBD";
+  const market = bookmakers[0].markets.find((m: any) => m.key === 'h2h');
+  if (!market) return "TBD";
+  const outcome = market.outcomes.find((o: any) => o.name === teamName);
+  return outcome ? outcome.price : "TBD";
+};
+
+const getDrawOdds = (bookmakers: any) => {
+  if (!bookmakers || bookmakers.length === 0) return "TBD";
+  const market = bookmakers[0].markets.find((m: any) => m.key === 'h2h');
+  if (!market) return "TBD";
+  const outcome = market.outcomes.find((o: any) => o.name === 'Draw');
+  return outcome ? outcome.price : "TBD";
+};
+
+const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {gscVerification && <meta name="google-site-verification" content={gscVerification} />}
+    <title>2026 世界盃運彩分析中心</title>
+    <GoogleAnalytics />
+  </head>
+  <body class="bg-slate-950 text-slate-200 font-sans min-h-screen flex flex-col">
+    <Header />
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow">
+
+      <div class="mb-10 text-center">
+        <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 tracking-tighter uppercase italic mb-4 drop-shadow-lg">
+          The Big Bet Analysis
+        </h1>
+        <p class="text-slate-400 text-lg font-bold">Latest Matches & Live Odds</p>
+      </div>
+
+      {!API_KEY && (
+        <div class="bg-amber-400/10 border border-amber-400/40 text-amber-300 p-4 rounded-lg mb-8 text-center font-bold">
+          提示：目前未設定 ODDS_API_KEY，顯示為 TBD 佔位資料。請在 .env 檔案中加入您的 The-Odds-API Key 以載入真實賠率。
+        </div>
+      )}
+
+      <div class="space-y-16">
+        {groupedMatches.map(groupData => (
+          <section>
+            <div class="flex items-center mb-6">
+              <h2 class="text-2xl font-black text-white">{groupData.group}</h2>
+              <div class="h-[2px] bg-gradient-to-r from-amber-400/50 to-transparent flex-grow ml-6"></div>
+            </div>
+
+            {groupData.teams.length > 0 && (
+              <div class="mb-10">
+                <div class="overflow-x-auto bg-slate-800/60 border border-slate-700/80 rounded-xl shadow-lg">
+                  <table class="w-full text-left text-base whitespace-nowrap">
+                    <thead class="bg-slate-900/80 text-slate-300 font-bold uppercase tracking-wider text-sm border-b border-slate-700/50">
+                      <tr>
+                        <th class="p-4 rounded-tl-xl w-8">#</th>
+                        <th class="p-4 w-1/3">Team</th>
+                        <th class="p-4 text-center">MP</th>
+                        <th class="p-4 text-center">W</th>
+                        <th class="p-4 text-center">D</th>
+                        <th class="p-4 text-center">L</th>
+                        <th class="p-4 text-center">GF</th>
+                        <th class="p-4 text-center">GA</th>
+                        <th class="p-4 text-center">GD</th>
+                        <th class="p-4 text-center text-amber-300 rounded-tr-xl">Pts</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700/50">
+                      {groupData.teams.sort((a, b) => b.pts - a.pts || b.gd - a.gd).map((team: any, idx) => {
+                        let rowClass = "hover:bg-slate-700/40 transition-colors duration-150 ";
+                        if (team.status === "qualified") rowClass += "bg-green-900/20";
+                        else if (team.status === "eliminated") rowClass += "bg-red-900/10 opacity-75";
+
+                        return (
+                          <tr class={rowClass}>
+                            <td class="p-4 font-mono font-bold text-slate-400">{idx + 1}</td>
+                            <td class="p-4 font-bold text-white text-lg">
+                              <span class="flex items-center gap-2">
+                                {tTeam(team.name)}
+                                {team.status === 'qualified' && (
+                                  <span class="text-xs bg-green-900/50 text-green-400 px-1.5 py-0.5 rounded font-bold border border-green-500/40" title={t('status.qualified')}>&#10003;</span>
+                                )}
+                                {team.status === 'eliminated' && (
+                                  <span class="text-xs bg-red-900/30 text-red-400/80 px-1.5 py-0.5 rounded font-bold border border-red-500/30" title={t('status.eliminated')}>&#215;</span>
+                                )}
+                              </span>
+                            </td>
+                            <td class="p-4 text-center font-mono text-slate-200">{team.mp}</td>
+                            <td class="p-4 text-center font-mono text-slate-200">{team.w}</td>
+                            <td class="p-4 text-center font-mono text-slate-200">{team.d}</td>
+                            <td class="p-4 text-center font-mono text-slate-200">{team.l}</td>
+                            <td class="p-4 text-center font-mono text-slate-300">{team.gf}</td>
+                            <td class="p-4 text-center font-mono text-slate-300">{team.ga}</td>
+                            <td class="p-4 text-center font-mono font-bold text-slate-200">{team.gd > 0 ? `+${team.gd}` : team.gd}</td>
+                            <td class="p-4 text-center font-mono font-black text-amber-300 text-xl">{team.pts}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+                <div class="mt-3 flex gap-4 text-sm font-bold px-2">
+                  <div class="flex items-center gap-1.5 text-green-400">
+                    <div class="w-3 h-3 rounded-sm bg-green-900/50 border border-green-500"></div>
+                    <span>&#10003; {t('status.qualified')}</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 text-red-400/80">
+                    <div class="w-3 h-3 rounded-sm bg-red-900/30 border border-red-500/50"></div>
+                    <span>&#215; {t('status.eliminated')}</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+              {groupData.matches.map((match) => {
+                const homeOdds = getOdds(match.bookmakers, match.home_team);
+                const awayOdds = getOdds(match.bookmakers, match.away_team);
+                const drawOdds = getDrawOdds(match.bookmakers);
+                const matchTime = match.commence_time === "TBD" ? "TBD" : new Date(match.commence_time).toLocaleString();
+
+                const homeName = tTeam(match.home_team);
+                const awayName = tTeam(match.away_team);
+                const sportName = tSport(match.sport_title || "Soccer");
+
+                const detailedHomeStats = getDetailedTeamStats(match.home_team, recentScores);
+                const detailedAwayStats = getDetailedTeamStats(match.away_team, recentScores);
+
+                return (
+                  <article class="bg-slate-900 rounded-2xl shadow-lg border border-slate-800 overflow-hidden hover:border-amber-400/40 transition-colors duration-200 group relative">
+                    <div class="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-amber-400 to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+
+                    <div class="p-6">
+                      <div class="flex justify-between items-center mb-5 border-b border-slate-800 pb-4">
+                        <span class="inline-flex items-center px-3 py-1 rounded text-xs font-black bg-amber-400 text-slate-950 uppercase tracking-wider">
+                          {sportName}
+                        </span>
+                        <time class="text-sm text-slate-400 font-mono" datetime={match.commence_time}>
+                          {matchTime}
+                        </time>
+                      </div>
+
+                      <div class="flex justify-between items-center mb-5">
+                        <div class="text-center w-2/5">
+                          <h2 class="text-xl font-bold text-white leading-tight">{homeName}</h2>
+                          <p class="text-sm text-slate-400 mt-1 font-bold">{t('label.home')}</p>
+                        </div>
+                        <div class="text-2xl font-black text-amber-300 w-1/5 text-center">VS</div>
+                        <div class="text-center w-2/5">
+                          <h2 class="text-xl font-bold text-white leading-tight">{awayName}</h2>
+                          <p class="text-sm text-slate-400 mt-1 font-bold">{t('label.away')}</p>
+                        </div>
+                      </div>
+
+                      <div class="grid grid-cols-3 gap-3 mb-5">
+                        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 text-center">
+                          <p class="text-xs text-slate-400 mb-1 font-bold">{t('odds.home')}</p>
+                          <p class="text-xl font-mono font-black text-yellow-400">{homeOdds}</p>
+                        </div>
+                        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 text-center">
+                          <p class="text-xs text-slate-400 mb-1 font-bold">{t('odds.draw')}</p>
+                          <p class="text-xl font-mono font-black text-slate-200">{drawOdds}</p>
+                        </div>
+                        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 text-center">
+                          <p class="text-xs text-slate-400 mb-1 font-bold">{t('odds.away')}</p>
+                          <p class="text-xl font-mono font-black text-yellow-400">{awayOdds}</p>
+                        </div>
+                      </div>
+
+                      <!-- Collapsible performance chart -->
+                      <details class="border-t border-slate-800 pt-4 mt-4 group/chart">
+                        <summary class="cursor-pointer flex justify-between items-center text-xs font-bold text-slate-400 hover:text-slate-300 transition-colors duration-200 mb-3 select-none">
+                          <span class="uppercase tracking-widest">Performance Chart</span>
+                          <svg class="w-4 h-4 group-open/chart:rotate-180 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                          </svg>
+                        </summary>
+                        <PerformanceChart
+                          teamA={homeName}
+                          teamB={awayName}
+                          teamAData={[detailedHomeStats.atk.score, detailedHomeStats.def.score, detailedHomeStats.pos.score, detailedHomeStats.dis.score, detailedHomeStats.frm.score]}
+                          teamBData={[detailedAwayStats.atk.score, detailedAwayStats.def.score, detailedAwayStats.pos.score, detailedAwayStats.dis.score, detailedAwayStats.frm.score]}
+                        />
+                      </details>
+
+                      <div class="mt-4">
+                        <TeamStatsTable
+                          teamA={homeName}
+                          teamB={awayName}
+                          teamAStats={detailedHomeStats}
+                          teamBStats={detailedAwayStats}
+                        />
+                      </div>
+
+                  {((matchPredictions as any)[match.id] || (humanPredictions as any)[match.id]) && (
+                    <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
+                      
+                      {/* AI Prediction */}
+                      {(matchPredictions as any)[match.id] && (
+                        <div class="bg-slate-950 border-l-4 border-amber-400 p-4 rounded-r-lg flex flex-col justify-start">
+                          <div class="flex items-center space-x-2 mb-2">
+                            <svg class="w-4 h-4 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                            <h4 class="font-black text-amber-400 uppercase tracking-widest text-xs">AI 賠率預測分析</h4>
+                          </div>
+                          <p class="text-slate-300 text-sm leading-relaxed font-medium">
+                            {lang === 'zh-tw' ? (matchPredictions as any)[match.id].prediction_zh : (matchPredictions as any)[match.id].prediction_en}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Human Prediction */}
+                      {(humanPredictions as any)[match.id] && (
+                        <div class="bg-slate-950 border-l-4 border-blue-500 p-4 rounded-r-lg flex flex-col justify-start">
+                          <div class="flex items-center space-x-2 mb-2">
+                            <span class="text-base leading-none">🧑‍💼</span>
+                            <h4 class="font-black text-blue-500 uppercase tracking-widest text-xs">專家預測分析</h4>
+                          </div>
+                          <p class="text-slate-300 text-sm leading-relaxed font-medium">
+                            {lang === 'zh-tw' ? (humanPredictions as any)[match.id].prediction_zh : (humanPredictions as any)[match.id].prediction_en}
+                          </p>
+                        </div>
+                      )}
+
+                    </div>
+                  )}
+                </div>
+              </article>
+                )
+              })}
+            </div>
+          </section>
+        ))}
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

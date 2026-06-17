@@ -1,0 +1,638 @@
+[
+  {
+    "group": "Group A",
+    "teams": [
+      {
+        "name": "Mexico",
+        "mp": 1,
+        "w": 1,
+        "d": 0,
+        "l": 0,
+        "gf": 2,
+        "ga": 0,
+        "gd": 2,
+        "pts": 3,
+        "status": "active"
+      },
+      {
+        "name": "South Korea",
+        "mp": 1,
+        "w": 1,
+        "d": 0,
+        "l": 0,
+        "gf": 2,
+        "ga": 1,
+        "gd": 1,
+        "pts": 3,
+        "status": "active"
+      },
+      {
+        "name": "Czech Republic",
+        "mp": 1,
+        "w": 0,
+        "d": 0,
+        "l": 1,
+        "gf": 1,
+        "ga": 2,
+        "gd": -1,
+        "pts": 0,
+        "status": "active"
+      },
+      {
+        "name": "South Africa",
+        "mp": 1,
+        "w": 0,
+        "d": 0,
+        "l": 1,
+        "gf": 0,
+        "ga": 2,
+        "gd": -2,
+        "pts": 0,
+        "status": "active"
+      }
+    ]
+  },
+  {
+    "group": "Group B",
+    "teams": [
+      {
+        "name": "Switzerland",
+        "mp": 1,
+        "w": 0,
+        "d": 1,
+        "l": 0,
+        "gf": 1,
+        "ga": 1,
+        "gd": 0,
+        "pts": 1,
+        "status": "active"
+      },
+      {
+        "name": "Canada",
+        "mp": 1,
+        "w": 0,
+        "d": 1,
+        "l": 0,
+        "gf": 1,
+        "ga": 1,
+        "gd": 0,
+        "pts": 1,
+        "status": "active"
+      },
+      {
+        "name": "Qatar",
+        "mp": 1,
+        "w": 0,
+        "d": 1,
+        "l": 0,
+        "gf": 1,
+        "ga": 1,
+        "gd": 0,
+        "pts": 1,
+        "status": "active"
+      },
+      {
+        "name": "Bosnia & Herzegovina",
+        "mp": 1,
+        "w": 0,
+        "d": 1,
+        "l": 0,
+        "gf": 1,
+        "ga": 1,
+        "gd": 0,
+        "pts": 1,
+        "status": "active"
+      }
+    ]
+  },
+  {
+    "group": "Group C",
+    "teams": [
+      {
+        "name": "Scotland",
+        "mp": 1,
+        "w": 1,
+        "d": 0,
+        "l": 0,
+        "gf": 1,
+        "ga": 0,
+        "gd": 1,
+        "pts": 3,
+        "status": "active"
+      },
+      {
+        "name": "Morocco",
+        "mp": 1,
+        "w": 0,
+        "d": 1,
+        "l": 0,
+        "gf": 1,
+        "ga": 1,
+        "gd": 0,
+        "pts": 1,
+        "status": "active"
+      },
+      {
+        "name": "Brazil",
+        "mp": 1,
+        "w": 0,
+        "d": 1,
+        "l": 0,
+        "gf": 1,
+        "ga": 1,
+        "gd": 0,
+        "pts": 1,
+        "status": "active"
+      },
+      {
+        "name": "Haiti",
+        "mp": 1,
+        "w": 0,
+        "d": 0,
+        "l": 1,
+        "gf": 0,
+        "ga": 1,
+        "gd": -1,
+        "pts": 0,
+        "status": "active"
+      }
+    ]
+  },
+  {
+    "group": "Group D",
+    "teams": [
+      {
+        "name": "USA",
+        "mp": 1,
+        "w": 1,
+        "d": 0,
+        "l": 0,
+        "gf": 4,
+        "ga": 1,
+        "gd": 3,
+        "pts": 3,
+        "status": "active"
+      },
+      {
+        "name": "Australia",
+        "mp": 1,
+        "w": 1,
+        "d": 0,
+        "l": 0,
+        "gf": 2,
+        "ga": 0,
+        "gd": 2,
+        "pts": 3,
+        "status": "active"
+      },
+      {
+        "name": "Turkey",
+        "mp": 1,
+        "w": 0,
+        "d": 0,
+        "l": 1,
+        "gf": 0,
+        "ga": 2,
+        "gd": -2,
+        "pts": 0,
+        "status": "active"
+      },
+      {
+        "name": "Paraguay",
+        "mp": 1,
+        "w": 0,
+        "d": 0,
+        "l": 1,
+        "gf": 1,
+        "ga": 4,
+        "gd": -3,
+        "pts": 0,
+        "status": "active"
+      }
+    ]
+  },
+  {
+    "group": "Group E",
+    "teams": [
+      {
+        "name": "Germany",
+        "mp": 1,
+        "w": 1,
+        "d": 0,
+        "l": 0,
+        "gf": 7,
+        "ga": 1,
+        "gd": 6,
+        "pts": 3,
+        "status": "active"
+      },
+      {
+        "name": "Ivory Coast",
+        "mp": 1,
+        "w": 1,
+        "d": 0,
+        "l": 0,
+        "gf": 1,
+        "ga": 0,
+        "gd": 1,
+        "pts": 3,
+        "status": "active"
+      },
+      {
+        "name": "Ecuador",
+        "mp": 1,
+        "w": 0,
+        "d": 0,
+        "l": 1,
+        "gf": 0,
+        "ga": 1,
+        "gd": -1,
+        "pts": 0,
+        "status": "active"
+      },
+      {
+        "name": "Curaçao",
+        "mp": 1,
+        "w": 0,
+        "d": 0,
+        "l": 1,
+        "gf": 1,
+        "ga": 7,
+        "gd": -6,
+        "pts": 0,
+        "status": "active"
+      }
+    ]
+  },
+  {
+    "group": "Group F",
+    "teams": [
+      {
+        "name": "Sweden",
+        "mp": 1,
+        "w": 1,
+        "d": 0,
+        "l": 0,
+        "gf": 5,
+        "ga": 1,
+        "gd": 4,
+        "pts": 3,
+        "status": "active"
+      },
+      {
+        "name": "Japan",
+        "mp": 1,
+        "w": 0,
+        "d": 1,
+        "l": 0,
+        "gf": 2,
+        "ga": 2,
+        "gd": 0,
+        "pts": 1,
+        "status": "active"
+      },
+      {
+        "name": "Netherlands",
+        "mp": 1,
+        "w": 0,
+        "d": 1,
+        "l": 0,
+        "gf": 2,
+        "ga": 2,
+        "gd": 0,
+        "pts": 1,
+        "status": "active"
+      },
+      {
+        "name": "Tunisia",
+        "mp": 1,
+        "w": 0,
+        "d": 0,
+        "l": 1,
+        "gf": 1,
+        "ga": 5,
+        "gd": -4,
+        "pts": 0,
+        "status": "active"
+      }
+    ]
+  },
+  {
+    "group": "Group G",
+    "teams": [
+      {
+        "name": "New Zealand",
+        "mp": 1,
+        "w": 0,
+        "d": 1,
+        "l": 0,
+        "gf": 2,
+        "ga": 2,
+        "gd": 0,
+        "pts": 1,
+        "status": "active"
+      },
+      {
+        "name": "Iran",
+        "mp": 1,
+        "w": 0,
+        "d": 1,
+        "l": 0,
+        "gf": 2,
+        "ga": 2,
+        "gd": 0,
+        "pts": 1,
+        "status": "active"
+      },
+      {
+        "name": "Belgium",
+        "mp": 1,
+        "w": 0,
+        "d": 1,
+        "l": 0,
+        "gf": 1,
+        "ga": 1,
+        "gd": 0,
+        "pts": 1,
+        "status": "active"
+      },
+      {
+        "name": "Egypt",
+        "mp": 1,
+        "w": 0,
+        "d": 1,
+        "l": 0,
+        "gf": 1,
+        "ga": 1,
+        "gd": 0,
+        "pts": 1,
+        "status": "active"
+      }
+    ]
+  },
+  {
+    "group": "Group H",
+    "teams": [
+      {
+        "name": "Uruguay",
+        "mp": 1,
+        "w": 0,
+        "d": 1,
+        "l": 0,
+        "gf": 1,
+        "ga": 1,
+        "gd": 0,
+        "pts": 1,
+        "status": "active"
+      },
+      {
+        "name": "Saudi Arabia",
+        "mp": 1,
+        "w": 0,
+        "d": 1,
+        "l": 0,
+        "gf": 1,
+        "ga": 1,
+        "gd": 0,
+        "pts": 1,
+        "status": "active"
+      },
+      {
+        "name": "Spain",
+        "mp": 1,
+        "w": 0,
+        "d": 1,
+        "l": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "pts": 1,
+        "status": "active"
+      },
+      {
+        "name": "Cape Verde",
+        "mp": 1,
+        "w": 0,
+        "d": 1,
+        "l": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "pts": 1,
+        "status": "active"
+      }
+    ]
+  },
+  {
+    "group": "Group I",
+    "teams": [
+      {
+        "name": "Norway",
+        "mp": 1,
+        "w": 1,
+        "d": 0,
+        "l": 0,
+        "gf": 4,
+        "ga": 1,
+        "gd": 3,
+        "pts": 3,
+        "status": "active"
+      },
+      {
+        "name": "France",
+        "mp": 1,
+        "w": 1,
+        "d": 0,
+        "l": 0,
+        "gf": 3,
+        "ga": 1,
+        "gd": 2,
+        "pts": 3,
+        "status": "active"
+      },
+      {
+        "name": "Senegal",
+        "mp": 1,
+        "w": 0,
+        "d": 0,
+        "l": 1,
+        "gf": 1,
+        "ga": 3,
+        "gd": -2,
+        "pts": 0,
+        "status": "active"
+      },
+      {
+        "name": "Iraq",
+        "mp": 1,
+        "w": 0,
+        "d": 0,
+        "l": 1,
+        "gf": 1,
+        "ga": 4,
+        "gd": -3,
+        "pts": 0,
+        "status": "active"
+      }
+    ]
+  },
+  {
+    "group": "Group J",
+    "teams": [
+      {
+        "name": "Argentina",
+        "mp": 1,
+        "w": 1,
+        "d": 0,
+        "l": 0,
+        "gf": 3,
+        "ga": 0,
+        "gd": 3,
+        "pts": 3,
+        "status": "active"
+      },
+      {
+        "name": "Austria",
+        "mp": 1,
+        "w": 1,
+        "d": 0,
+        "l": 0,
+        "gf": 2,
+        "ga": 1,
+        "gd": 1,
+        "pts": 3,
+        "status": "active"
+      },
+      {
+        "name": "Jordan",
+        "mp": 1,
+        "w": 0,
+        "d": 0,
+        "l": 1,
+        "gf": 1,
+        "ga": 2,
+        "gd": -1,
+        "pts": 0,
+        "status": "active"
+      },
+      {
+        "name": "Algeria",
+        "mp": 1,
+        "w": 0,
+        "d": 0,
+        "l": 1,
+        "gf": 0,
+        "ga": 3,
+        "gd": -3,
+        "pts": 0,
+        "status": "active"
+      }
+    ]
+  },
+  {
+    "group": "Group K",
+    "teams": [
+      {
+        "name": "DR Congo",
+        "mp": 0,
+        "w": 0,
+        "d": 0,
+        "l": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "pts": 0,
+        "status": "active"
+      },
+      {
+        "name": "Colombia",
+        "mp": 0,
+        "w": 0,
+        "d": 0,
+        "l": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "pts": 0,
+        "status": "active"
+      },
+      {
+        "name": "Portugal",
+        "mp": 0,
+        "w": 0,
+        "d": 0,
+        "l": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "pts": 0,
+        "status": "active"
+      },
+      {
+        "name": "Uzbekistan",
+        "mp": 0,
+        "w": 0,
+        "d": 0,
+        "l": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "pts": 0,
+        "status": "active"
+      }
+    ]
+  },
+  {
+    "group": "Group L",
+    "teams": [
+      {
+        "name": "England",
+        "mp": 0,
+        "w": 0,
+        "d": 0,
+        "l": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "pts": 0,
+        "status": "active"
+      },
+      {
+        "name": "Ghana",
+        "mp": 0,
+        "w": 0,
+        "d": 0,
+        "l": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "pts": 0,
+        "status": "active"
+      },
+      {
+        "name": "Croatia",
+        "mp": 0,
+        "w": 0,
+        "d": 0,
+        "l": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "pts": 0,
+        "status": "active"
+      },
+      {
+        "name": "Panama",
+        "mp": 0,
+        "w": 0,
+        "d": 0,
+        "l": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0,
+        "pts": 0,
+        "status": "active"
+      }
+    ]
+  }
+]

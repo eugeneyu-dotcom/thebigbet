@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --font-atkinson: 'Atkinson', sans-serif;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  /* Atkinson Hyperlegible handles Latin/numeric; system/web CJK fonts handle Chinese */
+  font-family: var(--font-atkinson), 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  line-height: 1.6;
+}

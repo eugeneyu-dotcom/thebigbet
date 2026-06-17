@@ -1,0 +1,45 @@
+name: Daily AI & Standings Update
+
+on:
+  schedule:
+    # Runs at 00:00 UTC every day
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Update World Cup Standings (Strict Order Step 1)
+        env:
+          FOOTBALL_DATA_ORG_TOKEN: ${{ secrets.FOOTBALL_DATA_ORG_TOKEN }}
+        run: node scripts/update_standings.mjs
+
+      - name: Update AI Team Stats (Strict Order Step 2)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/update_ai_stats.mjs
+
+      - name: Update Match Odds Predictions (Strict Order Step 3)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: node scripts/update_predictions.mjs
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add src/data/worldCupStandings.json src/data/aiTeamBaseline.json src/data/matchPredictions.json
+          # Only commit if there are changes
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore(data): auto-update standings and ai stats"
+          git push

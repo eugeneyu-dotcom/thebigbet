@@ -1,0 +1,133 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+export interface Props {
+  teamA: string;
+  teamB: string;
+  teamAData: number[]; // [攻擊, 防守, 控球, 紀律, 狀態]
+  teamBData: number[];
+}
+
+const { teamA, teamB, teamAData, teamBData } = Astro.props;
+const chartId = `perf-chart-${Math.random().toString(36).substring(7)}`;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const dimLabels = JSON.stringify([t('dim.atk'), t('dim.def'), t('dim.pos'), t('dim.dis'), t('dim.frm')]);
+---
+
+<perf-chart>
+  <div class="relative mb-2 flex justify-between items-center px-1">
+    <span class="text-xs text-slate-500 font-bold tracking-widest">PERFORMANCE</span>
+    <div class="flex items-center space-x-1.5 bg-amber-400/10 border border-amber-400/25 px-2 py-0.5 rounded-full">
+      <div class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></div>
+      <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">{t('stats.badge')}</span>
+    </div>
+  </div>
+  <div class="w-full relative h-[250px] flex items-center justify-center bg-slate-900/50 rounded-lg p-2 border border-slate-800/50">
+    <canvas
+      id={chartId}
+      data-teama={teamA}
+      data-teamb={teamB}
+      data-teamadata={JSON.stringify(teamAData)}
+      data-teambdata={JSON.stringify(teamBData)}
+      data-labels={dimLabels}
+    ></canvas>
+  </div>
+</perf-chart>
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  class PerformanceChart extends HTMLElement {
+    constructor() {
+      super();
+      const canvas = this.querySelector('canvas');
+      if (!canvas) return;
+
+      const teamA = canvas.dataset.teama;
+      const teamB = canvas.dataset.teamb;
+      const teamAData = JSON.parse(canvas.dataset.teamadata || '[0,0,0,0,0]');
+      const teamBData = JSON.parse(canvas.dataset.teambdata || '[0,0,0,0,0]');
+      const dimLabels = JSON.parse(canvas.dataset.labels || '[]');
+
+      new Chart(canvas, {
+        type: 'radar',
+        data: {
+          labels: dimLabels,
+          datasets: [
+            {
+              label: teamA,
+              data: teamAData,
+              // Team A: amber-200 — clearly distinct from brand yellow-400
+              backgroundColor: 'rgba(253, 230, 138, 0.25)',
+              borderColor: 'rgb(253, 230, 138)',
+              pointBackgroundColor: 'rgb(253, 230, 138)',
+              pointBorderColor: '#0f172a',
+              pointHoverBackgroundColor: '#0f172a',
+              pointHoverBorderColor: 'rgb(253, 230, 138)',
+              borderWidth: 2,
+            },
+            {
+              label: teamB,
+              data: teamBData,
+              // Team B: cyan-400
+              backgroundColor: 'rgba(34, 211, 238, 0.2)',
+              borderColor: 'rgb(34, 211, 238)',
+              pointBackgroundColor: 'rgb(34, 211, 238)',
+              pointBorderColor: '#0f172a',
+              pointHoverBackgroundColor: '#0f172a',
+              pointHoverBorderColor: 'rgb(34, 211, 238)',
+              borderWidth: 2,
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: '#cbd5e1', // slate-300
+                font: {
+                  family: 'monospace',
+                  weight: 'bold',
+                  size: 13
+                },
+                padding: 20
+              }
+            }
+          },
+          scales: {
+            r: {
+              angleLines: {
+                color: '#334155' // slate-700
+              },
+              grid: {
+                color: '#334155' // slate-700
+              },
+              pointLabels: {
+                color: '#f1f5f9', // slate-100
+                font: {
+                  family: 'monospace',
+                  size: 12,
+                  weight: 'bold'
+                }
+              },
+              ticks: {
+                display: false,
+                min: 0,
+                max: 10
+              }
+            }
+          }
+        }
+      });
+    }
+  }
+
+  if (!customElements.get('perf-chart')) {
+    customElements.define('perf-chart', PerformanceChart);
+  }
+</script>

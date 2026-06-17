@@ -1,0 +1,29 @@
+{
+  "name": "the-big-bet",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "update:standings": "node --env-file=.env scripts/update_standings.mjs",
+    "update:ai": "node --env-file=.env scripts/update_ai_stats.mjs",
+    "update:predictions": "node --env-file=.env scripts/update_predictions.mjs",
+    "update:all": "npm run update:standings && npm run update:ai && npm run update:predictions"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^6.0.3",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.3",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.4.6",
+    "chart.js": "^4.5.1",
+    "sharp": "^0.34.3",
+    "tailwindcss": "^4.3.0"
+  }
+}

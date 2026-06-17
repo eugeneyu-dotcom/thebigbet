@@ -1,0 +1,13 @@
+# .clinerules
+#
+# Custom AI behavior instructions for this Astro blog project.
+
+專案定位
+針對菲律賓與華語市場的世足賽運彩分析與博弈資訊站。
+
+開發規範
+框架：Astro + Tailwind CSS。
+
+語言與架構：支援繁體中文 (zh-tw) 與英文 (en)，並採用 Mobile-First 響應式設計。
+
+元件化：UI 必須拆分為獨立的 .astro 元件。

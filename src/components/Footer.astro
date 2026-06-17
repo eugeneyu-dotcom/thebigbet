@@ -1,0 +1,79 @@
+---
+import { getLangFromUrl } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const isZhTw = lang === 'zh-tw';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-slate-950 border-t border-slate-800 mt-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-8">
+
+    <!-- Brand + Powered by -->
+    <div class="flex flex-col sm:flex-row justify-between items-start gap-8 mb-8 pb-8 border-b border-slate-800">
+      <div>
+        <span class="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 italic tracking-tighter pr-1">
+          THE BIG BET
+        </span>
+        <p class="text-slate-400 text-sm mt-2 max-w-sm leading-relaxed">
+          {isZhTw
+            ? '2026 FIFA 世界盃深度運彩數據分析平台，整合即時賠率、官方戰績與 AI 戰力評估。'
+            : '2026 FIFA World Cup sports analytics platform with live odds, official standings, and AI-powered team strength analysis.'}
+        </p>
+      </div>
+
+      <div class="shrink-0">
+        <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-3">
+          {isZhTw ? '技術支援' : 'Powered by'}
+        </p>
+        <a
+          href="https://www.maxora.ai/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-bold text-sm transition-colors duration-200 group"
+        >
+          <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+          Maxora AI
+        </a>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 space-y-3 text-xs text-slate-500 leading-relaxed">
+      <div class="flex items-center gap-2 mb-1">
+        <svg class="w-4 h-4 text-amber-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <p class="font-bold text-slate-300 uppercase tracking-wider text-xs">
+          {isZhTw ? '博彩警語與免責聲明' : 'Responsible Gaming & Disclaimer'}
+        </p>
+      </div>
+
+      {isZhTw ? (
+        <Fragment>
+          <p>本網站僅提供資訊性的運彩數據分析與 AI 輔助戰力評估報告，所有分析內容均為參考用途，<strong class="text-slate-400">不構成任何投注建議、邀約或擔保</strong>。</p>
+          <p>本站<strong class="text-slate-400">不提供任何博彩下注服務</strong>，亦不接受任何賭注或金融交易。如需進行投注，請自行透過當地合法授權之博彩平台操作，並請事先確認您所在地區的相關法規允許博彩活動。</p>
+          <p class="text-amber-600/80 font-medium">博彩有風險，請量力而為。未滿 18 歲（或當地法定年齡）者不得參與任何博彩活動。若您或身邊的人有博彩成癮問題，請聯繫當地相關輔導機構尋求協助。</p>
+        </Fragment>
+      ) : (
+        <Fragment>
+          <p>This website provides informational sports analytics and AI-assisted team strength assessments for reference purposes only. All content <strong class="text-slate-400">does not constitute betting advice, solicitation, or guarantee of any outcome</strong>.</p>
+          <p>This site <strong class="text-slate-400">does not offer any betting or wagering services</strong> and does not accept bets or financial transactions. Please use licensed and regulated betting operators in your jurisdiction.</p>
+          <p class="text-amber-600/80 font-medium">Gambling involves risk. Please gamble responsibly. Individuals under the legal gambling age must not engage in any betting activities. If you have a gambling problem, please seek help from local support services.</p>
+        </Fragment>
+      )}
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-slate-600">
+      <p>© {year} The Big Bet. All rights reserved.</p>
+      <p class="text-slate-700">
+        {isZhTw ? '分析僅供參考，不構成任何投注建議。' : 'For informational purposes only. Not betting advice.'}
+      </p>
+    </div>
+  </div>
+</footer>
