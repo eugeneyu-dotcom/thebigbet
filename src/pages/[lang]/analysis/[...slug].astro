@@ -3,7 +3,11 @@ import '../../../styles/global.css';
 import { getCollection, render } from 'astro:content';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
-import { languages } from '../../../i18n/ui';
+import PerformanceChart from '../../../components/charts/PerformanceChart.astro';
+import H2HChart from '../../../components/charts/H2HChart.astro';
+import TeamStatsTable from '../../../components/TeamStatsTable.astro';
+import { languages, useTeamTranslations, useTranslations } from '../../../i18n/ui';
+import { getDetailedTeamStats, getDynamicTeamStats, type ScoreData } from '../../../utils/calculateStats';
 import GoogleAnalytics from '../../../components/GoogleAnalytics.astro';
 
 export async function getStaticPaths() {
@@ -23,6 +27,32 @@ export async function getStaticPaths() {
 const { lang } = Astro.params;
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const t = useTranslations(lang);
+const tTeam = useTeamTranslations(lang);
+
+// Parse teamA and teamB from "Argentina vs France"
+const matchParts = entry.data.match.split(' vs ');
+const rawHomeTeam = matchParts[0]?.trim() || '';
+const rawAwayTeam = matchParts[1]?.trim() || '';
+const homeName = tTeam(rawHomeTeam);
+const awayName = tTeam(rawAwayTeam);
+
+// Fetch recent scores to power the dynamic charts automatically
+const API_KEY = import.meta.env.ODDS_API_KEY || '';
+let recentScores: ScoreData[] = [];
+if (API_KEY) {
+  try {
+    const scoresRes = await fetch(`https://api.the-odds-api.com/v4/sports/soccer_fifa_world_cup/scores/?apiKey=${API_KEY}&daysFrom=3`);
+    if (scoresRes.ok) {
+      recentScores = await scoresRes.json();
+    }
+  } catch (e) {
+    console.error("Scores fetch failed", e);
+  }
+}
+
+const detailedHomeStats = getDetailedTeamStats(rawHomeTeam, recentScores);
+const detailedAwayStats = getDetailedTeamStats(rawAwayTeam, recentScores);
 
 const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
 ---
@@ -50,15 +80,48 @@ const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
           </div>
           <h1 class="text-3xl font-bold text-white mb-4">{entry.data.title}</h1>
           <div class="bg-slate-950 p-4 rounded-lg border border-slate-800">
-            <p class="font-bold text-slate-300">對戰: <span class="text-white">{entry.data.match}</span></p>
+            <p class="font-bold text-slate-300">對戰: <span class="text-white">{homeName} vs {awayName}</span></p>
             <p class="font-bold text-slate-300 mt-2">賠率: <span class="text-yellow-400 font-mono">{entry.data.odds}</span></p>
             <p class="font-black text-amber-300 mt-4 text-xl">預測: {entry.data.prediction}</p>
           </div>
         </header>
 
-        <div class="prose prose-invert prose-amber max-w-none prose-img:rounded-xl prose-headings:text-white prose-a:text-amber-400 prose-strong:text-slate-200">
+        <div class="prose prose-invert prose-amber max-w-none prose-img:rounded-xl prose-headings:text-white prose-a:text-amber-400 prose-strong:text-slate-200 mb-12 pb-8 border-b border-slate-800">
           <Content />
         </div>
+
+        <!-- Automatic Chart Injection so experts don't have to code them in Markdown -->
+        <section class="mt-8">
+          <div class="flex items-center mb-6">
+            <h2 class="text-2xl font-black text-white uppercase italic">💡 AI Deep Analysis</h2>
+            <div class="h-[2px] bg-gradient-to-r from-amber-400/50 to-transparent flex-grow ml-4"></div>
+          </div>
+          
+          <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800">
+            {entry.data.h2hData && entry.data.h2hData.length === 3 && (
+              <div class="mb-8">
+                <H2HChart teamA={homeName} teamB={awayName} results={entry.data.h2hData} />
+              </div>
+            )}
+            
+            <PerformanceChart 
+              teamA={homeName} 
+              teamB={awayName} 
+              teamAData={[detailedHomeStats.atk.score, detailedHomeStats.def.score, detailedHomeStats.pos.score, detailedHomeStats.dis.score, detailedHomeStats.frm.score]} 
+              teamBData={[detailedAwayStats.atk.score, detailedAwayStats.def.score, detailedAwayStats.pos.score, detailedAwayStats.dis.score, detailedAwayStats.frm.score]} 
+            />
+            
+            <div class="mt-6">
+              <TeamStatsTable 
+                teamA={homeName} 
+                teamB={awayName} 
+                teamAStats={detailedHomeStats} 
+                teamBStats={detailedAwayStats} 
+              />
+            </div>
+          </div>
+        </section>
+
       </article>
     </main>
     <Footer />

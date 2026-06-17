@@ -35,20 +35,35 @@ npm run update:all
    - `ODDS_API_KEY` (填入您的 API 金鑰)
 3. 系統會在每天午夜 (00:00 UTC) 自動在背景啟動虛擬機，嚴格遵守 SOP 順序執行更新。更新完畢後自動觸發 Vercel 發布最新版網站，達成 100% 零人工介入的全自動化營運！
 
-### 🧑‍💼 如何新增人類專家預測分析？
-本系統支援在每場賽事卡片中，除了顯示 AI 的賠率預測外，同時並排顯示真實人類專家的見解。
-1. 開啟檔案 `src/data/humanPredictions.json`。
-2. 找出您想預測的比賽 ID（您可以在抓下來的 `matchPredictions.json` 裡面找到目前所有比賽的 ID）。
-3. 使用該 ID 作為 Key，填寫中英雙語的預測分析。格式如下：
-```json
-{
-  "比賽的專屬ID": {
-    "prediction_zh": "這是專家的分析結論。我認為這場比賽將會由主隊獲勝，因為他們的防守非常有紀律。",
-    "prediction_en": "This is an expert analysis. I believe the home team will win because of their disciplined defense."
-  }
-}
+### 🧑‍💼 如何新增人類專家短評預測 (CSV)？
+本系統支援在首頁每場賽事卡片中，除了顯示 AI 的賠率預測外，同時並排顯示真實人類專家的見解。
+1. 專家只需要打開根目錄的 `EXPERT_PREDICTIONS.csv`（可使用 Excel 或 Google Sheets 打開）。
+2. 在裡面會看到最新的賽事列表。請在 `Prediction_ZH` 欄位填寫中文分析短評。
+3. **自動翻譯**：專家只需填寫中文即可！如果 `Prediction_EN` 留白，系統在編譯時會自動呼叫 Gemini 將中文專業翻譯為英文，省去專家的語言負擔。
+4. 存檔並推播 (Push) 至 GitHub，系統便會自動同步至資料庫 (`humanPredictions.json`) 並上線！
+
+### 📝 如何撰寫詳細賽事分析長文 (Markdown)？
+針對單一賽事的長篇深度分析（顯示於獨立文章頁面中），專家完全不需要寫程式碼，只需透過純文字 (Markdown) 即可發布！
+1. 在 `src/content/analysis/zh-tw/` 資料夾下，新增一個 Markdown 檔案，例如 `argentina-vs-france.md`。
+2. 貼上並填寫以下格式範本：
+
+```markdown
+---
+title: "阿根廷 vs 法國 決賽前瞻"
+pubDate: 2026-07-15
+match: "Argentina vs France"
+odds: "主勝 2.50 | 平 3.00 | 客勝 2.70"
+prediction: "阿根廷 2-1 法國"
+confidence: 4
+h2hData: [2, 1, 1]
+teamAForm: [1, 1, 1, 1, 0]
+teamBForm: [1, 1, 0, 1, 1]
+---
+
+在這裡輸入您想寫的任何中文分析內文。支援任何 Markdown 語法，例如粗體、列表等。
+不需要寫任何複雜的圖表程式碼！
 ```
-4. 存檔並上傳至 GitHub，系統即會在首頁該場比賽卡片中渲染出「🧑‍💼 專家預測分析」區塊。
+3. **全自動圖表渲染**：只要 `match` 欄位正確填寫了英文隊名對戰組合（例如 `Argentina vs France`），系統上線時就會自動在文章最下方幫您畫好兩隊的 **AI 五維雷達圖**與**深度戰力解析表**！
 
 ## 🛠 本地端開發
 確保您的 `.env` 檔案內有齊全的 API Key：
