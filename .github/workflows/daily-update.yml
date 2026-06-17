@@ -35,11 +35,16 @@ jobs:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: node scripts/update_predictions.mjs
 
+      - name: Generate Expert CSV Form
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: node scripts/generate_expert_csv.mjs
+
       - name: Commit and Push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add src/data/worldCupStandings.json src/data/aiTeamBaseline.json src/data/matchPredictions.json
+          git add src/data/worldCupStandings.json src/data/aiTeamBaseline.json src/data/matchPredictions.json src/data/humanPredictions.json EXPERT_PREDICTIONS.csv
           # Only commit if there are changes
-          git diff --quiet && git diff --staged --quiet || git commit -m "chore(data): auto-update standings and ai stats"
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore(data): auto-update standings, ai stats, and expert csv"
           git push

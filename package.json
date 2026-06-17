@@ -6,14 +6,14 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "node scripts/sync_expert_csv.mjs && astro dev",
+    "build": "node scripts/sync_expert_csv.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "update:standings": "node --env-file=.env scripts/update_standings.mjs",
     "update:ai": "node --env-file=.env scripts/update_ai_stats.mjs",
     "update:predictions": "node --env-file=.env scripts/update_predictions.mjs",
-    "update:all": "npm run update:standings && npm run update:ai && npm run update:predictions"
+    "update:all": "npm run update:standings && npm run update:ai && npm run update:predictions && node --env-file=.env scripts/generate_expert_csv.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^6.0.3",
@@ -23,6 +23,8 @@
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.4.6",
     "chart.js": "^4.5.1",
+    "csv-parse": "^7.0.0",
+    "csv-stringify": "^6.8.0",
     "sharp": "^0.34.3",
     "tailwindcss": "^4.3.0"
   }
