@@ -96,14 +96,16 @@ const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
           <!-- Match info card -->
           <div class="bg-slate-950 rounded-2xl border border-slate-800 p-6">
             <!-- Teams matchup -->
-            <div class="flex items-center justify-between gap-4 mb-5">
-              <div class="flex-1 text-center">
-                <p class="text-xl font-black text-white">{homeName}</p>
+            <div class="flex items-center justify-center gap-6 mb-5">
+              <div class="text-center w-[38%]">
+                <p class="text-2xl font-black text-white">{homeName}</p>
                 <p class="text-xs text-slate-500 uppercase tracking-wide mt-1">主場</p>
               </div>
-              <span class="text-xs font-black text-slate-500 uppercase tracking-widest shrink-0">VS</span>
-              <div class="flex-1 text-center">
-                <p class="text-xl font-black text-white">{awayName}</p>
+              <div class="shrink-0 text-center">
+                <span class="inline-block text-xs font-black text-slate-400 uppercase tracking-widest bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5">VS</span>
+              </div>
+              <div class="text-center w-[38%]">
+                <p class="text-2xl font-black text-white">{awayName}</p>
                 <p class="text-xs text-slate-500 uppercase tracking-wide mt-1">客場</p>
               </div>
             </div>
@@ -121,17 +123,15 @@ const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
           </div>
         </header>
 
-        <div class="prose prose-invert max-w-none
-          prose-img:rounded-xl
-          prose-headings:font-black prose-headings:text-white
-          prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:pl-4 prose-h2:border-l-4 prose-h2:border-amber-500
-          prose-p:text-slate-300 prose-p:leading-relaxed
-          prose-a:text-amber-400 prose-a:font-medium prose-a:no-underline
-          prose-strong:text-white
-          prose-li:text-slate-300
-          mb-10 pb-10 border-b border-slate-800">
+        <div class="article-body prose prose-invert max-w-none prose-img:rounded-xl prose-headings:font-black prose-headings:text-white prose-a:text-amber-400 prose-strong:text-white mb-10 pb-10 border-b border-slate-800">
           <Content components={{ a: AnalysisAnchor }} />
         </div>
+        <style>
+          .article-body p { color: rgb(203 213 225); line-height: 1.875; }
+          .article-body h2 { font-size: 1.2rem; margin-top: 2.5rem; margin-bottom: 0.75rem; padding-left: 1rem; border-left: 4px solid rgb(245 158 11); color: #fff; }
+          .article-body li { color: rgb(203 213 225); }
+          .article-body a { text-decoration: none; }
+        </style>
 
         <!-- AI Deep Analysis -->
         <section class="mt-8">
