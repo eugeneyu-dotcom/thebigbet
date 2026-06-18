@@ -10,6 +10,7 @@ import { languages, useTeamTranslations, useTranslations } from '../../../i18n/u
 import { getDetailedTeamStats, type ScoreData } from '../../../utils/calculateStats';
 import GoogleAnalytics from '../../../components/GoogleAnalytics.astro';
 import AnalysisAnchor from '../../../components/AnalysisAnchor.astro';
+import h2hDatabase from '../../../data/h2hData.json';
 
 export async function getStaticPaths() {
   const analysisEntries = await getCollection('analysis');
@@ -54,6 +55,12 @@ try {
 
 const detailedHomeStats = getDetailedTeamStats(rawHomeTeam, recentScores);
 const detailedAwayStats = getDetailedTeamStats(rawAwayTeam, recentScores);
+
+// Resolve H2H data: prefer auto-fetched DB, fall back to frontmatter
+const h2hFromDB = (h2hDatabase as any)[entry.data.match] as number[] | undefined;
+const h2hResults: number[] | null =
+  (h2hFromDB && h2hFromDB.some(v => v > 0)) ? h2hFromDB :
+  (entry.data.h2hData?.some(v => v > 0) ? entry.data.h2hData : null);
 
 const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
 ---
@@ -144,9 +151,9 @@ const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
           </div>
 
           <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800">
-            {entry.data.h2hData && entry.data.h2hData.length === 3 && entry.data.h2hData.some(v => v > 0) && (
+            {h2hResults && h2hResults.length === 3 && (
               <div class="mb-8">
-                <H2HChart teamA={homeName} teamB={awayName} results={entry.data.h2hData} />
+                <H2HChart teamA={homeName} teamB={awayName} results={h2hResults} />
               </div>
             )}
             
