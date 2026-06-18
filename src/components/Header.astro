@@ -28,9 +28,55 @@ const t = useTranslations(lang);
           </HeaderLink>
         </nav>
       </div>
-      <div class="flex items-center">
+      <div class="flex items-center gap-3">
         <LanguagePicker />
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          class="sm:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200"
+        >
+          <svg id="menu-icon-open" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+          <svg id="menu-icon-close" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
       </div>
     </div>
   </div>
+
+  <!-- Mobile nav dropdown -->
+  <div id="mobile-menu" class="hidden sm:hidden border-t border-slate-800 bg-slate-950">
+    <nav class="px-4 py-3 space-y-1">
+      <a href={`/${lang}/`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-100 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
+        {t('nav.home')}
+      </a>
+      <a href={`/${lang}/schedule`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
+        {t('nav.schedule')}
+      </a>
+      <a href={`/${lang}/analysis`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
+        {t('nav.analysis')}
+      </a>
+    </nav>
+  </div>
 </header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden', isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+    iconOpen?.classList.toggle('hidden', !isOpen);
+    iconClose?.classList.toggle('hidden', isOpen);
+  });
+</script>

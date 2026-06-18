@@ -37,10 +37,12 @@ npm run update:all
 
 ### 🧑‍💼 如何新增人類專家短評預測 (CSV)？
 本系統支援在首頁每場賽事卡片中，除了顯示 AI 的賠率預測外，同時並排顯示真實人類專家的見解。
-1. 專家只需要打開根目錄的 `EXPERT_PREDICTIONS.csv`（可使用 Excel 或 Google Sheets 打開）。
+1. 專家只需要打開根目錄的 **`EXPERT_PREDICTIONS.csv`**（可使用 Excel 或 Google Sheets 打開）。
 2. 在裡面會看到最新的賽事列表。請在 `Prediction_ZH` 欄位填寫中文分析短評。
-3. **自動翻譯**：專家只需填寫中文即可！如果 `Prediction_EN` 留白，系統在編譯時會自動呼叫 Gemini 將中文專業翻譯為英文，省去專家的語言負擔。
-4. 存檔並推播 (Push) 至 GitHub，系統便會自動同步至資料庫 (`humanPredictions.json`) 並上線！
+3. **自動翻譯**：專家只需填寫中文即可！如果 `Prediction_EN` 留白，系統在編譯時會自動呼叫 Gemini 將中文翻譯為英文，省去語言負擔。
+4. 存檔並推播 (Push) 至 GitHub，`npm run build` 在部署時會自動執行 `sync_expert_csv.mjs` 腳本，將 CSV 同步轉換至內部資料庫並上線。
+
+> **注意**：`EXPERT_PREDICTIONS.csv` 是唯一需要手動編輯的預測檔案，請勿直接修改 `src/data/humanPredictions.json`，每次建置時都會被 CSV 覆蓋。
 
 ### 📝 如何撰寫詳細賽事分析長文 (Markdown)？
 針對單一賽事的長篇深度分析（顯示於獨立文章頁面中），專家完全不需要寫程式碼，只需透過純文字 (Markdown) 即可發布！

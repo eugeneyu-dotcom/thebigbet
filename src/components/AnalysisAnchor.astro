@@ -1,0 +1,35 @@
+---
+interface Props {
+  href?: string;
+  [key: string]: any;
+}
+
+const { href, ...rest } = Astro.props;
+
+const lang = Astro.url.pathname.split('/')[1] || 'zh-tw';
+
+let resolvedHref = href;
+let isExternal = false;
+
+if (href?.startsWith('/analysis/')) {
+  // Internal analysis link — prepend language prefix
+  resolvedHref = `/${lang}${href}`;
+} else if (href?.startsWith('wiki:')) {
+  // Language-aware Wikipedia link
+  // Format: wiki:en_slug  OR  wiki:en_slug|zh_slug
+  const slugs = href.slice(5).split('|');
+  const enSlug = slugs[0];
+  const zhSlug = slugs[1] ?? slugs[0];
+  resolvedHref = lang === 'en'
+    ? `https://en.wikipedia.org/wiki/${enSlug}`
+    : `https://zh.wikipedia.org/wiki/${zhSlug}`;
+  isExternal = true;
+} else if (href?.startsWith('http://') || href?.startsWith('https://')) {
+  isExternal = true;
+}
+---
+<a
+  href={resolvedHref}
+  {...rest}
+  {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+><slot /></a>

@@ -6,6 +6,7 @@ const analysis = defineCollection({
   loader: glob({ base: './src/content/analysis', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
+    description: z.string().optional(),
     pubDate: z.coerce.date(),
     match: z.string(),
     odds: z.string(),

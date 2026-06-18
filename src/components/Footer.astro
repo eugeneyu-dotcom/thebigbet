@@ -22,21 +22,39 @@ const year = new Date().getFullYear();
         </p>
       </div>
 
-      <div class="shrink-0">
-        <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-3">
-          {isZhTw ? '技術支援' : 'Powered by'}
-        </p>
-        <a
-          href="https://www.maxora.ai/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-bold text-sm transition-colors duration-200 group"
-        >
-          <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-          Maxora AI
-        </a>
+      <div class="shrink-0 flex flex-col gap-5">
+        <div>
+          <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-3">
+            {isZhTw ? '技術支援' : 'Powered by'}
+          </p>
+          <a
+            href="https://www.maxora.ai/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-bold text-sm transition-colors duration-200 group"
+          >
+            <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+            Maxora AI
+          </a>
+        </div>
+        <div>
+          <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-3">
+            {isZhTw ? '賠率資料來源' : 'Odds Data'}
+          </p>
+          <a
+            href="https://the-odds-api.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-slate-400 hover:text-slate-300 font-bold text-sm transition-colors duration-200 group"
+          >
+            <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+            The Odds API
+          </a>
+        </div>
       </div>
     </div>
 
@@ -74,6 +92,7 @@ const year = new Date().getFullYear();
       <p class="text-slate-700">
         {isZhTw ? '分析僅供參考，不構成任何投注建議。' : 'For informational purposes only. Not betting advice.'}
       </p>
+      <p class="text-slate-700 text-center sm:text-right mt-1">一個因為 AI 的幫助終於敢於自己架站的業餘男子</p>
     </div>
   </div>
 </footer>

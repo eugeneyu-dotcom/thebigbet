@@ -7,8 +7,9 @@ import PerformanceChart from '../../../components/charts/PerformanceChart.astro'
 import H2HChart from '../../../components/charts/H2HChart.astro';
 import TeamStatsTable from '../../../components/TeamStatsTable.astro';
 import { languages, useTeamTranslations, useTranslations } from '../../../i18n/ui';
-import { getDetailedTeamStats, getDynamicTeamStats, type ScoreData } from '../../../utils/calculateStats';
+import { getDetailedTeamStats, type ScoreData } from '../../../utils/calculateStats';
 import GoogleAnalytics from '../../../components/GoogleAnalytics.astro';
+import AnalysisAnchor from '../../../components/AnalysisAnchor.astro';
 
 export async function getStaticPaths() {
   const analysisEntries = await getCollection('analysis');
@@ -62,7 +63,11 @@ const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {gscVerification && <meta name="google-site-verification" content={gscVerification} />}
-    <title>{entry.data.title}</title>
+    <title>{entry.data.title} | The Big Bet</title>
+    {entry.data.description && <meta name="description" content={entry.data.description} />}
+    {entry.data.description && <meta property="og:description" content={entry.data.description} />}
+    <meta property="og:title" content={`${entry.data.title} | The Big Bet`} />
+    <meta property="og:type" content="article" />
     <GoogleAnalytics />
   </head>
   <body class="bg-slate-950 text-slate-200 font-sans min-h-screen flex flex-col">
@@ -87,7 +92,7 @@ const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
         </header>
 
         <div class="prose prose-invert prose-amber max-w-none prose-img:rounded-xl prose-headings:text-white prose-a:text-amber-400 prose-strong:text-slate-200 mb-12 pb-8 border-b border-slate-800">
-          <Content />
+          <Content components={{ a: AnalysisAnchor }} />
         </div>
 
         <!-- Automatic Chart Injection so experts don't have to code them in Markdown -->
