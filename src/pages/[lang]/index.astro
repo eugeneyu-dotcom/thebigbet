@@ -100,7 +100,7 @@ const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {gscVerification && <meta name="google-site-verification" content={gscVerification} />}
-    <title>2026 世界盃運彩分析中心</title>
+    <title>{t('home.title')}</title>
     <GoogleAnalytics />
   </head>
   <body class="bg-slate-950 text-slate-200 font-sans min-h-screen flex flex-col">
@@ -116,7 +116,7 @@ const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
 
       {matches[0]?.id?.startsWith('mock') && (
         <div class="bg-amber-400/10 border border-amber-400/40 text-amber-300 p-4 rounded-lg mb-8 text-center font-bold">
-          提示：目前尚未載入賠率緩存，顯示為 TBD 佔位資料。請執行 npm run update:all 來抓取最新賠率與戰績。
+          {t('home.tbd')}
         </div>
       )}
 

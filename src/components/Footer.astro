@@ -92,7 +92,7 @@ const year = new Date().getFullYear();
       <p class="text-slate-700">
         {isZhTw ? '分析僅供參考，不構成任何投注建議。' : 'For informational purposes only. Not betting advice.'}
       </p>
-      <p class="text-slate-700 text-center sm:text-right mt-1">一個因為 AI 的幫助終於敢於自己架站的業餘男子</p>
+      {isZhTw && <p class="text-slate-700 text-center sm:text-right mt-1">一個因為 AI 的幫助終於敢於自己架站的業餘男子</p>}
     </div>
   </div>
 </footer>
