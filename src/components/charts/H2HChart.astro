@@ -2,86 +2,56 @@
 export interface Props {
   teamA: string;
   teamB: string;
-  results: number[]; // [wins, draws, losses]
+  results: number[]; // [teamA wins, draws, teamB wins]
+  lang?: string;
 }
 
-const { teamA, teamB, results } = Astro.props;
-const chartId = `h2h-chart-${Math.random().toString(36).substring(7)}`;
+const { teamA, teamB, results, lang = 'en' } = Astro.props;
+const [aWins, draws, bWins] = results;
+const total = aWins + draws + bWins;
+
+const aPercent = total > 0 ? (aWins / total) * 100 : 0;
+const dPercent = total > 0 ? (draws / total) * 100 : 0;
+const bPercent = total > 0 ? 100 - aPercent - dPercent : 0;
+
+const isZh = lang === 'zh-tw';
+const title        = isZh ? '歷史交鋒紀錄' : 'Head-to-Head Record';
+const homeWinsLabel = isZh ? '主隊勝' : 'Home Wins';
+const drawsLabel    = isZh ? '平局'   : 'Draws';
+const awayWinsLabel = isZh ? '客隊勝' : 'Away Wins';
+const matchesLabel  = isZh ? `共 ${total} 場交鋒紀錄` : `${total} matches all-time`;
 ---
 
-<h2h-chart>
-  <div class="w-full max-w-2xl mx-auto p-4 bg-slate-900 rounded-xl border border-slate-800 my-6">
-    <h3 class="text-base font-bold text-center mb-4 text-slate-200">歷史交鋒紀錄 (H2H)</h3>
-    <div class="relative w-full h-[200px]">
-      <canvas id={chartId} data-teama={teamA} data-teamb={teamB} data-results={JSON.stringify(results)}></canvas>
+<div class="w-full p-5 rounded-xl border border-slate-700/60 bg-slate-900/60 mb-6">
+  <p class="text-xs font-black text-slate-500 uppercase tracking-widest text-center mb-5">{title}</p>
+
+  <!-- Three metric boxes -->
+  <div class="grid grid-cols-3 gap-3 mb-4">
+    <div class="text-center bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
+      <p class="text-xs text-slate-400 mb-2 truncate font-bold">{teamA}</p>
+      <p class="text-4xl font-black text-emerald-400 leading-none">{aWins}</p>
+      <p class="text-xs text-slate-500 mt-2">{homeWinsLabel}</p>
+    </div>
+    <div class="text-center bg-slate-700/20 border border-slate-700/50 rounded-xl p-4">
+      <p class="text-xs text-slate-500 mb-2 font-bold">—</p>
+      <p class="text-4xl font-black text-slate-300 leading-none">{draws}</p>
+      <p class="text-xs text-slate-500 mt-2">{drawsLabel}</p>
+    </div>
+    <div class="text-center bg-rose-500/10 border border-rose-500/20 rounded-xl p-4">
+      <p class="text-xs text-slate-400 mb-2 truncate font-bold">{teamB}</p>
+      <p class="text-4xl font-black text-rose-400 leading-none">{bWins}</p>
+      <p class="text-xs text-slate-500 mt-2">{awayWinsLabel}</p>
     </div>
   </div>
-</h2h-chart>
 
-<script>
-  import Chart from 'chart.js/auto';
+  <!-- Proportional bar -->
+  {total > 0 && (
+    <div class="flex h-1.5 rounded-full overflow-hidden bg-slate-800">
+      <div class="bg-emerald-500" style={`width: ${aPercent}%`}></div>
+      <div class="bg-slate-600" style={`width: ${dPercent}%`}></div>
+      <div class="bg-rose-500" style={`width: ${bPercent}%`}></div>
+    </div>
+  )}
 
-  class H2HChart extends HTMLElement {
-    constructor() {
-      super();
-      const canvas = this.querySelector('canvas');
-      if (!canvas) return;
-
-      const teamA = canvas.dataset.teama;
-      const teamB = canvas.dataset.teamb;
-      const results = JSON.parse(canvas.dataset.results || '[0,0,0]');
-
-      new Chart(canvas, {
-        type: 'bar',
-        data: {
-          labels: ['勝', '平', '負'],
-          datasets: [{
-            label: `${teamA} 對陣 ${teamB} 戰績`,
-            data: results,
-            backgroundColor: [
-              'rgba(74, 222, 128, 0.5)',
-              'rgba(148, 163, 184, 0.4)',
-              'rgba(248, 113, 113, 0.5)'
-            ],
-            borderColor: [
-              'rgb(74, 222, 128)',
-              'rgb(148, 163, 184)',
-              'rgb(248, 113, 113)'
-            ],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          indexAxis: 'y',
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false }
-          },
-          scales: {
-            x: {
-              beginAtZero: true,
-              ticks: {
-                stepSize: 1,
-                color: '#94a3b8' // slate-400
-              },
-              grid: {
-                color: '#1e293b' // slate-800
-              }
-            },
-            y: {
-              ticks: {
-                color: '#cbd5e1' // slate-300
-              },
-              grid: {
-                color: '#1e293b'
-              }
-            }
-          }
-        }
-      });
-    }
-  }
-
-  customElements.define('h2h-chart', H2HChart);
-</script>
+  <p class="text-xs text-slate-600 text-center mt-3">{matchesLabel}</p>
+</div>
