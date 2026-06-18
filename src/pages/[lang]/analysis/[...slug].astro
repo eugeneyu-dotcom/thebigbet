@@ -38,18 +38,18 @@ const rawAwayTeam = matchParts[1]?.trim() || '';
 const homeName = tTeam(rawHomeTeam);
 const awayName = tTeam(rawAwayTeam);
 
-// Fetch recent scores to power the dynamic charts automatically
-const API_KEY = import.meta.env.ODDS_API_KEY || '';
+import fs from 'fs';
+import path from 'path';
+
+// Fetch recent scores to power the dynamic charts automatically from cache
 let recentScores: ScoreData[] = [];
-if (API_KEY) {
-  try {
-    const scoresRes = await fetch(`https://api.the-odds-api.com/v4/sports/soccer_fifa_world_cup/scores/?apiKey=${API_KEY}&daysFrom=3`);
-    if (scoresRes.ok) {
-      recentScores = await scoresRes.json();
-    }
-  } catch (e) {
-    console.error("Scores fetch failed", e);
+try {
+  const scoresPath = path.resolve('src/data/scores.json');
+  if (fs.existsSync(scoresPath)) {
+    recentScores = JSON.parse(fs.readFileSync(scoresPath, 'utf8'));
   }
+} catch (e) {
+  console.error("Error loading scores.json", e);
 }
 
 const detailedHomeStats = getDetailedTeamStats(rawHomeTeam, recentScores);

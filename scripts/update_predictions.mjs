@@ -40,16 +40,14 @@ async function main() {
   }
 
   try {
-    // 1. Fetch current odds
-    const SPORT_KEY = 'soccer_fifa_world_cup';
-    const oddsRes = await fetch(`https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/odds/?apiKey=${ODDS_API_KEY}&regions=eu&markets=h2h`);
-    
-    if (!oddsRes.ok) {
-      console.error(`⚠️ Failed to fetch odds for predictions. Status: ${oddsRes.status}`);
+    // 1. Load odds from local cache to avoid wasting API quota
+    const matchesPath = path.resolve('src/data/matches.json');
+    if (!fs.existsSync(matchesPath)) {
+      console.error("⚠️ matches.json not found. Run update:matches first.");
       process.exit(1);
     }
-    
-    let matches = await oddsRes.json();
+
+    let matches = JSON.parse(fs.readFileSync(matchesPath, 'utf8'));
     
     for (const match of matches) {
       const homeTeam = match.home_team;

@@ -20,38 +20,33 @@ const t = useTranslations(lang);
 const tTeam = useTeamTranslations(lang);
 const tSport = useSportTranslations(lang);
 
-// Fetch real odds and scores data
-const API_KEY = import.meta.env.ODDS_API_KEY || '';
+import fs from 'fs';
+import path from 'path';
+
+// Load cached odds and scores to prevent API quota exhaustion
 let matches: any[] = [];
 let recentScores: ScoreData[] = [];
-let oddsFetchError = false;
 
-const SPORT_KEY = 'soccer_fifa_world_cup';
-
-if (API_KEY) {
-  try {
-    const oddsRes = await fetch(`https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/odds/?apiKey=${API_KEY}&regions=eu&markets=h2h`);
-    if (oddsRes.ok) {
-      matches = await oddsRes.json();
-      matches = matches.slice(0, 24);
-    } else {
-      oddsFetchError = true;
-    }
-  } catch (e) {
-    oddsFetchError = true;
+try {
+  const matchesPath = path.resolve('src/data/matches.json');
+  if (fs.existsSync(matchesPath)) {
+    matches = JSON.parse(fs.readFileSync(matchesPath, 'utf8'));
+    matches = matches.slice(0, 24);
   }
-
-  try {
-    const scoresRes = await fetch(`https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/scores/?apiKey=${API_KEY}&daysFrom=3`);
-    if (scoresRes.ok) {
-      recentScores = await scoresRes.json();
-    }
-  } catch (e) {
-    console.error("Scores fetch failed", e);
-  }
+} catch (e) {
+  console.error("Error loading matches.json", e);
 }
 
-if (!API_KEY || oddsFetchError || matches.length === 0) {
+try {
+  const scoresPath = path.resolve('src/data/scores.json');
+  if (fs.existsSync(scoresPath)) {
+    recentScores = JSON.parse(fs.readFileSync(scoresPath, 'utf8'));
+  }
+} catch (e) {
+  console.error("Error loading scores.json", e);
+}
+
+if (matches.length === 0) {
   matches = Array(6).fill(null).map((_, i) => ({
     id: `mock-${i}`,
     sport_title: "Soccer",
@@ -119,9 +114,9 @@ const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
         <p class="text-slate-400 text-lg font-bold">Latest Matches & Live Odds</p>
       </div>
 
-      {!API_KEY && (
+      {matches[0]?.id?.startsWith('mock') && (
         <div class="bg-amber-400/10 border border-amber-400/40 text-amber-300 p-4 rounded-lg mb-8 text-center font-bold">
-          提示：目前未設定 ODDS_API_KEY，顯示為 TBD 佔位資料。請在 .env 檔案中加入您的 The-Odds-API Key 以載入真實賠率。
+          提示：目前尚未載入賠率緩存，顯示為 TBD 佔位資料。請執行 npm run update:all 來抓取最新賠率與戰績。
         </div>
       )}
 

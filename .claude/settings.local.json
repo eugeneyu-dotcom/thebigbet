@@ -12,7 +12,19 @@
       "Bash(git push *)",
       "Bash(gh pr *)",
       "Bash(brew list *)",
-      "Read(//opt/homebrew/bin/**)"
+      "Read(//opt/homebrew/bin/**)",
+      "Bash(mkdir -p \"/Users/eugeneyu/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/d30fddbb-2c4f-47fb-bb09-a6c1f0bad753/9f3d46a9-b50a-4d5a-b9a3-4b259eec6b8d/skills/the-big-bet-analysis\" && echo \"Created skill directory\")",
+      "mcp__visualize__read_me",
+      "mcp__visualize__show_widget",
+      "WebSearch",
+      "Bash(find \"/Users/eugeneyu/Library/Application Support/Claude\" -name \"SKILL.md\" 2>/dev/null | grep -i \"big-bet\\\\|analysis\")",
+      "Bash(cp /tmp/the-big-bet-analysis-SKILL.md \"/Users/eugeneyu/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/d30fddbb-2c4f-47fb-bb09-a6c1f0bad753/9f3d46a9-b50a-4d5a-b9a3-4b259eec6b8d/skills/the-big-bet-analysis/SKILL.md\" && echo \"copied\" && ls \"/Users/eugeneyu/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/d30fddbb-2c4f-47fb-bb09-a6c1f0bad753/9f3d46a9-b50a-4d5a-b9a3-4b259eec6b8d/skills/the-big-bet-analysis/\")",
+      "Bash(sed 's|/zh-tw/analysis/slug|/analysis/slug|g; s|/{lang}/analysis/{slug}|/analysis/{slug}|g' \"/Users/eugeneyu/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/e4cc9099-162d-4f01-82e3-6686317ada2c/9f3d46a9-b50a-4d5a-b9a3-4b259eec6b8d/skills/the-big-bet-analysis/SKILL.md\")",
+      "Bash(cp /tmp/skill-updated.md \"/Users/eugeneyu/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/e4cc9099-162d-4f01-82e3-6686317ada2c/9f3d46a9-b50a-4d5a-b9a3-4b259eec6b8d/skills/the-big-bet-analysis/SKILL.md\")",
+      "Bash(python3 -)",
+      "Bash(gh run *)",
+      "Bash(gh api *)",
+      "Bash(npx vercel *)"
     ]
   }
 }
