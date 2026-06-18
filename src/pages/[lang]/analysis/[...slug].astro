@@ -62,6 +62,12 @@ const h2hResults: number[] | null =
   (h2hFromDB && h2hFromDB.some(v => v > 0)) ? h2hFromDB :
   (entry.data.h2hData?.some(v => v > 0) ? entry.data.h2hData : null);
 
+// Parse odds string "主勝 1.08 | 平 13.00 | 客勝 21.00"
+const oddsParts = (entry.data.odds || '').split('|').map((s: string) => s.trim());
+const homeOddsVal = oddsParts[0]?.match(/[\d.]+/)?.[0] ?? '-';
+const drawOddsVal = oddsParts[1]?.match(/[\d.]+/)?.[0] ?? '-';
+const awayOddsVal = oddsParts[2]?.match(/[\d.]+/)?.[0] ?? '-';
+
 const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
 ---
 
@@ -102,30 +108,42 @@ const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
 
           <!-- Match info card -->
           <div class="bg-slate-950 rounded-2xl border border-slate-800 p-6">
-            <!-- Teams matchup -->
-            <div class="flex items-center justify-center gap-6 mb-5">
-              <div class="text-center w-[38%]">
-                <p class="text-2xl font-black text-white">{homeName}</p>
+            <!-- Teams + odds: 3-column grid -->
+            <div class="grid grid-cols-3 gap-2">
+              <!-- Home team -->
+              <div class="text-center">
+                <p class="text-2xl font-black text-white leading-tight">{homeName}</p>
                 <p class="text-xs text-slate-500 uppercase tracking-wide mt-1">主場</p>
+                <div class="mt-4 pt-4 border-t border-slate-800/60">
+                  <p class="text-xs text-slate-600 mb-1">主勝賠率</p>
+                  <p class="text-2xl font-mono font-black text-amber-400">{homeOddsVal}</p>
+                </div>
               </div>
-              <div class="shrink-0 text-center">
+              <!-- VS + draw odds -->
+              <div class="text-center flex flex-col items-center">
                 <span class="inline-block text-xs font-black text-slate-400 uppercase tracking-widest bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5">VS</span>
+                <div class="mt-4 pt-4 border-t border-slate-800/60 w-full">
+                  <p class="text-xs text-slate-600 mb-1">平手賠率</p>
+                  <p class="text-2xl font-mono font-black text-slate-400">{drawOddsVal}</p>
+                </div>
               </div>
-              <div class="text-center w-[38%]">
-                <p class="text-2xl font-black text-white">{awayName}</p>
+              <!-- Away team -->
+              <div class="text-center">
+                <p class="text-2xl font-black text-white leading-tight">{awayName}</p>
                 <p class="text-xs text-slate-500 uppercase tracking-wide mt-1">客場</p>
+                <div class="mt-4 pt-4 border-t border-slate-800/60">
+                  <p class="text-xs text-slate-600 mb-1">客勝賠率</p>
+                  <p class="text-2xl font-mono font-black text-amber-400">{awayOddsVal}</p>
+                </div>
               </div>
             </div>
-            <!-- Odds + prediction -->
-            <div class="border-t border-slate-800 pt-4 flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p class="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1.5">賠率</p>
-                <p class="text-amber-400 font-mono font-bold text-sm">{entry.data.odds}</p>
-              </div>
-              <div class="text-right">
-                <p class="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1.5">本場預測</p>
-                <p class="text-xl font-black text-amber-300">{entry.data.prediction}</p>
-              </div>
+            <!-- Prediction banner -->
+            <div class="mt-5 bg-amber-400/5 border border-amber-400/20 rounded-xl px-4 py-3 flex items-center justify-center gap-3">
+              <span class="text-xs text-slate-400 font-bold uppercase tracking-widest shrink-0">本場預測</span>
+              <svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+              <span class="text-xl font-black text-amber-300">{entry.data.prediction}</span>
             </div>
           </div>
         </header>
