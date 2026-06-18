@@ -4,6 +4,7 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { languages, useTeamTranslations, useSportTranslations, useTranslations } from '../../../i18n/ui';
 import standingsData from '../../../data/worldCupStandings.json';
+import matchesCache from '../../../data/matches.json';
 import GoogleAnalytics from '../../../components/GoogleAnalytics.astro';
 
 export function getStaticPaths() {
@@ -14,34 +15,9 @@ const { lang } = Astro.params;
 const t = useTranslations(lang);
 const tTeam = useTeamTranslations(lang);
 
-const API_KEY = import.meta.env.ODDS_API_KEY || '';
-let matches: any[] = [];
-let fetchError = false;
-
-const SPORT_KEY = 'soccer_fifa_world_cup';
-
-if (API_KEY) {
-  try {
-    const res = await fetch(`https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/odds/?apiKey=${API_KEY}&regions=eu&markets=h2h`);
-    if (res.ok) {
-      matches = await res.json();
-      matches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
-    } else {
-      fetchError = true;
-    }
-  } catch (e) {
-    fetchError = true;
-  }
-}
-
-if (!API_KEY || fetchError || matches.length === 0) {
-  matches = Array(5).fill(null).map((_, i) => ({
-    id: `mock-${i}`,
-    commence_time: "TBD",
-    home_team: "TBD Home",
-    away_team: "TBD Away",
-  }));
-}
+const matches = [...(matchesCache as any[])].sort(
+  (a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime()
+);
 
 const groupedMatches = standingsData.map(group => {
   const groupMatches = matches.filter(m =>
