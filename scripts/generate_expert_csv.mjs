@@ -3,13 +3,6 @@ import path from 'path';
 import { parse } from 'csv-parse/sync';
 import { stringify } from 'csv-stringify/sync';
 
-const ODDS_API_KEY = process.env.ODDS_API_KEY;
-
-if (!ODDS_API_KEY) {
-  console.error("❌ Error: ODDS_API_KEY is not set.");
-  process.exit(1);
-}
-
 const csvPath = path.resolve('EXPERT_PREDICTIONS.csv');
 const jsonPath = path.resolve('src/data/humanPredictions.json');
 
@@ -37,16 +30,13 @@ async function main() {
     } catch (e) {}
   }
 
-  // Fetch upcoming matches
-  const SPORT_KEY = 'soccer_fifa_world_cup';
-  const response = await fetch(`https://api.the-odds-api.com/v4/sports/${SPORT_KEY}/odds/?apiKey=${ODDS_API_KEY}&regions=eu&markets=h2h`);
-  
-  if (!response.ok) {
-    console.error(`⚠️ Failed to fetch matches for CSV generation. Status: ${response.status}`);
+  // Load matches from local cache (populated by update:matches)
+  const matchesPath = path.resolve('src/data/matches.json');
+  if (!fs.existsSync(matchesPath)) {
+    console.error("⚠️ matches.json not found. Run npm run update:matches first.");
     process.exit(1);
   }
-  
-  const matches = await response.json();
+  const matches = JSON.parse(fs.readFileSync(matchesPath, 'utf8'));
   
   // Create CSV records
   const csvRecords = matches.map(match => {
