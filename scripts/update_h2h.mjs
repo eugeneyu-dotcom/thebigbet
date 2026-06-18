@@ -56,7 +56,6 @@ No markdown, no explanation, no backticks.`;
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             contents: [{ parts: [{ text: prompt }] }],
-            tools: [{ googleSearch: {} }],
             generationConfig: { temperature: 0.1 }
           })
         }
