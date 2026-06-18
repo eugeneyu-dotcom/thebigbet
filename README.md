@@ -23,6 +23,12 @@ npm run update:all
 
 *注意：絕對不可以顛倒順序，否則 AI 會拿到過期資料產生錯誤的幻覺分析。*
 
+### 🛡️ API 額度防護與快取架構 (解決額度耗盡問題)
+為了避免前端網頁每次載入就消耗 `The-Odds-API` 額度導致極速枯竭，本系統導入了企業級的 API 保護機制：
+1. **全脫鉤緩存 (Decoupling & Caching)**：所有的 Astro 前端頁面完全不執行 API 請求，改為讀取本地端的 `matches.json` 與 `scores.json`。
+2. **多金鑰自動輪替 (Key Rotation)**：您可以在 `.env` 中的 `ODDS_API_KEY` 填入多把金鑰並以逗號分隔（例如：`key1,key2`）。當系統偵測到某把金鑰額度耗盡 (HTTP 401/429) 時，會全自動切換到下一把金鑰，確保資料更新不中斷。
+3. **保留舊賠率機制**：針對已經抓取過賠率的賽事，系統會自動跳過不進行覆寫更新，極大化節省 API 請求次數。
+
 ### ⚙️ GitHub Actions 全自動更新
 如果您已經將網站部署在 Vercel 並連結了 GitHub 專案，您完全不需要每天手動下指令。
 我們已經為您建置好 `.github/workflows/daily-update.yml`。
@@ -32,7 +38,7 @@ npm run update:all
 2. 新增以下三個 Secret 變數：
    - `FOOTBALL_DATA_ORG_TOKEN` (填入您的 API 金鑰)
    - `GEMINI_API_KEY` (填入您的 API 金鑰)
-   - `ODDS_API_KEY` (填入您的 API 金鑰)
+   - `ODDS_API_KEY` (填入您的 API 金鑰，支援多金鑰逗號分隔)
 3. 系統會在每天午夜 (00:00 UTC) 自動在背景啟動虛擬機，嚴格遵守 SOP 順序執行更新。更新完畢後自動觸發 Vercel 發布最新版網站，達成 100% 零人工介入的全自動化營運！
 
 ### 🧑‍💼 如何新增人類專家短評預測 (CSV)？
