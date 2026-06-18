@@ -15,17 +15,8 @@ const t = useTranslations(lang);
 const tTeam = useTeamTranslations(lang);
 const isZhTw = lang === 'zh-tw';
 
-// Collect all articles, deduplicate by slug so multi-lang entries don't double-count
-const allEntries = await getCollection('analysis');
-const seenSlugs = new Set<string>();
-const sorted = allEntries
-  .filter(entry => {
-    const slug = entry.id.split('/').slice(1).join('/');
-    if (seenSlugs.has(slug)) return false;
-    seenSlugs.add(slug);
-    return true;
-  })
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const allEntries = await getCollection('analysis', (entry) => entry.id.startsWith(lang + '/'));
+const sorted = allEntries.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
 const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
 ---

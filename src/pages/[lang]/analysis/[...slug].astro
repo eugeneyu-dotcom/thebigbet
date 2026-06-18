@@ -14,18 +14,12 @@ import h2hDatabase from '../../../data/h2hData.json';
 
 export async function getStaticPaths() {
   const analysisEntries = await getCollection('analysis');
-  const paths: { params: { lang: string; slug: string }; props: { entry: any } }[] = [];
 
-  for (const entry of analysisEntries) {
-    const [, ...slugParts] = entry.id.split('/');
+  return analysisEntries.map(entry => {
+    const [lang, ...slugParts] = entry.id.split('/');
     const slug = slugParts.join('/');
-    // Generate a route for every supported language so /en/analysis/... also works
-    for (const lang of Object.keys(languages)) {
-      paths.push({ params: { lang, slug }, props: { entry } });
-    }
-  }
-
-  return paths;
+    return { params: { lang, slug }, props: { entry } };
+  });
 }
 
 const { lang } = Astro.params;
