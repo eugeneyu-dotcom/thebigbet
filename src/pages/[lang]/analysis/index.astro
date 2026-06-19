@@ -1,8 +1,8 @@
 ---
-import '../../../styles/global.css';
 import { getCollection } from 'astro:content';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
+import BaseHead from '../../../components/BaseHead.astro';
 import { languages, useTranslations, useTeamTranslations } from '../../../i18n/ui';
 import GoogleAnalytics from '../../../components/GoogleAnalytics.astro';
 
@@ -18,16 +18,15 @@ const isZhTw = lang === 'zh-tw';
 const allEntries = await getCollection('analysis', (entry) => entry.id.startsWith(lang + '/'));
 const sorted = allEntries.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
-const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
+const analysisTitle = isZhTw ? '賽事分析 | The Big Bet' : 'Analysis | The Big Bet';
+const analysisDescription = isZhTw
+  ? '2026 FIFA 世界盃深度賽事分析文章，包含 AI 評估、賠率解讀與專家預測。'
+  : '2026 FIFA World Cup in-depth match analysis with AI assessments, odds breakdowns, and expert predictions.';
 ---
 
 <html lang={lang}>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    {gscVerification && <meta name="google-site-verification" content={gscVerification} />}
-    <title>{isZhTw ? '賽事分析' : 'Analysis'} | The Big Bet</title>
-    <meta name="description" content={isZhTw ? '2026 FIFA 世界盃深度賽事分析文章' : '2026 FIFA World Cup in-depth match analysis articles'} />
+    <BaseHead title={analysisTitle} description={analysisDescription} lang={lang} />
     <GoogleAnalytics />
   </head>
   <body class="bg-slate-950 text-slate-200 font-sans min-h-screen flex flex-col">

@@ -1,7 +1,7 @@
 ---
-import '../../../styles/global.css';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
+import BaseHead from '../../../components/BaseHead.astro';
 import { languages, useTeamTranslations, useSportTranslations, useTranslations } from '../../../i18n/ui';
 import standingsData from '../../../data/worldCupStandings.json';
 import matchesCache from '../../../data/matches.json';
@@ -37,15 +37,14 @@ if (otherMatches.length > 0) {
   });
 }
 
-const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
+const scheduleDescription = lang === 'zh-tw'
+  ? '2026 FIFA 世界盃完整賽程表，包含比賽時間、賠率與小組積分，即時更新。'
+  : 'Full 2026 FIFA World Cup schedule with match times, live odds, and group standings, updated in real time.';
 ---
 
 <html lang={lang}>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    {gscVerification && <meta name="google-site-verification" content={gscVerification} />}
-    <title>{t('nav.schedule')} | The Big Bet</title>
+    <BaseHead title={`${t('nav.schedule')} | The Big Bet`} description={scheduleDescription} lang={lang} />
     <GoogleAnalytics />
   </head>
   <body class="bg-slate-950 text-slate-200 font-sans min-h-screen flex flex-col">
