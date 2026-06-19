@@ -1,6 +1,7 @@
 export const languages = {
   en: 'English',
   'zh-tw': '繁體中文',
+  th: 'ภาษาไทย',
 };
 
 export const defaultLang = 'en';
@@ -77,6 +78,42 @@ export const ui = {
     'dim.pos': 'Possession (POS)',
     'dim.dis': 'Discipline (DIS)',
     'dim.frm': 'Form (FRM)',
+  },
+  th: {
+    'nav.home': 'หน้าแรก',
+    'nav.analysis': 'วิเคราะห์',
+    'nav.schedule': 'ตารางแข่ง',
+    'odds.home': 'เจ้าบ้านชนะ',
+    'odds.draw': 'เสมอ',
+    'odds.away': 'ทีมเยือนชนะ',
+    'label.home': 'เจ้าบ้าน',
+    'label.away': 'ทีมเยือน',
+    'analysis.tag': 'วิเคราะห์เชิงลึก',
+    'analysis.confidence': 'ความมั่นใจ',
+    'analysis.prediction': 'ทำนาย',
+    'analysis.aiSection': 'AI วิเคราะห์เชิงลึก',
+    'schedule.viewOdds': 'ดูอัตราต่อรอง',
+    'home.title': 'ศูนย์วิเคราะห์ฟุตบอลโลก 2026',
+    'home.tbd': 'หมายเหตุ: ยังไม่มีข้อมูลอัตราต่อรอง กำลังแสดงข้อมูลตัวอย่าง รัน npm run update:all เพื่อดึงข้อมูลล่าสุด',
+    'trend.up': 'กำลังขึ้น',
+    'trend.down': 'กำลังลง',
+    'trend.flat': 'คงที่',
+    'stats.title': 'ดูรายงานวิเคราะห์ AI เชิงลึก',
+    'stats.dim': 'มิติ',
+    'stats.trend': 'แนวโน้ม',
+    'stats.reason': 'เหตุผล AI',
+    'stats.badge': 'สถิติ AI',
+    'prediction.ai': 'AI วิเคราะห์อัตราต่อรอง',
+    'prediction.ai_pending': 'กำลังคำนวณการวิเคราะห์...',
+    'prediction.human': 'ทำนายโดยผู้เชี่ยวชาญ',
+    'prediction.human_empty': 'ผู้เชี่ยวชาญยังไม่ได้เผยแพร่การวิเคราะห์สำหรับแมตช์นี้ โปรดกลับมาใหม่ภายหลัง',
+    'status.qualified': 'ผ่านเข้ารอบ',
+    'status.eliminated': 'ตกรอบ',
+    'dim.atk': 'การโจมตี (ATK)',
+    'dim.def': 'การป้องกัน (DEF)',
+    'dim.pos': 'ครองบอล (POS)',
+    'dim.dis': 'วินัย (DIS)',
+    'dim.frm': 'ฟอร์ม (FRM)',
   },
 } as const;
 
@@ -180,6 +217,72 @@ export const teamTranslations: Record<string, Record<string, string>> = {
     'Honduras': '宏都拉斯',
     'El Salvador': '薩爾瓦多',
     'United Arab Emirates': '阿聯'
+  },
+  'th': {
+    // Countries
+    'Argentina': 'อาร์เจนตินา',
+    'France': 'ฝรั่งเศส',
+    'Brazil': 'บราซิล',
+    'England': 'อังกฤษ',
+    'Spain': 'สเปน',
+    'Germany': 'เยอรมนี',
+    'Italy': 'อิตาลี',
+    'Portugal': 'โปรตุเกส',
+    'Netherlands': 'เนเธอร์แลนด์',
+    'Belgium': 'เบลเยียม',
+    'Uruguay': 'อุรุกวัย',
+    'Colombia': 'โคลอมเบีย',
+    'Croatia': 'โครเอเชีย',
+    'Switzerland': 'สวิตเซอร์แลนด์',
+    'Denmark': 'เดนมาร์ก',
+    'Morocco': 'โมร็อกโก',
+    'Senegal': 'เซเนกัล',
+    'Japan': 'ญี่ปุ่น',
+    'USA': 'สหรัฐอเมริกา',
+    'Mexico': 'เม็กซิโก',
+    'Canada': 'แคนาดา',
+    'Ecuador': 'เอกวาดอร์',
+    'Chile': 'ชิลี',
+    'Peru': 'เปรู',
+    'Serbia': 'เซอร์เบีย',
+    'Poland': 'โปแลนด์',
+    'Ukraine': 'ยูเครน',
+    'Austria': 'ออสเตรีย',
+    'Sweden': 'สวีเดน',
+    'Wales': 'เวลส์',
+    'Egypt': 'อียิปต์',
+    'Nigeria': 'ไนจีเรีย',
+    'Ivory Coast': 'โกตดิวัวร์',
+    'Algeria': 'แอลจีเรีย',
+    'Cameroon': 'แคเมอรูน',
+    'Tunisia': 'ตูนิเซีย',
+    'Ghana': 'กานา',
+    'Iran': 'อิหร่าน',
+    'South Korea': 'เกาหลีใต้',
+    'Australia': 'ออสเตรเลีย',
+    'Saudi Arabia': 'ซาอุดีอาระเบีย',
+    'Qatar': 'กาตาร์',
+    'Uzbekistan': 'อุซเบกิสถาน',
+    'Iraq': 'อิรัก',
+    'Costa Rica': 'คอสตาริกา',
+    'Panama': 'ปานามา',
+    'Jamaica': 'จาเมกา',
+    'New Zealand': 'นิวซีแลนด์',
+    'Paraguay': 'ปารากวัย',
+    'Bosnia & Herzegovina': 'บอสเนียและเฮอร์เซโกวีนา',
+    'DR Congo': 'สาธารณรัฐประชาธิปไตยคองโก',
+    'Cape Verde': 'กาบูเวร์ดี',
+    'Jordan': 'จอร์แดน',
+    'Curaçao': 'คูราเซา',
+    'Turkey': 'ตุรกี',
+    'Norway': 'นอร์เวย์',
+    'Scotland': 'สกอตแลนด์',
+    'Haiti': 'เฮติ',
+    'Czech Republic': 'สาธารณรัฐเช็ก',
+    'South Africa': 'แอฟริกาใต้',
+    'Honduras': 'ฮอนดูรัส',
+    'El Salvador': 'เอลซัลวาดอร์',
+    'United Arab Emirates': 'สหรัฐอาหรับเอมิเรตส์',
   }
 };
 
@@ -194,6 +297,17 @@ export const sportTranslations: Record<string, Record<string, string>> = {
     'UEFA Champions League': '歐冠',
     'UEFA Europa League': '歐霸',
     'FIFA World Cup': '世界盃',
+  },
+  'th': {
+    'Soccer': 'ฟุตบอล',
+    'EPL': 'พรีเมียร์ลีก',
+    'La Liga': 'ลาลีกา',
+    'Serie A': 'เซเรียอา',
+    'Bundesliga': 'บุนเดสลีกา',
+    'Ligue 1': 'ลีกเอิง',
+    'UEFA Champions League': 'ยูฟ่า แชมเปียนส์ลีก',
+    'UEFA Europa League': 'ยูฟ่า ยูโรปาลีก',
+    'FIFA World Cup': 'ฟีฟ่า เวิลด์คัพ',
   }
 };
 
@@ -211,8 +325,8 @@ export function useTranslations(lang: keyof typeof ui) {
 
 export function useTeamTranslations(lang: keyof typeof ui) {
   return function translateTeam(teamName: string) {
-    if (lang === 'zh-tw') {
-      return teamTranslations['zh-tw'][teamName] || teamName;
+    if (lang === 'zh-tw' || lang === 'th') {
+      return teamTranslations[lang]?.[teamName] || teamName;
     }
     return teamName;
   }
@@ -220,11 +334,10 @@ export function useTeamTranslations(lang: keyof typeof ui) {
 
 export function useSportTranslations(lang: keyof typeof ui) {
   return function translateSport(sportName: string) {
-    if (lang === 'zh-tw') {
-      // API might return "Soccer - EPL"
+    if (lang === 'zh-tw' || lang === 'th') {
       let translated = sportName;
-      Object.keys(sportTranslations['zh-tw']).forEach(key => {
-        translated = translated.replace(key, sportTranslations['zh-tw'][key]);
+      Object.keys(sportTranslations[lang]).forEach(key => {
+        translated = translated.replace(key, sportTranslations[lang][key]);
       });
       return translated;
     }

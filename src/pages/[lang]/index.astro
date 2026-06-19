@@ -93,7 +93,9 @@ const getDrawOdds = (bookmakers: any) => {
 
 const homeDescription = lang === 'zh-tw'
   ? '2026 FIFA 世界盃深度運彩數據分析平台，整合即時賠率、官方戰績與 AI 戰力評估。'
-  : '2026 FIFA World Cup sports analytics with live odds, official standings, and AI-powered team strength analysis.';
+  : lang === 'th'
+    ? 'แพลตฟอร์มวิเคราะห์ฟุตบอลโลก 2026 พร้อมอัตราต่อรองสด สถิติทีม และการประเมิน AI'
+    : '2026 FIFA World Cup sports analytics with live odds, official standings, and AI-powered team strength analysis.';
 ---
 
 <html lang={lang}>
@@ -288,7 +290,11 @@ const homeDescription = lang === 'zh-tw'
                                 <span class="text-xs font-black text-amber-400 uppercase tracking-widest">{t('prediction.ai')}</span>
                               </div>
                               <p class="text-slate-300 text-sm leading-relaxed">
-                                {lang === 'zh-tw' ? (matchPredictions as any)[match.id].prediction_zh : (matchPredictions as any)[match.id].prediction_en}
+                                {lang === 'zh-tw'
+                                  ? (matchPredictions as any)[match.id].prediction_zh
+                                  : lang === 'th' && (matchPredictions as any)[match.id].prediction_th
+                                    ? (matchPredictions as any)[match.id].prediction_th
+                                    : (matchPredictions as any)[match.id].prediction_en}
                               </p>
                             </div>
                           ) : (
@@ -314,7 +320,11 @@ const homeDescription = lang === 'zh-tw'
                                 <span class="text-xs font-black text-violet-400 uppercase tracking-widest">{t('prediction.human')}</span>
                               </div>
                               <p class="text-slate-300 text-sm leading-relaxed">
-                                {lang === 'zh-tw' ? (humanPredictions as any)[match.id].prediction_zh : (humanPredictions as any)[match.id].prediction_en}
+                                {lang === 'zh-tw'
+                                  ? (humanPredictions as any)[match.id].prediction_zh
+                                  : lang === 'th' && (humanPredictions as any)[match.id].prediction_th
+                                    ? (humanPredictions as any)[match.id].prediction_th
+                                    : (humanPredictions as any)[match.id].prediction_en}
                               </p>
                             </div>
                           ) : (

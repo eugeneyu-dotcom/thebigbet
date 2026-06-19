@@ -15,11 +15,12 @@ const dPercent = total > 0 ? (draws / total) * 100 : 0;
 const bPercent = total > 0 ? 100 - aPercent - dPercent : 0;
 
 const isZh = lang === 'zh-tw';
-const title        = isZh ? '歷史交鋒紀錄' : 'Head-to-Head Record';
-const homeWinsLabel = isZh ? '主隊勝' : 'Home Wins';
-const drawsLabel    = isZh ? '平局'   : 'Draws';
-const awayWinsLabel = isZh ? '客隊勝' : 'Away Wins';
-const matchesLabel  = isZh ? `共 ${total} 場交鋒紀錄` : `${total} matches all-time`;
+const isTh = lang === 'th';
+const title        = isZh ? '歷史交鋒紀錄' : isTh ? 'สถิติการพบกัน' : 'Head-to-Head Record';
+const homeWinsLabel = isZh ? '主隊勝' : isTh ? 'เจ้าบ้านชนะ' : 'Home Wins';
+const drawsLabel    = isZh ? '平局'   : isTh ? 'เสมอ' : 'Draws';
+const awayWinsLabel = isZh ? '客隊勝' : isTh ? 'ทีมเยือนชนะ' : 'Away Wins';
+const matchesLabel  = isZh ? `共 ${total} 場交鋒紀錄` : isTh ? `รวม ${total} นัด` : `${total} matches all-time`;
 ---
 
 <div class="w-full p-5 rounded-xl border border-slate-700/60 bg-slate-900/60 mb-6">

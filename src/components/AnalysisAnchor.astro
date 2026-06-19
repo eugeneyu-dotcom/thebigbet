@@ -20,9 +20,9 @@ if (href?.startsWith('/analysis/')) {
   const slugs = href.slice(5).split('|');
   const enSlug = slugs[0];
   const zhSlug = slugs[1] ?? slugs[0];
-  resolvedHref = lang === 'en'
-    ? `https://en.wikipedia.org/wiki/${enSlug}`
-    : `https://zh.wikipedia.org/wiki/${zhSlug}`;
+  resolvedHref = lang === 'zh-tw'
+    ? `https://zh.wikipedia.org/wiki/${zhSlug}`
+    : `https://en.wikipedia.org/wiki/${enSlug}`;
   isExternal = true;
 } else if (href?.startsWith('http://') || href?.startsWith('https://')) {
   isExternal = true;

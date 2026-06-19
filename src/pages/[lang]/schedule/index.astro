@@ -39,7 +39,9 @@ if (otherMatches.length > 0) {
 
 const scheduleDescription = lang === 'zh-tw'
   ? '2026 FIFA 世界盃完整賽程表，包含比賽時間、賠率與小組積分，即時更新。'
-  : 'Full 2026 FIFA World Cup schedule with match times, live odds, and group standings, updated in real time.';
+  : lang === 'th'
+    ? 'ตารางฟุตบอลโลก 2026 ฉบับสมบูรณ์ พร้อมเวลาแข่ง อัตราต่อรอง และตารางคะแนน อัปเดตสด'
+    : 'Full 2026 FIFA World Cup schedule with match times, live odds, and group standings, updated in real time.';
 ---
 
 <html lang={lang}>

@@ -14,14 +14,17 @@ const { lang } = Astro.params;
 const t = useTranslations(lang);
 const tTeam = useTeamTranslations(lang);
 const isZhTw = lang === 'zh-tw';
+const isTh = lang === 'th';
 
 const allEntries = await getCollection('analysis', (entry) => entry.id.startsWith(lang + '/'));
 const sorted = allEntries.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
-const analysisTitle = isZhTw ? '賽事分析 | The Big Bet' : 'Analysis | The Big Bet';
+const analysisTitle = isZhTw ? '賽事分析 | The Big Bet' : isTh ? 'วิเคราะห์แมตช์ | The Big Bet' : 'Analysis | The Big Bet';
 const analysisDescription = isZhTw
   ? '2026 FIFA 世界盃深度賽事分析文章，包含 AI 評估、賠率解讀與專家預測。'
-  : '2026 FIFA World Cup in-depth match analysis with AI assessments, odds breakdowns, and expert predictions.';
+  : isTh
+    ? 'บทวิเคราะห์ฟุตบอลโลก 2026 เชิงลึก พร้อมการประเมิน AI อัตราต่อรอง และการทำนายของผู้เชี่ยวชาญ'
+    : '2026 FIFA World Cup in-depth match analysis with AI assessments, odds breakdowns, and expert predictions.';
 ---
 
 <html lang={lang}>
@@ -35,22 +38,24 @@ const analysisDescription = isZhTw
 
       <div class="mb-10">
         <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
-          {isZhTw ? '深度分析' : 'Deep Analysis'}
+          {isZhTw ? '深度分析' : isTh ? 'วิเคราะห์เชิงลึก' : 'Deep Analysis'}
         </p>
         <h1 class="text-3xl font-black text-white">
-          {isZhTw ? '賽事分析文章' : 'Match Analysis'}
+          {isZhTw ? '賽事分析文章' : isTh ? 'บทวิเคราะห์แมตช์' : 'Match Analysis'}
         </h1>
         <p class="text-slate-400 mt-2 text-sm leading-relaxed">
           {isZhTw
             ? '由 AI 輔助撰寫的世界盃賽事深度前瞻，整合賠率、歷史交鋒紀錄與戰力分析。'
-            : 'AI-assisted World Cup match previews integrating odds, head-to-head records, and team strength analysis.'}
+            : isTh
+              ? 'บทวิเคราะห์ฟุตบอลโลกเชิงลึก รวมอัตราต่อรอง ประวัติการพบกัน และการวิเคราะห์ความแข็งแกร่งของทีม'
+              : 'AI-assisted World Cup match previews integrating odds, head-to-head records, and team strength analysis.'}
         </p>
       </div>
 
       {sorted.length === 0 ? (
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-12 text-center">
           <p class="text-slate-500 text-sm">
-            {isZhTw ? '目前尚無分析文章，敬請期待。' : 'No analysis articles yet. Check back soon.'}
+            {isZhTw ? '目前尚無分析文章，敬請期待。' : isTh ? 'ยังไม่มีบทวิเคราะห์ โปรดกลับมาใหม่เร็วๆ นี้' : 'No analysis articles yet. Check back soon.'}
           </p>
         </div>
       ) : (
@@ -72,10 +77,10 @@ const analysisDescription = isZhTw
                     <div class="flex-grow min-w-0">
                       <div class="flex items-center gap-2 mb-2">
                         <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-black bg-amber-400 text-slate-950 uppercase shrink-0">
-                          {isZhTw ? `信心 ${entry.data.confidence}/5` : `${entry.data.confidence}/5`}
+                          {isZhTw ? `信心 ${entry.data.confidence}/5` : isTh ? `${entry.data.confidence}/5` : `${entry.data.confidence}/5`}
                         </span>
                         <time class="text-xs text-slate-500 font-mono" datetime={entry.data.pubDate.toISOString()}>
-                          {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : 'en-US')}
+                          {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}
                         </time>
                       </div>
                       <h2 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 truncate">
@@ -86,7 +91,7 @@ const analysisDescription = isZhTw
                       </p>
                       {entry.data.prediction && (
                         <p class="text-sm font-bold text-amber-400 mt-2">
-                          {isZhTw ? '預測：' : 'Prediction: '}{entry.data.prediction}
+                          {isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : 'Prediction: '}{entry.data.prediction}
                         </p>
                       )}
                     </div>

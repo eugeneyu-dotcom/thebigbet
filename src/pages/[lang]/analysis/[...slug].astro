@@ -86,7 +86,7 @@ const awayOddsVal = oddsParts[2]?.match(/[\d.]+/)?.[0] ?? '-';
             <span class="text-xs font-black text-amber-400 uppercase tracking-widest">{t('analysis.tag')}</span>
             <span class="text-slate-700">·</span>
             <time class="text-sm text-slate-400 font-mono" datetime={entry.data.pubDate.toISOString()}>
-              {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : 'en-US')}
+              {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}
             </time>
             <span class="ml-auto inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-amber-400/10 text-amber-300 border border-amber-400/20">
               <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">

@@ -11,7 +11,7 @@ export default defineConfig({
   site: 'https://thebigbet.vercel.app',
   i18n: {
     defaultLocale: 'zh-tw',
-    locales: ['zh-tw', 'en'],
+    locales: ['zh-tw', 'en', 'th'],
   },
   integrations: [mdx(), sitemap()],
 

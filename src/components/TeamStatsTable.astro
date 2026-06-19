@@ -23,9 +23,9 @@ const labels = [
 ] as const;
 
 const trendLabels = {
-  up:   lang === 'zh-tw' ? '上升' : 'Rising',
-  down: lang === 'zh-tw' ? '下降' : 'Falling',
-  flat: lang === 'zh-tw' ? '持平' : 'Stable',
+  up:   lang === 'zh-tw' ? '上升' : lang === 'th' ? 'กำลังขึ้น' : 'Rising',
+  down: lang === 'zh-tw' ? '下降' : lang === 'th' ? 'กำลังลง' : 'Falling',
+  flat: lang === 'zh-tw' ? '持平' : lang === 'th' ? 'คงที่' : 'Stable',
 };
 
 function getTrendHTML(trend: string) {
@@ -75,7 +75,7 @@ function getTrendHTML(trend: string) {
             </td>
             <td class="p-3 text-center" set:html={getTrendHTML(teamAStats[l.key].trend)}></td>
             <td class="p-3 text-slate-300 leading-relaxed text-xs">
-              {lang === 'zh-tw' ? teamAStats[l.key].reason_zh : teamAStats[l.key].reason_en}
+              {lang === 'zh-tw' ? teamAStats[l.key].reason_zh : (teamAStats[l.key] as any).reason_th && lang === 'th' ? (teamAStats[l.key] as any).reason_th : teamAStats[l.key].reason_en}
             </td>
           </tr>
         ))}
@@ -92,7 +92,7 @@ function getTrendHTML(trend: string) {
             </td>
             <td class="p-3 text-center" set:html={getTrendHTML(teamBStats[l.key].trend)}></td>
             <td class="p-3 text-slate-300 leading-relaxed text-xs">
-              {lang === 'zh-tw' ? teamBStats[l.key].reason_zh : teamBStats[l.key].reason_en}
+              {lang === 'zh-tw' ? teamBStats[l.key].reason_zh : (teamBStats[l.key] as any).reason_th && lang === 'th' ? (teamBStats[l.key] as any).reason_th : teamBStats[l.key].reason_en}
             </td>
           </tr>
         ))}

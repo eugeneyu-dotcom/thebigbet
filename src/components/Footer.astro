@@ -3,6 +3,7 @@ import { getLangFromUrl } from '../i18n/ui';
 
 const lang = getLangFromUrl(Astro.url);
 const isZhTw = lang === 'zh-tw';
+const isTh = lang === 'th';
 const year = new Date().getFullYear();
 ---
 
@@ -18,14 +19,16 @@ const year = new Date().getFullYear();
         <p class="text-slate-400 text-sm mt-2 max-w-sm leading-relaxed">
           {isZhTw
             ? '2026 FIFA 世界盃深度運彩數據分析平台，整合即時賠率、官方戰績與 AI 戰力評估。'
-            : '2026 FIFA World Cup sports analytics platform with live odds, official standings, and AI-powered team strength analysis.'}
+            : isTh
+              ? 'แพลตฟอร์มวิเคราะห์ฟุตบอลโลก 2026 พร้อมอัตราต่อรองสด สถิติทีม และการประเมิน AI'
+              : '2026 FIFA World Cup sports analytics platform with live odds, official standings, and AI-powered team strength analysis.'}
         </p>
       </div>
 
       <div class="shrink-0 flex flex-col gap-5">
         <div>
           <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-3">
-            {isZhTw ? '技術支援' : 'Powered by'}
+            {isZhTw ? '技術支援' : isTh ? 'สนับสนุนโดย' : 'Powered by'}
           </p>
           <a
             href="https://www.maxora.ai/"
@@ -41,7 +44,7 @@ const year = new Date().getFullYear();
         </div>
         <div>
           <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-3">
-            {isZhTw ? '賠率資料來源' : 'Odds Data'}
+            {isZhTw ? '賠率資料來源' : isTh ? 'ข้อมูลอัตราต่อรอง' : 'Odds Data'}
           </p>
           <a
             href="https://the-odds-api.com/"
@@ -67,7 +70,7 @@ const year = new Date().getFullYear();
           <line x1="12" y1="17" x2="12.01" y2="17"/>
         </svg>
         <p class="font-bold text-slate-100 uppercase tracking-wider text-xs">
-          {isZhTw ? '博彩警語與免責聲明' : 'Responsible Gaming & Disclaimer'}
+          {isZhTw ? '博彩警語與免責聲明' : isTh ? 'คำเตือนและข้อจำกัดความรับผิดชอบ' : 'Responsible Gaming & Disclaimer'}
         </p>
       </div>
 
@@ -76,6 +79,12 @@ const year = new Date().getFullYear();
           <p>本網站僅提供資訊性的運彩數據分析與 AI 輔助戰力評估報告，所有分析內容均為參考用途，<strong class="text-slate-100">不構成任何投注建議、邀約或擔保</strong>。</p>
           <p>本站<strong class="text-slate-100">不提供任何博彩下注服務</strong>，亦不接受任何賭注或金融交易。如需進行投注，請自行透過當地合法授權之博彩平台操作，並請事先確認您所在地區的相關法規允許博彩活動。</p>
           <p class="text-amber-400 font-medium">博彩有風險，請量力而為。未滿 18 歲（或當地法定年齡）者不得參與任何博彩活動。若您或身邊的人有博彩成癮問題，請聯繫當地相關輔導機構尋求協助。</p>
+        </Fragment>
+      ) : isTh ? (
+        <Fragment>
+          <p>เว็บไซต์นี้ให้ข้อมูลวิเคราะห์กีฬาและการประเมินความแข็งแกร่งของทีมด้วย AI เพื่อใช้อ้างอิงเท่านั้น เนื้อหาทั้งหมด<strong class="text-slate-100">ไม่ถือเป็นคำแนะนำในการพนัน การชักชวน หรือการรับประกันผลลัพธ์ใดๆ</strong></p>
+          <p>เว็บไซต์นี้<strong class="text-slate-100">ไม่ให้บริการรับแทงหรือพนันใดๆ</strong> และไม่รับเงินเดิมพันหรือธุรกรรมทางการเงิน โปรดใช้ผู้ให้บริการพนันที่ได้รับใบอนุญาตและอยู่ภายใต้การกำกับดูแลในพื้นที่ของคุณ</p>
+          <p class="text-amber-400 font-medium">การพนันมีความเสี่ยง โปรดพนันอย่างมีความรับผิดชอบ ผู้ที่ยังไม่บรรลุนิติภาวะตามกฎหมายห้ามมีส่วนร่วมในกิจกรรมการพนัน หากคุณมีปัญหาการติดการพนัน โปรดติดต่อหน่วยงานให้ความช่วยเหลือในพื้นที่</p>
         </Fragment>
       ) : (
         <Fragment>
@@ -90,7 +99,7 @@ const year = new Date().getFullYear();
     <div class="mt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-slate-200">
       <p>© {year} The Big Bet. All rights reserved.</p>
       <p class="text-slate-400">
-        {isZhTw ? '分析僅供參考，不構成任何投注建議。' : 'For informational purposes only. Not betting advice.'}
+        {isZhTw ? '分析僅供參考，不構成任何投注建議。' : isTh ? 'เพื่อการอ้างอิงเท่านั้น ไม่ใช่คำแนะนำการพนัน' : 'For informational purposes only. Not betting advice.'}
       </p>
       {isZhTw && <p class="text-slate-400 text-center sm:text-right mt-1">一群因為 AI 的幫助終於敢於架站來玩的業餘球迷</p>}
     </div>
