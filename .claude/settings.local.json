@@ -24,7 +24,17 @@
       "Bash(python3 -)",
       "Bash(gh run *)",
       "Bash(gh api *)",
-      "Bash(npx vercel *)"
+      "Bash(npx vercel *)",
+      "Bash(python3 -c \"import json; m=json.load\\(open\\('src/data/matches.json'\\)\\); [print\\(x['home_team'],'vs',x['away_team']\\) for x in m[:8]]\")",
+      "Bash(node -e \"const m=JSON.parse\\(require\\('fs'\\).readFileSync\\('src/data/matches.json','utf8'\\)\\); m.slice\\(0,10\\).forEach\\(x=>console.log\\(x.home_team,'vs',x.away_team\\)\\)\")",
+      "Bash(node --env-file=.env -e ' *)",
+      "Bash(git commit -m 'fix: schedule reads matches cache, analysis shows all articles in all langs *)",
+      "Bash(node -e ' *)",
+      "Bash(git commit -m 'feat: add Netherlands vs Sweden analysis \\(zh-tw + en\\) *)",
+      "Bash(gh workflow *)",
+      "Bash(git commit *)",
+      "Bash(git pull *)",
+      "Bash(git stash *)"
     ]
   }
 }
