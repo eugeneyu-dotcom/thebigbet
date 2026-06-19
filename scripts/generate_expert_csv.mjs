@@ -9,13 +9,26 @@ const jsonPath = path.resolve('src/data/humanPredictions.json');
 async function main() {
   console.log("📝 Generating/Updating Expert Predictions CSV...");
 
-  // Load existing predictions from CSV if it exists
+  // Merge predictions from both JSON and CSV so neither source can cause data loss.
+  // JSON is loaded first (represents last committed state), then CSV overlays it
+  // (CSV takes priority since it reflects the latest manual edits).
   let existingPredictions = {};
+
+  if (fs.existsSync(jsonPath)) {
+    try {
+      const jsonData = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+      Object.entries(jsonData).forEach(([id, pred]) => {
+        if (pred.prediction_zh?.trim() || pred.prediction_en?.trim()) {
+          existingPredictions[id] = pred;
+        }
+      });
+    } catch (e) {}
+  }
+
   if (fs.existsSync(csvPath)) {
     const fileContent = fs.readFileSync(csvPath, 'utf8');
     const records = parse(fileContent, { columns: true, skip_empty_lines: true });
     records.forEach(row => {
-      // Keep existing predictions if they are not empty
       if (row.Prediction_ZH?.trim() || row.Prediction_EN?.trim()) {
         existingPredictions[row.Match_ID] = {
           prediction_zh: row.Prediction_ZH,
@@ -23,11 +36,6 @@ async function main() {
         };
       }
     });
-  } else if (fs.existsSync(jsonPath)) {
-    // Fallback: load from JSON if CSV doesn't exist yet
-    try {
-      existingPredictions = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
-    } catch (e) {}
   }
 
   // Load matches from local cache (populated by update:matches)
