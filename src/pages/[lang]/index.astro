@@ -30,7 +30,9 @@ let recentScores: ScoreData[] = [];
 try {
   const matchesPath = path.resolve('src/data/matches.json');
   if (fs.existsSync(matchesPath)) {
-    matches = JSON.parse(fs.readFileSync(matchesPath, 'utf8'));
+    const now = new Date();
+    matches = JSON.parse(fs.readFileSync(matchesPath, 'utf8'))
+      .filter((m: any) => new Date(m.commence_time) > now);
   }
 } catch (e) {
   console.error("Error loading matches.json", e);
