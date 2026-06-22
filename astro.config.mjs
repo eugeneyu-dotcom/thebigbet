@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://thebigbet.vercel.app',
+  site: 'https://thebigbet.org',
   i18n: {
     defaultLocale: 'zh-tw',
     locales: ['zh-tw', 'en', 'th'],

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://thebigbet.vercel.app/sitemap-index.xml
+Sitemap: https://thebigbet.org/sitemap-index.xml
