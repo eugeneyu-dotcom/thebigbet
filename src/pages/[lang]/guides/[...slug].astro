@@ -1,0 +1,71 @@
+---
+import { getCollection, render } from 'astro:content';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import BaseHead from '../../../components/BaseHead.astro';
+import { useTranslations } from '../../../i18n/ui';
+import GoogleAnalytics from '../../../components/GoogleAnalytics.astro';
+import AnalysisAnchor from '../../../components/AnalysisAnchor.astro';
+
+export async function getStaticPaths() {
+  const guideEntries = await getCollection('guides');
+
+  return guideEntries.map(entry => {
+    const [lang, ...slugParts] = entry.id.split('/');
+    const slug = slugParts.join('/');
+    return { params: { lang, slug }, props: { entry } };
+  });
+}
+
+const { lang } = Astro.params;
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const t = useTranslations(lang);
+---
+
+<html lang={lang}>
+  <head>
+    <BaseHead
+      title={`${entry.data.title} | The Big Bet`}
+      description={entry.data.description}
+      lang={lang}
+      type="article"
+    />
+    <GoogleAnalytics />
+  </head>
+  <body class="bg-slate-950 text-slate-200 font-sans min-h-screen flex flex-col">
+    <Header />
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow">
+      <article class="bg-slate-900 rounded-2xl shadow-lg border border-slate-800 p-8">
+        <header class="mb-8">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-2 mb-6">
+            <span class="text-xs font-black text-amber-400 uppercase tracking-widest">{t('guides.tag')}</span>
+            <span class="text-slate-700">·</span>
+            <time class="text-sm text-slate-400 font-mono" datetime={entry.data.pubDate.toISOString()}>
+              {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}
+            </time>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-black text-white leading-tight">{entry.data.title}</h1>
+        </header>
+
+        <div class="article-body prose prose-invert max-w-none prose-img:rounded-xl prose-headings:font-black prose-headings:text-white prose-a:text-amber-400 prose-strong:text-white prose-table:text-sm">
+          <Content components={{ a: AnalysisAnchor }} />
+        </div>
+        <style>
+          .article-body p { color: rgb(203 213 225); line-height: 1.875; }
+          .article-body h2 { font-size: 1.2rem; margin-top: 2.5rem; margin-bottom: 0.75rem; padding-left: 1rem; border-left: 4px solid rgb(245 158 11); color: #fff; }
+          .article-body li { color: rgb(203 213 225); }
+          .article-body a { text-decoration: none; }
+          .article-body table { width: 100%; border-collapse: collapse; }
+          .article-body th, .article-body td { border: 1px solid rgb(30 41 59); padding: 0.5rem 0.75rem; }
+          .article-body th { color: #fff; background: rgb(15 23 42); }
+          .article-body h3 { font-size: 1.05rem; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #fff; font-weight: 800; }
+          .article-body figure { margin: 2rem 0; }
+          .article-body figure img { border-radius: 0.75rem; border: 1px solid rgb(30 41 59); width: 100%; }
+          .article-body figcaption { margin-top: 0.65rem; font-size: 0.8rem; color: rgb(148 163 184); line-height: 1.6; text-align: center; }
+        </style>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>

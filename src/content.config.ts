@@ -18,6 +18,15 @@ const analysis = defineCollection({
   }),
 });
 
+const guides = defineCollection({
+  loader: glob({ base: './src/content/guides', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    pubDate: z.coerce.date(),
+  }),
+});
+
 const casinos = defineCollection({
   loader: glob({ base: './src/content/casinos', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
@@ -34,4 +43,4 @@ const promotions = defineCollection({
   }),
 });
 
-export const collections = { analysis, casinos, promotions };
+export const collections = { analysis, guides, casinos, promotions };

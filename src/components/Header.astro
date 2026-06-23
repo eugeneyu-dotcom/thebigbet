@@ -26,6 +26,9 @@ const t = useTranslations(lang);
           <HeaderLink href={`/${lang}/analysis`} class="inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
             {t('nav.analysis')}
           </HeaderLink>
+          <HeaderLink href={`/${lang}/guides`} class="inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
+            {t('nav.guides')}
+          </HeaderLink>
         </nav>
       </div>
       <div class="flex items-center gap-3">
@@ -61,6 +64,9 @@ const t = useTranslations(lang);
       </a>
       <a href={`/${lang}/analysis`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
         {t('nav.analysis')}
+      </a>
+      <a href={`/${lang}/guides`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
+        {t('nav.guides')}
       </a>
     </nav>
   </div>
