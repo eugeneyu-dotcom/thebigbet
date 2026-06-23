@@ -101,7 +101,13 @@ const year = new Date().getFullYear();
       <p class="text-slate-400">
         {isZhTw ? '分析僅供參考，不構成任何投注建議。' : isTh ? 'เพื่อการอ้างอิงเท่านั้น ไม่ใช่คำแนะนำการพนัน' : 'For informational purposes only. Not betting advice.'}
       </p>
-      {isZhTw && <p class="text-slate-400 text-center sm:text-right mt-1">一群因為 AI 的幫助終於敢於架站來玩的業餘球迷</p>}
+      <p class="text-slate-400 text-center sm:text-right mt-1">
+        {isZhTw
+          ? '一群因為 AI 的幫助終於敢於架站來玩的業餘球迷'
+          : isTh
+            ? 'กลุ่มแฟนบอลมือสมัครเล่นที่กล้าทำเว็บไซต์เล่นๆ ได้ก็เพราะ AI'
+            : 'A bunch of amateur fans who finally dared to build a site, thanks to AI.'}
+      </p>
     </div>
   </div>
 </footer>
