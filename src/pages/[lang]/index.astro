@@ -6,6 +6,7 @@ import PerformanceChart from '../../components/charts/PerformanceChart.astro';
 import TeamStatsTable from '../../components/TeamStatsTable.astro';
 import { languages, useTeamTranslations, useSportTranslations, useTranslations } from '../../i18n/ui';
 import { getDetailedTeamStats, type ScoreData } from '../../utils/calculateStats';
+import { formatMatchDateTime } from '../../utils/timezone';
 import standingsData from '../../data/worldCupStandings.json';
 import matchPredictions from '../../data/matchPredictions.json';
 import humanPredictions from '../../data/humanPredictions.json';
@@ -111,7 +112,7 @@ const homeDescription = lang === 'zh-tw'
 
       <div class="mb-10 text-center">
         <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 tracking-tighter uppercase italic mb-4 drop-shadow-lg">
-          The Big Bet Analysis
+          {lang === 'zh-tw' ? '世界杯台灣運彩分析中心' : 'The Big Bet Analysis'}
         </h1>
         <p class="text-slate-400 text-lg font-bold">Latest Matches & Live Odds</p>
       </div>
@@ -200,7 +201,7 @@ const homeDescription = lang === 'zh-tw'
                 const homeOdds = getOdds(match.bookmakers, match.home_team);
                 const awayOdds = getOdds(match.bookmakers, match.away_team);
                 const drawOdds = getDrawOdds(match.bookmakers);
-                const matchTime = match.commence_time === "TBD" ? "TBD" : new Date(match.commence_time).toLocaleString();
+                const matchTime = match.commence_time === "TBD" ? "TBD" : formatMatchDateTime(match.commence_time, lang);
 
                 const homeName = tTeam(match.home_team);
                 const awayName = tTeam(match.away_team);

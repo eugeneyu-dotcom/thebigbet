@@ -6,6 +6,7 @@ import { languages, useTeamTranslations, useSportTranslations, useTranslations }
 import standingsData from '../../../data/worldCupStandings.json';
 import matchesCache from '../../../data/matches.json';
 import GoogleAnalytics from '../../../components/GoogleAnalytics.astro';
+import { formatMatchTime } from '../../../utils/timezone';
 
 export function getStaticPaths() {
   return Object.keys(languages).map((lang) => ({ params: { lang } }));
@@ -70,7 +71,7 @@ const scheduleDescription = lang === 'zh-tw'
 
             <div class="space-y-3">
               {groupData.matches.map((match: any) => {
-                const time = match.commence_time === "TBD" ? "TBD" : new Date(match.commence_time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                const time = match.commence_time === "TBD" ? "TBD" : formatMatchTime(match.commence_time, lang);
                 return (
                   <div class="bg-slate-900 border-l-4 border-l-amber-400 p-5 rounded-r-xl shadow flex flex-col md:flex-row md:items-center justify-between hover:bg-slate-800/70 transition-colors duration-200 cursor-default">
                     <div class="text-slate-300 font-mono font-bold text-xl mb-2 md:mb-0 md:w-32">
