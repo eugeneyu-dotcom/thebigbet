@@ -66,7 +66,7 @@ const groupedMatches = standingsData.map(group => {
     group.teams.some(t => t.name === m.away_team)
   );
   return { ...group, matches: groupMatches };
-}).filter(g => g.matches.length > 0);
+}).filter(g => g.teams.length > 0 || g.matches.length > 0);
 
 const matchedIds = new Set(groupedMatches.flatMap(g => g.matches.map(m => m.id)));
 const otherMatches = matches.filter(m => !matchedIds.has(m.id));
