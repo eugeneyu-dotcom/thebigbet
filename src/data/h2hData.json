@@ -176,8 +176,8 @@
   ],
   "Turkey vs USA": [
     0,
-    0,
-    0
+    1,
+    3
   ],
   "Norway vs France": [
     4,
@@ -237,6 +237,11 @@
   "Jordan vs Argentina": [
     0,
     0,
+    0
+  ],
+  "South Africa vs Canada": [
+    0,
+    1,
     0
   ]
 }
