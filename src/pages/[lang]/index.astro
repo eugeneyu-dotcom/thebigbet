@@ -112,9 +112,11 @@ const homeDescription = lang === 'zh-tw'
 
       <div class="mb-10 text-center">
         <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 tracking-tighter uppercase italic mb-4 drop-shadow-lg">
-          {lang === 'zh-tw' ? '世界杯台灣運彩分析中心' : 'The Big Bet Analysis'}
+          {lang === 'zh-tw' ? '世界盃台灣運彩分析中心' : 'The Big Bet Analysis'}
         </h1>
-        <p class="text-slate-400 text-lg font-bold">Latest Matches & Live Odds</p>
+        <p class="text-slate-400 text-lg font-bold">
+          {lang === 'zh-tw' ? '因台灣運彩未提供公開API，本網站使用其他公開賠率。' : 'Latest Matches & Live Odds'}
+        </p>
       </div>
 
       {matches[0]?.id?.startsWith('mock') && (
