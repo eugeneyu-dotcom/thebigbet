@@ -19,8 +19,18 @@ export function getTimeZoneLabel(lang: string): string {
   return LANG_TIME_ZONE_LABELS[lang] ?? LANG_TIME_ZONE_LABELS['zh-tw'];
 }
 
+const LANG_LOCALES: Record<string, string> = {
+  'zh-tw': 'zh-TW',
+  en: 'en-US',
+  // th-TH defaults to the Buddhist Era (e.g. 2569) — force Gregorian so the
+  // year matches what's shown in every other language on the site.
+  th: 'th-TH-u-ca-gregory',
+};
+
+const getLocale = (lang: string) => LANG_LOCALES[lang] ?? 'en-US';
+
 export function formatMatchTime(commenceTime: string, lang: string): string {
-  return new Date(commenceTime).toLocaleTimeString('en-US', {
+  return new Date(commenceTime).toLocaleTimeString(getLocale(lang), {
     hour: '2-digit',
     minute: '2-digit',
     timeZone: getLangTimeZone(lang),
@@ -28,7 +38,7 @@ export function formatMatchTime(commenceTime: string, lang: string): string {
 }
 
 export function formatMatchDateTime(commenceTime: string, lang: string): string {
-  return new Date(commenceTime).toLocaleString('en-US', {
+  return new Date(commenceTime).toLocaleString(getLocale(lang), {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
