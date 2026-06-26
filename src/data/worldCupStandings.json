@@ -12,6 +12,7 @@
         "ga": 0,
         "gd": 6,
         "pts": 9,
+        "position": 1,
         "status": "qualified"
       },
       {
@@ -24,6 +25,7 @@
         "ga": 3,
         "gd": -1,
         "pts": 4,
+        "position": 2,
         "status": "qualified"
       },
       {
@@ -36,6 +38,7 @@
         "ga": 3,
         "gd": -1,
         "pts": 3,
+        "position": 3,
         "status": "active"
       },
       {
@@ -48,6 +51,7 @@
         "ga": 6,
         "gd": -4,
         "pts": 1,
+        "position": 4,
         "status": "eliminated"
       }
     ]
@@ -65,6 +69,7 @@
         "ga": 3,
         "gd": 4,
         "pts": 7,
+        "position": 1,
         "status": "qualified"
       },
       {
@@ -77,6 +82,7 @@
         "ga": 3,
         "gd": 5,
         "pts": 4,
+        "position": 2,
         "status": "qualified"
       },
       {
@@ -89,6 +95,7 @@
         "ga": 6,
         "gd": -1,
         "pts": 4,
+        "position": 3,
         "status": "active"
       },
       {
@@ -101,6 +108,7 @@
         "ga": 10,
         "gd": -8,
         "pts": 1,
+        "position": 4,
         "status": "eliminated"
       }
     ]
@@ -118,6 +126,7 @@
         "ga": 1,
         "gd": 6,
         "pts": 7,
+        "position": 1,
         "status": "qualified"
       },
       {
@@ -130,6 +139,7 @@
         "ga": 3,
         "gd": 3,
         "pts": 7,
+        "position": 2,
         "status": "qualified"
       },
       {
@@ -142,6 +152,7 @@
         "ga": 4,
         "gd": -3,
         "pts": 3,
+        "position": 3,
         "status": "active"
       },
       {
@@ -154,6 +165,7 @@
         "ga": 8,
         "gd": -6,
         "pts": 0,
+        "position": 4,
         "status": "eliminated"
       }
     ]
@@ -171,6 +183,7 @@
         "ga": 4,
         "gd": 4,
         "pts": 6,
+        "position": 1,
         "status": "qualified"
       },
       {
@@ -183,6 +196,7 @@
         "ga": 2,
         "gd": 0,
         "pts": 4,
+        "position": 2,
         "status": "qualified"
       },
       {
@@ -195,6 +209,7 @@
         "ga": 4,
         "gd": -2,
         "pts": 4,
+        "position": 3,
         "status": "active"
       },
       {
@@ -207,6 +222,7 @@
         "ga": 5,
         "gd": -2,
         "pts": 3,
+        "position": 4,
         "status": "eliminated"
       }
     ]
@@ -224,6 +240,7 @@
         "ga": 4,
         "gd": 6,
         "pts": 6,
+        "position": 1,
         "status": "qualified"
       },
       {
@@ -236,6 +253,7 @@
         "ga": 2,
         "gd": 2,
         "pts": 6,
+        "position": 2,
         "status": "qualified"
       },
       {
@@ -248,6 +266,7 @@
         "ga": 2,
         "gd": 0,
         "pts": 4,
+        "position": 3,
         "status": "active"
       },
       {
@@ -260,6 +279,7 @@
         "ga": 9,
         "gd": -8,
         "pts": 1,
+        "position": 4,
         "status": "eliminated"
       }
     ]
@@ -277,6 +297,7 @@
         "ga": 4,
         "gd": 6,
         "pts": 7,
+        "position": 1,
         "status": "qualified"
       },
       {
@@ -289,6 +310,7 @@
         "ga": 3,
         "gd": 4,
         "pts": 5,
+        "position": 2,
         "status": "qualified"
       },
       {
@@ -301,6 +323,7 @@
         "ga": 7,
         "gd": 0,
         "pts": 4,
+        "position": 3,
         "status": "active"
       },
       {
@@ -313,6 +336,7 @@
         "ga": 12,
         "gd": -10,
         "pts": 0,
+        "position": 4,
         "status": "eliminated"
       }
     ]
@@ -330,6 +354,7 @@
         "ga": 2,
         "gd": 2,
         "pts": 4,
+        "position": 1,
         "status": "active"
       },
       {
@@ -342,6 +367,7 @@
         "ga": 2,
         "gd": 0,
         "pts": 2,
+        "position": 2,
         "status": "active"
       },
       {
@@ -354,6 +380,7 @@
         "ga": 1,
         "gd": 0,
         "pts": 2,
+        "position": 3,
         "status": "active"
       },
       {
@@ -366,6 +393,7 @@
         "ga": 5,
         "gd": -2,
         "pts": 1,
+        "position": 4,
         "status": "active"
       }
     ]
@@ -383,6 +411,7 @@
         "ga": 0,
         "gd": 4,
         "pts": 4,
+        "position": 1,
         "status": "active"
       },
       {
@@ -395,6 +424,7 @@
         "ga": 3,
         "gd": 0,
         "pts": 2,
+        "position": 2,
         "status": "active"
       },
       {
@@ -407,6 +437,7 @@
         "ga": 2,
         "gd": 0,
         "pts": 2,
+        "position": 3,
         "status": "active"
       },
       {
@@ -419,6 +450,7 @@
         "ga": 5,
         "gd": -4,
         "pts": 1,
+        "position": 4,
         "status": "active"
       }
     ]
@@ -436,6 +468,7 @@
         "ga": 1,
         "gd": 5,
         "pts": 6,
+        "position": 1,
         "status": "qualified"
       },
       {
@@ -448,6 +481,7 @@
         "ga": 3,
         "gd": 4,
         "pts": 6,
+        "position": 2,
         "status": "qualified"
       },
       {
@@ -460,6 +494,7 @@
         "ga": 6,
         "gd": -3,
         "pts": 0,
+        "position": 3,
         "status": "active"
       },
       {
@@ -472,6 +507,7 @@
         "ga": 7,
         "gd": -6,
         "pts": 0,
+        "position": 4,
         "status": "active"
       }
     ]
@@ -489,6 +525,7 @@
         "ga": 0,
         "gd": 5,
         "pts": 6,
+        "position": 1,
         "status": "qualified"
       },
       {
@@ -501,6 +538,7 @@
         "ga": 3,
         "gd": 0,
         "pts": 3,
+        "position": 2,
         "status": "active"
       },
       {
@@ -513,6 +551,7 @@
         "ga": 4,
         "gd": -2,
         "pts": 3,
+        "position": 3,
         "status": "active"
       },
       {
@@ -525,6 +564,7 @@
         "ga": 5,
         "gd": -3,
         "pts": 0,
+        "position": 4,
         "status": "eliminated"
       }
     ]
@@ -542,6 +582,7 @@
         "ga": 1,
         "gd": 3,
         "pts": 6,
+        "position": 1,
         "status": "qualified"
       },
       {
@@ -554,6 +595,7 @@
         "ga": 1,
         "gd": 5,
         "pts": 4,
+        "position": 2,
         "status": "active"
       },
       {
@@ -566,6 +608,7 @@
         "ga": 2,
         "gd": -1,
         "pts": 1,
+        "position": 3,
         "status": "active"
       },
       {
@@ -578,6 +621,7 @@
         "ga": 8,
         "gd": -7,
         "pts": 0,
+        "position": 4,
         "status": "active"
       }
     ]
@@ -595,6 +639,7 @@
         "ga": 2,
         "gd": 2,
         "pts": 4,
+        "position": 1,
         "status": "active"
       },
       {
@@ -607,6 +652,7 @@
         "ga": 0,
         "gd": 1,
         "pts": 4,
+        "position": 2,
         "status": "active"
       },
       {
@@ -619,6 +665,7 @@
         "ga": 4,
         "gd": -1,
         "pts": 3,
+        "position": 3,
         "status": "active"
       },
       {
@@ -631,6 +678,7 @@
         "ga": 2,
         "gd": -2,
         "pts": 0,
+        "position": 4,
         "status": "eliminated"
       }
     ]

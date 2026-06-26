@@ -376,8 +376,9 @@ async function main() {
       .sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf);
     thirdPlaceStandings.forEach(t => delete t.position);
 
-    // Strip the internal `position` field before writing — not part of the UI schema.
-    formattedStandings.forEach(g => g.teams.forEach(t => delete t.position));
+    // `position` is kept on each team — it's football-data.org's official
+    // rank within the group (head-to-head-aware), which the knockout bracket
+    // page relies on to resolve "Group X winner/runner-up" slots correctly.
 
     fs.writeFileSync(standingsPath, JSON.stringify(formattedStandings, null, 2), 'utf8');
     fs.writeFileSync(thirdPlacePath, JSON.stringify(thirdPlaceStandings, null, 2), 'utf8');
