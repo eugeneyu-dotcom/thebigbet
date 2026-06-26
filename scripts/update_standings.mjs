@@ -10,6 +10,7 @@ if (!FOOTBALL_DATA_ORG_TOKEN) {
 }
 
 const standingsPath = path.resolve('src/data/worldCupStandings.json');
+const thirdPlacePath = path.resolve('src/data/thirdPlaceStandings.json');
 const matchesPath = path.resolve('src/data/matches.json');
 
 // Looks up who won the head-to-head between two teams — either from real
@@ -129,6 +130,57 @@ function resolveCertainStatuses(teams, remainingMatches, h2hResults) {
   });
 }
 
+// Returns the [min, max] points the team that ends up 3rd-in-group could
+// possibly finish with, across every outcome of the group's remaining
+// matches. Used to judge the cross-group "best 8 of 12 third-placed teams"
+// race before every group has finished.
+//
+// Deliberately points-only: goal difference/goals scored are unbounded by
+// any remaining-match simulation (a team could theoretically win 10-0), so
+// there's no rigorous way to bound them in advance. A team is only ever
+// declared certain here if it can't be caught (or overtaken) on points
+// alone — ties on points are resolved by the exact, GD-aware ranking pass
+// once every group has actually finished.
+function computeThirdPlacePointsBounds(teams, remainingMatches) {
+  if (remainingMatches.length === 0) {
+    const sortedPts = teams.map(t => t.pts).sort((a, b) => b - a);
+    return { min: sortedPts[2], max: sortedPts[2] };
+  }
+
+  const outcomes = [
+    { home: 3, away: 0 },
+    { home: 1, away: 1 },
+    { home: 0, away: 3 },
+  ];
+
+  let scenarios = [[]];
+  for (let i = 0; i < remainingMatches.length; i++) {
+    const next = [];
+    for (const partial of scenarios) {
+      for (const outcome of outcomes) {
+        next.push([...partial, outcome]);
+      }
+    }
+    scenarios = next;
+  }
+
+  let min = Infinity;
+  let max = -Infinity;
+  for (const scenario of scenarios) {
+    const finalPts = {};
+    teams.forEach(t => { finalPts[t.name] = t.pts; });
+    remainingMatches.forEach((match, i) => {
+      finalPts[match.home_team] += scenario[i].home;
+      finalPts[match.away_team] += scenario[i].away;
+    });
+    const sortedPts = Object.values(finalPts).sort((a, b) => b - a);
+    const thirdPlacePts = sortedPts[2];
+    min = Math.min(min, thirdPlacePts);
+    max = Math.max(max, thirdPlacePts);
+  }
+  return { min, max };
+}
+
 // Mapping dictionary to align football-data.org names with The-Odds-API / UI dictionary names
 const teamNameMap = {
   "United States": "USA",
@@ -241,27 +293,64 @@ async function main() {
     // For groups that haven't finished yet, check whether any team's top-2
     // (or last-place) finish is already mathematically locked in, regardless
     // of how their remaining matches play out.
-    if (fs.existsSync(matchesPath)) {
-      const allMatches = JSON.parse(fs.readFileSync(matchesPath, 'utf8'));
-      const now = new Date();
+    const allMatches = fs.existsSync(matchesPath)
+      ? JSON.parse(fs.readFileSync(matchesPath, 'utf8'))
+      : [];
+    const now = new Date();
 
-      formattedStandings.forEach(g => {
-        if (g.teams.some(t => t.mp === 3)) return; // already finished, handled above
-        const names = g.teams.map(t => t.name);
-        const remainingMatches = allMatches.filter(m =>
-          new Date(m.commence_time) > now &&
-          names.includes(m.home_team) &&
-          names.includes(m.away_team)
-        );
-        resolveCertainStatuses(g.teams, remainingMatches, h2hResults);
-      });
-    }
+    // Per-group remaining matches, keyed by group name — computed once here
+    // and reused below for the cross-group third-place bounds.
+    const remainingMatchesByGroup = {};
+    formattedStandings.forEach(g => {
+      const names = g.teams.map(t => t.name);
+      remainingMatchesByGroup[g.group] = allMatches.filter(m =>
+        new Date(m.commence_time) > now &&
+        names.includes(m.home_team) &&
+        names.includes(m.away_team)
+      );
+    });
 
-    // Best-8-of-12 third place ranking: only resolvable once every group has
-    // finished all 3 matches. Until then, 3rd place teams stay "active".
+    formattedStandings.forEach(g => {
+      if (g.teams.some(t => t.mp === 3)) return; // already finished, handled above
+      resolveCertainStatuses(g.teams, remainingMatchesByGroup[g.group], h2hResults);
+    });
+
+    // Best-8-of-12 third place ranking. Two passes:
+    //   1. A conservative, points-only certainty check that can already
+    //      flag some groups' 3rd-place team as qualified/eliminated before
+    //      every group has finished (see computeThirdPlacePointsBounds).
+    //   2. Once every group HAS finished, an exact GD/GF-aware ranking pass
+    //      that resolves any points ties the first pass had to leave "active".
     const allGroupsFinished = formattedStandings.every(g =>
       g.teams.every(t => t.mp === 3)
     );
+
+    const groupThirdPlaceBounds = {};
+    formattedStandings.forEach(g => {
+      groupThirdPlaceBounds[g.group] = computeThirdPlacePointsBounds(
+        g.teams,
+        remainingMatchesByGroup[g.group]
+      );
+    });
+
+    formattedStandings.forEach(g => {
+      if (!g.teams.every(t => t.mp === 3)) return; // identity of "3rd place" isn't settled yet
+      const thirdTeam = g.teams.find(t => t.position === 3);
+      if (!thirdTeam) return;
+
+      let numAbovePessimistic = 0; // assume every points-tie goes against us
+      let numAboveGuaranteed = 0;  // strictly more points, regardless of any tiebreak
+      Object.entries(groupThirdPlaceBounds).forEach(([otherGroup, bounds]) => {
+        if (otherGroup === g.group) return;
+        if (bounds.max >= thirdTeam.pts) numAbovePessimistic++;
+        if (bounds.min > thirdTeam.pts) numAboveGuaranteed++;
+      });
+
+      if (numAbovePessimistic <= 7) thirdTeam.status = "qualified";
+      else if (numAboveGuaranteed >= 8) thirdTeam.status = "eliminated";
+      // else: stays "active" — a points tie with an unfinished group's
+      // ceiling means we can't yet rule out losing the GD tiebreak.
+    });
 
     if (allGroupsFinished) {
       const thirdPlaceTeams = formattedStandings
@@ -274,11 +363,26 @@ async function main() {
       });
     }
 
+    // Snapshot the current 3rd-place team per group for the homepage's
+    // cross-group ranking table, before the internal `position` field
+    // (needed to identify "3rd place") is stripped below.
+    const thirdPlaceStandings = formattedStandings
+      .map(g => {
+        const thirdTeam = g.teams.find(t => t.position === 3);
+        if (!thirdTeam) return null;
+        return { group: g.group, ...thirdTeam };
+      })
+      .filter(Boolean)
+      .sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf);
+    thirdPlaceStandings.forEach(t => delete t.position);
+
     // Strip the internal `position` field before writing — not part of the UI schema.
     formattedStandings.forEach(g => g.teams.forEach(t => delete t.position));
 
     fs.writeFileSync(standingsPath, JSON.stringify(formattedStandings, null, 2), 'utf8');
+    fs.writeFileSync(thirdPlacePath, JSON.stringify(thirdPlaceStandings, null, 2), 'utf8');
     console.log(`✅ Successfully updated worldCupStandings.json with ${formattedStandings.length} groups.`);
+    console.log(`✅ Successfully updated thirdPlaceStandings.json with ${thirdPlaceStandings.length} teams.`);
 
   } catch (e) {
     console.error(`⚠️ Exception during standings update:`, e);
