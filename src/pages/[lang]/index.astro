@@ -6,7 +6,7 @@ import PerformanceChart from '../../components/charts/PerformanceChart.astro';
 import TeamStatsTable from '../../components/TeamStatsTable.astro';
 import { languages, useTeamTranslations, useSportTranslations, useTranslations } from '../../i18n/ui';
 import { getDetailedTeamStats, type ScoreData } from '../../utils/calculateStats';
-import { formatMatchDateTime } from '../../utils/timezone';
+import { formatMatchDateTime, getTimeZoneLabel } from '../../utils/timezone';
 import standingsData from '../../data/worldCupStandings.json';
 import thirdPlaceStandings from '../../data/thirdPlaceStandings.json';
 import matchPredictions from '../../data/matchPredictions.json';
@@ -300,8 +300,11 @@ const homeDescription = lang === 'zh-tw'
                         <span class="inline-flex items-center px-3 py-1 rounded text-xs font-black bg-amber-400 text-slate-950 uppercase tracking-wider">
                           {sportName}
                         </span>
-                        <time class="text-sm text-slate-400 font-mono" datetime={match.commence_time}>
-                          {matchTime}
+                        <time class="text-sm text-slate-400 font-mono text-right" datetime={match.commence_time}>
+                          <div>{matchTime}</div>
+                          {match.commence_time !== "TBD" && (
+                            <div class="text-[10px] text-slate-500 mt-0.5">{getTimeZoneLabel(lang)}</div>
+                          )}
                         </time>
                       </div>
 

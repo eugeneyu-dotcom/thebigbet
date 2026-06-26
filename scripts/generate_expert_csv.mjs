@@ -29,12 +29,17 @@ async function main() {
     const fileContent = fs.readFileSync(csvPath, 'utf8');
     const records = parse(fileContent, { columns: true, skip_empty_lines: true });
     records.forEach(row => {
-      if (row.Prediction_ZH?.trim() || row.Prediction_EN?.trim()) {
-        existingPredictions[row.Match_ID] = {
-          prediction_zh: row.Prediction_ZH,
-          prediction_en: row.Prediction_EN
-        };
-      }
+      const zh = row.Prediction_ZH?.trim();
+      const en = row.Prediction_EN?.trim();
+      if (!zh && !en) return;
+      // Merge field-by-field rather than replacing the whole entry — a CSV
+      // row with only one language filled in must not wipe out a good
+      // translation already on file for the other language.
+      const existing = existingPredictions[row.Match_ID] || {};
+      existingPredictions[row.Match_ID] = {
+        prediction_zh: zh || existing.prediction_zh || '',
+        prediction_en: en || existing.prediction_en || ''
+      };
     });
   }
 

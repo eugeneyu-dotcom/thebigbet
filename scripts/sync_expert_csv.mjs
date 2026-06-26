@@ -46,19 +46,31 @@ async function main() {
   }
 
   try {
+    // Load the existing JSON first — it's the fallback for any field the
+    // CSV leaves blank, so a CSV row with only one language filled in can
+    // never wipe out a good translation already on file for the other.
+    let existingPredictions = {};
+    if (fs.existsSync(jsonPath)) {
+      try {
+        existingPredictions = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+      } catch (e) {}
+    }
+
     const fileContent = fs.readFileSync(csvPath, 'utf8');
     const records = parse(fileContent, { columns: true, skip_empty_lines: true });
-    
+
     const predictions = {};
     let needsCsvUpdate = false;
 
     for (const row of records) {
       const zh = row.Prediction_ZH?.trim();
       let en = row.Prediction_EN?.trim();
+      const existing = existingPredictions[row.Match_ID] || {};
 
-      if (zh || en) {
-        // Auto translate if ZH is provided but EN is empty
-        if (zh && !en) {
+      if (zh || en || existing.prediction_zh || existing.prediction_en) {
+        // Auto translate if ZH is provided but EN is empty, and there's no
+        // existing English translation to fall back on either.
+        if (zh && !en && !existing.prediction_en) {
           console.log(`🌍 Translating prediction for match ${row.Match_ID} to English...`);
           en = await translateToEnglish(zh);
           row.Prediction_EN = en;
@@ -68,8 +80,8 @@ async function main() {
         }
 
         predictions[row.Match_ID] = {
-          prediction_zh: zh,
-          prediction_en: en
+          prediction_zh: zh || existing.prediction_zh || '',
+          prediction_en: en || existing.prediction_en || ''
         };
       }
     }

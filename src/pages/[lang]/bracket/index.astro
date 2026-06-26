@@ -5,6 +5,7 @@ import BaseHead from '../../../components/BaseHead.astro';
 import GoogleAnalytics from '../../../components/GoogleAnalytics.astro';
 import { languages, useTranslations } from '../../../i18n/ui';
 import { resolveSlot } from '../../../utils/resolveBracket';
+import { formatFullDateLabel, getTimeZoneLabel } from '../../../utils/timezone';
 import standingsData from '../../../data/worldCupStandings.json';
 import bracketData from '../../../data/knockoutBracket.json';
 
@@ -19,12 +20,7 @@ const matches = bracketData.matches;
 const matchesById = new Map(matches.map((m: any) => [m.id, m]));
 const venues = bracketData.venues as Record<string, Record<string, string>>;
 
-const dateLabel = (iso: string) => {
-  const d = new Date(iso);
-  return lang === 'zh-tw'
-    ? `${d.getMonth() + 1}月${d.getDate()}日`
-    : d.toLocaleDateString(lang === 'th' ? 'th-TH' : 'en-US', { month: 'short', day: 'numeric' });
-};
+const dateLabel = (iso: string) => formatFullDateLabel(iso, lang as string);
 
 const venueLabel = (venueKey: string) => venues[venueKey]?.[lang] || venues[venueKey]?.en || venueKey;
 
@@ -68,6 +64,7 @@ function renderSlot(slot: any) {
           {t('bracket.title')}
         </h1>
         <p class="text-slate-400 text-sm max-w-3xl mx-auto">{t('bracket.subtitle')}</p>
+        <p class="text-slate-500 text-xs mt-2">{t('schedule.timezoneNote')} {getTimeZoneLabel(lang as string)}</p>
       </div>
 
       <div class="overflow-x-auto pb-6">
@@ -91,9 +88,9 @@ function renderSlot(slot: any) {
                         ></div>
                       )}
                       <div class="w-full bg-slate-800/60 border border-slate-700/80 rounded-lg shadow-md text-xs overflow-hidden">
-                        <div class="bg-slate-900/80 px-2 py-1 text-[10px] text-slate-400 font-mono flex justify-between">
-                          <span>{dateLabel(match.date)}</span>
-                          <span class="truncate ml-1">{venueLabel(match.venue)}</span>
+                        <div class="bg-slate-900/80 px-2 py-1 text-[10px] text-slate-400 font-mono">
+                          <div class="font-bold">{dateLabel(match.date)}</div>
+                          <div class="truncate text-slate-500">{venueLabel(match.venue)}</div>
                         </div>
                         <div class={`px-2 py-1.5 border-b border-slate-700/50 font-bold ${slotA.teamName ? 'text-white' : 'text-slate-500 italic'}`}>
                           {slotA.label}
@@ -117,9 +114,9 @@ function renderSlot(slot: any) {
             {t('bracket.third')}
           </div>
           <div class="bg-slate-800/60 border border-slate-700/80 rounded-lg shadow-md text-xs overflow-hidden">
-            <div class="bg-slate-900/80 px-2 py-1 text-[10px] text-slate-400 font-mono flex justify-between">
-              <span>{dateLabel(thirdMatch.date)}</span>
-              <span class="truncate ml-1">{venueLabel(thirdMatch.venue)}</span>
+            <div class="bg-slate-900/80 px-2 py-1 text-[10px] text-slate-400 font-mono">
+              <div class="font-bold">{dateLabel(thirdMatch.date)}</div>
+              <div class="truncate text-slate-500">{venueLabel(thirdMatch.venue)}</div>
             </div>
             {[thirdMatch.slotA, thirdMatch.slotB].map((slot: any, i: number) => {
               const resolved = renderSlot(slot);
