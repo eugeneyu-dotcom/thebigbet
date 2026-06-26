@@ -64,7 +64,10 @@ function renderSlot(slot: any) {
           {t('bracket.title')}
         </h1>
         <p class="text-slate-400 text-sm max-w-3xl mx-auto">{t('bracket.subtitle')}</p>
-        <p class="text-slate-500 text-xs mt-2">{t('schedule.timezoneNote')} {getTimeZoneLabel(lang as string)}</p>
+        <p class="inline-flex items-center gap-1.5 mt-3 bg-amber-400/10 border border-amber-400/40 text-amber-300 text-sm font-bold px-3 py-1.5 rounded-full">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          {t('schedule.timezoneNote')} {getTimeZoneLabel(lang as string)}
+        </p>
       </div>
 
       <div class="overflow-x-auto pb-6">
@@ -84,18 +87,18 @@ function renderSlot(slot: any) {
                     <div class="flex-1 flex items-center relative px-1">
                       {hasNext && (
                         <div
-                          class={`absolute right-[-2.5rem] w-10 border-r-2 border-slate-700 ${isTop ? 'border-b-2 top-1/2 h-1/2' : 'border-t-2 bottom-1/2 h-1/2'}`}
+                          class={`absolute right-[-2.5rem] w-10 border-r-2 border-slate-500 ${isTop ? 'border-b-2 top-1/2 h-1/2' : 'border-t-2 bottom-1/2 h-1/2'}`}
                         ></div>
                       )}
-                      <div class="w-full bg-slate-800/60 border border-slate-700/80 rounded-lg shadow-md text-xs overflow-hidden">
-                        <div class="bg-slate-900/80 px-2 py-1 text-[10px] text-slate-400 font-mono">
-                          <div class="font-bold">{dateLabel(match.date)}</div>
-                          <div class="truncate text-slate-500">{venueLabel(match.venue)}</div>
+                      <div class="w-full bg-slate-800 border border-slate-600 rounded-lg shadow-md text-xs overflow-hidden">
+                        <div class="bg-slate-900 px-2 py-1 text-[11px] font-mono">
+                          <div class="font-bold text-amber-200">{dateLabel(match.date)}</div>
+                          <div class="truncate text-slate-300">{venueLabel(match.venue)}</div>
                         </div>
-                        <div class={`px-2 py-1.5 border-b border-slate-700/50 font-bold ${slotA.teamName ? 'text-white' : 'text-slate-500 italic'}`}>
+                        <div class={`px-2 py-1.5 border-b border-slate-600/70 font-bold ${slotA.teamName ? 'text-white' : 'text-slate-300 italic'}`}>
                           {slotA.label}
                         </div>
-                        <div class={`px-2 py-1.5 font-bold ${slotB.teamName ? 'text-white' : 'text-slate-500 italic'}`}>
+                        <div class={`px-2 py-1.5 font-bold ${slotB.teamName ? 'text-white' : 'text-slate-300 italic'}`}>
                           {slotB.label}
                         </div>
                       </div>
@@ -113,15 +116,15 @@ function renderSlot(slot: any) {
           <div class="text-center text-xs font-black uppercase tracking-widest text-amber-300 mb-3">
             {t('bracket.third')}
           </div>
-          <div class="bg-slate-800/60 border border-slate-700/80 rounded-lg shadow-md text-xs overflow-hidden">
-            <div class="bg-slate-900/80 px-2 py-1 text-[10px] text-slate-400 font-mono">
-              <div class="font-bold">{dateLabel(thirdMatch.date)}</div>
-              <div class="truncate text-slate-500">{venueLabel(thirdMatch.venue)}</div>
+          <div class="bg-slate-800 border border-slate-600 rounded-lg shadow-md text-xs overflow-hidden">
+            <div class="bg-slate-900 px-2 py-1 text-[11px] font-mono">
+              <div class="font-bold text-amber-200">{dateLabel(thirdMatch.date)}</div>
+              <div class="truncate text-slate-300">{venueLabel(thirdMatch.venue)}</div>
             </div>
             {[thirdMatch.slotA, thirdMatch.slotB].map((slot: any, i: number) => {
               const resolved = renderSlot(slot);
               return (
-                <div class={`px-2 py-1.5 font-bold ${i === 0 ? 'border-b border-slate-700/50' : ''} ${resolved.teamName ? 'text-white' : 'text-slate-500 italic'}`}>
+                <div class={`px-2 py-1.5 font-bold ${i === 0 ? 'border-b border-slate-600/70' : ''} ${resolved.teamName ? 'text-white' : 'text-slate-300 italic'}`}>
                   {resolved.label}
                 </div>
               );

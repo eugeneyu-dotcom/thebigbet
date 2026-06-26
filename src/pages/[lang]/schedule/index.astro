@@ -59,7 +59,10 @@ const scheduleDescription = lang === 'zh-tw'
           WORLD CUP SCHEDULE
         </h1>
         <p class="text-slate-400 font-bold">{t('nav.schedule')}</p>
-        <p class="text-slate-500 text-sm mt-2">{t('schedule.timezoneNote')} {getTimeZoneLabel(lang)}</p>
+        <p class="inline-flex items-center gap-1.5 mt-3 bg-amber-400/10 border border-amber-400/40 text-amber-300 text-sm font-bold px-3 py-1.5 rounded-full">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          {t('schedule.timezoneNote')} {getTimeZoneLabel(lang)}
+        </p>
       </div>
 
       <div class="space-y-16">
