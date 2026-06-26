@@ -10,6 +10,124 @@ if (!FOOTBALL_DATA_ORG_TOKEN) {
 }
 
 const standingsPath = path.resolve('src/data/worldCupStandings.json');
+const matchesPath = path.resolve('src/data/matches.json');
+
+// Looks up who won the head-to-head between two teams — either from real
+// results already played (h2h lookup), or, if their meeting is one of the
+// matches being simulated in this scenario, from that simulated result.
+// Returns the winner's name, "DRAW", or null if genuinely unknown.
+function getHeadToHeadWinner(nameA, nameB, h2hResults, scenarioMatchResults) {
+  const simulated = scenarioMatchResults.find(m =>
+    (m.home_team === nameA && m.away_team === nameB) ||
+    (m.home_team === nameB && m.away_team === nameA)
+  );
+  if (simulated) {
+    if (simulated.winner === 'DRAW') return 'DRAW';
+    return simulated.winner;
+  }
+  const key1 = `${nameA}|${nameB}`;
+  const key2 = `${nameB}|${nameA}`;
+  if (h2hResults[key1] !== undefined) return h2hResults[key1];
+  if (h2hResults[key2] !== undefined) return h2hResults[key2];
+  return null;
+}
+
+// Brute-force every possible result of a group's remaining matches to find
+// statuses that are *mathematically certain* before the group has finished:
+//   - "qualified": guaranteed top-2 finish in every single scenario
+//   - "eliminated": guaranteed LAST place in every single scenario (meaning
+//      they can't even be a 3rd-place wildcard candidate)
+// Anything else (including "could finish 3rd in some scenarios") stays
+// "active" — deliberately conservative, since overall goal-difference
+// tiebreaks (as opposed to head-to-head, which we do account for) can't be
+// predicted in advance.
+//
+// Tiebreaker note: this World Cup ranks teams level on points by their
+// head-to-head record FIRST, before overall goal difference. When two teams
+// are tied, we resolve it via head-to-head if decisive; if the head-to-head
+// was a draw (or hasn't happened and isn't part of this scenario, which
+// shouldn't occur in a single round-robin group), we treat it as genuinely
+// ambiguous — pessimistically (counted as "above") for the qualified check,
+// optimistically (not counted as "above") for the eliminated check.
+function resolveCertainStatuses(teams, remainingMatches, h2hResults) {
+  if (remainingMatches.length === 0) return;
+
+  const outcomesPerMatch = [
+    { homePts: 3, awayPts: 0, winner: 'home' }, // home win
+    { homePts: 1, awayPts: 1, winner: 'DRAW' },  // draw
+    { homePts: 0, awayPts: 3, winner: 'away' },  // away win
+  ];
+
+  // Cartesian product of outcomes across all remaining matches in this group.
+  let scenarios = [[]];
+  for (const match of remainingMatches) {
+    const next = [];
+    for (const partial of scenarios) {
+      for (const outcome of outcomesPerMatch) {
+        next.push([...partial, outcome]);
+      }
+    }
+    scenarios = next;
+  }
+
+  const worstNumAbove = {}; // highest (worst) numAbove seen per team, pessimistic ties
+  const bestNumAbove = {};  // lowest (best) numAbove seen per team, optimistic ties
+  teams.forEach(t => {
+    worstNumAbove[t.name] = -Infinity;
+    bestNumAbove[t.name] = Infinity;
+  });
+
+  for (const scenario of scenarios) {
+    const finalPts = {};
+    teams.forEach(t => { finalPts[t.name] = t.pts; });
+
+    const scenarioMatchResults = remainingMatches.map((match, i) => {
+      const outcome = scenario[i];
+      finalPts[match.home_team] += outcome.homePts;
+      finalPts[match.away_team] += outcome.awayPts;
+      const winner = outcome.winner === 'home' ? match.home_team
+        : outcome.winner === 'away' ? match.away_team
+        : 'DRAW';
+      return { home_team: match.home_team, away_team: match.away_team, winner };
+    });
+
+    teams.forEach(t => {
+      let numAbovePessimistic = 0;
+      let numAboveOptimistic = 0;
+
+      teams.forEach(o => {
+        if (o.name === t.name) return;
+        if (finalPts[o.name] > finalPts[t.name]) {
+          numAbovePessimistic++;
+          numAboveOptimistic++;
+          return;
+        }
+        if (finalPts[o.name] < finalPts[t.name]) return;
+
+        // Tied on points — fall back to head-to-head.
+        const h2hWinner = getHeadToHeadWinner(t.name, o.name, h2hResults, scenarioMatchResults);
+        if (h2hWinner === o.name) {
+          numAbovePessimistic++;
+          numAboveOptimistic++;
+        } else if (h2hWinner === t.name) {
+          // o is decisively NOT above t — counts toward neither.
+        } else {
+          // Drawn or unknown head-to-head: ambiguous.
+          numAbovePessimistic++;
+        }
+      });
+
+      worstNumAbove[t.name] = Math.max(worstNumAbove[t.name], numAbovePessimistic);
+      bestNumAbove[t.name] = Math.min(bestNumAbove[t.name], numAboveOptimistic);
+    });
+  }
+
+  teams.forEach(t => {
+    if (worstNumAbove[t.name] <= 1) t.status = "qualified";       // never more than 1 team above, even pessimistically
+    else if (bestNumAbove[t.name] >= 3) t.status = "eliminated";  // always last, even optimistically
+    // else: stays "active" — still genuinely undetermined
+  });
+}
 
 // Mapping dictionary to align football-data.org names with The-Odds-API / UI dictionary names
 const teamNameMap = {
@@ -43,6 +161,33 @@ async function main() {
     if (!data.standings || data.standings.length === 0) {
       console.log("⚠️ No standings data found. Using fallback/empty state.");
       process.exit(0);
+    }
+
+    // Fetch full group-stage results so far, to build a head-to-head lookup.
+    // This tournament's in-group tiebreaker is head-to-head record FIRST,
+    // before overall goal difference — so this matters for figuring out
+    // which teams are mathematically locked into qualification/elimination
+    // before their group has finished.
+    const h2hResults = {};
+    const matchesResponse = await fetch("https://api.football-data.org/v4/competitions/WC/matches?status=FINISHED", {
+      headers: { "X-Auth-Token": FOOTBALL_DATA_ORG_TOKEN }
+    });
+    if (matchesResponse.ok) {
+      const matchesData = await matchesResponse.json();
+      for (const m of (matchesData.matches || [])) {
+        if (m.stage !== "GROUP_STAGE") continue;
+        let homeName = m.homeTeam.name;
+        let awayName = m.awayTeam.name;
+        if (teamNameMap[homeName]) homeName = teamNameMap[homeName];
+        if (teamNameMap[awayName]) awayName = teamNameMap[awayName];
+
+        const winner = m.score.winner === 'HOME_TEAM' ? homeName
+          : m.score.winner === 'AWAY_TEAM' ? awayName
+          : 'DRAW';
+        h2hResults[`${homeName}|${awayName}`] = winner;
+      }
+    } else {
+      console.error(`⚠️ Failed to fetch match history for head-to-head lookups. Status: ${matchesResponse.status}`);
     }
 
     const formattedStandings = [];
@@ -90,6 +235,25 @@ async function main() {
       formattedStandings.push({
         group: groupName,
         teams: teams
+      });
+    }
+
+    // For groups that haven't finished yet, check whether any team's top-2
+    // (or last-place) finish is already mathematically locked in, regardless
+    // of how their remaining matches play out.
+    if (fs.existsSync(matchesPath)) {
+      const allMatches = JSON.parse(fs.readFileSync(matchesPath, 'utf8'));
+      const now = new Date();
+
+      formattedStandings.forEach(g => {
+        if (g.teams.some(t => t.mp === 3)) return; // already finished, handled above
+        const names = g.teams.map(t => t.name);
+        const remainingMatches = allMatches.filter(m =>
+          new Date(m.commence_time) > now &&
+          names.includes(m.home_team) &&
+          names.includes(m.away_team)
+        );
+        resolveCertainStatuses(g.teams, remainingMatches, h2hResults);
       });
     }
 

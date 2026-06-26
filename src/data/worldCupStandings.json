@@ -163,51 +163,51 @@
     "teams": [
       {
         "name": "USA",
-        "mp": 2,
+        "mp": 3,
         "w": 2,
         "d": 0,
-        "l": 0,
-        "gf": 6,
-        "ga": 1,
-        "gd": 5,
+        "l": 1,
+        "gf": 7,
+        "ga": 3,
+        "gd": 4,
         "pts": 6,
-        "status": "active"
+        "status": "qualified"
       },
       {
         "name": "Australia",
-        "mp": 2,
+        "mp": 3,
         "w": 1,
-        "d": 0,
+        "d": 1,
         "l": 1,
         "gf": 2,
         "ga": 2,
         "gd": 0,
-        "pts": 3,
-        "status": "active"
+        "pts": 4,
+        "status": "qualified"
       },
       {
         "name": "Paraguay",
-        "mp": 2,
+        "mp": 3,
         "w": 1,
-        "d": 0,
+        "d": 1,
         "l": 1,
         "gf": 2,
         "ga": 4,
         "gd": -2,
-        "pts": 3,
+        "pts": 4,
         "status": "active"
       },
       {
         "name": "Turkey",
-        "mp": 2,
-        "w": 0,
+        "mp": 3,
+        "w": 1,
         "d": 0,
         "l": 2,
-        "gf": 0,
-        "ga": 3,
-        "gd": -3,
-        "pts": 0,
-        "status": "active"
+        "gf": 2,
+        "ga": 4,
+        "gd": -2,
+        "pts": 3,
+        "status": "eliminated"
       }
     ]
   },
@@ -216,51 +216,51 @@
     "teams": [
       {
         "name": "Germany",
-        "mp": 2,
+        "mp": 3,
         "w": 2,
         "d": 0,
-        "l": 0,
-        "gf": 9,
-        "ga": 2,
-        "gd": 7,
+        "l": 1,
+        "gf": 10,
+        "ga": 4,
+        "gd": 6,
         "pts": 6,
-        "status": "active"
+        "status": "qualified"
       },
       {
         "name": "Ivory Coast",
-        "mp": 2,
-        "w": 1,
+        "mp": 3,
+        "w": 2,
         "d": 0,
+        "l": 1,
+        "gf": 4,
+        "ga": 2,
+        "gd": 2,
+        "pts": 6,
+        "status": "qualified"
+      },
+      {
+        "name": "Ecuador",
+        "mp": 3,
+        "w": 1,
+        "d": 1,
         "l": 1,
         "gf": 2,
         "ga": 2,
         "gd": 0,
-        "pts": 3,
-        "status": "active"
-      },
-      {
-        "name": "Ecuador",
-        "mp": 2,
-        "w": 0,
-        "d": 1,
-        "l": 1,
-        "gf": 0,
-        "ga": 1,
-        "gd": -1,
-        "pts": 1,
+        "pts": 4,
         "status": "active"
       },
       {
         "name": "Curaçao",
-        "mp": 2,
+        "mp": 3,
         "w": 0,
         "d": 1,
-        "l": 1,
+        "l": 2,
         "gf": 1,
-        "ga": 7,
-        "gd": -6,
+        "ga": 9,
+        "gd": -8,
         "pts": 1,
-        "status": "active"
+        "status": "eliminated"
       }
     ]
   },
@@ -269,51 +269,51 @@
     "teams": [
       {
         "name": "Netherlands",
-        "mp": 2,
-        "w": 1,
+        "mp": 3,
+        "w": 2,
         "d": 1,
+        "l": 0,
+        "gf": 10,
+        "ga": 4,
+        "gd": 6,
+        "pts": 7,
+        "status": "qualified"
+      },
+      {
+        "name": "Japan",
+        "mp": 3,
+        "w": 1,
+        "d": 2,
         "l": 0,
         "gf": 7,
         "ga": 3,
         "gd": 4,
-        "pts": 4,
-        "status": "active"
-      },
-      {
-        "name": "Japan",
-        "mp": 2,
-        "w": 1,
-        "d": 1,
-        "l": 0,
-        "gf": 6,
-        "ga": 2,
-        "gd": 4,
-        "pts": 4,
-        "status": "active"
+        "pts": 5,
+        "status": "qualified"
       },
       {
         "name": "Sweden",
-        "mp": 2,
+        "mp": 3,
         "w": 1,
-        "d": 0,
+        "d": 1,
         "l": 1,
-        "gf": 6,
-        "ga": 6,
+        "gf": 7,
+        "ga": 7,
         "gd": 0,
-        "pts": 3,
+        "pts": 4,
         "status": "active"
       },
       {
         "name": "Tunisia",
-        "mp": 2,
+        "mp": 3,
         "w": 0,
         "d": 0,
-        "l": 2,
-        "gf": 1,
-        "ga": 9,
-        "gd": -8,
+        "l": 3,
+        "gf": 2,
+        "ga": 12,
+        "gd": -10,
         "pts": 0,
-        "status": "active"
+        "status": "eliminated"
       }
     ]
   },
@@ -436,7 +436,7 @@
         "ga": 1,
         "gd": 5,
         "pts": 6,
-        "status": "active"
+        "status": "qualified"
       },
       {
         "name": "Norway",
@@ -448,7 +448,7 @@
         "ga": 3,
         "gd": 4,
         "pts": 6,
-        "status": "active"
+        "status": "qualified"
       },
       {
         "name": "Senegal",
@@ -489,7 +489,7 @@
         "ga": 0,
         "gd": 5,
         "pts": 6,
-        "status": "active"
+        "status": "qualified"
       },
       {
         "name": "Austria",
@@ -525,7 +525,7 @@
         "ga": 5,
         "gd": -3,
         "pts": 0,
-        "status": "active"
+        "status": "eliminated"
       }
     ]
   },
@@ -542,7 +542,7 @@
         "ga": 1,
         "gd": 3,
         "pts": 6,
-        "status": "active"
+        "status": "qualified"
       },
       {
         "name": "Portugal",
@@ -631,7 +631,7 @@
         "ga": 2,
         "gd": -2,
         "pts": 0,
-        "status": "active"
+        "status": "eliminated"
       }
     ]
   }

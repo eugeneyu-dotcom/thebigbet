@@ -48,7 +48,16 @@ async function main() {
     }
 
     let matches = JSON.parse(fs.readFileSync(matchesPath, 'utf8'));
-    
+
+    // Only generate predictions for matches that haven't kicked off yet —
+    // matches.json can still contain recently-finished fixtures for a short
+    // window, and we never want to write "predicted" language for a result
+    // that's already in.
+    const now = new Date();
+    matches = matches.filter(m => new Date(m.commence_time) > now);
+
+    const todayStr = now.toISOString().slice(0, 10);
+
     for (const match of matches) {
       const homeTeam = match.home_team;
       const awayTeam = match.away_team;
@@ -59,8 +68,9 @@ async function main() {
       console.log(`\n🔮 Generating prediction for ${homeTeam} vs ${awayTeam}...`);
 
       const prompt = `
-You are a professional sports betting analyst. The current date is June 15, 2026.
+You are a professional sports betting analyst. The current date is ${todayStr}.
 Analyze the upcoming 2026 FIFA World Cup match between ${homeTeam} and ${awayTeam}.
+Do not assume or imply which match number this is in the tournament for either team (e.g. do not call it an "opener," "tournament debut," or similar) — you do not know each team's match history, so avoid any language that presumes this is their first match or any other specific stage of their campaign.
 The current betting odds are:
 ${homeTeam} Win: ${homeOdds}
 Draw: ${drawOdds}
