@@ -10,7 +10,7 @@
     "ga": 7,
     "gd": 0,
     "pts": 4,
-    "status": "active"
+    "status": "qualified"
   },
   {
     "group": "Group E",
@@ -23,7 +23,7 @@
     "ga": 2,
     "gd": 0,
     "pts": 4,
-    "status": "active"
+    "status": "qualified"
   },
   {
     "group": "Group B",
@@ -36,7 +36,7 @@
     "ga": 6,
     "gd": -1,
     "pts": 4,
-    "status": "active"
+    "status": "qualified"
   },
   {
     "group": "Group D",

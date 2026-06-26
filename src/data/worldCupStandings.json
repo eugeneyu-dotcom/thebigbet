@@ -96,7 +96,7 @@
         "gd": -1,
         "pts": 4,
         "position": 3,
-        "status": "active"
+        "status": "qualified"
       },
       {
         "name": "Qatar",
@@ -267,7 +267,7 @@
         "gd": 0,
         "pts": 4,
         "position": 3,
-        "status": "active"
+        "status": "qualified"
       },
       {
         "name": "Curaçao",
@@ -324,7 +324,7 @@
         "gd": 0,
         "pts": 4,
         "position": 3,
-        "status": "active"
+        "status": "qualified"
       },
       {
         "name": "Tunisia",

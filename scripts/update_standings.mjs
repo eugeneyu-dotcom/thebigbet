@@ -325,31 +325,68 @@ async function main() {
       g.teams.every(t => t.mp === 3)
     );
 
-    const groupThirdPlaceBounds = {};
+    // For a FINISHED group, the 3rd-place team's GD/GF are settled facts, not
+    // bounded guesses — so we can compare them exactly against another
+    // finished group's 3rd-place team, the same way the final cross-group
+    // ranking would. Only for groups still in progress do we fall back to
+    // the points-only bound (GD/GF there are genuinely unbounded by any
+    // remaining-match simulation).
+    const groupThirdPlaceComparable = {};
     formattedStandings.forEach(g => {
-      groupThirdPlaceBounds[g.group] = computeThirdPlacePointsBounds(
-        g.teams,
-        remainingMatchesByGroup[g.group]
-      );
+      const finished = g.teams.every(t => t.mp === 3);
+      if (finished) {
+        const thirdTeam = g.teams.find(t => t.position === 3);
+        groupThirdPlaceComparable[g.group] = { finished: true, pts: thirdTeam.pts, gd: thirdTeam.gd, gf: thirdTeam.gf };
+      } else {
+        groupThirdPlaceComparable[g.group] = {
+          finished: false,
+          ...computeThirdPlacePointsBounds(g.teams, remainingMatchesByGroup[g.group])
+        };
+      }
     });
+
+    // Returns true if `other`'s 3rd-place team is definitely ranked above
+    // ours (pts, then GD, then GF) — a settled fact for a finished group,
+    // impossible to assert for an unfinished one beyond points alone.
+    function isDefinitelyAbove(other, ours) {
+      if (other.finished) {
+        if (other.pts !== ours.pts) return other.pts > ours.pts;
+        if (other.gd !== ours.gd) return other.gd > ours.gd;
+        if (other.gf !== ours.gf) return other.gf > ours.gf;
+        return false; // exact tie even on GF — would need fair-play/FIFA ranking, leave ambiguous
+      }
+      return other.min > ours.pts;
+    }
+
+    // Returns true if `other` could plausibly end up ranked above or tied
+    // with ours — the pessimistic check used for the "qualified" guarantee.
+    function mightBeAboveOrTied(other, ours) {
+      if (other.finished) {
+        if (other.pts !== ours.pts) return other.pts > ours.pts;
+        if (other.gd !== ours.gd) return other.gd > ours.gd;
+        if (other.gf !== ours.gf) return other.gf > ours.gf;
+        return true; // exact tie on pts/GD/GF — ambiguous, count pessimistically
+      }
+      return other.max >= ours.pts;
+    }
 
     formattedStandings.forEach(g => {
       if (!g.teams.every(t => t.mp === 3)) return; // identity of "3rd place" isn't settled yet
       const thirdTeam = g.teams.find(t => t.position === 3);
       if (!thirdTeam) return;
+      const ours = { pts: thirdTeam.pts, gd: thirdTeam.gd, gf: thirdTeam.gf };
 
-      let numAbovePessimistic = 0; // assume every points-tie goes against us
-      let numAboveGuaranteed = 0;  // strictly more points, regardless of any tiebreak
-      Object.entries(groupThirdPlaceBounds).forEach(([otherGroup, bounds]) => {
+      let numAbovePessimistic = 0;
+      let numAboveGuaranteed = 0;
+      Object.entries(groupThirdPlaceComparable).forEach(([otherGroup, other]) => {
         if (otherGroup === g.group) return;
-        if (bounds.max >= thirdTeam.pts) numAbovePessimistic++;
-        if (bounds.min > thirdTeam.pts) numAboveGuaranteed++;
+        if (mightBeAboveOrTied(other, ours)) numAbovePessimistic++;
+        if (isDefinitelyAbove(other, ours)) numAboveGuaranteed++;
       });
 
       if (numAbovePessimistic <= 7) thirdTeam.status = "qualified";
       else if (numAboveGuaranteed >= 8) thirdTeam.status = "eliminated";
-      // else: stays "active" — a points tie with an unfinished group's
-      // ceiling means we can't yet rule out losing the GD tiebreak.
+      // else: stays "active" — still genuinely undetermined
     });
 
     if (allGroupsFinished) {
