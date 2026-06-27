@@ -6,6 +6,8 @@ import { languages, useTeamTranslations, useSportTranslations, useTranslations }
 import standingsData from '../../../data/worldCupStandings.json';
 import matchesCache from '../../../data/matches.json';
 import GoogleAnalytics from '../../../components/GoogleAnalytics.astro';
+import GroupStandingsTable from '../../../components/GroupStandingsTable.astro';
+import ThirdPlaceTable from '../../../components/ThirdPlaceTable.astro';
 import { formatMatchDateTime, getTimeZoneLabel } from '../../../utils/timezone';
 
 export function getStaticPaths() {
@@ -15,6 +17,8 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const t = useTranslations(lang);
 const tTeam = useTeamTranslations(lang);
+
+const allGroupsFinished = standingsData.every((g: any) => g.teams.every((t: any) => t.mp === 3));
 
 const matches = [...(matchesCache as any[])].sort(
   (a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime()
@@ -64,6 +68,21 @@ const scheduleDescription = lang === 'zh-tw'
           {t('schedule.timezoneNote')} {getTimeZoneLabel(lang)}
         </p>
       </div>
+
+      {allGroupsFinished && (
+        <div class="mb-16 space-y-14">
+          <ThirdPlaceTable lang={lang as string} />
+          {standingsData.map((groupData: any) => (
+            <div>
+              <div class="flex items-center mb-6">
+                <h2 class="text-2xl font-black text-white">{groupData.group}</h2>
+                <div class="h-[2px] bg-gradient-to-r from-amber-400/50 to-transparent flex-grow ml-6"></div>
+              </div>
+              <GroupStandingsTable groupData={groupData} lang={lang as string} />
+            </div>
+          ))}
+        </div>
+      )}
 
       <div class="space-y-16">
         {groupedMatches.map(groupData => (

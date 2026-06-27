@@ -3,11 +3,8 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import BaseHead from '../../../components/BaseHead.astro';
 import GoogleAnalytics from '../../../components/GoogleAnalytics.astro';
+import BracketView from '../../../components/BracketView.astro';
 import { languages, useTranslations } from '../../../i18n/ui';
-import { resolveSlot } from '../../../utils/resolveBracket';
-import { formatFullDateLabel, getTimeZoneLabel } from '../../../utils/timezone';
-import standingsData from '../../../data/worldCupStandings.json';
-import bracketData from '../../../data/knockoutBracket.json';
 
 export function getStaticPaths() {
   return Object.keys(languages).map((lang) => ({ params: { lang } }));
@@ -15,39 +12,6 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params;
 const t = useTranslations(lang);
-
-const matches = bracketData.matches;
-const matchesById = new Map(matches.map((m: any) => [m.id, m]));
-const venues = bracketData.venues as Record<string, Record<string, string>>;
-
-const dateLabel = (iso: string) => formatFullDateLabel(iso, lang as string);
-
-const venueLabel = (venueKey: string) => venues[venueKey]?.[lang] || venues[venueKey]?.en || venueKey;
-
-const ROUND_ORDER = ['R32', 'R16', 'QF', 'SF', 'FINAL'] as const;
-const ROUND_SIZE: Record<string, number> = { R32: 16, R16: 8, QF: 4, SF: 2, FINAL: 1 };
-const ROUND_LABEL: Record<string, string> = {
-  R32: t('bracket.r32'),
-  R16: t('bracket.r16'),
-  QF: t('bracket.qf'),
-  SF: t('bracket.sf'),
-  FINAL: t('bracket.final'),
-};
-
-const UNIT = 84; // px — vertical space allotted to a single R32 slot
-const totalHeight = UNIT * ROUND_SIZE.R32;
-
-const columns = ROUND_ORDER.map(round => ({
-  round,
-  label: ROUND_LABEL[round],
-  matches: matches.filter((m: any) => m.round === round),
-}));
-
-const thirdMatch = matches.find((m: any) => m.round === 'THIRD');
-
-function renderSlot(slot: any) {
-  return resolveSlot(slot, standingsData as any, lang as string);
-}
 ---
 
 <html lang={lang}>
@@ -64,74 +28,9 @@ function renderSlot(slot: any) {
           {t('bracket.title')}
         </h1>
         <p class="text-slate-400 text-sm max-w-3xl mx-auto">{t('bracket.subtitle')}</p>
-        <p class="inline-flex items-center gap-1.5 mt-3 bg-amber-400/10 border border-amber-400/40 text-amber-300 text-sm font-bold px-3 py-1.5 rounded-full">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-          {t('schedule.timezoneNote')} {getTimeZoneLabel(lang as string)}
-        </p>
       </div>
 
-      <div class="overflow-x-auto pb-6">
-        <div class="flex gap-10 min-w-[1400px]" style={`height: ${totalHeight}px`}>
-          {columns.map((col, colIdx) => (
-            <div class="flex flex-col flex-1" style={`height: ${totalHeight}px`}>
-              <div class="text-center text-xs font-black uppercase tracking-widest text-amber-300 mb-4 sticky top-16 bg-slate-950/80 py-1 rounded">
-                {col.label}
-              </div>
-              <div class="flex flex-col flex-1">
-                {col.matches.map((match: any, idx: number) => {
-                  const slotA = renderSlot(match.slotA);
-                  const slotB = renderSlot(match.slotB);
-                  const isTop = idx % 2 === 0;
-                  const hasNext = colIdx < columns.length - 1;
-                  return (
-                    <div class="flex-1 flex items-center relative px-1">
-                      {hasNext && (
-                        <div
-                          class={`absolute right-[-2.5rem] w-10 border-r-2 border-slate-500 ${isTop ? 'border-b-2 top-1/2 h-1/2' : 'border-t-2 bottom-1/2 h-1/2'}`}
-                        ></div>
-                      )}
-                      <div class="w-full bg-slate-800 border border-slate-600 rounded-lg shadow-md text-xs overflow-hidden">
-                        <div class="bg-slate-900 px-2 py-1 text-[11px] font-mono">
-                          <div class="font-bold text-amber-200">{dateLabel(match.date)}</div>
-                          <div class="truncate text-slate-300">{venueLabel(match.venue)}</div>
-                        </div>
-                        <div class={`px-2 py-1.5 border-b border-slate-600/70 font-bold ${slotA.teamName ? 'text-white' : 'text-slate-300 italic'}`}>
-                          {slotA.label}
-                        </div>
-                        <div class={`px-2 py-1.5 font-bold ${slotB.teamName ? 'text-white' : 'text-slate-300 italic'}`}>
-                          {slotB.label}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {thirdMatch && (
-        <div class="mt-12 max-w-sm mx-auto">
-          <div class="text-center text-xs font-black uppercase tracking-widest text-amber-300 mb-3">
-            {t('bracket.third')}
-          </div>
-          <div class="bg-slate-800 border border-slate-600 rounded-lg shadow-md text-xs overflow-hidden">
-            <div class="bg-slate-900 px-2 py-1 text-[11px] font-mono">
-              <div class="font-bold text-amber-200">{dateLabel(thirdMatch.date)}</div>
-              <div class="truncate text-slate-300">{venueLabel(thirdMatch.venue)}</div>
-            </div>
-            {[thirdMatch.slotA, thirdMatch.slotB].map((slot: any, i: number) => {
-              const resolved = renderSlot(slot);
-              return (
-                <div class={`px-2 py-1.5 font-bold ${i === 0 ? 'border-b border-slate-600/70' : ''} ${resolved.teamName ? 'text-white' : 'text-slate-300 italic'}`}>
-                  {resolved.label}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
+      <BracketView lang={lang as string} />
 
     </main>
     <Footer />
