@@ -19,7 +19,7 @@ const isTh = lang === 'th';
 const allEntries = await getCollection('analysis', (entry) => entry.id.startsWith(lang + '/'));
 const sorted = allEntries.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
-const analysisTitle = isZhTw ? '賽事分析 | The Big Bet' : isTh ? 'วิเคราะห์แมตช์ | The Big Bet' : 'Analysis | The Big Bet';
+const analysisTitle = isZhTw ? '世界盃賽事分析 | The Big Bet' : isTh ? 'วิเคราะห์แมตช์ฟุตบอลโลก | The Big Bet' : 'World Cup Analysis | The Big Bet';
 const analysisDescription = isZhTw
   ? '2026 FIFA 世界盃深度賽事分析文章，包含 AI 評估、賠率解讀與專家預測。'
   : isTh
