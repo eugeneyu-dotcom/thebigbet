@@ -4,6 +4,7 @@ import { resolveSlot } from '../utils/resolveBracket';
 import { formatFullDateLabel, getTimeZoneLabel } from '../utils/timezone';
 import standingsData from '../data/worldCupStandings.json';
 import bracketData from '../data/knockoutBracket.json';
+import liveMatches from '../data/matches.json';
 
 interface Props {
   lang: string;
@@ -42,6 +43,21 @@ const thirdMatch = matches.find((m: any) => m.round === 'THIRD');
 function renderSlot(slot: any) {
   return resolveSlot(slot, standingsData as any, lang);
 }
+
+// A thirdWildcard slot's actual occupant is read off the real fixture
+// once it's published — so it needs its sibling slot's resolved team name
+// (if known) to look up the right match.
+function renderMatchSlots(match: any) {
+  const rawA = renderSlot(match.slotA);
+  const rawB = renderSlot(match.slotB);
+  const slotA = match.slotA.type === 'thirdWildcard'
+    ? resolveSlot(match.slotA, standingsData as any, lang, rawB.teamName, liveMatches as any)
+    : rawA;
+  const slotB = match.slotB.type === 'thirdWildcard'
+    ? resolveSlot(match.slotB, standingsData as any, lang, rawA.teamName, liveMatches as any)
+    : rawB;
+  return { slotA, slotB };
+}
 ---
 
 <p class="inline-flex items-center gap-1.5 mb-6 bg-amber-400/10 border border-amber-400/40 text-amber-300 text-sm font-bold px-3 py-1.5 rounded-full">
@@ -58,8 +74,7 @@ function renderSlot(slot: any) {
         </div>
         <div class="flex flex-col flex-1">
           {col.matches.map((match: any, idx: number) => {
-            const slotA = renderSlot(match.slotA);
-            const slotB = renderSlot(match.slotB);
+            const { slotA, slotB } = renderMatchSlots(match);
             const isTop = idx % 2 === 0;
             const hasNext = colIdx < columns.length - 1;
             return (
@@ -100,8 +115,10 @@ function renderSlot(slot: any) {
         <div class="font-bold text-amber-200">{dateLabel(thirdMatch.date)}</div>
         <div class="truncate text-slate-300">{venueLabel(thirdMatch.venue)}</div>
       </div>
-      {[thirdMatch.slotA, thirdMatch.slotB].map((slot: any, i: number) => {
-        const resolved = renderSlot(slot);
+      {(() => {
+        const { slotA, slotB } = renderMatchSlots(thirdMatch);
+        return [slotA, slotB];
+      })().map((resolved: any, i: number) => {
         return (
           <div class={`px-2 py-1.5 font-bold ${i === 0 ? 'border-b border-slate-600/70' : ''} ${resolved.teamName ? 'text-white' : 'text-slate-300 italic'}`}>
             {resolved.label}

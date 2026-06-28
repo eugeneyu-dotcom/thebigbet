@@ -18,13 +18,18 @@ const groupLetter = (group: string) => group.replace('Group ', '');
 // FIFA's slot-assignment table for "which of the 8 qualifying third-placed
 // groups goes into which bracket slot" isn't reproduced here — it's a large
 // reference table tied to the exact combination of 8 groups that qualify,
-// which won't be known until the group stage finishes. Until then (and even
-// after, without that table), a thirdWildcard slot can only ever show its
-// candidate group list, never a specific team.
+// which won't be known until the group stage finishes. Rather than
+// reconstruct that table, once the actual fixture is published (in
+// matches.json, sourced from the live odds feed), we just read the real
+// opponent off of it directly: a thirdWildcard slot's match partner is
+// already a confirmed, fixed team, so look up the fixture containing that
+// team and take the other side.
 export function resolveSlot(
   slot: any,
   standingsData: StandingsGroup[],
-  lang: string
+  lang: string,
+  opponentTeamName?: string | null,
+  liveMatches?: Array<{ home_team: string; away_team: string }>
 ): ResolvedSlot {
   const tTeam = useTeamTranslations(lang as any);
 
@@ -48,6 +53,15 @@ export function resolveSlot(
   }
 
   if (slot.type === 'thirdWildcard') {
+    if (opponentTeamName && liveMatches) {
+      const fixture = liveMatches.find(m =>
+        m.home_team === opponentTeamName || m.away_team === opponentTeamName
+      );
+      if (fixture) {
+        const teamName = fixture.home_team === opponentTeamName ? fixture.away_team : fixture.home_team;
+        return { label: tTeam(teamName), teamName };
+      }
+    }
     const letters = slot.groups.map(groupLetter).join('/');
     const label = lang === 'zh-tw'
       ? `最佳第三名：${letters}`
