@@ -39,7 +39,7 @@
         "gd": -1,
         "pts": 3,
         "position": 3,
-        "status": "active"
+        "status": "eliminated"
       },
       {
         "name": "Czech Republic",
@@ -153,7 +153,7 @@
         "gd": -3,
         "pts": 3,
         "position": 3,
-        "status": "active"
+        "status": "eliminated"
       },
       {
         "name": "Haiti",
@@ -381,7 +381,7 @@
         "gd": 0,
         "pts": 3,
         "position": 3,
-        "status": "active"
+        "status": "eliminated"
       },
       {
         "name": "New Zealand",
@@ -517,52 +517,52 @@
     "teams": [
       {
         "name": "Argentina",
-        "mp": 2,
-        "w": 2,
+        "mp": 3,
+        "w": 3,
         "d": 0,
         "l": 0,
-        "gf": 5,
-        "ga": 0,
-        "gd": 5,
-        "pts": 6,
+        "gf": 8,
+        "ga": 1,
+        "gd": 7,
+        "pts": 9,
         "position": 1,
         "status": "qualified"
       },
       {
         "name": "Austria",
-        "mp": 2,
+        "mp": 3,
         "w": 1,
-        "d": 0,
+        "d": 1,
         "l": 1,
-        "gf": 3,
-        "ga": 3,
+        "gf": 6,
+        "ga": 6,
         "gd": 0,
-        "pts": 3,
+        "pts": 4,
         "position": 2,
-        "status": "active"
+        "status": "qualified"
       },
       {
         "name": "Algeria",
-        "mp": 2,
+        "mp": 3,
         "w": 1,
-        "d": 0,
+        "d": 1,
         "l": 1,
-        "gf": 2,
-        "ga": 4,
+        "gf": 5,
+        "ga": 7,
         "gd": -2,
-        "pts": 3,
+        "pts": 4,
         "position": 3,
-        "status": "active"
+        "status": "qualified"
       },
       {
         "name": "Jordan",
-        "mp": 2,
+        "mp": 3,
         "w": 0,
         "d": 0,
-        "l": 2,
-        "gf": 2,
-        "ga": 5,
-        "gd": -3,
+        "l": 3,
+        "gf": 3,
+        "ga": 8,
+        "gd": -5,
         "pts": 0,
         "position": 4,
         "status": "eliminated"
@@ -574,55 +574,55 @@
     "teams": [
       {
         "name": "Colombia",
-        "mp": 2,
+        "mp": 3,
         "w": 2,
-        "d": 0,
+        "d": 1,
         "l": 0,
         "gf": 4,
         "ga": 1,
         "gd": 3,
-        "pts": 6,
+        "pts": 7,
         "position": 1,
         "status": "qualified"
       },
       {
         "name": "Portugal",
-        "mp": 2,
+        "mp": 3,
         "w": 1,
-        "d": 1,
+        "d": 2,
         "l": 0,
         "gf": 6,
         "ga": 1,
         "gd": 5,
-        "pts": 4,
+        "pts": 5,
         "position": 2,
-        "status": "active"
+        "status": "qualified"
       },
       {
         "name": "DR Congo",
-        "mp": 2,
-        "w": 0,
+        "mp": 3,
+        "w": 1,
         "d": 1,
         "l": 1,
-        "gf": 1,
-        "ga": 2,
-        "gd": -1,
-        "pts": 1,
+        "gf": 4,
+        "ga": 3,
+        "gd": 1,
+        "pts": 4,
         "position": 3,
-        "status": "active"
+        "status": "qualified"
       },
       {
         "name": "Uzbekistan",
-        "mp": 2,
+        "mp": 3,
         "w": 0,
         "d": 0,
-        "l": 2,
-        "gf": 1,
-        "ga": 8,
-        "gd": -7,
+        "l": 3,
+        "gf": 2,
+        "ga": 11,
+        "gd": -9,
         "pts": 0,
         "position": 4,
-        "status": "active"
+        "status": "eliminated"
       }
     ]
   },
@@ -631,52 +631,52 @@
     "teams": [
       {
         "name": "England",
-        "mp": 2,
-        "w": 1,
+        "mp": 3,
+        "w": 2,
         "d": 1,
         "l": 0,
-        "gf": 4,
+        "gf": 6,
         "ga": 2,
-        "gd": 2,
-        "pts": 4,
+        "gd": 4,
+        "pts": 7,
         "position": 1,
-        "status": "active"
-      },
-      {
-        "name": "Ghana",
-        "mp": 2,
-        "w": 1,
-        "d": 1,
-        "l": 0,
-        "gf": 1,
-        "ga": 0,
-        "gd": 1,
-        "pts": 4,
-        "position": 2,
-        "status": "active"
+        "status": "qualified"
       },
       {
         "name": "Croatia",
-        "mp": 2,
-        "w": 1,
+        "mp": 3,
+        "w": 2,
         "d": 0,
         "l": 1,
-        "gf": 3,
-        "ga": 4,
-        "gd": -1,
-        "pts": 3,
+        "gf": 5,
+        "ga": 5,
+        "gd": 0,
+        "pts": 6,
+        "position": 2,
+        "status": "qualified"
+      },
+      {
+        "name": "Ghana",
+        "mp": 3,
+        "w": 1,
+        "d": 1,
+        "l": 1,
+        "gf": 2,
+        "ga": 2,
+        "gd": 0,
+        "pts": 4,
         "position": 3,
-        "status": "active"
+        "status": "qualified"
       },
       {
         "name": "Panama",
-        "mp": 2,
+        "mp": 3,
         "w": 0,
         "d": 0,
-        "l": 2,
+        "l": 3,
         "gf": 0,
-        "ga": 2,
-        "gd": -2,
+        "ga": 4,
+        "gd": -4,
         "pts": 0,
         "position": 4,
         "status": "eliminated"

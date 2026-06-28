@@ -1,5 +1,18 @@
 [
   {
+    "group": "Group K",
+    "name": "DR Congo",
+    "mp": 3,
+    "w": 1,
+    "d": 1,
+    "l": 1,
+    "gf": 4,
+    "ga": 3,
+    "gd": 1,
+    "pts": 4,
+    "status": "qualified"
+  },
+  {
     "group": "Group F",
     "name": "Sweden",
     "mp": 3,
@@ -26,6 +39,19 @@
     "status": "qualified"
   },
   {
+    "group": "Group L",
+    "name": "Ghana",
+    "mp": 3,
+    "w": 1,
+    "d": 1,
+    "l": 1,
+    "gf": 2,
+    "ga": 2,
+    "gd": 0,
+    "pts": 4,
+    "status": "qualified"
+  },
+  {
     "group": "Group B",
     "name": "Bosnia & Herzegovina",
     "mp": 3,
@@ -35,6 +61,19 @@
     "gf": 5,
     "ga": 6,
     "gd": -1,
+    "pts": 4,
+    "status": "qualified"
+  },
+  {
+    "group": "Group J",
+    "name": "Algeria",
+    "mp": 3,
+    "w": 1,
+    "d": 1,
+    "l": 1,
+    "gf": 5,
+    "ga": 7,
+    "gd": -2,
     "pts": 4,
     "status": "qualified"
   },
@@ -75,20 +114,7 @@
     "ga": 3,
     "gd": 0,
     "pts": 3,
-    "status": "active"
-  },
-  {
-    "group": "Group L",
-    "name": "Croatia",
-    "mp": 2,
-    "w": 1,
-    "d": 0,
-    "l": 1,
-    "gf": 3,
-    "ga": 4,
-    "gd": -1,
-    "pts": 3,
-    "status": "active"
+    "status": "eliminated"
   },
   {
     "group": "Group A",
@@ -101,20 +127,7 @@
     "ga": 3,
     "gd": -1,
     "pts": 3,
-    "status": "active"
-  },
-  {
-    "group": "Group J",
-    "name": "Algeria",
-    "mp": 2,
-    "w": 1,
-    "d": 0,
-    "l": 1,
-    "gf": 2,
-    "ga": 4,
-    "gd": -2,
-    "pts": 3,
-    "status": "active"
+    "status": "eliminated"
   },
   {
     "group": "Group C",
@@ -127,7 +140,7 @@
     "ga": 4,
     "gd": -3,
     "pts": 3,
-    "status": "active"
+    "status": "eliminated"
   },
   {
     "group": "Group H",
@@ -141,18 +154,5 @@
     "gd": -1,
     "pts": 2,
     "status": "eliminated"
-  },
-  {
-    "group": "Group K",
-    "name": "DR Congo",
-    "mp": 2,
-    "w": 0,
-    "d": 1,
-    "l": 1,
-    "gf": 1,
-    "ga": 2,
-    "gd": -1,
-    "pts": 1,
-    "status": "active"
   }
 ]
