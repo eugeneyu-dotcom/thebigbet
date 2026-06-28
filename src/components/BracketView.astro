@@ -29,7 +29,11 @@ const ROUND_LABEL: Record<string, string> = {
   FINAL: t('bracket.final'),
 };
 
-const UNIT = 84; // px — vertical space allotted to a single R32 slot
+// px — vertical space allotted to a single R32 slot. Must be tall enough to
+// fit a match card's real content (date/venue header + 2 team rows, ~99px
+// with current padding) — otherwise flexbox's column min-height:auto lets
+// boxes overflow their share, which throws off the R32→R16 connector lines.
+const UNIT = 108;
 const totalHeight = UNIT * ROUND_SIZE.R32;
 
 const columns = ROUND_ORDER.map(round => ({
@@ -78,7 +82,7 @@ function renderMatchSlots(match: any) {
             const isTop = idx % 2 === 0;
             const hasNext = colIdx < columns.length - 1;
             return (
-              <div class="flex-1 flex items-center relative px-1">
+              <div class="flex-1 min-h-0 flex items-center relative px-1">
                 {hasNext && (
                   <div
                     class={`absolute right-[-2.5rem] w-10 border-r-2 border-slate-500 ${isTop ? 'border-b-2 top-1/2 h-1/2' : 'border-t-2 bottom-1/2 h-1/2'}`}
@@ -89,10 +93,10 @@ function renderMatchSlots(match: any) {
                     <div class="font-bold text-amber-200">{dateLabel(match.date)}</div>
                     <div class="truncate text-slate-300">{venueLabel(match.venue)}</div>
                   </div>
-                  <div class={`px-2 py-1.5 border-b border-slate-600/70 font-bold ${slotA.teamName ? 'text-white' : 'text-slate-300 italic'}`}>
+                  <div class={`px-2 py-1.5 border-b border-slate-600/70 font-bold truncate ${slotA.teamName ? 'text-white' : 'text-slate-300 italic'}`}>
                     {slotA.label}
                   </div>
-                  <div class={`px-2 py-1.5 font-bold ${slotB.teamName ? 'text-white' : 'text-slate-300 italic'}`}>
+                  <div class={`px-2 py-1.5 font-bold truncate ${slotB.teamName ? 'text-white' : 'text-slate-300 italic'}`}>
                     {slotB.label}
                   </div>
                 </div>
