@@ -1,66 +1,66 @@
 {
   "Argentina": {
     "atk": {
-      "score": 9.5,
+      "score": 9.3,
       "trend": "+",
-      "reason_zh": "阿根廷在小組賽中攻入8球，展現強大進攻火力，球員個人能力出色，整體進攻效率極高。",
-      "reason_en": "Argentina scored 8 goals in the group stage, showcasing strong attacking prowess with excellent individual player ability and high overall offensive efficiency."
+      "reason_zh": "阿根廷世界盃三戰攻入8球，進攻火力強勁。儘管考量歷史底蘊，其進攻表現仍有提升。",
+      "reason_en": "Argentina scored 8 goals in three World Cup matches, showing strong attacking power. Considering historical prestige, their offensive performance has improved."
     },
     "def": {
-      "score": 9.8,
+      "score": 9.3,
       "trend": "+",
-      "reason_zh": "僅失1球，防守表現近乎完美，後防線穩固且紀律性強，門將狀態極佳。",
-      "reason_en": "Conceding only 1 goal, their defensive performance was nearly perfect, with a solid and disciplined backline and excellent goalkeeper form."
+      "reason_zh": "世界盃三戰僅失1球，防守表現極為出色。儘管考量歷史底蘊，其防守表現仍有提升。",
+      "reason_en": "Conceding only 1 goal in three World Cup matches, their defensive performance is exceptional. Considering historical prestige, their defensive performance has improved."
     },
     "pos": {
-      "score": 9,
-      "trend": "=",
-      "reason_zh": "憑藉其技術優勢和中場控制力，預計控球率高，能有效掌控比賽節奏。",
-      "reason_en": "With their technical superiority and midfield control, they are expected to maintain high possession and effectively dictate game tempo."
+      "score": 9.2,
+      "trend": "+",
+      "reason_zh": "三戰全勝並以小組第一出線，顯示中場控制力強大。儘管考量歷史底蘊，其控球能力仍有提升。",
+      "reason_en": "Winning all three matches and qualifying as group leader indicates strong midfield control. Considering historical prestige, their possession ability has improved."
     },
     "dis": {
       "score": 8.5,
       "trend": "=",
-      "reason_zh": "作為衛冕冠軍，球隊經驗豐富，在比賽中展現出良好的戰術紀律性。",
-      "reason_en": "As defending champions, the team is experienced and demonstrates good tactical discipline during matches."
+      "reason_zh": "世界盃賽事中無明顯紀律問題，維持一貫水準。儘管考量歷史底蘊，其紀律性保持穩定。",
+      "reason_en": "No significant disciplinary issues in the World Cup matches, maintaining consistent standards. Considering historical prestige, their discipline remains stable."
     },
     "frm": {
-      "score": 9.7,
+      "score": 9.3,
       "trend": "+",
-      "reason_zh": "小組賽三戰全勝，以9分晉級，狀態火熱，顯示出極佳的競技水準。儘管考量歷史底蘊，近期表現仍大幅提升評分。",
-      "reason_en": "With three wins in three group stage matches and 9 points, their form is excellent, demonstrating top competitive standards. Recent performance significantly boosts their score, considering historical prestige."
+      "reason_zh": "世界盃三戰全勝，以小組第一晉級，整體狀態極佳。儘管考量歷史底蘊，其近期狀態顯著提升。",
+      "reason_en": "Winning all three World Cup matches and qualifying as group leader, their overall form is excellent. Considering historical prestige, their recent form has significantly improved."
     }
   },
   "France": {
     "atk": {
       "score": 9.8,
       "trend": "+",
-      "reason_zh": "法國隊在世界盃小組賽攻入十球，展現強大進攻火力，儘管考量其歷史底蘊與高昂身價，綜合評分仍因世界盃表現而上修。",
-      "reason_en": "France scored ten goals in the World Cup group stage, demonstrating powerful attacking prowess; despite their historical prestige and high player value, the overall score is upgraded due to their World Cup performance."
+      "reason_zh": "憑藉三場比賽攻入十球的強大火力，法國隊的進攻效率極高，展現出世界級的得分能力。考量其歷史底蘊與高昂身價，綜合評分顯著提升。",
+      "reason_en": "With a formidable ten goals scored in three matches, France's attack has been highly efficient, showcasing world-class scoring ability. Considering their historical prestige and high player value, the overall score has significantly improved."
     },
     "def": {
-      "score": 9.5,
+      "score": 9.3,
       "trend": "+",
-      "reason_zh": "法國隊在世界盃小組賽僅失兩球，防線表現極為穩固，儘管考量其歷史底蘊與高昂身價，綜合評分仍因世界盃表現而上修。",
-      "reason_en": "France conceded only two goals in the World Cup group stage, showing a very solid defense; despite their historical prestige and high player value, the overall score is upgraded due to their World Cup performance."
+      "reason_zh": "法國隊在三場比賽中僅失兩球，防守表現穩固，顯示出堅實的後防線與團隊協防能力。考量其歷史底蘊與高昂身價，綜合評分顯著提升。",
+      "reason_en": "France conceded only two goals in three matches, demonstrating solid defensive performance, a strong backline, and effective team coordination. Considering their historical prestige and high player value, the overall score has significantly improved."
     },
     "pos": {
-      "score": 9,
+      "score": 8.8,
       "trend": "+",
-      "reason_zh": "儘管數據未直接顯示控球率，但三戰全勝與大量進球顯示法國隊對比賽的絕對掌控力。",
-      "reason_en": "Although possession statistics are not directly shown, three wins and numerous goals indicate France's absolute control over matches."
+      "reason_zh": "法國隊以三戰全勝的戰績晉級，顯示其對比賽的強大控制力與主導能力。考量其歷史底蘊與高昂身價，綜合評分顯著提升。",
+      "reason_en": "France qualified with three wins, demonstrating strong control and dominance over their matches. Considering their historical prestige and high player value, the overall score has significantly improved."
     },
     "dis": {
-      "score": 8.8,
+      "score": 9,
       "trend": "=",
-      "reason_zh": "作為頂級強隊，法國隊預計紀律性良好，世界盃表現未顯示明顯問題。",
-      "reason_en": "As a top-tier team, France is expected to have good discipline, and their World Cup performance showed no significant issues."
+      "reason_zh": "法國隊在小組賽中表現出良好的紀律性，未有明顯的犯規或紅黃牌問題影響戰局。考量其歷史底蘊與高昂身價，綜合評分保持穩定。",
+      "reason_en": "France displayed good discipline in the group stage, with no significant fouls or card issues impacting their matches. Considering their historical prestige and high player value, the overall score remains stable."
     },
     "frm": {
-      "score": 9.9,
+      "score": 9.5,
       "trend": "+",
-      "reason_zh": "法國隊在世界盃小組賽三戰全勝，狀態極佳，展現出強勁的奪冠潛力。",
-      "reason_en": "France achieved three wins in three matches in the World Cup group stage, showing excellent form and strong championship potential."
+      "reason_zh": "法國隊以三戰全勝的完美戰績晉級，狀態極佳，展現出爭冠實力。考量其歷史底蘊與高昂身價，綜合評分顯著提升。",
+      "reason_en": "France qualified with a perfect record of three wins, showing excellent form and championship potential. Considering their historical prestige and high player value, the overall score has significantly improved."
     }
   },
   "default": {
@@ -97,1474 +97,1474 @@
   },
   "Canada": {
     "atk": {
-      "score": 7.8,
+      "score": 7.5,
       "trend": "+",
-      "reason_zh": "加拿大在三場小組賽中攻入八球，進攻效率驚人。儘管考量歷史底蘊與高昂身價，綜合評分仍因世界盃表現而顯著上修。",
-      "reason_en": "Canada scored 8 goals in three group stage matches, demonstrating astonishing attacking efficiency. Despite considering historical prestige and high player value, the overall score is significantly adjusted upwards due to their World Cup performance."
+      "reason_zh": "在小組賽中攻入8球，展現出令人印象深刻的進攻能力。考量其球員身價與近期表現，綜合評分顯著提升。",
+      "reason_en": "Scored 8 goals in the group stage, demonstrating impressive attacking ability. Considering player value and recent performance, the overall rating has significantly improved."
     },
     "def": {
-      "score": 7.3,
+      "score": 6.5,
       "trend": "+",
-      "reason_zh": "加拿大在三場比賽中僅失三球，防守表現穩健。考量其近年防守進步，綜合評分因世界盃表現而微幅上調。",
-      "reason_en": "Canada conceded only 3 goals in three matches, showing solid defensive performance. Considering their recent defensive improvements, the overall score is slightly adjusted upwards due to their World Cup performance."
+      "reason_zh": "小組賽失3球，防守表現尚可。儘管考量其歷史防守記錄，綜合評分仍保持穩定。",
+      "reason_en": "Conceded 3 goals in the group stage, with a decent defensive performance. Despite their historical defensive record, the overall rating remains stable."
     },
     "pos": {
-      "score": 7,
+      "score": 6.2,
       "trend": "+",
-      "reason_zh": "加拿大成功晉級，並有出色淨勝球，顯示其戰術執行力。考量其整體實力提升，綜合評分因世界盃表現而提升。",
-      "reason_en": "Canada successfully qualified with an excellent goal difference, indicating strong tactical execution. Considering their overall improvement, the overall score is boosted by their World Cup performance."
+      "reason_zh": "以一勝一和一負的戰績晉級，顯示出足夠的比賽競爭力。考量其戰術風格，綜合評分保持穩定。",
+      "reason_en": "Qualified with one win, one draw, and one loss, demonstrating sufficient competitiveness. Considering their tactical style, the overall rating remains stable."
     },
     "dis": {
-      "score": 6.8,
-      "trend": "=",
-      "reason_zh": "缺乏具體紀律性數據，但加拿大隊近年表現趨於成熟。考量其比賽風格，綜合評分保持穩定。",
-      "reason_en": "Lacking specific disciplinary data, but the Canadian team has shown increasing maturity in recent years. Considering their playing style, the overall score remains stable."
+      "score": 6.7,
+      "trend": "+",
+      "reason_zh": "取得一勝一和一負的戰績，紀律性表現尚可。考量其整體表現，綜合評分保持穩定。",
+      "reason_en": "Achieved one win, one draw, and one loss, indicating acceptable discipline. Considering their overall performance, the overall rating remains stable."
     },
     "frm": {
-      "score": 7.2,
-      "trend": "=",
-      "reason_zh": "加拿大以一勝一和一負的戰績晉級，狀態良好。考量其賽前趨勢，綜合評分因世界盃表現而微幅上調。",
-      "reason_en": "Canada qualified with one win, one draw, and one loss, showing good form. Considering their pre-tournament trend, the overall score is slightly adjusted upwards due to their World Cup performance."
+      "score": 6.7,
+      "trend": "+",
+      "reason_zh": "以一勝一和一負的戰績晉級，狀態良好。儘管考量賽前預期，綜合評分仍有所提升。",
+      "reason_en": "Qualified with one win, one draw, and one loss, indicating good form. Despite pre-tournament expectations, the overall rating has improved."
     }
   },
   "Switzerland": {
     "atk": {
-      "score": 8,
-      "trend": "+",
-      "reason_zh": "瑞士在三場小組賽中攻入七球，進攻火力強勁。儘管考量歷史底蘊與高昂身價，綜合評分仍因世界盃表現而上修。",
-      "reason_en": "Switzerland scored 7 goals in three group stage matches, showcasing strong attacking prowess. Despite considering historical prestige and high player value, the overall score is adjusted upwards due to their World Cup performance."
-    },
-    "def": {
       "score": 7.8,
       "trend": "+",
-      "reason_zh": "瑞士在三場比賽中僅失三球，防守表現穩固。考量其歷史防守紀律性，綜合評分因世界盃表現而微幅上調。",
-      "reason_en": "Switzerland conceded only 3 goals in three matches, demonstrating solid defensive performance. Considering their historical defensive discipline, the overall score is slightly adjusted upwards due to their World Cup performance."
+      "reason_zh": "在世界盃小組賽中攻入7球，顯示出強勁的進攻火力。儘管考量歷史底蘊與高昂身價，綜合評分仍顯著提升。",
+      "reason_en": "Scored 7 goals in the World Cup group stage, demonstrating strong attacking prowess. Despite historical prestige and high player value, the overall rating has significantly improved."
+    },
+    "def": {
+      "score": 7.7,
+      "trend": "+",
+      "reason_zh": "小組賽僅失3球，防守表現穩健。考量其一貫的防守紀律性與球員價值，綜合評分維持高水準。",
+      "reason_en": "Conceded only 3 goals in the group stage, showing stable defensive performance. Considering their consistent defensive discipline and player value, the overall rating remains high."
     },
     "pos": {
-      "score": 7.5,
+      "score": 7.2,
       "trend": "+",
-      "reason_zh": "瑞士以小組第一出線，顯示其對比賽節奏的良好掌控。考量其戰術素養，綜合評分因世界盃表現而提升。",
-      "reason_en": "Switzerland qualified as group winners, indicating good control over game tempo. Considering their tactical acumen, the overall score is boosted by their World Cup performance."
+      "reason_zh": "憑藉兩勝一和的戰績晉級，顯示出良好的比賽控制能力。考量其戰術風格與歷史表現，綜合評分保持穩定。",
+      "reason_en": "Qualified with two wins and one draw, indicating good game control. Considering their tactical style and historical performance, the overall rating remains stable."
     },
     "dis": {
-      "score": 7,
-      "trend": "=",
-      "reason_zh": "缺乏具體紀律性數據，但瑞士隊通常以穩健著稱。考量其一貫的比賽風格，綜合評分保持穩定。",
-      "reason_en": "Lacking specific disciplinary data, but Switzerland is generally known for its steady play. Considering their consistent playing style, the overall score remains stable."
+      "score": 7.7,
+      "trend": "+",
+      "reason_zh": "小組賽保持不敗，顯示出良好的團隊紀律性。考量其過往表現與球員素質，綜合評分維持高位。",
+      "reason_en": "Remained undefeated in the group stage, demonstrating good team discipline. Considering their past performance and player quality, the overall rating remains high."
     },
     "frm": {
-      "score": 8.1,
+      "score": 7.8,
       "trend": "+",
-      "reason_zh": "瑞士隊以兩勝一和的不敗戰績晉級，狀態極佳。考量其賽前趨勢，綜合評分因世界盃表現而顯著提升。",
-      "reason_en": "Switzerland qualified undefeated with two wins and one draw, showing excellent form. Considering their pre-tournament trend, the overall score is significantly boosted by their World Cup performance."
+      "reason_zh": "以兩勝一和的戰績晉級，狀態極佳。儘管考量賽前預期，綜合評分仍顯著提升。",
+      "reason_en": "Qualified with two wins and one draw, indicating excellent form. Despite pre-tournament expectations, the overall rating has significantly improved."
     }
   },
   "Bosnia & Herzegovina": {
     "atk": {
-      "score": 7,
+      "score": 6.8,
       "trend": "+",
-      "reason_zh": "儘管歷史底蘊與球員身價為基礎，世界盃三場比賽攻入5球，顯示其進攻火力尚可，綜合評分略有提升。",
-      "reason_en": "Despite historical prestige and player value, scoring 5 goals in three World Cup matches indicates decent attacking prowess, leading to a slight score increase."
+      "reason_zh": "儘管歷史底蘊中等，但考量其歷史底蘊與球員價值，並結合本屆世界盃三場比賽攻入5球的表現，顯示進攻效率良好，綜合評分略有提升。",
+      "reason_en": "Despite moderate historical standing, considering their historical depth and player value, combined with scoring 5 goals in three World Cup matches, their attacking efficiency is good, leading to a slight score increase."
     },
     "def": {
       "score": 5.5,
       "trend": "-",
-      "reason_zh": "考量其歷史防守強度，世界盃三場失6球，防線表現不穩，綜合評分略有下修。",
-      "reason_en": "Considering historical defensive strength, conceding 6 goals in three World Cup matches shows defensive instability, leading to a slight score reduction."
+      "reason_zh": "考量其歷史底蘊與球員價值，並結合本屆世界盃三場比賽失6球的表現，防線顯得脆弱，綜合評分因此下調。",
+      "reason_en": "Considering their historical depth and player value, combined with conceding 6 goals in three World Cup matches, their defense appears vulnerable, leading to a score decrease."
     },
     "pos": {
-      "score": 5,
-      "trend": "=",
-      "reason_zh": "球隊傾向直接打法，控球能力並非強項，世界盃表現未見顯著提升，維持平均水準。",
-      "reason_en": "The team favors a direct style; possession is not a strong suit, and no significant improvement was seen in the World Cup, maintaining an average level."
-    },
-    "dis": {
       "score": 6,
       "trend": "=",
-      "reason_zh": "歷史上紀律性良好，世界盃賽事中亦無重大違規，維持穩定評分。",
-      "reason_en": "Historically good discipline, with no major infractions in the World Cup, maintaining a stable score."
+      "reason_zh": "儘管歷史上並非控球強隊，但考量其歷史底蘊與球員價值，本屆世界盃表現顯示其能有效利用機會，控球能力維持穩定。",
+      "reason_en": "While historically not a possession-dominant team, considering their historical depth and player value, their World Cup performance suggests effective play, maintaining stable possession capabilities."
+    },
+    "dis": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "缺乏具體紀律性數據，但考量其歷史底蘊與球員價值，紀律性評分保持穩定。",
+      "reason_en": "Lacking specific disciplinary data, but considering their historical depth and player value, the discipline score remains stable."
     },
     "frm": {
-      "score": 7.5,
+      "score": 7,
       "trend": "+",
-      "reason_zh": "憑藉賽前八場不敗與世界盃1勝1和1負成功晉級，儘管過程艱辛，整體表現符合預期，評分有所提升。",
-      "reason_en": "Building on an eight-match unbeaten run pre-tournament and a 1W-1D-1L record, they qualified, meeting expectations despite a tough campaign, leading to a score increase."
+      "reason_zh": "儘管歷史底蘊中等，但考量其歷史底蘊與球員價值，並結合本屆世界盃以1勝1和1負的戰績成功晉級，整體狀態評分顯著提升。",
+      "reason_en": "Despite moderate historical standing, considering their historical depth and player value, combined with qualifying with a record of 1 win, 1 draw, and 1 loss in this World Cup, their overall form score significantly increased."
     }
   },
   "Qatar": {
     "atk": {
       "score": 4,
-      "trend": "--",
-      "reason_zh": "儘管亞洲盃表現出色，但世界盃三場僅攻入2球，進攻效率低下，綜合評分顯著下調。",
-      "reason_en": "Despite strong Asian Cup performances, scoring only 2 goals in three World Cup matches shows low attacking efficiency, leading to a significant score reduction."
+      "trend": "-",
+      "reason_zh": "考量其歷史底蘊與球員價值，並結合本屆世界盃三場比賽僅攻入2球的表現，進攻火力明顯不足，綜合評分因此下調。",
+      "reason_en": "Considering their historical depth and player value, combined with scoring only 2 goals in three World Cup matches, their offensive power is clearly insufficient, leading to a score decrease."
     },
     "def": {
-      "score": 2,
-      "trend": "--",
-      "reason_zh": "考量其歷史防守紀錄，世界盃三場失10球，防線漏洞百出，綜合評分大幅下修。",
-      "reason_en": "Considering their historical defensive record, conceding 10 goals in three World Cup matches highlights a porous defense, resulting in a substantial score drop."
-    },
-    "pos": {
-      "score": 3.5,
-      "trend": "-",
-      "reason_zh": "面對強敵時控球權爭奪處於劣勢，世界盃表現未能改善此問題，評分有所下降。",
-      "reason_en": "Struggled for possession against stronger opponents, and this issue was not improved in the World Cup, leading to a score decrease."
-    },
-    "dis": {
-      "score": 6,
-      "trend": "=",
-      "reason_zh": "紀律性尚可，世界盃賽事中未見嚴重違規，維持平均水準。",
-      "reason_en": "Discipline is acceptable, with no serious infractions observed in the World Cup, maintaining an average level."
-    },
-    "frm": {
       "score": 3,
       "trend": "--",
-      "reason_zh": "儘管賽前亞洲區表現強勁，世界盃0勝1和2負遭淘汰，整體表現遠低於預期，評分大幅下調。",
-      "reason_en": "Despite strong pre-tournament Asian form, being eliminated with 0 wins, 1 draw, and 2 losses in the World Cup is far below expectations, leading to a substantial score reduction."
+      "reason_zh": "儘管防守基礎較弱，但考量其歷史底蘊與球員價值，並結合本屆世界盃三場比賽失10球的表現，防線表現極其糟糕，綜合評分大幅下修。",
+      "reason_en": "Despite a weaker defensive foundation, considering their historical depth and player value, combined with conceding 10 goals in three World Cup matches, their defensive performance was extremely poor, leading to a significant score reduction."
+    },
+    "pos": {
+      "score": 4,
+      "trend": "-",
+      "reason_zh": "歷史上控球能力不強，但考量其歷史底蘊與球員價值，本屆世界盃被淘汰且淨勝球為-8，顯示其難以掌控比賽節奏，控球評分下調。",
+      "reason_en": "Historically not strong in possession, considering their historical depth and player value, their elimination with a -8 goal difference in this World Cup indicates difficulty controlling game tempo, leading to a possession score decrease."
+    },
+    "dis": {
+      "score": 6.5,
+      "trend": "=",
+      "reason_zh": "缺乏具體紀律性數據，但考量其歷史底蘊與球員價值，紀律性評分保持穩定。",
+      "reason_en": "Lacking specific disciplinary data, but considering their historical depth and player value, the discipline score remains stable."
+    },
+    "frm": {
+      "score": 3.5,
+      "trend": "--",
+      "reason_zh": "儘管歷史狀態不佳，但考量其歷史底蘊與球員價值，並結合本屆世界盃以0勝1和2負的戰績被淘汰，整體狀態評分顯著下滑。",
+      "reason_en": "Despite historically poor form, considering their historical depth and player value, combined with their elimination with a record of 0 wins, 1 draw, and 2 losses in this World Cup, their overall form score significantly lowered."
     }
   },
   "USA": {
     "atk": {
-      "score": 8.5,
-      "trend": "+",
-      "reason_zh": "美國隊進攻火力強勁，三場比賽攻入8球，年輕才俊表現出色，綜合考量其歷史底蘊與小組賽表現，評分穩定上升。",
-      "reason_en": "The USA's attack has been potent, scoring 8 goals in 3 matches. Their young talents are delivering, reflecting strong offensive capabilities, leading to a stable score increase considering their historical standing and group performance."
-    },
-    "def": {
-      "score": 7.8,
-      "trend": "+",
-      "reason_zh": "三場比賽失4球，防守穩健但仍有進步空間。儘管如此，他們仍以小組第一出線，顯示整體防守實力，綜合評分有所提升。",
-      "reason_en": "Conceding 4 goals in 3 matches, the defense is solid but has room for improvement. Despite this, they topped their group, indicating overall defensive strength, leading to an improved score."
-    },
-    "pos": {
       "score": 8,
       "trend": "+",
-      "reason_zh": "美國隊以D組第一名出線，兩勝積6分，在小組賽中展現了出色的控球與戰術執行力，綜合評分顯著提升。",
-      "reason_en": "Finishing first in Group D with 2 wins and 6 points, the USA demonstrated excellent control and tactical execution in the group stage, significantly boosting their overall score."
+      "reason_zh": "美國隊進攻火力強勁，三場比賽攻入8球，顯示出強大的進攻能力。考量其歷史底蘊與球員價值，綜合評分獲得提升。",
+      "reason_en": "The USA's attack has been potent, scoring 8 goals in 3 matches, demonstrating strong offensive capabilities. Considering their historical prestige and player value, the overall score has increased."
+    },
+    "def": {
+      "score": 6.9,
+      "trend": "=",
+      "reason_zh": "美國隊防守表現穩健，三場比賽失4球，有效確保了小組出線。考量其歷史底蘊與球員價值，綜合評分保持穩定。",
+      "reason_en": "Conceding 4 goals in 3 matches, the USA's defense has been reasonably solid, contributing to their group qualification. Considering their historical prestige and player value, the overall score remains stable."
+    },
+    "pos": {
+      "score": 7.2,
+      "trend": "+",
+      "reason_zh": "儘管缺乏控球數據，但其出色的小組賽表現顯示出有效的比賽掌控力。考量其歷史底蘊與球員價值，綜合評分獲得提升。",
+      "reason_en": "While direct possession data is unavailable, their strong group performance suggests effective control and game management. Considering their historical prestige and player value, the overall score has increased."
     },
     "dis": {
-      "score": 7.5,
+      "score": 7,
       "trend": "=",
-      "reason_zh": "隊伍在小組賽中保持了良好的紀律性，專注於比賽策略，避免了不必要的犯規或牌罰，評分維持穩定。",
-      "reason_en": "The team maintained good discipline throughout the group stage, focusing on their game plan and avoiding unnecessary fouls or cards, keeping their score stable."
+      "reason_zh": "未見顯著的紀律問題，顯示球隊在小組賽中紀律性良好。考量其歷史底蘊與球員價值，綜合評分保持穩定。",
+      "reason_en": "No significant disciplinary issues were noted, indicating a well-managed and disciplined team throughout the group stage. Considering their historical prestige and player value, the overall score remains stable."
     },
     "frm": {
-      "score": 8.5,
+      "score": 7.8,
       "trend": "+",
-      "reason_zh": "他們的狀態極佳，以小組頭名晉級，兩場勝利延續了賽前勢頭，綜合考量其歷史底蘊與小組賽表現，評分穩定上升。",
-      "reason_en": "Their form is excellent, qualifying as group winners with 2 wins. This strong start builds on their pre-tournament momentum, reflecting a stable score increase given their historical standing and group performance."
+      "reason_zh": "以D組第一名出線，兩勝一負的戰績顯示出良好的近期狀態與晉級淘汰賽的勢頭。考量其歷史底蘊與球員價值，綜合評分獲得提升。",
+      "reason_en": "Qualifying first in Group D with 2 wins and 1 loss demonstrates strong current form and momentum entering the knockout stages. Considering their historical prestige and player value, the overall score has increased."
     }
   },
   "Paraguay": {
     "atk": {
-      "score": 4.5,
-      "trend": "=",
-      "reason_zh": "考量其歷史進攻能力與本屆世界盃3場僅進2球的表現，進攻火力評分較低。",
-      "reason_en": "Considering their historical attacking prowess and only 2 goals in 3 World Cup matches, their offensive output is rated low."
+      "score": 5.3,
+      "trend": "-",
+      "reason_zh": "儘管世界盃小組賽僅攻入兩球，但考量其預選賽對強隊的進攻表現與歷史底蘊，綜合評分微幅下修。",
+      "reason_en": "Despite scoring only two goals in the World Cup group stage, considering their attacking performance against strong teams in qualifiers and historical prestige, the overall score is slightly downgraded."
     },
     "def": {
-      "score": 6.5,
-      "trend": "=",
-      "reason_zh": "儘管失4球，但考量其傳統防守紀律性，防守表現尚可，綜合評分持平。",
-      "reason_en": "Despite conceding 4 goals, considering their traditional defensive discipline, their defensive performance is acceptable, with a stable overall rating."
+      "score": 6.7,
+      "trend": "-",
+      "reason_zh": "預選賽防守穩固，但在世界盃小組賽失四球，顯示防線仍有進步空間，綜合評分微幅下調。",
+      "reason_en": "Solid defense in qualifiers, but conceding four goals in the World Cup group stage indicates room for improvement, leading to a slight downgrade."
     },
     "pos": {
-      "score": 4,
+      "score": 5,
       "trend": "=",
-      "reason_zh": "考量其傳統戰術風格，控球能力預計不高，本屆賽事數據未特別突出。",
-      "reason_en": "Given their traditional tactical style, possession is not expected to be high, and current tournament data doesn't highlight it."
+      "reason_zh": "球隊以反擊為主，世界盃賽事未直接顯示控球優勢，故維持賽前評估。",
+      "reason_en": "The team primarily focuses on counter-attacks, and World Cup matches did not directly show possession dominance, so the pre-tournament assessment is maintained."
     },
     "dis": {
-      "score": 6,
+      "score": 6.5,
       "trend": "=",
-      "reason_zh": "缺乏具體紀律性數據，依據過往表現，預計維持中等水準。",
-      "reason_en": "Lacking specific disciplinary data, based on past performance, it is expected to maintain an average level."
+      "reason_zh": "世界盃期間無明顯紀律問題，維持穩定表現。",
+      "reason_en": "No significant disciplinary issues during the World Cup, maintaining stable performance."
     },
     "frm": {
-      "score": 6.5,
-      "trend": "+",
-      "reason_zh": "儘管世界盃戰績為1勝1和1負，但成功晉級，整體狀態評分略有提升。",
-      "reason_en": "Despite a World Cup record of 1 win, 1 draw, and 1 loss, they successfully qualified, slightly improving their overall form rating."
+      "score": 6,
+      "trend": "=",
+      "reason_zh": "預選賽表現出色，世界盃小組賽一勝一和一負並成功晉級，整體狀態穩定。儘管世界盃進球數不多，但考量其歷史底蘊，綜合評分仍屬穩定。",
+      "reason_en": "Excellent qualifying performance, and a 1 win, 1 draw, 1 loss record in the World Cup group stage with qualification, indicates stable overall form. Despite low World Cup goals, considering historical prestige, the overall score remains stable."
     }
   },
   "Turkey": {
     "atk": {
-      "score": 5.5,
-      "trend": "=",
-      "reason_zh": "考量其歷史進攻潛力與本屆世界盃3場進3球的表現，進攻火力評分中等。",
-      "reason_en": "Considering their historical attacking potential and 3 goals in 3 World Cup matches, their offensive output is rated as moderate."
+      "score": 6.5,
+      "trend": "-",
+      "reason_zh": "預選賽進攻火力強勁，但世界盃小組賽三球表現未能助其晉級，顯示進攻效率有待提升，綜合評分微幅下修。",
+      "reason_en": "Strong attacking prowess in qualifiers, but three goals in the World Cup group stage were insufficient for qualification, indicating room for improvement in efficiency, leading to a slight downgrade."
     },
     "def": {
-      "score": 4.5,
-      "trend": "-",
-      "reason_zh": "考量其歷史防守穩定性與本屆世界盃3場失5球的表現，防守評分略顯不足。",
-      "reason_en": "Considering their historical defensive stability and conceding 5 goals in 3 World Cup matches, their defensive rating is slightly insufficient."
+      "score": 5,
+      "trend": "--",
+      "reason_zh": "預選賽防線已顯脆弱，世界盃小組賽失五球更證實其防守問題，綜合評分顯著下調。",
+      "reason_en": "Defensive vulnerabilities were evident in qualifiers, and conceding five goals in the World Cup group stage further confirmed defensive issues, leading to a significant downgrade."
     },
     "pos": {
-      "score": 5,
-      "trend": "=",
-      "reason_zh": "考量其戰術傾向，控球能力預計為中等水平，本屆賽事無突出數據。",
-      "reason_en": "Given their tactical inclination, possession is expected to be moderate, with no outstanding data in the current tournament."
+      "score": 6.2,
+      "trend": "-",
+      "reason_zh": "預選賽控球率高，但世界盃小組賽未能將控球轉化為勝果，綜合評分微幅下修。",
+      "reason_en": "High possession in qualifiers, but failed to convert possession into results in the World Cup group stage, leading to a slight downgrade."
     },
     "dis": {
-      "score": 6,
+      "score": 6.5,
       "trend": "=",
-      "reason_zh": "缺乏具體紀律性數據，依據過往表現，預計維持中等水準。",
-      "reason_en": "Lacking specific disciplinary data, based on past performance, it is expected to maintain an average level."
+      "reason_zh": "世界盃期間無明顯紀律問題，維持穩定表現。",
+      "reason_en": "No significant disciplinary issues during the World Cup, maintaining stable performance."
     },
     "frm": {
-      "score": 4,
-      "trend": "-",
-      "reason_zh": "本屆世界盃戰績為1勝0和2負，未能晉級，整體狀態評分顯著下滑。",
-      "reason_en": "With a World Cup record of 1 win, 0 draws, and 2 losses, they failed to qualify, leading to a significant drop in their overall form rating."
+      "score": 5.5,
+      "trend": "--",
+      "reason_zh": "儘管賽前狀態良好，但世界盃小組賽一勝兩負並遭淘汰，整體狀態顯著下滑。考量其歷史底蘊，仍需大幅調整。",
+      "reason_en": "Despite good pre-tournament form, a 1 win, 2 loss record and elimination in the World Cup group stage indicates a significant decline in overall form. Considering their historical prestige, significant adjustments are needed."
     }
   },
   "Australia": {
     "atk": {
-      "score": 5.5,
+      "score": 5.4,
       "trend": "-",
-      "reason_zh": "澳洲隊三場比賽僅攻入2球，顯示在進攻端把握機會能力不足，儘管成功晉級，綜合評分仍微幅下修。",
-      "reason_en": "Australia's attack managed only 2 goals in 3 matches, indicating struggles in converting chances. Despite qualifying, their overall score saw a slight decrease."
+      "reason_zh": "澳洲隊進攻表現較弱，三場比賽僅攻入2球，顯示出進攻端仍需加強。考量其歷史底蘊與球員價值，綜合評分有所下降。",
+      "reason_en": "Australia's attack has struggled, scoring only 2 goals in 3 matches, indicating a need for more offensive threat. Considering their historical prestige and player value, the overall score has decreased."
     },
     "def": {
       "score": 7.8,
       "trend": "+",
-      "reason_zh": "澳洲隊三場比賽僅失2球，防守表現極為嚴密且具韌性，是他們晉級的關鍵因素，綜合評分顯著提升。",
-      "reason_en": "Conceding only 2 goals in 3 matches, Australia's defense was highly organized and resilient, a key factor in their qualification, leading to a significant score increase."
+      "reason_zh": "澳洲隊防守表現出色，三場比賽僅失2球，展現了嚴密的防守組織，是其出線的關鍵。考量其歷史底蘊與球員價值，綜合評分獲得提升。",
+      "reason_en": "Conceding only 2 goals in 3 matches, Australia's defense has been highly effective and well-organized, a key to their qualification. Considering their historical prestige and player value, the overall score has increased."
     },
     "pos": {
-      "score": 5.8,
+      "score": 6.4,
       "trend": "=",
-      "reason_zh": "澳洲隊以D組第二名出線，積4分且淨勝球為0，展現了晉級的韌性，綜合評分略有提升。",
-      "reason_en": "Qualifying second in Group D with 4 points and a 0 goal difference, Australia showed resilience to advance, resulting in a slight score improvement."
+      "reason_zh": "其防守實力與較低的進球數顯示出務實的戰術，可能在控球上有所犧牲以保持防線緊湊。考量其歷史底蘊與球員價值，綜合評分保持穩定。",
+      "reason_en": "Their defensive strength and low goal count suggest a pragmatic approach, likely ceding possession while remaining compact. Considering their historical prestige and player value, the overall score remains stable."
     },
     "dis": {
       "score": 7,
       "trend": "=",
-      "reason_zh": "隊伍展現了堅實的紀律性，專注於防守體系和戰術部署，沒有出現重大紀律問題，評分維持穩定。",
-      "reason_en": "The team displayed solid discipline, focusing on their defensive structure and tactical approach without major disciplinary issues, keeping their score stable."
+      "reason_zh": "未見顯著的紀律問題，顯示球隊在競爭激烈的比賽中仍保持紀律性。考量其歷史底蘊與球員價值，綜合評分保持穩定。",
+      "reason_en": "No significant disciplinary issues were observed, indicating a disciplined approach despite competitive matches. Considering their historical prestige and player value, the overall score remains stable."
     },
     "frm": {
-      "score": 7.5,
-      "trend": "+",
-      "reason_zh": "他們的狀態良好，以一勝一和的成績從競爭激烈的小組中晉級，保持了黑馬精神，綜合評分有所提升。",
-      "reason_en": "Their form is good, having qualified from a challenging group with 1 win and 1 draw, maintaining their underdog spirit, leading to an improved score."
+      "score": 6.7,
+      "trend": "=",
+      "reason_zh": "以D組第二名出線，一勝一和一負的戰績顯示出堅韌但略顯不穩定的狀態，足以晉級。考量其歷史底蘊與球員價值，綜合評分保持穩定。",
+      "reason_en": "Qualifying second in Group D with 1 win, 1 draw, and 1 loss shows a resilient but somewhat inconsistent form, enough for progression. Considering their historical prestige and player value, the overall score remains stable."
     }
   },
   "Brazil": {
     "atk": {
-      "score": 9.5,
+      "score": 9.2,
       "trend": "+",
-      "reason_zh": "憑藉三場比賽攻入7球，展現強大進攻火力，結合歷史底蘊與高昂身價，綜合評分上調。",
-      "reason_en": "With 7 goals in three matches, Brazil displayed strong attacking prowess, combined with historical depth and high player value, leading to an upward trend."
+      "reason_zh": "巴西隊在小組賽中攻入7球，顯示其強大的進攻火力。考量其歷史底蘊與高昂身價，綜合評分有所提升。",
+      "reason_en": "Brazil scored 7 goals in the group stage, demonstrating strong attacking prowess. Considering their historical prestige and high player value, the overall score has increased."
     },
     "def": {
-      "score": 9.2,
+      "score": 9.4,
       "trend": "+",
-      "reason_zh": "三場比賽僅失1球，防守表現極佳，顯示其後防線的穩固性，考量其整體實力，評分上調。",
-      "reason_en": "Conceding only 1 goal in three matches, their defense was excellent, demonstrating the stability of their backline, considering their overall strength, leading to an upward trend."
+      "reason_zh": "巴西隊在三場比賽中僅失1球，防守表現極為出色。考量其歷史底蘊與高昂身價，綜合評分有所提升。",
+      "reason_en": "Brazil conceded only 1 goal in three matches, showing excellent defensive performance. Considering their historical prestige and high player value, the overall score has increased."
     },
     "pos": {
-      "score": 9,
-      "trend": "=",
-      "reason_zh": "巴西隊傳統上以控球見長，結合其在小組賽的統治力，控球能力維持高水準，評分穩定。",
-      "reason_en": "Brazil traditionally excels in ball possession, and combined with their group stage dominance, their possession ability remains at a high level, maintaining a stable score."
+      "score": 9.1,
+      "trend": "+",
+      "reason_zh": "巴西隊在小組賽中保持不敗，兩勝一和的戰績顯示其對比賽的良好掌控力。綜合評分有所提升。",
+      "reason_en": "Brazil remained undefeated in the group stage with two wins and one draw, indicating good control over their matches. The overall score has increased."
     },
     "dis": {
-      "score": 8,
+      "score": 8.8,
       "trend": "=",
-      "reason_zh": "小組賽保持不敗，顯示球隊良好的戰術紀律性與比賽控制力，紀律性評分穩定。",
-      "reason_en": "Remaining undefeated in the group stage indicates good tactical discipline and game control, maintaining a stable discipline score."
+      "reason_zh": "巴西隊作為頂級強隊，預計其紀律性良好，小組賽表現未顯示明顯問題。綜合評分維持穩定。",
+      "reason_en": "As a top-tier team, Brazil is expected to have good discipline, with no significant issues observed in the group stage. The overall score remains stable."
     },
     "frm": {
-      "score": 9.2,
+      "score": 9.3,
       "trend": "+",
-      "reason_zh": "小組賽兩勝一和，以不敗戰績晉級，顯示球隊狀態極佳，考量其歷史底蘊與高昂身價，綜合評分上調。",
-      "reason_en": "With two wins and one draw in the group stage, qualifying undefeated, the team is in excellent form, considering their historical prestige and high player value, leading to an upward trend."
+      "reason_zh": "巴西隊在小組賽中兩勝一和，保持不敗，展現了極佳的競技狀態。考量其歷史底蘊，綜合評分有所提升。",
+      "reason_en": "Brazil's undefeated record of two wins and one draw in the group stage demonstrates excellent current form. Considering their historical prestige, the overall score has increased."
     }
   },
   "Morocco": {
     "atk": {
-      "score": 8,
+      "score": 8.3,
       "trend": "+",
-      "reason_zh": "小組賽攻入6球，展現出色的進攻效率，結合球隊近期表現與球員價值，進攻評分上調。",
-      "reason_en": "Scoring 6 goals in the group stage, Morocco displayed excellent attacking efficiency, combined with recent team performance and player value, leading to an upward trend."
+      "reason_zh": "摩洛哥隊在小組賽中攻入6球，顯示其進攻效率良好。考量其近期表現與球員價值，綜合評分略有提升。",
+      "reason_en": "Morocco scored 6 goals in the group stage, showing good attacking efficiency. Considering their recent performance and player value, the overall score has slightly increased."
     },
     "def": {
-      "score": 7.3,
+      "score": 8,
       "trend": "=",
-      "reason_zh": "三場比賽失3球，防守表現穩健，顯示其防線組織良好，考量其整體實力，防守評分穩定。",
-      "reason_en": "Conceding 3 goals in three matches, their defense was solid, demonstrating good defensive organization, considering their overall strength, maintaining a stable defensive score."
+      "reason_zh": "摩洛哥隊在三場比賽中失3球，防守表現穩健。考量其近期表現與球員價值，綜合評分維持原有水準。",
+      "reason_en": "Morocco conceded 3 goals in three matches, indicating solid defensive performance. Considering their recent performance and player value, the overall score maintains its previous level."
     },
     "pos": {
-      "score": 7,
-      "trend": "=",
-      "reason_zh": "儘管未有具體控球數據，但其穩定的戰績顯示球隊能有效控制比賽節奏，控球能力穩定。",
-      "reason_en": "Although specific possession data is unavailable, their consistent results indicate effective game tempo control, maintaining stable possession ability."
-    },
-    "dis": {
-      "score": 7,
-      "trend": "=",
-      "reason_zh": "小組賽保持不敗，展現出良好的比賽紀律性與戰術執行力，紀律性評分穩定。",
-      "reason_en": "Remaining undefeated in the group stage demonstrates good match discipline and tactical execution, maintaining a stable discipline score."
-    },
-    "frm": {
       "score": 8.2,
       "trend": "+",
-      "reason_zh": "小組賽兩勝一和，以不敗戰績晉級，顯示球隊狀態出色，考量其預期表現與球員價值，綜合評分上調。",
-      "reason_en": "With two wins and one draw in the group stage, qualifying undefeated, the team is in excellent form, considering their expected performance and player value, leading to an upward trend."
+      "reason_zh": "摩洛哥隊在小組賽中保持不敗，兩勝一和的戰績顯示其對比賽的良好掌控。綜合評分有所提升。",
+      "reason_en": "Morocco remained undefeated in the group stage with two wins and one draw, indicating good control over their matches. The overall score has increased."
+    },
+    "dis": {
+      "score": 7.8,
+      "trend": "=",
+      "reason_zh": "摩洛哥隊在小組賽中未顯示明顯紀律問題，維持其一貫表現。綜合評分維持穩定。",
+      "reason_en": "Morocco showed no significant disciplinary issues in the group stage, maintaining their consistent performance. The overall score remains stable."
+    },
+    "frm": {
+      "score": 8.4,
+      "trend": "+",
+      "reason_zh": "摩洛哥隊在小組賽中兩勝一和，保持不敗，展現了極佳的競技狀態。考量其近期表現，綜合評分有所提升。",
+      "reason_en": "Morocco's undefeated record of two wins and one draw in the group stage demonstrates excellent current form. Considering their recent performance, the overall score has increased."
     }
   },
   "Scotland": {
     "atk": {
-      "score": 5.6,
+      "score": 4.5,
       "trend": "-",
-      "reason_zh": "儘管歷史進攻能力尚可，但本屆世界盃三場比賽僅進一球，進攻效率極低，考量其歷史底蘊與高昂身價，綜合評分顯著下修。",
-      "reason_en": "Despite historical attacking potential, scoring only one goal in three World Cup matches indicates extremely low offensive efficiency, leading to a significant score reduction, considering their historical standing and player value."
+      "reason_zh": "世界盃三場比賽僅攻入一球，進攻效率極低。儘管考量其歷史底蘊，但世界盃表現顯著影響了綜合評分。",
+      "reason_en": "Scored only one goal in three World Cup matches, showing extremely low attacking efficiency. Despite considering their historical prestige, their World Cup performance significantly impacted the overall score."
     },
     "def": {
-      "score": 6.4,
+      "score": 5.8,
       "trend": "-",
-      "reason_zh": "考量其防守底蘊，本屆世界盃三場失四球表現平平，防線仍有待加強，綜合評分微幅下修。",
-      "reason_en": "Considering their defensive foundation, conceding four goals in three World Cup matches is an average performance, indicating room for defensive improvement, leading to a slight score reduction."
+      "reason_zh": "三場比賽失四球，防守表現中規中矩。考量其歷史防守紀律性，本次世界盃表現導致評分略有下調。",
+      "reason_en": "Conceded four goals in three matches, indicating an average defensive performance. Considering their historical defensive discipline, their World Cup showing led to a slight score reduction."
     },
     "pos": {
-      "score": 5.4,
+      "score": 4.4,
       "trend": "-",
-      "reason_zh": "儘管歷史控球能力一般，本屆世界盃未能有效控制比賽節奏，導致兩場失利，綜合評分微幅下修。",
-      "reason_en": "Despite average historical possession, the team failed to effectively control game tempo in this World Cup, resulting in two losses and a slight score reduction."
+      "reason_zh": "世界盃戰績不佳，顯示球隊難以掌控節奏與球權。考量其歷史表現與本次世界盃結果，控球評分有所下降。",
+      "reason_en": "Poor World Cup results suggest the team struggled to control game tempo and possession. Considering their historical performance and current World Cup outcomes, their possession score has decreased."
     },
     "dis": {
       "score": 7,
       "trend": "=",
-      "reason_zh": "根據現有數據，球隊紀律性表現持平，未有明顯犯規問題，維持原有評分。",
-      "reason_en": "Based on available data, team discipline remains consistent with no significant foul issues, maintaining the original score."
+      "reason_zh": "賽事數據未顯示嚴重紀律問題，球隊整體表現符合預期。考量其歷史紀律性，此項評分保持穩定。",
+      "reason_en": "Match data does not indicate significant disciplinary issues, with the team's overall conduct meeting expectations. Considering their historical discipline, this score remains stable."
     },
     "frm": {
-      "score": 5.7,
+      "score": 4.3,
       "trend": "-",
-      "reason_zh": "儘管賽前狀態尚可，但本屆世界盃三戰一勝兩負，未能晉級，整體狀態明顯下滑，考量其歷史底蘊與高昂身價，綜合評分顯著下修。",
-      "reason_en": "Despite decent pre-tournament form, one win and two losses in three World Cup matches led to elimination, indicating a clear decline in overall form and a significant score reduction, considering their historical standing and player value."
+      "reason_zh": "世界盃小組賽一勝兩敗，未能晉級，整體狀態不佳。儘管考量歷史表現，但近期戰績顯著下滑。",
+      "reason_en": "One win and two losses in the World Cup group stage, leading to elimination, indicates poor overall form. Despite historical performance, recent results show a significant decline."
     }
   },
   "Haiti": {
     "atk": {
-      "score": 3.9,
-      "trend": "-",
-      "reason_zh": "儘管歷史進攻能力較弱，本屆世界盃三場比賽僅進兩球，進攻端表現不佳，考量其歷史底蘊與高昂身價，綜合評分微幅下修。",
-      "reason_en": "Despite historically weaker attacking ability, scoring only two goals in three World Cup matches indicates poor offensive performance, leading to a slight score reduction, considering their historical standing and player value."
+      "score": 3.7,
+      "trend": "=",
+      "reason_zh": "世界盃三場比賽攻入兩球，對於實力較弱的球隊而言，進攻端仍有亮點。考量其賽前預期，本次表現維持了評分。",
+      "reason_en": "Scored two goals in three World Cup matches, showing some attacking bright spots for a weaker team. Considering their pre-tournament expectations, this performance maintained their score."
     },
     "def": {
-      "score": 3.1,
+      "score": 2.6,
       "trend": "-",
-      "reason_zh": "考量其防守底蘊，本屆世界盃三場失八球，防線漏洞百出，綜合評分顯著下修。",
-      "reason_en": "Considering their defensive foundation, conceding eight goals in three World Cup matches highlights a very leaky defense, leading to a significant score reduction."
+      "reason_zh": "三場比賽失八球，防守端表現極差。儘管考量其歷史底蘊，但世界盃防守漏洞顯著拉低了綜合評分。",
+      "reason_en": "Conceded eight goals in three matches, indicating extremely poor defensive performance. Despite considering their historical standing, World Cup defensive vulnerabilities significantly lowered the overall score."
     },
     "pos": {
-      "score": 2.9,
+      "score": 2.7,
       "trend": "-",
-      "reason_zh": "儘管歷史控球能力較弱，本屆世界盃三場皆敗，未能掌握比賽主導權，綜合評分微幅下修。",
-      "reason_en": "Despite historically weaker possession, losing all three World Cup matches indicates a failure to control games, leading to a slight score reduction."
+      "reason_zh": "世界盃三戰皆墨，控球權與比賽節奏掌控能力明顯不足。考量其歷史底蘊與本次世界盃結果，控球評分顯著降低。",
+      "reason_en": "Three losses in the World Cup indicate a clear lack of possession and control over game tempo. Considering their historical standing and current World Cup outcomes, their possession score has significantly decreased."
     },
     "dis": {
-      "score": 5,
+      "score": 6,
       "trend": "=",
-      "reason_zh": "根據現有數據，球隊紀律性表現持平，未有明顯犯規問題，維持原有評分。",
-      "reason_en": "Based on available data, team discipline remains consistent with no significant foul issues, maintaining the original score."
+      "reason_zh": "賽事數據未顯示嚴重紀律問題，球隊整體表現符合預期。考量其歷史紀律性，此項評分保持穩定。",
+      "reason_en": "Match data does not indicate significant disciplinary issues, with the team's overall conduct meeting expectations. Considering their historical discipline, this score remains stable."
     },
     "frm": {
-      "score": 3.1,
+      "score": 2.4,
       "trend": "-",
-      "reason_zh": "儘管賽前狀態不佳，本屆世界盃三戰皆墨，未能取得任何積分，整體狀態極差，考量其歷史底蘊與高昂身價，綜合評分顯著下修。",
-      "reason_en": "Despite poor pre-tournament form, losing all three World Cup matches without any points indicates extremely poor overall form and a significant score reduction, considering their historical standing and player value."
+      "reason_zh": "世界盃小組賽三戰全敗，積分為零，整體狀態極差。儘管考量其國際排名，但未能取得任何積分仍是重大打擊。",
+      "reason_en": "Three losses in the World Cup group stage with zero points indicate extremely poor overall form. Despite their international ranking, failing to secure any points is a significant setback."
     }
   },
   "Germany": {
     "atk": {
       "score": 9.2,
       "trend": "+",
-      "reason_zh": "德國隊歷史進攻火力強勁，本屆世界盃三場比賽攻入10球，顯示強大得分能力。儘管考量歷史底蘊與高昂身價，綜合評分仍顯著提升。",
-      "reason_en": "Germany historically boasts strong attacking prowess. In this World Cup, they scored 10 goals in three matches, demonstrating formidable scoring ability. Considering historical prestige and high player value, the overall rating has significantly increased."
+      "reason_zh": "儘管有一場失利，但三場比賽攻入10球，顯示強大的進攻火力。考量其歷史底蘊與球員身價，進攻表現出色。",
+      "reason_en": "Despite one loss, scoring 10 goals in three matches demonstrates strong attacking prowess. Considering their historical pedigree and player value, their offensive performance is excellent."
     },
     "def": {
-      "score": 8.2,
+      "score": 8.5,
       "trend": "=",
-      "reason_zh": "德國隊防守素來穩固。本屆世界盃三場比賽失4球，雖非滴水不漏，但整體防線仍屬堅實。儘管考量歷史底蘊與高昂身價，綜合評分維持穩定。",
-      "reason_en": "Germany's defense is historically solid. Conceding 4 goals in three World Cup matches, while not impenetrable, shows a generally robust backline. Considering historical prestige and high player value, the overall rating remains stable."
+      "reason_zh": "三場比賽失4球，防守表現尚可。儘管有失球，但仍以小組第一出線，防守端仍具實力。",
+      "reason_en": "Conceding 4 goals in three matches indicates a decent defensive performance. Despite some goals conceded, they qualified as group winners, showing defensive capability."
     },
     "pos": {
       "score": 9,
       "trend": "=",
-      "reason_zh": "德國隊向來擅長控球。本屆世界盃表現顯示其能有效掌控比賽節奏與球權。儘管考量歷史底蘊與高昂身價，綜合評分維持穩定。",
-      "reason_en": "Germany traditionally excels in ball possession. Their World Cup performance indicates effective control over game tempo and possession. Considering historical prestige and high player value, the overall rating remains stable."
+      "reason_zh": "儘管數據未直接顯示控球率，但德國隊傳統上以控球見長，預計仍能有效掌控比賽節奏。",
+      "reason_en": "Although possession statistics are not directly provided, Germany traditionally excels in ball possession and is expected to effectively control game tempo."
     },
     "dis": {
-      "score": 8.5,
+      "score": 9,
       "trend": "=",
-      "reason_zh": "德國隊球風紀律性高。本屆世界盃未見嚴重違規，維持其一貫的專業態度。儘管考量歷史底蘊與高昂身價，綜合評分維持穩定。",
-      "reason_en": "Germany's playing style is highly disciplined. No serious infringements were observed in this World Cup, maintaining their consistent professional attitude. Considering historical prestige and high player value, the overall rating remains stable."
+      "reason_zh": "賽事數據未顯示紀律性問題，預計球隊保持良好紀律，避免不必要的犯規。",
+      "reason_en": "Match data does not indicate disciplinary issues, suggesting the team maintains good discipline and avoids unnecessary fouls."
     },
     "frm": {
-      "score": 8.5,
+      "score": 9,
       "trend": "+",
-      "reason_zh": "德國隊以小組第一晉級，三場比賽兩勝一負，展現良好競技狀態。儘管考量歷史底蘊與高昂身價，綜合評分略有提升。",
-      "reason_en": "Germany qualified as group winners with two wins and one loss in three matches, showcasing good competitive form. Considering historical prestige and high player value, the overall rating has slightly increased."
+      "reason_zh": "三場兩勝一負，以小組第一晉級，顯示出良好的整體狀態。儘管有失利，但考量其歷史底蘊，綜合評分僅微幅下修。",
+      "reason_en": "Two wins and one loss in three matches, qualifying as group winners, indicates good overall form. Despite a loss, considering their historical pedigree, the overall rating is only slightly adjusted downwards."
     }
   },
   "Curaçao": {
     "atk": {
-      "score": 1.5,
+      "score": 3.3,
       "trend": "-",
-      "reason_zh": "球隊進攻能力極為薄弱，三場世界盃比賽僅攻入1球，顯示出進攻端缺乏創造力與威脅性。",
-      "reason_en": "The team's attacking ability is extremely weak, scoring only 1 goal in three World Cup matches, indicating a lack of creativity and threat in offense."
+      "reason_zh": "考量其歷史進攻能力較弱，本屆世界盃三場比賽僅攻入一球，進攻端表現極為掙扎，綜合評分顯著下修。",
+      "reason_en": "Given their historically weaker attacking ability, scoring only one goal in three World Cup matches shows a struggling offense, leading to a significant score reduction."
     },
     "def": {
-      "score": 1,
+      "score": 3,
       "trend": "-",
-      "reason_zh": "防守端表現災難性，三場比賽失9球，防線漏洞百出，難以抵擋對手進攻。",
-      "reason_en": "The defense performed disastrously, conceding 9 goals in three matches, with numerous defensive vulnerabilities making it difficult to withstand opponent attacks."
+      "reason_zh": "儘管歷史防守能力有限，但本屆世界盃三場比賽失九球，防線漏洞百出，綜合評分大幅下修。",
+      "reason_en": "Despite limited historical defensive ability, conceding nine goals in three World Cup matches highlights a porous defense, leading to a substantial score reduction."
     },
     "pos": {
-      "score": 2,
+      "score": 4,
       "trend": "-",
-      "reason_zh": "球隊在比賽中難以控制球權，控球率可能偏低，導致長期處於被動防守狀態。",
-      "reason_en": "The team struggled to control possession during matches, likely having low possession rates, leading to a prolonged passive defensive state."
+      "reason_zh": "世界盃戰績不佳，控球權預計處於劣勢，綜合評分微幅下修。",
+      "reason_en": "Poor World Cup results suggest a disadvantage in possession, leading to a slight score reduction."
     },
     "dis": {
-      "score": 4,
+      "score": 5,
       "trend": "=",
-      "reason_zh": "球隊紀律性表現中規中矩，儘管戰績不佳，但未見明顯的嚴重犯規問題。",
-      "reason_en": "The team's discipline was average; despite poor results, no significant issues with serious fouls were observed."
+      "reason_zh": "世界盃賽事中未顯示明顯紀律問題，維持其預期紀律性水平。",
+      "reason_en": "No significant disciplinary issues observed in World Cup matches, maintaining their expected level of discipline."
     },
     "frm": {
-      "score": 1.5,
+      "score": 3.3,
       "trend": "-",
-      "reason_zh": "考量其歷史底蘊與球員身價，加上世界盃表現不佳，綜合評分顯著下滑。球隊以0勝1和2負的戰績被淘汰，整體狀態低迷且缺乏競爭力。",
-      "reason_en": "Considering their historical foundation and player value, coupled with poor World Cup performance, the overall rating significantly declined. The team was eliminated with 0 wins, 1 draw, and 2 losses, showing poor overall form and a lack of competitiveness."
+      "reason_zh": "儘管預期實力較弱，但本屆世界盃未能取得勝利並提前淘汰，整體狀態不佳，綜合評分顯著下修。",
+      "reason_en": "Despite weaker pre-tournament expectations, failing to secure a win and early elimination in the World Cup indicates poor overall form, leading to a significant score reduction."
     }
   },
   "Ecuador": {
     "atk": {
-      "score": 4.5,
+      "score": 6.2,
       "trend": "-",
-      "reason_zh": "儘管球隊整體實力尚可，但世界盃三場比賽僅攻入2球，進攻效率明顯不足，拉低了整體評分。",
-      "reason_en": "Despite decent overall squad quality, scoring only 2 goals in three World Cup matches indicates a clear lack of attacking efficiency, lowering the overall score."
+      "reason_zh": "儘管歷史進攻能力尚可，但本屆世界盃三場比賽僅攻入兩球，進攻效率有待提升，綜合評分微幅下修。",
+      "reason_en": "Despite decent historical attacking ability, only two goals in three World Cup matches indicate room for improvement in efficiency, leading to a slight score reduction."
     },
     "def": {
       "score": 7.5,
       "trend": "+",
-      "reason_zh": "防守端表現出色，三場比賽僅失2球，顯示出堅固的防線和良好的組織紀律性，顯著提升了防守評分。",
-      "reason_en": "The defense performed exceptionally, conceding only 2 goals in three matches, demonstrating a solid backline and good organizational discipline, significantly boosting the defensive score."
+      "reason_zh": "考量其歷史防守底蘊，本屆世界盃三場比賽僅失兩球，防線表現穩固，綜合評分顯著提升。",
+      "reason_en": "Given their historical defensive solidity, conceding only two goals in three World Cup matches shows a robust defense, leading to a significant score increase."
     },
     "pos": {
-      "score": 5,
-      "trend": "=",
-      "reason_zh": "球隊控球能力維持中等水平，儘管進球數不多，但整體比賽節奏掌握尚可，未見明顯起伏。",
-      "reason_en": "The team's possession ability remains at an average level; despite a low goal count, their overall control of game tempo was acceptable, showing no significant fluctuations."
-    },
-    "dis": {
       "score": 6,
       "trend": "=",
-      "reason_zh": "球隊在比賽中展現了良好的紀律性，未出現重大犯規或情緒失控，維持了賽前的穩定水平。",
-      "reason_en": "The team displayed good discipline during matches, avoiding major fouls or emotional outbursts, maintaining their pre-tournament stability."
+      "reason_zh": "儘管世界盃戰績平穩，但控球數據未有突出表現，維持其預期水平。",
+      "reason_en": "While World Cup results were stable, possession statistics were not outstanding, maintaining their expected level."
+    },
+    "dis": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "世界盃賽事中未顯示明顯紀律問題，維持其預期紀律性水平。",
+      "reason_en": "No significant disciplinary issues observed in World Cup matches, maintaining their expected level of discipline."
     },
     "frm": {
-      "score": 6.5,
+      "score": 6.8,
       "trend": "+",
-      "reason_zh": "儘管首戰失利，但考量其歷史底蘊與高昂身價，綜合評分僅微幅下修。球隊以1勝1和1負的成績晉級，整體狀態穩健且有所提升。",
-      "reason_en": "Despite an initial loss, considering their historical foundation and high player value, the overall rating was only slightly adjusted downwards. The team qualified with 1 win, 1 draw, and 1 loss, showing stable and improved overall form."
+      "reason_zh": "儘管首戰失利，但考量其歷史底蘊與高昂身價，成功晉級淘汰賽，綜合評分微幅上修。",
+      "reason_en": "Despite an initial loss, considering their historical standing and player value, qualifying for the knockout stage is a positive, leading to a slight score increase."
     }
   },
   "Ivory Coast": {
     "atk": {
-      "score": 7.2,
-      "trend": "=",
-      "reason_zh": "象牙海岸隊進攻能力中等。本屆世界盃三場比賽攻入4球，表現尚可，但未見突出火力。儘管考量歷史底蘊與高昂身價，綜合評分維持穩定。",
-      "reason_en": "Ivory Coast's attacking ability is moderate. They scored 4 goals in three World Cup matches, a decent but not outstanding performance. Considering historical prestige and high player value, the overall rating remains stable."
+      "score": 7.8,
+      "trend": "+",
+      "reason_zh": "三場比賽攻入4球，進攻效率尚可。考量其球員身價，進攻表現符合預期並成功晉級。",
+      "reason_en": "Scoring 4 goals in three matches shows decent attacking efficiency. Considering their player value, their offensive performance meets expectations and they successfully qualified."
     },
     "def": {
-      "score": 7.5,
+      "score": 8.5,
       "trend": "+",
-      "reason_zh": "象牙海岸隊防守表現出色。本屆世界盃三場比賽僅失2球，顯示堅固的防線。儘管考量歷史底蘊與高昂身價，綜合評分顯著提升。",
-      "reason_en": "Ivory Coast's defensive performance is excellent. Conceding only 2 goals in three World Cup matches demonstrates a solid backline. Considering historical prestige and high player value, the overall rating has significantly increased."
+      "reason_zh": "三場比賽僅失2球，防守表現非常穩固。這顯示了球隊在防守端的紀律性與組織性。",
+      "reason_en": "Conceding only 2 goals in three matches indicates a very solid defensive performance, showcasing the team's discipline and organization at the back."
     },
     "pos": {
-      "score": 7.2,
-      "trend": "=",
-      "reason_zh": "象牙海岸隊控球能力良好。本屆世界盃表現顯示其能有效組織進攻並保持球權。儘管考量歷史底蘊與高昂身價，綜合評分維持穩定。",
-      "reason_en": "Ivory Coast possesses good ball control. Their World Cup performance indicates effective offensive organization and possession retention. Considering historical prestige and high player value, the overall rating remains stable."
-    },
-    "dis": {
       "score": 7.5,
       "trend": "=",
-      "reason_zh": "象牙海岸隊球風紀律性良好。本屆世界盃未見嚴重違規，展現專業素養。儘管考量歷史底蘊與高昂身價，綜合評分維持穩定。",
-      "reason_en": "Ivory Coast's playing style shows good discipline. No serious infringements were observed in this World Cup, demonstrating professionalism. Considering historical prestige and high player value, the overall rating remains stable."
+      "reason_zh": "儘管數據未直接顯示控球率，但球隊在小組賽中表現穩定，預計控球能力足以支持其戰術。",
+      "reason_en": "Although possession statistics are not directly provided, the team performed steadily in the group stage, suggesting their possession ability is sufficient for their tactics."
+    },
+    "dis": {
+      "score": 7.8,
+      "trend": "=",
+      "reason_zh": "賽事數據未顯示紀律性問題，球隊在競爭激烈的小組賽中保持了良好的比賽紀律。",
+      "reason_en": "Match data does not indicate disciplinary issues, and the team maintained good match discipline in a competitive group stage."
     },
     "frm": {
-      "score": 7.7,
+      "score": 8,
       "trend": "+",
-      "reason_zh": "象牙海岸隊以小組第二晉級，三場比賽兩勝一負，整體狀態良好。儘管考量歷史底蘊與高昂身價，綜合評分略有提升。",
-      "reason_en": "Ivory Coast qualified as group runners-up with two wins and one loss in three matches, showing good overall form. Considering historical prestige and high player value, the overall rating has slightly increased."
+      "reason_zh": "三場兩勝一負，成功以小組第二晉級，顯示出良好的競技狀態。儘管有一場失利，但考量其整體表現，綜合評分穩健。",
+      "reason_en": "Two wins and one loss in three matches, successfully qualifying as group runners-up, indicates good competitive form. Despite one loss, considering their overall performance, the comprehensive rating is stable."
     }
   },
   "Netherlands": {
     "atk": {
-      "score": 8.45,
+      "score": 8.8,
       "trend": "+",
-      "reason_zh": "憑藉三場比賽攻入10球的強勁進攻火力，顯示其進攻端表現出色。考量其歷史底蘊與高昂身價，綜合評分獲得顯著提升。",
-      "reason_en": "With a strong attacking force scoring 10 goals in three matches, their offensive performance is excellent. Considering their historical prestige and high player value, the overall score has significantly improved."
-    },
-    "def": {
-      "score": 7.5,
-      "trend": "=",
-      "reason_zh": "在三場比賽中失4球，防守表現尚可，維持了其穩固的防守基礎。考量其歷史底蘊與高昂身價，綜合評分保持穩定。",
-      "reason_en": "Conceding 4 goals in three matches, their defensive performance is decent, maintaining their solid defensive foundation. Considering their historical prestige and high player value, the overall score remains stable."
-    },
-    "pos": {
-      "score": 7.65,
-      "trend": "+",
-      "reason_zh": "作為小組第一晉級，並擁有良好淨勝球，顯示其在比賽中具備控球能力與主導權。考量其歷史底蘊與高昂身價，綜合評分略有提升。",
-      "reason_en": "Qualifying as group winners with a strong goal difference indicates their ability to control possession and dominate matches. Considering their historical prestige and high player value, the overall score has slightly increased."
-    },
-    "dis": {
-      "score": 7,
-      "trend": "=",
-      "reason_zh": "三場比賽保持不敗，顯示球隊紀律性良好，未出現明顯犯規問題。考量其歷史底蘊與高昂身價，綜合評分保持穩定。",
-      "reason_en": "Remaining undefeated in three matches indicates good team discipline with no significant foul issues. Considering their historical prestige and high player value, the overall score remains stable."
-    },
-    "frm": {
-      "score": 7.95,
-      "trend": "+",
-      "reason_zh": "以2勝1和0敗的戰績小組第一晉級，顯示球隊狀態極佳。考量其歷史底蘊與高昂身價，綜合評分獲得顯著提升。",
-      "reason_en": "Qualifying as group winners with 2 wins, 1 draw, and 0 losses demonstrates excellent team form. Considering their historical prestige and high player value, the overall score has significantly improved."
-    }
-  },
-  "Japan": {
-    "atk": {
-      "score": 7.3,
-      "trend": "+",
-      "reason_zh": "在三場比賽中攻入7球，進攻火力表現良好。考量其歷史底蘊與高昂身價，綜合評分獲得提升。",
-      "reason_en": "Scoring 7 goals in three matches shows good attacking prowess. Considering their historical prestige and player value, the overall score has improved."
-    },
-    "def": {
-      "score": 7.3,
-      "trend": "+",
-      "reason_zh": "三場比賽僅失3球，防守表現穩固，顯示其防線組織良好。考量其歷史底蘊與高昂身價，綜合評分獲得提升。",
-      "reason_en": "Conceding only 3 goals in three matches demonstrates solid defensive performance and good defensive organization. Considering their historical prestige and player value, the overall score has improved."
-    },
-    "pos": {
-      "score": 7.15,
-      "trend": "+",
-      "reason_zh": "以不敗戰績小組第二晉級，顯示其在比賽中具備一定的控球能力。考量其歷史底蘊與高昂身價，綜合評分略有提升。",
-      "reason_en": "Qualifying as group runners-up undefeated indicates their ability to maintain some possession and control in matches. Considering their historical prestige and high player value, the overall score has slightly increased."
-    },
-    "dis": {
-      "score": 7.5,
-      "trend": "=",
-      "reason_zh": "三場比賽保持不敗，顯示球隊紀律性良好，未出現明顯犯規問題。考量其歷史底蘊與高昂身價，綜合評分保持穩定。",
-      "reason_en": "Remaining undefeated in three matches indicates good team discipline with no significant foul issues. Considering their historical prestige and high player value, the overall score remains stable."
-    },
-    "frm": {
-      "score": 7.15,
-      "trend": "+",
-      "reason_zh": "以1勝2和0敗的戰績小組第二晉級，顯示球隊狀態良好。考量其歷史底蘊與高昂身價，綜合評分獲得提升。",
-      "reason_en": "Qualifying as group runners-up with 1 win, 2 draws, and 0 losses demonstrates good team form. Considering their historical prestige and high player value, the overall score has improved."
-    }
-  },
-  "Sweden": {
-    "atk": {
-      "score": 7.3,
-      "trend": "+",
-      "reason_zh": "儘管考量其歷史底蘊，但本屆世界盃三場比賽攻入七球，進攻火力顯著提升。",
-      "reason_en": "Despite considering their historical foundation, they scored seven goals in three World Cup matches, significantly boosting their attacking prowess."
-    },
-    "def": {
-      "score": 6.1,
-      "trend": "-",
-      "reason_zh": "考量其防守底蘊，但本屆世界盃失球七個，防線表現令人擔憂，綜合評分下修。",
-      "reason_en": "Considering their defensive foundation, but conceding seven goals in this World Cup raises concerns about their backline, leading to a downward adjustment."
-    },
-    "pos": {
-      "score": 6,
-      "trend": "=",
-      "reason_zh": "球隊控球能力維持中等水平，戰術上未見顯著變化，注重攻防轉換。",
-      "reason_en": "The team's possession ability remains moderate, with no significant tactical changes observed, focusing on transitions."
-    },
-    "dis": {
-      "score": 7.5,
-      "trend": "=",
-      "reason_zh": "球隊紀律性保持穩定，未有因犯規問題影響比賽走勢的跡象。",
-      "reason_en": "Team discipline remains stable, with no indications of fouling issues affecting game outcomes."
-    },
-    "frm": {
-      "score": 6.8,
-      "trend": "+",
-      "reason_zh": "儘管戰績平平，但成功晉級淘汰賽，顯示其在關鍵時刻的穩定性，綜合評分微幅上調。",
-      "reason_en": "Despite mixed results, they successfully advanced to the knockout stage, demonstrating stability in crucial moments, leading to a slight upward adjustment."
-    }
-  },
-  "Tunisia": {
-    "atk": {
-      "score": 4.1,
-      "trend": "-",
-      "reason_zh": "考量其歷史進攻能力，但本屆世界盃僅攻入兩球，火力嚴重不足，綜合評分大幅下修。",
-      "reason_en": "Considering their historical attacking ability, but scoring only two goals in this World Cup shows a severe lack of firepower, leading to a significant downward adjustment."
-    },
-    "def": {
-      "score": 4.5,
-      "trend": "-",
-      "reason_zh": "儘管考量其防守底蘊，但本屆世界盃失球高達十二個，防線崩潰，綜合評分大幅下修。",
-      "reason_en": "Despite considering their defensive foundation, conceding twelve goals in this World Cup indicates a defensive collapse, leading to a significant downward adjustment."
-    },
-    "pos": {
-      "score": 4.7,
-      "trend": "-",
-      "reason_zh": "球隊在比賽中難以有效控球，導致防守壓力巨大，控球能力評分下調。",
-      "reason_en": "The team struggled to effectively control possession during matches, leading to immense defensive pressure, thus lowering the possession score."
-    },
-    "dis": {
-      "score": 6.5,
-      "trend": "=",
-      "reason_zh": "儘管戰績不佳，球隊紀律性尚可，未見嚴重犯規問題。",
-      "reason_en": "Despite poor results, team discipline was acceptable, with no serious fouling issues observed."
-    },
-    "frm": {
-      "score": 3.8,
-      "trend": "-",
-      "reason_zh": "三戰皆墨且被淘汰，球隊整體狀態低迷，綜合評分大幅下修。",
-      "reason_en": "Lost all three matches and were eliminated; the team's overall form is dismal, leading to a significant downward adjustment."
-    }
-  },
-  "England": {
-    "atk": {
-      "score": 8.7,
-      "trend": "+",
-      "reason_zh": "進攻端表現出色，三場比賽攻入六球，顯示強大火力。",
-      "reason_en": "Excellent attacking performance, scoring six goals in three matches, demonstrating strong firepower."
+      "reason_zh": "進攻火力全開，三場比賽攻入10球，展現強大得分能力。儘管歷史底蘊已高，近期表現更為突出。",
+      "reason_en": "Exceptional attacking prowess, scoring 10 goals in three matches, demonstrating strong offensive capabilities. While historically strong, recent performance is even more impressive."
     },
     "def": {
       "score": 8.2,
       "trend": "+",
-      "reason_zh": "防守穩固，三場比賽僅失兩球，展現良好紀律性。",
-      "reason_en": "Solid defense, conceding only two goals in three matches, showing good discipline."
+      "reason_zh": "防線穩固，三場僅失4球，確保小組第一出線。考量其歷史防守實力，表現符合預期。",
+      "reason_en": "Solid defense, conceding only 4 goals in three matches, securing top spot in the group. Consistent with their historical defensive strength."
     },
     "pos": {
-      "score": 8,
-      "trend": "=",
-      "reason_zh": "作為小組第一晉級，顯示其在比賽中能有效控制節奏。",
-      "reason_en": "Qualified as group winners, indicating effective control of game tempo."
+      "score": 8.2,
+      "trend": "+",
+      "reason_zh": "控球能力強，有效掌控比賽節奏，助其以小組頭名晉級。其戰術執行力良好。",
+      "reason_en": "Strong possession, effectively controlling game tempo, leading to group qualification. Their tactical execution is good."
     },
     "dis": {
-      "score": 7.5,
+      "score": 8,
       "trend": "=",
-      "reason_zh": "比賽結果未顯示紀律問題，維持一貫的良好表現。",
-      "reason_en": "Match results show no disciplinary issues, maintaining consistent good conduct."
+      "reason_zh": "比賽紀律性良好，未見明顯犯規問題，維持穩定表現。符合其一貫的比賽風格。",
+      "reason_en": "Good match discipline, no significant foul issues, maintaining stable performance. Consistent with their usual playing style."
+    },
+    "frm": {
+      "score": 8.8,
+      "trend": "+",
+      "reason_zh": "世界盃小組賽保持不敗，以小組第一晉級，整體狀態極佳。儘管賽前已受看好，表現更勝預期。",
+      "reason_en": "Unbeaten in the World Cup group stage, qualifying as group winners, showing excellent overall form. Exceeding pre-tournament expectations."
+    }
+  },
+  "Japan": {
+    "atk": {
+      "score": 8.1,
+      "trend": "+",
+      "reason_zh": "進攻端表現出色，三場比賽攻入7球，展現強大得分能力。儘管歷史底蘊已高，近期表現更為突出。",
+      "reason_en": "Excellent attacking performance, scoring 7 goals in three matches, demonstrating strong scoring ability. While historically strong, recent performance is even more impressive."
+    },
+    "def": {
+      "score": 7.8,
+      "trend": "+",
+      "reason_zh": "防守穩健，三場比賽僅失3球，有效限制對手進攻。儘管歷史底蘊已高，近期表現更為突出。",
+      "reason_en": "Solid defense, conceding only 3 goals in three matches, effectively limiting opponent attacks. While historically strong, recent performance is even more impressive."
+    },
+    "pos": {
+      "score": 7.8,
+      "trend": "=",
+      "reason_zh": "控球能力穩定，能夠有效組織進攻並控制比賽節奏。其戰術執行力良好。",
+      "reason_en": "Stable possession, capable of effectively organizing attacks and controlling game tempo. Their tactical execution is good."
+    },
+    "dis": {
+      "score": 8.5,
+      "trend": "=",
+      "reason_zh": "比賽紀律性良好，未見明顯犯規問題，維持穩定表現。符合其一貫的比賽風格。",
+      "reason_en": "Good match discipline, no significant foul issues, maintaining stable performance. Consistent with their usual playing style."
+    },
+    "frm": {
+      "score": 8,
+      "trend": "+",
+      "reason_zh": "世界盃小組賽保持不敗，成功晉級淘汰賽，整體狀態良好。儘管賽前已受看好，表現更勝預期。",
+      "reason_en": "Unbeaten in the World Cup group stage, successfully advancing to the knockout stage, showing good overall form. Exceeding pre-tournament expectations."
+    }
+  },
+  "Sweden": {
+    "atk": {
+      "score": 8,
+      "trend": "+",
+      "reason_zh": "儘管預選賽表現不穩，但考量其進攻天賦與世界盃三場攻入七球的表現，綜合評分有所提升。",
+      "reason_en": "Despite inconsistent qualifiers, considering their attacking talent and seven goals in three World Cup matches, the overall score has improved."
+    },
+    "def": {
+      "score": 6,
+      "trend": "-",
+      "reason_zh": "考量其賽前防守策略，但世界盃三場失七球，尤其對荷蘭失五球，防線漏洞明顯，綜合評分有所下調。",
+      "reason_en": "Considering their pre-tournament defensive strategy, but conceding seven goals in three World Cup matches, including five against the Netherlands, revealed clear defensive vulnerabilities, leading to a score reduction."
+    },
+    "pos": {
+      "score": 5.5,
+      "trend": "=",
+      "reason_zh": "戰術風格傾向高位逼搶與快速反擊，而非控球主導，符合其教練波特所強調的垂直打法。",
+      "reason_en": "Tactical style favors high pressing and quick counter-attacks over possession dominance, aligning with coach Potter's vertical play."
+    },
+    "dis": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "世界盃賽事中未見明顯紀律問題，整體表現符合預期。",
+      "reason_en": "No significant disciplinary issues observed in World Cup matches, with overall performance meeting expectations."
+    },
+    "frm": {
+      "score": 6.2,
+      "trend": "=",
+      "reason_zh": "世界盃小組賽一勝一和一負，成功晉級，儘管有大比分失利，但整體表現尚可。",
+      "reason_en": "Qualified from the World Cup group stage with one win, one draw, and one loss, demonstrating resilience despite a heavy defeat."
+    }
+  },
+  "Tunisia": {
+    "atk": {
+      "score": 3.5,
+      "trend": "-",
+      "reason_zh": "考量其賽前進攻火力不足的擔憂，世界盃三場僅攻入兩球，表現持續低迷，綜合評分大幅下調。",
+      "reason_en": "Considering pre-tournament concerns about their attacking output, scoring only two goals in three World Cup matches, their performance remained poor, leading to a significant score reduction."
+    },
+    "def": {
+      "score": 6.6,
+      "trend": "-",
+      "reason_zh": "考量其預選賽零失球的優異防守紀錄，但世界盃三場失十二球，防線徹底崩潰，綜合評分大幅下調。",
+      "reason_en": "Considering their excellent zero-goal conceded record in qualifiers, but conceding twelve goals in three World Cup matches, their defense completely collapsed, leading to a significant score reduction."
+    },
+    "pos": {
+      "score": 4.5,
+      "trend": "=",
+      "reason_zh": "戰術側重防守穩固與快速反擊，不追求控球權，符合其傳統保守打法。",
+      "reason_en": "Tactical approach emphasizes defensive solidity and quick counter-attacks, not possession, aligning with their traditional conservative style."
+    },
+    "dis": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "世界盃賽事中未見明顯紀律問題，整體表現符合預期。",
+      "reason_en": "No significant disciplinary issues observed in World Cup matches, with overall performance meeting expectations."
+    },
+    "frm": {
+      "score": 3.4,
+      "trend": "-",
+      "reason_zh": "世界盃小組賽三戰皆墨，慘遭淘汰，整體狀態急劇下滑。",
+      "reason_en": "Lost all three World Cup group stage matches and were eliminated, indicating a significant downturn in overall form."
+    }
+  },
+  "England": {
+    "atk": {
+      "score": 8.8,
+      "trend": "+",
+      "reason_zh": "英格蘭在小組賽中攻入6球，展現強勁進攻火力，儘管考量其歷史底蘊與高昂身價，綜合評分仍顯著提升。",
+      "reason_en": "England scored 6 goals in 3 matches, demonstrating strong attacking prowess, leading to a significant score increase despite already high baseline."
+    },
+    "def": {
+      "score": 8.5,
+      "trend": "+",
+      "reason_zh": "英格蘭在三場比賽中僅失2球，防守表現穩固，儘管考量其歷史底蘊與高昂身價，綜合評分仍顯著提升。",
+      "reason_en": "England conceded only 2 goals in three matches, showing solid defensive performance, resulting in a notable score improvement."
+    },
+    "pos": {
+      "score": 8.2,
+      "trend": "+",
+      "reason_zh": "英格蘭以小組第一出線，顯示其對比賽的良好掌控力，儘管考量其歷史底蘊與高昂身價，綜合評分微幅上調。",
+      "reason_en": "England qualified as group winner, indicating good game control, leading to a slight score increase given their historical strength."
+    },
+    "dis": {
+      "score": 7.7,
+      "trend": "+",
+      "reason_zh": "英格蘭以不敗戰績晉級，整體紀律性良好，儘管考量其歷史底蘊與高昂身價，綜合評分微幅上調。",
+      "reason_en": "England advanced undefeated, suggesting good overall discipline, thus leading to a slight score increase considering their baseline."
     },
     "frm": {
       "score": 8.7,
       "trend": "+",
-      "reason_zh": "小組賽兩勝一和，以不敗戰績晉級，狀態極佳。",
-      "reason_en": "Undefeated in the group stage with two wins and one draw, showing excellent form."
+      "reason_zh": "英格蘭在小組賽中取得2勝1和0負的佳績，以不敗之姿晉級，儘管考量其歷史底蘊與高昂身價，綜合評分顯著提升。",
+      "reason_en": "England achieved 2 wins, 1 draw, and 0 losses in the group stage, qualifying undefeated, resulting in a significant form increase."
     }
   },
   "Croatia": {
     "atk": {
-      "score": 7.5,
+      "score": 7.6,
       "trend": "=",
-      "reason_zh": "三場比賽攻入五球，進攻效率尚可，但仍有提升空間。",
-      "reason_en": "Scored five goals in three matches, decent attacking efficiency, but room for improvement."
+      "reason_zh": "克羅埃西亞在小組賽中攻入5球，進攻表現尚可，儘管考量其歷史底蘊與高昂身價，綜合評分保持穩定。",
+      "reason_en": "Croatia scored 5 goals in 3 matches, showing decent attacking performance, maintaining a stable score given their baseline."
     },
     "def": {
-      "score": 7.2,
+      "score": 7,
       "trend": "-",
-      "reason_zh": "防守端失五球，表現不如預期，需加強後防穩定性。儘管考量歷史底蘊，綜合評分仍微幅下修。",
-      "reason_en": "Conceded five goals, a weaker defensive performance than expected, needing improved backline stability. Despite historical prestige, the overall score is slightly reduced."
+      "reason_zh": "克羅埃西亞在三場比賽中失5球，防守端表現不佳，儘管考量其歷史底蘊與高昂身價，綜合評分微幅下修。",
+      "reason_en": "Croatia conceded 5 goals in three matches, indicating a weak defensive performance, leading to a slight score decrease."
     },
     "pos": {
-      "score": 7.8,
+      "score": 8,
       "trend": "=",
-      "reason_zh": "儘管晉級，但淨勝球為零，顯示對比賽的控制力有待加強。",
-      "reason_en": "Despite qualifying, a zero goal difference suggests room for improvement in game control."
+      "reason_zh": "克羅埃西亞以小組第二晉級，顯示其對比賽的掌控力穩定，儘管考量其歷史底蘊與高昂身價，綜合評分保持穩定。",
+      "reason_en": "Croatia qualified as group runner-up, demonstrating stable game control, thus maintaining a consistent score."
     },
     "dis": {
-      "score": 7.5,
+      "score": 8,
       "trend": "=",
-      "reason_zh": "比賽結果未顯示紀律問題，維持一貫的良好表現。",
-      "reason_en": "Match results show no disciplinary issues, maintaining consistent good conduct."
+      "reason_zh": "克羅埃西亞以晉級資格出線，整體紀律性良好，儘管考量其歷史底蘊與高昂身價，綜合評分保持穩定。",
+      "reason_en": "Croatia qualified for the next round, showing good overall discipline, maintaining a stable score given their baseline."
     },
     "frm": {
-      "score": 7.8,
-      "trend": "=",
-      "reason_zh": "小組賽兩勝一敗，成功晉級，但整體狀態仍有提升空間。儘管首戰失利，考量其歷史底蘊，綜合評分僅微幅下修。",
-      "reason_en": "Qualified with two wins and one loss in the group stage, but overall form still has room for improvement. Despite an early loss, considering historical prestige, the overall score is only slightly reduced."
+      "score": 7.3,
+      "trend": "-",
+      "reason_zh": "克羅埃西亞在小組賽中取得2勝0和1負的戰績，儘管晉級，但失球數偏高，綜合評分微幅下修。",
+      "reason_en": "Croatia achieved 2 wins, 0 draws, and 1 loss in the group stage; despite qualifying, high goals conceded led to a slight form decrease."
     }
   },
   "Ghana": {
     "atk": {
-      "score": 6.05,
+      "score": 6.5,
       "trend": "=",
-      "reason_zh": "進攻火力不足，三場比賽僅攻入兩球，效率有待提升。儘管考量其歷史底蘊與球員身價，綜合評分僅微幅下修。",
-      "reason_en": "Insufficient attacking prowess, only scored two goals in three matches, efficiency needs improvement. Despite historical prestige and player value, the overall score is only slightly adjusted downwards."
+      "reason_zh": "世界盃三場比賽攻入兩球，進攻效率一般但足以晉級。考量其歷史底蘊與球員身價，綜合評分持平。",
+      "reason_en": "Scored two goals in three World Cup matches, showing average attacking efficiency but enough to qualify. Considering historical standing and player value, the overall score is stable."
     },
     "def": {
-      "score": 6.8,
+      "score": 7.5,
       "trend": "+",
-      "reason_zh": "防守表現穩健，三場比賽僅失兩球，顯示良好紀律性。考量其歷史底蘊與球員身價，綜合評分微幅上修。",
-      "reason_en": "Solid defensive performance, conceded only two goals in three matches, showing good discipline. Considering historical prestige and player value, the overall score is slightly adjusted upwards."
+      "reason_zh": "世界盃三場比賽僅失兩球，防守表現穩健。儘管預期不低，但實際成績優於預期，綜合評分略升。",
+      "reason_en": "Conceded only two goals in three World Cup matches, demonstrating solid defensive performance. Despite decent pre-tournament expectations, actual results exceeded them, leading to a slight increase in overall score."
     },
     "pos": {
       "score": 6,
       "trend": "=",
-      "reason_zh": "控球數據未直接提供，但從戰績看來，中場控制力尚可。考量其歷史底蘊與球員身價，綜合評分維持穩定。",
-      "reason_en": "Possession data not directly provided, but based on results, midfield control is acceptable. Considering historical prestige and player value, the overall score remains stable."
+      "reason_zh": "世界盃戰績顯示其控球能力中等，更注重戰術執行。考量其傳統球風，綜合評分保持穩定。",
+      "reason_en": "World Cup results suggest moderate possession, with a focus on tactical execution. Considering their traditional playing style, the overall score remains stable."
     },
     "dis": {
       "score": 7,
       "trend": "=",
-      "reason_zh": "比賽紀律性良好，未有嚴重犯規紀錄，保持了比賽的公平性。考量其歷史底蘊與球員身價，綜合評分維持穩定。",
-      "reason_en": "Good match discipline, no record of serious fouls, maintaining fair play. Considering historical prestige and player value, the overall score remains stable."
+      "reason_zh": "世界盃比賽中未顯示明顯紀律問題。考量其球隊風格，綜合評分保持穩定。",
+      "reason_en": "No significant disciplinary issues observed in World Cup matches. Considering the team's style, the overall score remains stable."
     },
     "frm": {
-      "score": 6.65,
+      "score": 7,
       "trend": "+",
-      "reason_zh": "小組賽一勝一和一負，成功晉級，整體狀態良好。儘管首戰失利，但考量其歷史底蘊與高昂身價，綜合評分微幅上修。",
-      "reason_en": "One win, one draw, one loss in the group stage, successfully qualified, overall form is good. Despite an initial loss, considering historical prestige and high player value, the overall score is slightly adjusted upwards."
+      "reason_zh": "世界盃小組賽一勝一和一負並成功晉級，表現符合預期。儘管預期不低，但實際成績優於預期，綜合評分略升。",
+      "reason_en": "Qualified from the World Cup group stage with one win, one draw, and one loss, meeting expectations. Despite decent pre-tournament expectations, actual results exceeded them, leading to a slight increase in overall score."
     }
   },
   "Panama": {
     "atk": {
-      "score": 3.1,
+      "score": 2,
       "trend": "-",
-      "reason_zh": "進攻端表現乏力，三場比賽未能攻入任何一球，缺乏威脅。考量其歷史底蘊與球員身價，綜合評分顯著下修。",
-      "reason_en": "Weak attacking performance, failed to score any goals in three matches, lacking threat. Considering historical prestige and player value, the overall score is significantly adjusted downwards."
+      "reason_zh": "世界盃三場比賽未能攻入任何一球，進攻端表現極差。考量其歷史底蘊與球員身價，綜合評分大幅下修。",
+      "reason_en": "Failed to score any goals in three World Cup matches, indicating extremely poor attacking performance. Considering historical standing and player value, the overall score is significantly downgraded."
     },
     "def": {
-      "score": 4.2,
+      "score": 3,
       "trend": "-",
-      "reason_zh": "防守端表現不佳，三場比賽失四球，未能有效抵擋對手攻勢。考量其歷史底蘊與球員身價，綜合評分顯著下修。",
-      "reason_en": "Poor defensive performance, conceded four goals in three matches, unable to effectively resist opponent attacks. Considering historical prestige and player value, the overall score is significantly adjusted downwards."
+      "reason_zh": "世界盃三場比賽失四球，防守表現不佳。儘管預期不高，但實際成績仍低於預期，綜合評分下修。",
+      "reason_en": "Conceded four goals in three World Cup matches, indicating poor defensive performance. Despite low pre-tournament expectations, actual results were still below them, leading to a downgrade in overall score."
     },
     "pos": {
-      "score": 3.7,
+      "score": 2.5,
       "trend": "-",
-      "reason_zh": "控球能力不足，難以在比賽中掌握主動權，導致被動。考量其歷史底蘊與球員身價，綜合評分顯著下修。",
-      "reason_en": "Insufficient possession ability, struggled to take the initiative in matches, leading to a passive game. Considering historical prestige and player value, the overall score is significantly adjusted downwards."
+      "reason_zh": "世界盃戰績顯示其控球能力不足，難以掌握比賽節奏。考量其球隊實力，綜合評分大幅下修。",
+      "reason_en": "World Cup results indicate insufficient possession, struggling to control game tempo. Considering the team's strength, the overall score is significantly downgraded."
     },
     "dis": {
-      "score": 6,
+      "score": 5,
       "trend": "=",
-      "reason_zh": "比賽紀律性尚可，但整體表現不佳可能影響士氣。考量其歷史底蘊與球員身價，綜合評分維持穩定。",
-      "reason_en": "Match discipline is acceptable, but overall poor performance may affect morale. Considering historical prestige and player value, the overall score remains stable."
+      "reason_zh": "世界盃比賽中未顯示明顯紀律問題。考量其球隊風格，綜合評分保持穩定。",
+      "reason_en": "No significant disciplinary issues observed in World Cup matches. Considering the team's style, the overall score remains stable."
     },
     "frm": {
-      "score": 3.1,
+      "score": 2,
       "trend": "-",
-      "reason_zh": "小組賽三戰皆墨，積分為零，狀態極差並已遭淘汰。考量其歷史底蘊與球員身價，綜合評分顯著下修。",
-      "reason_en": "Lost all three group stage matches, zero points, extremely poor form and eliminated. Considering historical prestige and player value, the overall score is significantly adjusted downwards."
+      "reason_zh": "世界盃小組賽三戰全敗且被淘汰，狀態極差。考量其歷史底蘊與球員身價，綜合評分大幅下修。",
+      "reason_en": "Lost all three World Cup group stage matches and was eliminated, indicating extremely poor form. Considering historical standing and player value, the overall score is significantly downgraded."
     }
   },
   "Senegal": {
     "atk": {
-      "score": 7.5,
+      "score": 8,
       "trend": "+",
-      "reason_zh": "儘管戰績不穩，但三場比賽攻入八球，顯示其進攻火力強勁。考量歷史底蘊與球員身價，綜合評分僅微幅下修，進攻表現超出預期。",
-      "reason_en": "Despite inconsistent results, scoring eight goals in three matches demonstrates strong attacking prowess. Considering historical standing and player value, the overall score was only slightly adjusted downwards, and their offensive performance exceeded expectations."
+      "reason_zh": "儘管戰績不佳，但三場比賽攻入8球顯示其進攻火力強大，特別是考慮到歷史底蘊與球員身價。",
+      "reason_en": "Despite mixed results, scoring 8 goals in three matches highlights strong attacking prowess, especially considering historical prestige and player value."
     },
     "def": {
-      "score": 5.5,
+      "score": 6.5,
       "trend": "-",
-      "reason_zh": "三場比賽失六球，防守端仍有待加強。考量歷史底蘊，綜合評分維持中等，防守穩定性需提升。",
-      "reason_en": "Conceding six goals in three matches indicates room for improvement in defense. Considering historical standing, the overall score remains medium, and defensive stability needs to be enhanced."
+      "reason_zh": "三場比賽失6球顯示防守端存在漏洞，儘管歷史上防守穩固，但近期表現有所下滑。",
+      "reason_en": "Conceding 6 goals in three matches indicates defensive vulnerabilities, a slight drop from their historically solid defense."
     },
     "pos": {
-      "score": 6,
+      "score": 6.5,
       "trend": "=",
-      "reason_zh": "儘管晉級，但兩場失利顯示控球能力仍有提升空間。綜合歷史表現與本屆賽事，控球能力維持中等水平。",
-      "reason_en": "Despite qualifying, two losses suggest room for improvement in possession. Overall, based on historical performance and current tournament, possession remains at a medium level."
+      "reason_zh": "控球數據未直接顯示，但其比賽風格與進失球數暗示控球能力維持中等水平。",
+      "reason_en": "Possession data is not directly available, but their playing style and goal statistics suggest average possession capabilities."
     },
     "dis": {
-      "score": 6.5,
+      "score": 7,
       "trend": "=",
-      "reason_zh": "賽事數據未顯示明顯紀律問題。考量其歷史表現與本屆賽事，球隊紀律性維持穩定。",
-      "reason_en": "Match data does not indicate significant disciplinary issues. Considering their historical performance and current tournament, team discipline remains stable."
+      "reason_zh": "缺乏紀律性數據，但作為一支專業球隊，其紀律性預計保持穩定。",
+      "reason_en": "Lacking specific disciplinary data, but as a professional team, their discipline is expected to remain stable."
     },
     "frm": {
-      "score": 6.5,
+      "score": 6.8,
       "trend": "=",
-      "reason_zh": "三場比賽一勝兩負，但成功晉級。綜合歷史底蘊與本屆表現，整體狀態符合預期，評分維持穩定。",
-      "reason_en": "One win and two losses in three matches, but successfully qualified. Considering historical standing and current performance, overall form met expectations, and the score remains stable."
+      "reason_zh": "三場比賽一勝兩敗，但仍成功晉級，儘管首輪表現不盡理想，但綜合評分僅微幅下修。",
+      "reason_en": "One win and two losses in three matches, yet they qualified. Despite a mixed initial performance, the overall form score is slightly adjusted downwards."
     }
   },
   "Norway": {
     "atk": {
-      "score": 8.5,
+      "score": 8.8,
       "trend": "+",
-      "reason_zh": "挪威隊在世界盃小組賽攻入八球，顯示其進攻火力強勁，儘管考量其歷史底蘊，綜合評分仍因世界盃表現而上修。",
-      "reason_en": "Norway scored eight goals in the World Cup group stage, demonstrating strong attacking power; despite their historical background, the overall score is upgraded due to their World Cup performance."
+      "reason_zh": "挪威隊在三場比賽中攻入八球，進攻火力強勁，特別是明星球員的個人能力突出。考量其歷史底蘊與高昂身價，綜合評分顯著提升。",
+      "reason_en": "Norway scored eight goals in three matches, showcasing strong attacking power, particularly through the individual brilliance of their star players. Considering their historical prestige and high player value, the overall score has significantly improved."
     },
     "def": {
-      "score": 6.2,
+      "score": 6.5,
       "trend": "-",
-      "reason_zh": "挪威隊在世界盃小組賽失七球，防線表現不穩，儘管考量其歷史底蘊，綜合評分仍因世界盃表現而下修。",
-      "reason_en": "Norway conceded seven goals in the World Cup group stage, showing an unstable defense; despite their historical background, the overall score is downgraded due to their World Cup performance."
+      "reason_zh": "挪威隊在三場比賽中失七球，防守端存在明顯漏洞，需要加強後防組織與穩定性。考量其歷史底蘊與高昂身價，綜合評分微幅下修。",
+      "reason_en": "Norway conceded seven goals in three matches, indicating clear defensive vulnerabilities that require improved organization and stability. Considering their historical prestige and high player value, the overall score has slightly declined."
     },
     "pos": {
       "score": 7.5,
       "trend": "=",
-      "reason_zh": "儘管數據未直接顯示控球率，但其兩勝一負的戰績顯示具備一定的比賽控制能力。",
-      "reason_en": "Although possession statistics are not directly shown, their record of two wins and one loss indicates a certain level of match control."
+      "reason_zh": "挪威隊雖成功晉級，但失球數較多，顯示其對比賽節奏的控制力仍有提升空間。考量其歷史底蘊與高昂身價，綜合評分保持穩定。",
+      "reason_en": "While Norway successfully qualified, the high number of goals conceded suggests there is room for improvement in their control over match tempo. Considering their historical prestige and high player value, the overall score remains stable."
     },
     "dis": {
-      "score": 7.8,
+      "score": 7.5,
       "trend": "=",
-      "reason_zh": "挪威隊預計紀律性處於平均水平，世界盃表現未顯示明顯問題。",
-      "reason_en": "Norway is expected to have average discipline, and their World Cup performance showed no significant issues."
+      "reason_zh": "挪威隊在小組賽中表現出尚可的紀律性，未有嚴重犯規影響晉級。考量其歷史底蘊與高昂身價，綜合評分保持穩定。",
+      "reason_en": "Norway demonstrated acceptable discipline in the group stage, with no serious fouls impacting their qualification. Considering their historical prestige and high player value, the overall score remains stable."
     },
     "frm": {
-      "score": 8,
-      "trend": "+",
-      "reason_zh": "挪威隊在世界盃小組賽兩勝一負，成功晉級，整體狀態良好。",
-      "reason_en": "Norway achieved two wins and one loss in the World Cup group stage, successfully qualifying, and showing good overall form."
+      "score": 7.7,
+      "trend": "=",
+      "reason_zh": "挪威隊以兩勝一負的戰績晉級，整體狀態良好，但防守問題仍需關注。考量其歷史底蘊與高昂身價，綜合評分保持穩定。",
+      "reason_en": "Norway qualified with two wins and one loss, showing good overall form, but defensive issues remain a concern. Considering their historical prestige and high player value, the overall score remains stable."
     }
   },
   "Iraq": {
     "atk": {
-      "score": 2,
+      "score": 2.5,
       "trend": "-",
-      "reason_zh": "三場比賽僅攻入一球，進攻火力嚴重不足。考量歷史底蘊與本屆表現，綜合評分大幅下修，進攻端遠低於預期。",
-      "reason_en": "Scoring only one goal in three matches indicates a severe lack of attacking power. Considering historical standing and current performance, the overall score was significantly adjusted downwards, and their offense is far below expectations."
+      "reason_zh": "三場比賽僅攻入1球，進攻火力極度疲軟，遠低於預期，綜合評分顯著下修。",
+      "reason_en": "Scoring only 1 goal in three matches indicates extremely weak attacking power, significantly below expectations, leading to a notable score reduction."
     },
     "def": {
       "score": 1.5,
-      "trend": "-",
-      "reason_zh": "三場比賽失十二球，防守形同虛設。綜合歷史底蘊與本屆表現，綜合評分大幅下修，防守端表現極差。",
-      "reason_en": "Conceding twelve goals in three matches shows a virtually non-existent defense. Considering historical standing and current performance, the overall score was significantly adjusted downwards, and their defense performed extremely poorly."
+      "trend": "--",
+      "reason_zh": "三場比賽失12球，防守表現災難性，顯示防線存在嚴重問題，綜合評分大幅下修。",
+      "reason_en": "Conceding 12 goals in three matches is a catastrophic defensive performance, highlighting severe issues in their backline, leading to a significant score reduction."
     },
     "pos": {
-      "score": 2,
+      "score": 3,
       "trend": "-",
-      "reason_zh": "零勝三敗的戰績顯示球隊難以掌控比賽節奏。考量歷史底蘊與本屆賽事，綜合評分大幅下修，控球能力表現不佳。",
-      "reason_en": "A record of zero wins and three losses indicates the team struggled to control game tempo. Considering historical standing and current tournament, the overall score was significantly adjusted downwards, and their possession ability was poor."
+      "reason_zh": "戰績慘淡且進失球數懸殊，推斷其控球能力極差，難以掌控比賽節奏。",
+      "reason_en": "Dismal results and a large goal difference suggest very poor possession capabilities, struggling to control game tempo."
     },
     "dis": {
-      "score": 5,
+      "score": 6,
       "trend": "=",
-      "reason_zh": "賽事數據未顯示明顯紀律問題。儘管戰績不佳，考量歷史表現，紀律性仍維持中等水平。",
-      "reason_en": "Match data does not indicate significant disciplinary issues. Despite poor results, considering historical performance, discipline remained at an average level."
+      "reason_zh": "缺乏紀律性數據，但考慮到其糟糕的戰績，球員情緒可能受到影響。",
+      "reason_en": "Lacking specific disciplinary data, but given their poor results, player morale might be affected."
     },
     "frm": {
-      "score": 1,
-      "trend": "-",
-      "reason_zh": "三場比賽全敗且遭到淘汰，整體狀態極差。綜合歷史底蘊與本屆表現，綜合評分大幅下修，球隊狀態令人擔憂。",
-      "reason_en": "Lost all three matches and were eliminated, indicating extremely poor overall form. Considering historical standing and current performance, the overall score was significantly adjusted downwards, and the team's form is concerning."
+      "score": 2,
+      "trend": "--",
+      "reason_zh": "三戰皆墨且已被淘汰，球隊狀態極差，綜合評分因近期表現大幅下修。",
+      "reason_en": "Three losses and eliminated, the team's form is extremely poor, leading to a significant score reduction due to recent performance."
     }
   },
   "Algeria": {
     "atk": {
-      "score": 7,
-      "trend": "+",
-      "reason_zh": "阿爾及利亞在三場比賽中攻入5球，顯示其進攻火力強勁。儘管考量歷史底蘊，近期世界盃表現使其進攻評分上調。",
-      "reason_en": "Algeria scored 5 goals in three matches, demonstrating strong attacking prowess. Despite historical context, recent World Cup performance has led to an upward adjustment in their attack rating."
+      "score": 6.7,
+      "trend": "=",
+      "reason_zh": "儘管世界盃小組賽進5球，但考量其歷史進攻底蘊與整體表現，進攻火力維持中等水平。",
+      "reason_en": "Despite scoring 5 goals in the World Cup group stage, considering their historical attacking prowess and overall performance, their offensive output remains moderate."
     },
     "def": {
-      "score": 5.5,
+      "score": 5.4,
       "trend": "-",
-      "reason_zh": "阿爾及利亞在三場比賽中失7球，防守端表現不佳。考量其歷史防守能力，近期世界盃表現使其防守評分下調。",
-      "reason_en": "Algeria conceded 7 goals in three matches, indicating a poor defensive showing. Considering their historical defensive capabilities, recent World Cup performance has led to a downward adjustment in their defense rating."
+      "reason_zh": "世界盃小組賽失7球，防守表現不佳，顯示防線存在明顯漏洞，綜合評分因此下修。",
+      "reason_en": "Conceding 7 goals in the World Cup group stage indicates poor defensive performance, revealing clear vulnerabilities in their backline, thus lowering the overall score."
     },
     "pos": {
-      "score": 5.8,
-      "trend": "-",
-      "reason_zh": "儘管成功晉級，但-2的淨勝球顯示阿爾及利亞在比賽控制方面仍有進步空間。綜合考量，評分略有下降。",
-      "reason_en": "Despite qualifying, a goal difference of -2 suggests Algeria still has room for improvement in game control. Overall, the rating has slightly decreased."
+      "score": 6,
+      "trend": "=",
+      "reason_zh": "儘管缺乏直接數據，但根據過往風格，球隊控球能力預計維持中等水平，戰術執行力尚可。",
+      "reason_en": "Although direct data is lacking, based on their past style, the team's possession ability is expected to remain moderate, with decent tactical execution."
     },
     "dis": {
-      "score": 6.5,
+      "score": 7,
       "trend": "=",
-      "reason_zh": "缺乏具體紀律性數據，故維持其賽前預期水平。",
-      "reason_en": "Lacking specific disciplinary data, the pre-tournament expectation is maintained."
+      "reason_zh": "世界盃小組賽無明顯紀律問題，球隊整體表現尚屬穩定，未出現重大犯規或爭議。",
+      "reason_en": "No significant disciplinary issues were observed in the World Cup group stage, indicating stable overall team conduct without major fouls or controversies."
     },
     "frm": {
-      "score": 6.3,
-      "trend": "+",
-      "reason_zh": "阿爾及利亞以1勝1和1負的戰績成功晉級，顯示其在世界盃開局階段表現穩健。儘管考量歷史底蘊，綜合評分微幅上調。",
-      "reason_en": "Algeria qualified with a record of 1 win, 1 draw, and 1 loss, indicating a steady start to their World Cup campaign. Despite historical context, the overall form rating has slightly increased."
+      "score": 6.5,
+      "trend": "=",
+      "reason_zh": "世界盃小組賽取得1勝1和1負，成功晉級，儘管表現不突出，但整體狀態穩定。",
+      "reason_en": "With 1 win, 1 draw, and 1 loss in the World Cup group stage, they successfully qualified, showing stable overall form despite not being outstanding."
     }
   },
   "Austria": {
     "atk": {
-      "score": 7,
+      "score": 6.8,
       "trend": "+",
-      "reason_zh": "小組賽攻入6球，進攻端有一定威脅，但面對強敵時效率仍需提升。",
-      "reason_en": "Scoring 6 goals in the group stage, their attack showed some threat, but efficiency against stronger opponents needs improvement."
+      "reason_zh": "奧地利世界盃攻入6球，顯示一定進攻能力。儘管考量歷史底蘊，其進攻表現略有提升。",
+      "reason_en": "Austria scored 6 goals in the World Cup, showing decent attacking ability. Considering historical baseline, their offensive performance has slightly improved."
     },
     "def": {
-      "score": 5.5,
+      "score": 6.1,
       "trend": "-",
-      "reason_zh": "失6球顯示防守端存在明顯漏洞，後防線穩定性不足，容易被對手突破。",
-      "reason_en": "Conceding 6 goals indicates clear defensive vulnerabilities, with insufficient stability in the backline, making them susceptible to opponents."
+      "reason_zh": "世界盃三戰失6球，防守端存在明顯漏洞。儘管考量歷史底蘊，其防守表現有所下滑。",
+      "reason_en": "Conceding 6 goals in three World Cup matches, there are clear defensive vulnerabilities. Considering historical baseline, their defensive performance has declined."
     },
     "pos": {
       "score": 6.5,
       "trend": "=",
-      "reason_zh": "控球能力中等，在面對技術型球隊時可能難以佔據主動，需加強中場控制。",
-      "reason_en": "Average possession ability, potentially struggling to dominate against technical teams, requiring stronger midfield control."
+      "reason_zh": "奧地利以小組第二晉級，顯示中場控制力尚可。儘管考量歷史底蘊，其控球能力保持穩定。",
+      "reason_en": "Austria qualified as group runner-up, indicating acceptable midfield control. Considering historical baseline, their possession ability remains stable."
     },
     "dis": {
       "score": 7,
       "trend": "=",
-      "reason_zh": "整體紀律性尚可，但面對壓力時可能出現犯規增多的情況，需保持冷靜。",
-      "reason_en": "Overall discipline is acceptable, but fouls may increase under pressure, requiring composure."
+      "reason_zh": "世界盃賽事中無明顯紀律問題，維持中等水準。儘管考量歷史底蘊，其紀律性保持穩定。",
+      "reason_en": "No significant disciplinary issues in the World Cup matches, maintaining average standards. Considering historical baseline, their discipline remains stable."
     },
     "frm": {
-      "score": 6.8,
+      "score": 6.5,
       "trend": "=",
-      "reason_zh": "一勝一和一負，以小組第二晉級，表現中規中矩，但仍有提升空間。儘管考量歷史底蘊，近期表現維持評分。",
-      "reason_en": "With one win, one draw, and one loss, they qualified as group second, a decent but not outstanding performance, with room for improvement. Recent performance maintains their score, considering historical prestige."
+      "reason_zh": "世界盃一勝一和一負，以小組第二晉級，整體狀態平穩。儘管考量歷史底蘊，其近期狀態保持穩定。",
+      "reason_en": "With one win, one draw, and one loss in the World Cup, qualifying as group runner-up, their overall form is stable. Considering historical baseline, their recent form remains stable."
     }
   },
   "Jordan": {
     "atk": {
-      "score": 2.9,
+      "score": 4.1,
       "trend": "-",
-      "reason_zh": "約旦在三場比賽中僅攻入3球，進攻火力嚴重不足。考量其歷史進攻能力，近期世界盃表現使其進攻評分大幅下調。",
-      "reason_en": "Jordan scored only 3 goals in three matches, showing a severe lack of attacking power. Considering their historical attacking capabilities, recent World Cup performance has led to a significant downward adjustment in their attack rating."
+      "reason_zh": "世界盃小組賽僅進3球，進攻火力明顯不足，未能有效威脅對手球門，綜合評分因此下修。",
+      "reason_en": "Scoring only 3 goals in the World Cup group stage, their attacking power is clearly insufficient, failing to effectively threaten opponents' goals, thus lowering the overall score."
     },
     "def": {
-      "score": 3,
+      "score": 3.4,
       "trend": "-",
-      "reason_zh": "約旦在三場比賽中失8球，防守端表現極其脆弱。考量其歷史防守能力，近期世界盃表現使其防守評分大幅下調。",
-      "reason_en": "Jordan conceded 8 goals in three matches, indicating extremely vulnerable defensive performance. Considering their historical defensive capabilities, recent World Cup performance has led to a significant downward adjustment in their defense rating."
+      "reason_zh": "世界盃小組賽失8球，防守端表現極差，防線漏洞百出，難以抵擋對手攻勢，綜合評分大幅下修。",
+      "reason_en": "Conceding 8 goals in the World Cup group stage, their defensive performance was extremely poor, with a leaky defense unable to withstand opponent attacks, significantly lowering the overall score."
     },
     "pos": {
-      "score": 2.7,
-      "trend": "-",
-      "reason_zh": "-5的淨勝球顯示約旦在比賽中難以掌控局面，控球能力與場上主導權嚴重不足。綜合考量，評分顯著下降。",
-      "reason_en": "A goal difference of -5 indicates Jordan struggled to control matches, lacking significant possession and dominance. Overall, the rating has significantly decreased."
-    },
-    "dis": {
-      "score": 5,
+      "score": 4.4,
       "trend": "=",
-      "reason_zh": "缺乏具體紀律性數據，故維持其賽前預期水平。",
-      "reason_en": "Lacking specific disciplinary data, the pre-tournament expectation is maintained."
-    },
-    "frm": {
-      "score": 2.4,
-      "trend": "-",
-      "reason_zh": "約旦以0勝0和3負的戰績被淘汰，顯示其在世界盃開局階段狀態極差。儘管考量歷史底蘊，綜合評分大幅下調。",
-      "reason_en": "Jordan was eliminated with a record of 0 wins, 0 draws, and 3 losses, indicating extremely poor form at the start of the World Cup. Despite historical context, the overall form rating has significantly decreased."
-    }
-  },
-  "Spain": {
-    "atk": {
-      "score": 8.8,
-      "trend": "=",
-      "reason_zh": "小組賽進5球，三場不敗顯示進攻穩定性。考量歷史底蘊與高昂身價，綜合評分維持高檔。",
-      "reason_en": "Five goals in the group stage and an undefeated run show offensive stability. Considering historical prestige and high player value, the overall score remains high."
-    },
-    "def": {
-      "score": 9.5,
-      "trend": "+",
-      "reason_zh": "三場比賽零失球，防守表現極為出色。儘管考量歷史底蘊，但世界盃表現顯著提升防守評分。",
-      "reason_en": "Zero goals conceded in three matches demonstrates exceptional defensive performance. While considering historical prestige, their World Cup showing significantly boosts the defensive rating."
-    },
-    "pos": {
-      "score": 9,
-      "trend": "=",
-      "reason_zh": "傳統上以控球見長，小組賽不敗顯示良好控制力。考量歷史底蘊與球員身價，綜合評分維持高檔。",
-      "reason_en": "Traditionally strong in possession, their undefeated group stage run indicates good game control. Considering historical prestige and player value, the overall score remains high."
-    },
-    "dis": {
-      "score": 8.8,
-      "trend": "=",
-      "reason_zh": "小組賽保持不敗，顯示球隊戰術紀律性良好。考量其歷史底蘊與高昂身價，綜合評分維持穩定。",
-      "reason_en": "Remaining undefeated in the group stage indicates good tactical discipline. Considering historical prestige and high player value, the overall score remains stable."
-    },
-    "frm": {
-      "score": 9.2,
-      "trend": "+",
-      "reason_zh": "小組賽兩勝一和，以小組第一出線，狀態極佳。儘管考量歷史底蘊，但世界盃表現顯著提升狀態評分。",
-      "reason_en": "Two wins and a draw in the group stage, qualifying as group winners, indicates excellent form. While considering historical prestige, their World Cup performance significantly boosts the form rating."
-    }
-  },
-  "Saudi Arabia": {
-    "atk": {
-      "score": 3,
-      "trend": "-",
-      "reason_zh": "考量其歷史進攻能力，本屆世界盃三場比賽僅進一球，進攻火力嚴重不足，綜合評分下修。",
-      "reason_en": "Considering their historical attacking capabilities, scoring only one goal in three World Cup matches indicates a severe lack of offensive power, leading to a downward score adjustment."
-    },
-    "def": {
-      "score": 3.5,
-      "trend": "-",
-      "reason_zh": "儘管努力防守，但本屆世界盃三場比賽失五球，防線顯然存在重大問題，綜合評分下修。",
-      "reason_en": "Despite defensive efforts, conceding five goals in three World Cup matches clearly indicates significant defensive issues, resulting in a downward score adjustment."
-    },
-    "pos": {
-      "score": 3,
-      "trend": "-",
-      "reason_zh": "歷史上控球能力較弱，本屆世界盃兩平一負，未能有效掌控比賽，綜合評分下修。",
-      "reason_en": "Historically weaker in possession, two draws and one loss in this World Cup show an inability to control matches, leading to a downward score adjustment."
+      "reason_zh": "預計控球率偏低，作為弱勢方，主要採取防守反擊戰術，控球能力受限。",
+      "reason_en": "Expected to have low possession; as an underdog, they primarily adopted a defensive counter-attacking strategy, limiting their ball control."
     },
     "dis": {
       "score": 6.5,
       "trend": "=",
-      "reason_zh": "歷史上紀律性一般，本屆世界盃表現未顯示明顯紀律問題，綜合評分持平。",
-      "reason_en": "Historically average in discipline, and no significant disciplinary issues were evident in this World Cup, maintaining a stable score."
+      "reason_zh": "世界盃小組賽未顯示嚴重紀律問題，儘管戰績不佳，但球隊整體表現尚可。",
+      "reason_en": "No serious disciplinary issues were observed in the World Cup group stage; despite poor results, the team's overall conduct was acceptable."
     },
     "frm": {
-      "score": 3.5,
+      "score": 3.1,
+      "trend": "-",
+      "reason_zh": "世界盃小組賽三戰皆墨，表現極差，未能取得任何積分，狀態低迷，綜合評分大幅下修。",
+      "reason_en": "Losing all three World Cup group stage matches, their performance was extremely poor, failing to secure any points, indicating low form, thus significantly lowering the overall score."
+    }
+  },
+  "Spain": {
+    "atk": {
+      "score": 8.5,
+      "trend": "+",
+      "reason_zh": "西班牙在三場比賽中攻入五球，顯示進攻效率良好。考量其歷史底蘊與高昂身價，綜合評分維持高檔。",
+      "reason_en": "Spain scored five goals in three matches, demonstrating good attacking efficiency. Considering their historical pedigree and high player value, the overall score remains high."
+    },
+    "def": {
+      "score": 9.5,
+      "trend": "+",
+      "reason_zh": "西班牙在三場比賽中保持零失球，防守表現極為出色，展現了頂級的防守紀律性與組織。",
+      "reason_en": "Spain kept a clean sheet in all three matches, showcasing extremely strong defensive performance and top-tier discipline and organization."
+    },
+    "pos": {
+      "score": 9,
       "trend": "=",
-      "reason_zh": "考量其歷史實力與球員身價，本屆世界盃小組賽未嘗勝績且遭淘汰，表現符合預期，綜合評分持平。",
-      "reason_en": "Considering their historical strength and player value, failing to win a group stage match and being eliminated is largely as expected, resulting in a stable overall form score."
+      "reason_zh": "西班牙以控球聞名，儘管數據未直接顯示，但其零失球與穩定戰績反映了對比賽的強大掌控力。",
+      "reason_en": "Spain is renowned for possession. Although not directly shown, their clean sheets and consistent results reflect strong control over matches."
+    },
+    "dis": {
+      "score": 8,
+      "trend": "=",
+      "reason_zh": "西班牙隊在比賽中展現了良好的戰術紀律，穩定的表現未見明顯犯規問題，維持了高水準。",
+      "reason_en": "The Spanish team demonstrated good tactical discipline in their matches, with stable performance showing no significant foul issues, maintaining a high standard."
+    },
+    "frm": {
+      "score": 9,
+      "trend": "+",
+      "reason_zh": "西班牙以兩勝一和的戰績晉級，狀態極佳，展現了強勁的競爭力與穩定性。綜合評分顯著提升。",
+      "reason_en": "Spain qualified with two wins and one draw, showing excellent form, strong competitiveness, and stability. The overall score has significantly improved."
+    }
+  },
+  "Saudi Arabia": {
+    "atk": {
+      "score": 3.75,
+      "trend": "-",
+      "reason_zh": "沙烏地阿拉伯在三場比賽中僅攻入一球，進攻火力嚴重不足。儘管考量其賽前預期，綜合評分仍顯著下修。",
+      "reason_en": "Saudi Arabia scored only one goal in three matches, showing severely insufficient attacking power. Despite their pre-tournament expectations, the overall score is significantly downgraded."
+    },
+    "def": {
+      "score": 3.7,
+      "trend": "-",
+      "reason_zh": "沙烏地阿拉伯在三場比賽中失五球，防守端表現不穩固。考量其防守實力，綜合評分微幅下修。",
+      "reason_en": "Saudi Arabia conceded five goals in three matches, indicating an unstable defense. Considering their defensive capabilities, the overall score is slightly downgraded."
+    },
+    "pos": {
+      "score": 3.55,
+      "trend": "-",
+      "reason_zh": "沙烏地阿拉伯在小組賽中未能有效掌握控球權並創造機會，導致進攻乏力，控球表現不佳。",
+      "reason_en": "Saudi Arabia failed to effectively control possession and create chances in the group stage, leading to a weak offense and poor possession performance."
+    },
+    "dis": {
+      "score": 5,
+      "trend": "=",
+      "reason_zh": "由於缺乏具體紀律性數據，綜合考量其比賽結果，紀律性表現預計維持穩定，未有明顯改善或惡化。",
+      "reason_en": "Lacking specific disciplinary data, and considering overall match results, discipline is expected to remain stable, with no significant improvement or deterioration."
+    },
+    "frm": {
+      "score": 3.9,
+      "trend": "-",
+      "reason_zh": "沙烏地阿拉伯在三場小組賽中未嘗勝績，兩平一負，最終遭到淘汰。考量其賽前預期，綜合評分顯著下修。",
+      "reason_en": "Saudi Arabia failed to win any of their three group stage matches, with two draws and one loss, leading to elimination. Considering their pre-tournament expectations, the overall form score is significantly downgraded."
     }
   },
   "Uruguay": {
     "atk": {
-      "score": 6,
+      "score": 6.1,
       "trend": "-",
-      "reason_zh": "儘管歷史上擁有強大進攻天賦，但本屆世界盃三場比賽僅進三球，進攻效率不佳，綜合評分下修。",
-      "reason_en": "Despite historical attacking talent, only three goals in three World Cup matches indicate poor offensive efficiency, leading to a downward adjustment in score."
+      "reason_zh": "烏拉圭在三場比賽中僅攻入三球，進攻效率不佳，未能取得勝利。儘管考量其歷史底蘊，綜合評分仍顯著下修。",
+      "reason_en": "Uruguay scored only three goals in three matches, showing poor attacking efficiency and failing to secure a win. Despite their historical prestige, the overall score is significantly downgraded."
     },
     "def": {
-      "score": 6.8,
+      "score": 6.6,
       "trend": "-",
-      "reason_zh": "傳統防守堅韌，但本屆世界盃三場比賽失四球，顯示防線存在漏洞，綜合評分微幅下調。",
-      "reason_en": "Traditionally resilient in defense, but conceding four goals in three World Cup matches indicates defensive vulnerabilities, resulting in a slight score reduction."
+      "reason_zh": "烏拉圭在三場比賽中失四球，防守表現尚可但不足以確保勝利。考量其防守傳統，綜合評分微幅下修。",
+      "reason_en": "Uruguay conceded four goals in three matches; their defense was decent but not solid enough to secure wins. Considering their defensive tradition, the overall score is slightly downgraded."
     },
     "pos": {
-      "score": 5.8,
+      "score": 5.75,
       "trend": "-",
-      "reason_zh": "儘管歷史底蘊深厚，但本屆世界盃兩平一負，未能有效掌控比賽節奏，綜合評分下修。",
-      "reason_en": "Despite deep historical roots, two draws and one loss in this World Cup show a struggle to control game tempo, leading to a downward score adjustment."
+      "reason_zh": "烏拉圭在小組賽中未能有效控制比賽節奏並轉化為勝勢，儘管歷史上控球能力不俗，但本屆表現平平。",
+      "reason_en": "Uruguay failed to effectively control game tempo and convert possession into wins in the group stage; despite historical possession strength, current performance was mediocre."
     },
     "dis": {
-      "score": 7,
+      "score": 5.7,
       "trend": "=",
-      "reason_zh": "歷史上紀律性尚可，本屆世界盃表現未顯示明顯紀律問題，綜合評分持平。",
-      "reason_en": "Historically acceptable discipline, and no significant disciplinary issues were evident in this World Cup, maintaining a stable score."
+      "reason_zh": "由於缺乏具體紀律性數據，綜合考量其比賽結果，紀律性表現預計維持穩定，未有明顯改善或惡化。",
+      "reason_en": "Lacking specific disciplinary data, and considering overall match results, discipline is expected to remain stable, with no significant improvement or deterioration."
     },
     "frm": {
-      "score": 4.5,
+      "score": 5.66,
       "trend": "-",
-      "reason_zh": "儘管歷史底蘊與球員身價高昂，但本屆世界盃小組賽未嘗勝績且遭淘汰，綜合評分大幅下修。",
-      "reason_en": "Despite high historical prestige and player value, failing to win a single group stage match and being eliminated leads to a significant downward adjustment in overall form."
+      "reason_zh": "烏拉圭在三場小組賽中未嘗勝績，兩平一負，最終遭到淘汰。考量其賽前預期，綜合評分顯著下修。",
+      "reason_en": "Uruguay failed to win any of their three group stage matches, with two draws and one loss, leading to elimination. Considering their pre-tournament expectations, the overall form score is significantly downgraded."
     }
   },
   "Cape Verde": {
     "atk": {
-      "score": 5.8,
-      "trend": "=",
-      "reason_zh": "三場比賽僅進兩球，進攻火力稍顯不足。儘管考量其歷史底蘊，但世界盃表現顯示進攻仍需加強。",
-      "reason_en": "Only two goals in three matches indicate a slightly lacking offensive firepower. While considering historical context, their World Cup performance shows attack still needs improvement."
+      "score": 5.5,
+      "trend": "-",
+      "reason_zh": "維德角在三場比賽中僅攻入兩球，進攻火力稍顯不足。儘管晉級，但考量其預期表現，仍需提升效率。",
+      "reason_en": "Cape Verde scored only two goals in three matches, indicating a slight lack of attacking prowess. Despite qualifying, considering their expected performance, they need to improve efficiency."
     },
     "def": {
       "score": 7.5,
       "trend": "+",
-      "reason_zh": "三場比賽僅失兩球，防守表現穩固。儘管考量其歷史底蘊，但世界盃表現顯著提升防守評分。",
-      "reason_en": "Only two goals conceded in three matches demonstrates solid defensive performance. While considering historical context, their World Cup showing significantly boosts the defensive rating."
+      "reason_zh": "維德角在三場比賽中僅失兩球，防守表現穩健，展現了良好的組織與抵抗力。綜合評分有所提升。",
+      "reason_en": "Cape Verde conceded only two goals in three matches, showing solid defensive performance and good organization and resilience. The overall score has improved."
     },
     "pos": {
-      "score": 6.8,
+      "score": 6,
       "trend": "=",
-      "reason_zh": "小組賽三場皆和，顯示球隊具備一定控球與比賽管理能力。考量其歷史底蘊，綜合評分維持穩定。",
-      "reason_en": "Three draws in the group stage indicate the team possesses some ball control and game management ability. Considering historical context, the overall score remains stable."
+      "reason_zh": "維德角隊的控球數據未直接顯示，但其三場平局反映了戰術上更注重防守反擊而非控球主導。",
+      "reason_en": "Cape Verde's possession statistics are not directly shown, but their three draws reflect a tactical focus on defensive counter-attacks rather than possession dominance."
     },
     "dis": {
-      "score": 7.5,
-      "trend": "+",
-      "reason_zh": "小組賽保持不敗，顯示球隊戰術紀律性良好。儘管考量其歷史底蘊，但世界盃表現顯著提升紀律性評分。",
-      "reason_en": "Remaining undefeated in the group stage indicates good tactical discipline. While considering historical context, their World Cup performance significantly boosts the discipline rating."
+      "score": 6.5,
+      "trend": "=",
+      "reason_zh": "維德角隊在比賽中展現了中規中矩的紀律性，未有明顯的犯規或紅黃牌問題，維持了預期水準。",
+      "reason_en": "Cape Verde demonstrated moderate discipline in their matches, without significant foul or card issues, maintaining their expected standard."
     },
     "frm": {
-      "score": 7.2,
-      "trend": "+",
-      "reason_zh": "小組賽三場皆和，成功以小組第二出線，狀態令人驚訝。儘管考量其歷史底蘊，但世界盃表現顯著提升狀態評分。",
-      "reason_en": "Three draws in the group stage, successfully qualifying as runner-up, indicates surprising form. While considering historical context, their World Cup performance significantly boosts the form rating."
+      "score": 6.5,
+      "trend": "=",
+      "reason_zh": "維德角以三場平局的戰績晉級，雖然保持不敗，但未能取勝顯示其狀態仍有提升空間。綜合評分持平。",
+      "reason_en": "Cape Verde qualified with three draws. While undefeated, the inability to secure a win indicates room for improvement in their form. The overall score remains stable."
     }
   },
   "Belgium": {
     "atk": {
       "score": 8.8,
       "trend": "=",
-      "reason_zh": "憑藉歷史強勁進攻火力與三場比賽攻入六球的表現，進攻能力穩固。",
-      "reason_en": "With historically strong attacking prowess and six goals scored in three matches, their offensive capability is solid."
+      "reason_zh": "儘管有兩場平局，但三場比賽攻入六球，顯示其進攻火力穩定。考量歷史底蘊，綜合評分維持高檔。",
+      "reason_en": "Despite two draws, scoring six goals in three matches demonstrates stable attacking power. Considering historical prestige, the overall rating remains high."
     },
     "def": {
-      "score": 9,
-      "trend": "=",
-      "reason_zh": "儘管歷史防守穩健，三場比賽僅失兩球，顯示防線堅固。",
-      "reason_en": "Despite historically solid defense, conceding only two goals in three matches demonstrates a robust backline."
+      "score": 9.2,
+      "trend": "+",
+      "reason_zh": "三場比賽僅失兩球，防守表現出色。考量其高昂身價，綜合評分微幅上調。",
+      "reason_en": "Conceding only two goals in three matches highlights excellent defensive performance. Considering their high player value, the overall rating is slightly adjusted upwards."
     },
     "pos": {
       "score": 8.5,
       "trend": "=",
-      "reason_zh": "作為小組第一晉級，未嘗敗績，顯示其對比賽的良好控制力。",
-      "reason_en": "Qualifying as group winners and remaining undefeated indicates good control over matches."
+      "reason_zh": "憑藉其歷史底蘊與球員素質，球隊控球能力維持高水準，有效掌控比賽節奏。",
+      "reason_en": "Based on historical pedigree and player quality, the team maintains high possession, effectively controlling game tempo."
     },
     "dis": {
-      "score": 8,
+      "score": 7.5,
       "trend": "=",
-      "reason_zh": "無明顯紀律問題，維持高水準球隊的穩定性。",
-      "reason_en": "No significant disciplinary issues, maintaining the stability of a high-level team."
+      "reason_zh": "無明顯紀律問題，球隊整體表現符合公平競爭原則。",
+      "reason_en": "No significant disciplinary issues, the team's overall conduct aligns with fair play principles."
     },
     "frm": {
       "score": 8.7,
-      "trend": "+",
-      "reason_zh": "小組賽保持不敗，以小組第一晉級，狀態良好。",
-      "reason_en": "Remained undefeated in the group stage, qualifying as group winners, indicating good form."
+      "trend": "=",
+      "reason_zh": "小組賽保持不敗並以小組第一出線，儘管有兩場平局，整體狀態仍佳。考量其預期，評分持平。",
+      "reason_en": "Remained undefeated in the group stage, qualifying as group winner. Despite two draws, overall form is good. Considering expectations, the rating is stable."
     }
   },
   "Egypt": {
     "atk": {
       "score": 7.8,
       "trend": "+",
-      "reason_zh": "考量其非洲強隊地位，三場比賽攻入五球，進攻表現良好。",
-      "reason_en": "Considering their status as a strong African team, scoring five goals in three matches shows good attacking performance."
+      "reason_zh": "三場比賽攻入五球，顯示其進攻效率良好。考量其預期與近期表現，綜合評分顯著上調。",
+      "reason_en": "Scoring five goals in three matches demonstrates good attacking efficiency. Considering expectations and recent performance, the overall rating is significantly adjusted upwards."
     },
     "def": {
       "score": 7.5,
       "trend": "=",
-      "reason_zh": "三場比賽失三球，防守表現尚可，符合其預期水準。",
-      "reason_en": "Conceding three goals in three matches, their defensive performance is acceptable and meets expectations."
+      "reason_zh": "三場比賽失三球，防守表現尚可。考量其預期，綜合評分維持穩定。",
+      "reason_en": "Conceding three goals in three matches indicates an acceptable defensive performance. Considering expectations, the overall rating remains stable."
     },
     "pos": {
-      "score": 7.5,
+      "score": 7,
       "trend": "=",
-      "reason_zh": "成功晉級淘汰賽且保持不敗，顯示其在比賽中具備控場能力。",
-      "reason_en": "Successfully qualified for the knockout stage and remained undefeated, indicating their ability to control matches."
+      "reason_zh": "球隊在控球方面表現穩健，能有效執行戰術，維持比賽平衡。",
+      "reason_en": "The team shows steady possession, effectively executing tactics and maintaining game balance."
     },
     "dis": {
-      "score": 7.3,
+      "score": 7.5,
       "trend": "=",
-      "reason_zh": "無明顯紀律問題，維持穩定的比賽風格。",
-      "reason_en": "No significant disciplinary issues, maintaining a stable playing style."
+      "reason_zh": "無明顯紀律問題，球隊整體表現符合公平競爭原則。",
+      "reason_en": "No significant disciplinary issues, the team's overall conduct aligns with fair play principles."
     },
     "frm": {
-      "score": 8,
+      "score": 8.2,
       "trend": "+",
-      "reason_zh": "小組賽保持不敗並成功晉級，展現出良好的競技狀態。",
-      "reason_en": "Remained undefeated in the group stage and successfully qualified, demonstrating good competitive form."
+      "reason_zh": "小組賽保持不敗並成功出線，顯示球隊狀態極佳。考量其預期，綜合評分顯著上調。",
+      "reason_en": "Remaining undefeated in the group stage and qualifying demonstrates excellent team form. Considering expectations, the overall rating is significantly adjusted upwards."
     }
   },
   "Iran": {
     "atk": {
-      "score": 5,
-      "trend": "=",
-      "reason_zh": "儘管歷史進攻能力平平，本屆世界盃三場比賽攻入3球，表現穩定但缺乏突破性，未能贏得任何比賽。",
-      "reason_en": "Despite average historical attacking prowess, scored 3 goals in 3 World Cup matches, showing consistency but lacking a decisive edge, failing to secure any wins."
+      "score": 5.8,
+      "trend": "-",
+      "reason_zh": "儘管考量歷史底蘊，但世界盃小組賽三場比賽僅攻入三球，進攻效率不高，未能轉化為勝場。",
+      "reason_en": "Despite historical context, Iran scored only three goals in three World Cup group stage matches, showing low attacking efficiency and failing to convert into wins."
     },
     "def": {
-      "score": 6.2,
+      "score": 6.9,
       "trend": "+",
-      "reason_zh": "考量其歷史防守紀律性，本屆世界盃三場比賽僅失3球，顯示出穩固的防守表現，儘管最終被淘汰。",
-      "reason_en": "Considering their historical defensive discipline, conceded only 3 goals in 3 World Cup matches, demonstrating solid defensive performance despite eventual elimination."
+      "reason_zh": "防守表現穩固，三場比賽僅失三球，展現良好紀律性，有效限制對手進攻。",
+      "reason_en": "Solid defensive performance, conceding only three goals in three matches, demonstrating good discipline and effectively limiting opponent attacks."
     },
     "pos": {
-      "score": 5,
+      "score": 6.2,
       "trend": "=",
-      "reason_zh": "根據其三場平局的戰績，預計控球能力處於中等水平，未能主導比賽但也能保持競爭力。",
-      "reason_en": "Based on their three draws, possession is estimated to be average, neither dominating matches nor being completely outplayed."
+      "reason_zh": "控球能力尚可，三場平局顯示其能與對手抗衡，確保比賽不敗。",
+      "reason_en": "Decent possession ability, with three draws indicating their capacity to contend with opponents and secure undefeated matches."
     },
     "dis": {
-      "score": 6,
+      "score": 6.7,
       "trend": "=",
-      "reason_zh": "缺乏具體紀律性數據，但其平穩的比賽結果顯示球隊整體紀律性保持在平均水平。",
-      "reason_en": "Lacking specific disciplinary data, but their consistent draw record suggests the team's overall discipline remains at an average level."
+      "reason_zh": "比賽中展現良好紀律性，避免了關鍵失誤導致的敗仗，維持了比賽的穩定性。",
+      "reason_en": "Showed good discipline in matches, avoiding critical errors that could lead to losses and maintaining game stability."
     },
     "frm": {
-      "score": 4.5,
-      "trend": "-",
-      "reason_zh": "考量其歷史表現與本屆世界盃結果，儘管未嘗敗績，但三場平局導致小組淘汰，未能展現贏球能力，綜合評分因此下修。",
-      "reason_en": "Considering their historical performance and current World Cup results, despite being undefeated, three draws led to group stage elimination, failing to demonstrate winning capability, thus lowering the overall form score."
+      "score": 5.9,
+      "trend": "=",
+      "reason_zh": "世界盃小組賽三戰皆平，雖保持不敗，但未能取得勝利晉級，整體狀態持平。",
+      "reason_en": "Drew all three World Cup group stage matches, remaining undefeated but failing to win and advance, indicating stable overall form."
     }
   },
   "New Zealand": {
     "atk": {
-      "score": 4.2,
+      "score": 4.7,
       "trend": "+",
-      "reason_zh": "儘管歷史進攻能力較弱，本屆世界盃攻入4球，略高於預期，但仍未能轉化為勝利。",
-      "reason_en": "Despite historically weaker attacking capabilities, scored 4 goals in this World Cup, slightly exceeding expectations, but still failed to convert into wins."
+      "reason_zh": "儘管歷史實力較弱，但進攻端表現超出預期，三場比賽攻入四球，展現一定火力。",
+      "reason_en": "Despite weaker historical strength, attacking performance exceeded expectations, scoring four goals in three matches, showing some offensive power."
     },
     "def": {
-      "score": 2,
-      "trend": "--",
-      "reason_zh": "考量其歷史防守脆弱性，本屆世界盃三場比賽失10球，防守表現極差，導致評分大幅下調。",
-      "reason_en": "Considering their historical defensive vulnerability, conceded 10 goals in 3 World Cup matches, indicating extremely poor defensive performance, leading to a significant score reduction."
+      "score": 3.3,
+      "trend": "-",
+      "reason_zh": "防守端極為脆弱，三場比賽失十球，防線漏洞百出，導致大量失分。",
+      "reason_en": "Extremely vulnerable defensively, conceding ten goals in three matches, with numerous defensive weaknesses leading to many goals against."
     },
     "pos": {
-      "score": 3,
-      "trend": "=",
-      "reason_zh": "根據其兩場失利和大量失球，預計控球能力較弱，難以控制比賽節奏。",
-      "reason_en": "Based on their two losses and high number of goals conceded, possession is expected to be low, struggling to control game tempo."
+      "score": 3.6,
+      "trend": "-",
+      "reason_zh": "控球能力明顯不足，兩場大比分失利顯示其難以在比賽中掌握主導權。",
+      "reason_en": "Clearly lacked possession ability, with two heavy losses indicating their struggle to control the game."
     },
     "dis": {
-      "score": 5,
-      "trend": "=",
-      "reason_zh": "缺乏具體紀律性數據，但其比賽結果並未顯示出特別的紀律性問題。",
-      "reason_en": "Lacking specific disciplinary data, but their match results do not indicate any particular disciplinary issues."
+      "score": 3.6,
+      "trend": "-",
+      "reason_zh": "紀律性有待加強，防守組織鬆散導致大量失球，影響了比賽結果。",
+      "reason_en": "Discipline needs improvement; loose defensive organization led to many conceded goals, impacting match outcomes."
     },
     "frm": {
-      "score": 2.5,
-      "trend": "--",
-      "reason_zh": "考量其歷史表現與本屆世界盃結果，一平兩負的戰績導致小組淘汰，整體狀態評分因世界盃表現不佳而大幅下修。",
-      "reason_en": "Considering their historical performance and current World Cup results, their record of one draw and two losses led to group stage elimination, resulting in a significant downward adjustment of overall form due to poor World Cup performance."
+      "score": 3.6,
+      "trend": "-",
+      "reason_zh": "世界盃小組賽表現不佳，僅取得一分並被淘汰，整體狀態低迷。",
+      "reason_en": "Poor performance in the World Cup group stage, securing only one point and being eliminated, indicating low overall form."
     }
   },
   "Portugal": {
     "atk": {
-      "score": 9.3,
+      "score": 8.7,
       "trend": "+",
-      "reason_zh": "葡萄牙在三場比賽中攻入六球，展現了強大的進攻火力，儘管有兩場平局。",
-      "reason_en": "Portugal scored six goals in three matches, demonstrating strong attacking power, despite two draws."
+      "reason_zh": "三場比賽攻入六球，進攻火力強大，儘管有兩場和局，仍顯示其威脅性。",
+      "reason_en": "Scoring six goals in three matches, their attacking prowess is strong, demonstrating their threat despite two draws."
     },
     "def": {
       "score": 8.8,
       "trend": "+",
-      "reason_zh": "葡萄牙在三場比賽中僅失一球，防守表現極為出色，是晉級的堅實基礎。",
-      "reason_en": "Portugal conceded only one goal in three matches, showing outstanding defensive performance, a solid foundation for qualification."
+      "reason_zh": "三場比賽僅失一球，防守端表現極為出色，是球隊穩定的基石。",
+      "reason_en": "Conceding only one goal in three matches, their defense has been outstanding, forming the team's stable foundation."
     },
     "pos": {
-      "score": 8.5,
+      "score": 8.4,
       "trend": "=",
-      "reason_zh": "儘管缺乏具體控球數據，但其傳統打法與不敗戰績暗示了穩定的控球能力。",
-      "reason_en": "Despite lacking specific possession data, their traditional style and undefeated record suggest stable possession ability."
-    },
-    "dis": {
-      "score": 7,
-      "trend": "=",
-      "reason_zh": "缺乏具體紀律數據，但整體比賽表現良好，未出現重大紀律問題。",
-      "reason_en": "Lacking specific disciplinary data, but overall match performance was good, with no major disciplinary issues."
-    },
-    "frm": {
-      "score": 9,
-      "trend": "+",
-      "reason_zh": "葡萄牙以一勝兩和的不敗戰績晉級，儘管有兩場平局，但考量其歷史底蘊與球員身價，整體狀態依然強勁。",
-      "reason_en": "Portugal qualified undefeated with one win and two draws. Despite the draws, considering their historical prestige and player value, their overall form remains strong."
-    }
-  },
-  "DR Congo": {
-    "atk": {
-      "score": 6.2,
-      "trend": "=",
-      "reason_zh": "剛果民主共和國在三場比賽中攻入4球，進攻表現尚可，有助於他們晉級。考量其歷史底蘊與球員身價，綜合評分保持穩定。",
-      "reason_en": "DR Congo scored 4 goals in 3 matches, a decent attacking output that helped them qualify. Considering their historical prestige and player value, the overall score remains stable."
-    },
-    "def": {
-      "score": 6.5,
-      "trend": "=",
-      "reason_zh": "他們在三場比賽中失3球，防守表現合理穩固。考量其歷史底蘊與球員身價，綜合評分保持穩定。",
-      "reason_en": "Their defense conceded 3 goals in 3 matches, demonstrating reasonable solidity. Considering their historical prestige and player value, the overall score remains stable."
-    },
-    "pos": {
-      "score": 6,
-      "trend": "=",
-      "reason_zh": "儘管戰績參半，但從強勁小組中晉級顯示其良好的比賽管理和戰術紀律。考量其歷史底蘊與球員身價，綜合評分保持穩定。",
-      "reason_en": "Despite a mixed record, qualifying from a tough group indicates good game management and tactical discipline. Considering their historical prestige and player value, the overall score remains stable."
-    },
-    "dis": {
-      "score": 6,
-      "trend": "=",
-      "reason_zh": "缺乏具體紀律事件，但整體表現顯示出紀律性。考量其歷史底蘊與球員身價，綜合評分保持穩定。",
-      "reason_en": "Without specific disciplinary incidents, their overall performance suggests a disciplined approach. Considering their historical prestige and player value, the overall score remains stable."
-    },
-    "frm": {
-      "score": 6.8,
-      "trend": "+",
-      "reason_zh": "在小組賽中以一勝一和晉級下一輪，顯示出積極的當前狀態。考量其歷史底蘊與球員身價，綜合評分略有提升。",
-      "reason_en": "Qualifying for the next round with a win and a draw in the group stage indicates positive current form. Considering their historical prestige and player value, the overall score has slightly improved."
-    }
-  },
-  "Colombia": {
-    "atk": {
-      "score": 7.8,
-      "trend": "+",
-      "reason_zh": "哥倫比亞在三場比賽中攻入四球，進攻效率良好，確保了小組第一。",
-      "reason_en": "Colombia scored four goals in three matches, showing good attacking efficiency and securing first place in the group."
-    },
-    "def": {
-      "score": 8.3,
-      "trend": "+",
-      "reason_zh": "哥倫比亞在三場比賽中僅失一球，防守表現極為穩固，是晉級的關鍵。",
-      "reason_en": "Colombia conceded only one goal in three matches, demonstrating extremely solid defensive performance, which was key to their qualification."
-    },
-    "pos": {
-      "score": 7,
-      "trend": "=",
-      "reason_zh": "儘管缺乏具體控球數據，但其不敗戰績顯示球隊能有效掌控比賽節奏。",
-      "reason_en": "Despite lacking specific possession data, their undefeated record indicates the team effectively controlled game tempo."
-    },
-    "dis": {
-      "score": 6.5,
-      "trend": "=",
-      "reason_zh": "缺乏具體紀律數據，但整體表現穩定，未因紀律問題影響戰績。",
-      "reason_en": "Lacking specific disciplinary data, but overall performance was stable, with no disciplinary issues affecting results."
-    },
-    "frm": {
-      "score": 8.5,
-      "trend": "+",
-      "reason_zh": "哥倫比亞以兩勝一和的不敗戰績晉級，顯示出極佳的競技狀態。考量其歷史底蘊與賽前實力，綜合評分維持高點。",
-      "reason_en": "Colombia qualified undefeated with two wins and one draw, demonstrating excellent competitive form. Considering their historical prestige and pre-tournament strength, the overall rating remains high."
-    }
-  },
-  "Uzbekistan": {
-    "atk": {
-      "score": 2.5,
-      "trend": "-",
-      "reason_zh": "烏茲別克進攻端表現掙扎，三場比賽僅攻入2球，導致他們被淘汰。考量其歷史底蘊與球員身價，加上世界盃表現不佳，綜合評分顯著下調。",
-      "reason_en": "Uzbekistan's attack struggled significantly, scoring only 2 goals in 3 matches, leading to their elimination. Considering their historical prestige and player value, coupled with poor World Cup performance, the overall score has significantly decreased."
-    },
-    "def": {
-      "score": 1.5,
-      "trend": "-",
-      "reason_zh": "他們的防守極為脆弱，三場比賽失11球，顯示出重大弱點。考量其歷史底蘊與球員身價，加上世界盃表現不佳，綜合評分顯著下調。",
-      "reason_en": "Their defense was highly vulnerable, conceding 11 goals in 3 matches, indicating major weaknesses. Considering their historical prestige and player value, coupled with poor World Cup performance, the overall score has significantly decreased."
-    },
-    "pos": {
-      "score": 2,
-      "trend": "-",
-      "reason_zh": "以零分和糟糕的淨勝球被淘汰，顯示其缺乏控球能力和競爭力。考量其歷史底蘊與球員身價，加上世界盃表現不佳，綜合評分顯著下調。",
-      "reason_en": "Being eliminated with zero points and a poor goal difference suggests a lack of control and inability to compete effectively. Considering their historical prestige and player value, coupled with poor World Cup performance, the overall score has significantly decreased."
-    },
-    "dis": {
-      "score": 5,
-      "trend": "=",
-      "reason_zh": "缺乏具體紀律事件，但整體表現不佳可能暗示難以保持冷靜。考量其歷史底蘊與球員身價，加上世界盃表現不佳，綜合評分顯著下調。",
-      "reason_en": "While no specific incidents are noted, their overall poor performance might indicate a struggle to maintain composure. Considering their historical prestige and player value, coupled with poor World Cup performance, the overall score has significantly decreased."
-    },
-    "frm": {
-      "score": 1.8,
-      "trend": "-",
-      "reason_zh": "他們的當前狀態非常糟糕，小組賽三戰皆墨並被淘汰。考量其歷史底蘊與球員身價，加上世界盃表現不佳，綜合評分顯著下調。",
-      "reason_en": "Their current form is very poor, having lost all three group stage matches and being eliminated. Considering their historical prestige and player value, coupled with poor World Cup performance, the overall score has significantly decreased."
-    }
-  },
-  "Mexico": {
-    "atk": {
-      "score": 9,
-      "trend": "+",
-      "reason_zh": "儘管考量歷史底蘊與球員身價，但世界盃三戰攻入六球，進攻火力強勁，綜合評分顯著提升.",
-      "reason_en": "Despite historical prestige and player value, Mexico scored six goals in three World Cup matches, demonstrating strong attacking prowess, leading to a significant score increase."
-    },
-    "def": {
-      "score": 9.5,
-      "trend": "+",
-      "reason_zh": "考量其歷史表現與球員價值，世界盃三戰零失球，防守表現滴水不漏，綜合評分大幅上揚.",
-      "reason_en": "Considering their historical performance and player value, Mexico conceded zero goals in three World Cup matches, showcasing impeccable defense, resulting in a substantial score increase."
-    },
-    "pos": {
-      "score": 8.5,
-      "trend": "+",
-      "reason_zh": "儘管考量歷史底蘊，但世界盃三戰全勝，顯示其對比賽的控制力與戰術執行力極佳，綜合評分提升.",
-      "reason_en": "Despite historical context, Mexico's three World Cup wins indicate excellent game control and tactical execution, leading to an improved score."
+      "reason_zh": "儘管有兩場和局，但球隊仍能有效控制比賽節奏，展現出色的控球能力。",
+      "reason_en": "Despite two draws, the team effectively controlled the game tempo, showcasing excellent ball possession."
     },
     "dis": {
       "score": 8,
       "trend": "=",
-      "reason_zh": "考量其歷史紀律性與球員價值，世界盃表現穩定，未見重大紀律問題，維持良好評分.",
-      "reason_en": "Considering their historical discipline and player value, Mexico's World Cup performance has been stable with no major disciplinary issues, maintaining a good score."
+      "reason_zh": "保持不敗戰績，反映了球隊在比賽中的良好紀律性與戰術執行。",
+      "reason_en": "Their undefeated record reflects the team's good discipline and tactical execution during matches."
     },
     "frm": {
-      "score": 9.5,
+      "score": 8.2,
+      "trend": "-",
+      "reason_zh": "儘管兩場和局，但考量其歷史底蘊與高昂身價，綜合評分僅微幅下修，仍以不敗之姿晉級。",
+      "reason_en": "Despite two draws, considering their historical prestige and high player value, the overall rating is only slightly adjusted downwards, still qualifying undefeated."
+    }
+  },
+  "DR Congo": {
+    "atk": {
+      "score": 6.8,
       "trend": "+",
-      "reason_zh": "儘管考量賽前預期，但世界盃三戰全勝，以九分之姿晉級，狀態火熱，綜合評分顯著提升.",
-      "reason_en": "Despite pre-tournament expectations, Mexico won all three World Cup matches, qualifying with nine points, indicating red-hot form and a significant score increase."
+      "reason_zh": "儘管歷史底蘊中等，但世界盃三場比賽攻入4球，顯示進攻效率不錯，綜合評分略有提升。",
+      "reason_en": "Despite moderate historical prestige, scoring 4 goals in three World Cup matches indicates decent attacking efficiency, leading to a slight score increase."
+    },
+    "def": {
+      "score": 7,
+      "trend": "+",
+      "reason_zh": "世界盃三場比賽僅失3球，防守表現穩健，儘管歷史底蘊一般，但近期賽果顯示防線具備紀律性。",
+      "reason_en": "Conceding only 3 goals in three World Cup matches shows solid defensive performance. Despite average historical standing, recent results indicate a disciplined backline."
+    },
+    "pos": {
+      "score": 6,
+      "trend": "=",
+      "reason_zh": "世界盃數據未直接顯示控球率，但球隊能晉級，顯示其在關鍵時刻能有效掌控比賽節奏。",
+      "reason_en": "World Cup data doesn't directly show possession, but qualifying suggests the team can effectively control game tempo in crucial moments."
+    },
+    "dis": {
+      "score": 6.5,
+      "trend": "=",
+      "reason_zh": "世界盃三場比賽失球數不多，顯示球隊在防守端有一定紀律性，未見明顯紀律問題。",
+      "reason_en": "Few goals conceded in three World Cup matches suggest a disciplined defensive approach, with no apparent disciplinary issues."
+    },
+    "frm": {
+      "score": 7.2,
+      "trend": "+",
+      "reason_zh": "世界盃小組賽取得1勝1和1負並成功晉級，儘管歷史聲望一般，但近期表現顯示狀態良好。",
+      "reason_en": "Securing 1 win, 1 draw, and 1 loss in the World Cup group stage and qualifying indicates good recent form despite moderate historical standing."
+    }
+  },
+  "Colombia": {
+    "atk": {
+      "score": 7.7,
+      "trend": "+",
+      "reason_zh": "儘管進球數不算多，但三場比賽攻入四球，足以確保小組第一出線，顯示其進攻效率。",
+      "reason_en": "Despite not being prolific, scoring four goals in three matches was enough to secure top spot in the group, demonstrating attacking efficiency."
+    },
+    "def": {
+      "score": 8,
+      "trend": "+",
+      "reason_zh": "三場比賽僅失一球，防守表現極為穩固，是其小組出線的關鍵。",
+      "reason_en": "Conceding only one goal in three matches, their defense has been extremely solid, a key factor in their group qualification."
+    },
+    "pos": {
+      "score": 7.7,
+      "trend": "+",
+      "reason_zh": "憑藉穩定的比賽節奏與控制力，成功主導了小組賽，展現出色的控球能力。",
+      "reason_en": "By maintaining a steady game tempo and control, they successfully dominated the group stage, showcasing excellent ball possession."
+    },
+    "dis": {
+      "score": 7.2,
+      "trend": "+",
+      "reason_zh": "穩定的戰績與出線表現，反映了球隊良好的戰術紀律性與執行力。",
+      "reason_en": "Their consistent results and qualification reflect the team's good tactical discipline and execution."
+    },
+    "frm": {
+      "score": 8,
+      "trend": "+",
+      "reason_zh": "小組賽兩勝一和保持不敗，以小組第一身份晉級，狀態極佳。",
+      "reason_en": "Undefeated in the group stage with two wins and one draw, they qualified as group winners in excellent form."
+    }
+  },
+  "Uzbekistan": {
+    "atk": {
+      "score": 4,
+      "trend": "-",
+      "reason_zh": "世界盃三場比賽僅攻入2球，進攻火力明顯不足，儘管考量歷史底蘊，但近期表現顯示進攻端乏力。",
+      "reason_en": "Scoring only 2 goals in three World Cup matches indicates a clear lack of attacking prowess. Despite historical context, recent performance shows a weak offense."
+    },
+    "def": {
+      "score": 2.5,
+      "trend": "-",
+      "reason_zh": "世界盃三場比賽失11球，防守端表現極差，顯示防線組織與個人防守能力均有嚴重問題。",
+      "reason_en": "Conceding 11 goals in three World Cup matches is an extremely poor defensive showing, indicating severe issues with defensive organization and individual ability."
+    },
+    "pos": {
+      "score": 4.5,
+      "trend": "-",
+      "reason_zh": "世界盃三戰皆敗且失球眾多，推斷其在比賽中難以有效控球，節奏掌控能力不足。",
+      "reason_en": "Three losses and numerous goals conceded in the World Cup suggest difficulty in maintaining possession and insufficient control over game tempo."
+    },
+    "dis": {
+      "score": 5,
+      "trend": "=",
+      "reason_zh": "世界盃數據未顯示明確紀律問題，但大量失球可能反映戰術執行或防守壓力過大。",
+      "reason_en": "World Cup data doesn't show clear disciplinary issues, but numerous goals conceded might reflect tactical execution problems or excessive defensive pressure."
+    },
+    "frm": {
+      "score": 2,
+      "trend": "-",
+      "reason_zh": "世界盃小組賽三戰皆墨並遭淘汰，儘管考量歷史聲望，但近期表現顯示球隊狀態極差。",
+      "reason_en": "Three losses and elimination in the World Cup group stage indicate extremely poor recent form, even considering historical standing."
+    }
+  },
+  "Mexico": {
+    "atk": {
+      "score": 7.75,
+      "trend": "+",
+      "reason_zh": "墨西哥的進攻表現出色，在三場比賽中攻入六球。儘管考量其歷史底蘊，但世界盃的強勁表現顯著提升了其進攻評分。",
+      "reason_en": "Mexico's attack has been exceptional, scoring 6 goals in 3 matches. This strong World Cup performance significantly boosts their overall attacking score, weighted against their historical prowess."
+    },
+    "def": {
+      "score": 7.55,
+      "trend": "+",
+      "reason_zh": "墨西哥在三場比賽中零失球，防守滴水不漏。世界盃的卓越防守表現，結合其歷史實力，使其防守評分大幅提升。",
+      "reason_en": "With 0 goals conceded in 3 matches, Mexico's defense has been impenetrable. This outstanding World Cup record, combined with their baseline, results in a high defensive rating."
+    },
+    "pos": {
+      "score": 7.6,
+      "trend": "+",
+      "reason_zh": "墨西哥在小組賽中取得三勝，顯示出強大的中場控制力與戰術執行。世界盃的優異表現提升了其控球評分。",
+      "reason_en": "Mexico's dominant group stage performance with 3 wins reflects strong midfield control and tactical execution. This excellent World Cup showing elevates their possession score."
+    },
+    "dis": {
+      "score": 7.65,
+      "trend": "=",
+      "reason_zh": "墨西哥三戰全勝的完美戰績顯示出良好的團隊紀律和比賽控制力，維持了其穩定的基準表現。",
+      "reason_en": "Mexico's perfect record of 3 wins suggests good team discipline and control throughout their matches, maintaining their consistent baseline."
+    },
+    "frm": {
+      "score": 7.75,
+      "trend": "+",
+      "reason_zh": "墨西哥三戰全勝並晉級下一輪，顯示出極佳的當前狀態，顯著提升了其整體狀態評分。",
+      "reason_en": "Mexico's perfect record of 3 wins and qualification for the next round demonstrates excellent current form, significantly improving their overall form score."
     }
   },
   "South Korea": {
     "atk": {
-      "score": 5.5,
+      "score": 4.2,
       "trend": "-",
-      "reason_zh": "進攻端表現不佳，三場比賽僅攻入兩球，儘管有球星但未能發揮，綜合評分因此下修。",
-      "reason_en": "Poor attacking performance, scoring only two goals in three matches; despite star players, they failed to deliver, leading to a lowered overall score."
+      "reason_zh": "儘管考量其歷史進攻潛力，但本屆世界盃三場比賽僅攻入兩球，進攻效率明顯不足，綜合評分下修。",
+      "reason_en": "Despite historical attacking potential, only two goals in three World Cup matches indicate clear attacking inefficiency, leading to a downward adjustment in overall score."
     },
     "def": {
-      "score": 5.8,
-      "trend": "-",
-      "reason_zh": "防守端失三球，表現中規中矩，但面對壓力時仍顯不足，綜合評分微幅下調。",
-      "reason_en": "Conceded three goals, a mediocre defensive showing, still lacking when under pressure, leading to a slight downward adjustment in the overall score."
+      "score": 5.4,
+      "trend": "=",
+      "reason_zh": "考量其防守底蘊，本屆世界盃三場比賽失三球，防線表現尚可，但未能完全穩固，綜合評分持平。",
+      "reason_en": "Considering their defensive foundation, conceding three goals in three World Cup matches is acceptable, but the defense wasn't entirely solid, maintaining a stable overall score."
     },
     "pos": {
-      "score": 5.5,
-      "trend": "-",
-      "reason_zh": "缺乏具體控球數據，但戰績顯示其未能有效掌控比賽節奏，控球能力有待加強。",
-      "reason_en": "Lacking specific possession data, but their record suggests they failed to effectively control game tempo, needing improvement in possession."
+      "score": 5,
+      "trend": "=",
+      "reason_zh": "缺乏具體控球數據，但未能主導比賽節奏，導致兩場失利，綜合評分維持中等。",
+      "reason_en": "Lacking specific possession data, but failing to control game tempo led to two losses, keeping the overall score moderate."
     },
     "dis": {
-      "score": 6.5,
+      "score": 6,
       "trend": "=",
-      "reason_zh": "缺乏紀律性數據，但整體比賽過程未顯示明顯違規問題，維持中等水平。",
-      "reason_en": "Lacking disciplinary data, but overall match performance did not show significant foul issues, maintaining an average level."
+      "reason_zh": "缺乏具體紀律數據，但整體表現未見嚴重違規，維持中等水平。",
+      "reason_en": "Lacking specific disciplinary data, but overall performance showed no serious infringements, maintaining a moderate level."
     },
     "frm": {
-      "score": 5,
+      "score": 4.9,
       "trend": "-",
-      "reason_zh": "世界盃小組賽一勝兩敗，表現不佳，未能晉級，整體狀態下滑，綜合評分顯著下調。",
-      "reason_en": "One win and two losses in the World Cup group stage, poor performance, failed to qualify, overall form declined, leading to a significant downward adjustment."
+      "reason_zh": "考量其賽前狀態，本屆世界盃小組賽一勝兩負，未能晉級，整體狀態明顯下滑，綜合評分下修。",
+      "reason_en": "Considering their pre-tournament form, one win and two losses in the World Cup group stage, failing to qualify, indicates a clear decline in overall form, leading to a downward adjustment."
     }
   },
   "Czech Republic": {
     "atk": {
-      "score": 4.5,
+      "score": 3.8,
       "trend": "-",
-      "reason_zh": "進攻火力嚴重不足，三場比賽僅攻入兩球，缺乏創造力與終結能力，綜合評分顯著下修。",
-      "reason_en": "Severely lacking attacking power, scoring only two goals in three matches, lacking creativity and finishing ability, leading to a significant downward adjustment in the overall score."
+      "reason_zh": "儘管考量其歷史進攻能力，但本屆世界盃三場比賽僅攻入兩球，進攻火力嚴重不足，綜合評分下修。",
+      "reason_en": "Despite historical attacking ability, only two goals in three World Cup matches indicate a severe lack of attacking prowess, leading to a downward adjustment in overall score."
     },
     "def": {
-      "score": 3.5,
-      "trend": "-",
-      "reason_zh": "防守表現極差，三場比賽失六球，防線組織混亂，漏洞百出，綜合評分大幅下調。",
-      "reason_en": "Extremely poor defensive performance, conceding six goals in three matches, with disorganized and leaky defense, leading to a substantial downward adjustment in the overall score."
+      "score": 4,
+      "trend": "--",
+      "reason_zh": "考量其防守底蘊，本屆世界盃三場比賽失六球，防線表現脆弱，防守紀律性有待加強，綜合評分大幅下修。",
+      "reason_en": "Considering their defensive foundation, conceding six goals in three World Cup matches shows a fragile defense needing discipline, leading to a significant downward adjustment."
     },
     "pos": {
       "score": 4.5,
-      "trend": "-",
-      "reason_zh": "缺乏具體控球數據，但戰績顯示其未能有效掌控比賽節奏，控球能力薄弱。",
-      "reason_en": "Lacking specific possession data, but their record suggests they failed to effectively control game tempo, with weak possession ability."
+      "trend": "=",
+      "reason_zh": "缺乏具體控球數據，但從戰績來看，未能有效控制比賽，難以創造機會，綜合評分維持中等偏低。",
+      "reason_en": "Lacking specific possession data, but results suggest they failed to control matches or create opportunities, keeping the overall score moderately low."
     },
     "dis": {
       "score": 6,
       "trend": "=",
-      "reason_zh": "缺乏紀律性數據，但整體比賽過程未顯示明顯違規問題，維持中等水平。",
-      "reason_en": "Lacking disciplinary data, but overall match performance did not show significant foul issues, maintaining an average level."
+      "reason_zh": "缺乏具體紀律數據，但整體表現未見嚴重違規，維持中等水平。",
+      "reason_en": "Lacking specific disciplinary data, but overall performance showed no serious infringements, maintaining a moderate level."
     },
     "frm": {
       "score": 3.8,
-      "trend": "-",
-      "reason_zh": "世界盃小組賽一平兩敗，表現低迷，排名墊底遭到淘汰，狀態極差，綜合評分大幅下調。",
-      "reason_en": "One draw and two losses in the World Cup group stage, poor form, finishing last and eliminated, in terrible shape, leading to a substantial downward adjustment in the overall score."
+      "trend": "--",
+      "reason_zh": "考量其賽前狀態，本屆世界盃小組賽一平兩負，墊底出局，整體狀態極度低迷，綜合評分大幅下修。",
+      "reason_en": "Considering their pre-tournament form, one draw and two losses in the World Cup group stage, finishing last, indicates extremely low overall form, leading to a significant downward adjustment."
     }
   },
   "South Africa": {
     "atk": {
-      "score": 5,
+      "score": 4.7,
       "trend": "-",
-      "reason_zh": "儘管考量歷史底蘊與球員身價，但世界盃三戰僅攻入兩球，進攻火力不足，綜合評分略有下降.",
-      "reason_en": "Despite historical context and player value, South Africa scored only two goals in three World Cup matches, showing insufficient attacking power, leading to a slight score decrease."
+      "reason_zh": "南非在三場比賽中僅攻入兩球，顯示進攻端表現掙扎。儘管考量其歷史底蘊，世界盃表現使其進攻評分略有下降。",
+      "reason_en": "South Africa scored only 2 goals in 3 matches, indicating a struggle in attack. Despite their baseline, this World Cup performance slightly lowers their attacking score."
     },
     "def": {
-      "score": 6,
-      "trend": "=",
-      "reason_zh": "考量其歷史表現與球員價值，世界盃三戰失三球，防守表現中規中矩，綜合評分持平.",
-      "reason_en": "Considering their historical performance and player value, South Africa conceded three goals in three World Cup matches, indicating average defensive performance, with a steady score."
-    },
-    "pos": {
       "score": 5.5,
       "trend": "=",
-      "reason_zh": "儘管考量歷史底蘊，但世界盃一勝一和一負，顯示其對比賽的控制力一般，綜合評分持平.",
-      "reason_en": "Despite historical context, South Africa's one win, one draw, and one loss in the World Cup suggest average game control, resulting in a steady score."
+      "reason_zh": "南非在三場比賽中失三球，防守表現處於平均水準，維持了賽前的基準評分。",
+      "reason_en": "Conceding 3 goals in 3 matches, South Africa's defense is performing at an average level, maintaining its pre-tournament baseline."
+    },
+    "pos": {
+      "score": 5,
+      "trend": "=",
+      "reason_zh": "南非在小組賽中一勝一和一負，表現參差不齊，顯示控球和控制力不穩定，維持了其基準評分。",
+      "reason_en": "With 1 win, 1 draw, and 1 loss, South Africa's mixed results in the group stage suggest inconsistent possession and control, keeping their score at baseline."
     },
     "dis": {
       "score": 6,
       "trend": "=",
-      "reason_zh": "考量其歷史紀律性與球員價值，世界盃表現尚可，未見重大紀律問題，維持中等評分.",
-      "reason_en": "Considering their historical discipline and player value, South Africa's World Cup performance has been acceptable with no major disciplinary issues, maintaining a moderate score."
+      "reason_zh": "南非一勝一和一負的戰績顯示其紀律性表現中規中矩，與其基準評分相符。",
+      "reason_en": "South Africa's mixed results of 1 win, 1 draw, and 1 loss suggest a neutral disciplinary record, aligning with their baseline."
     },
     "frm": {
-      "score": 6.5,
+      "score": 5.3,
       "trend": "+",
-      "reason_zh": "儘管考量賽前預期，但世界盃一勝一和一負，以四分之姿晉級，表現略超預期，綜合評分微幅上揚.",
-      "reason_en": "Despite pre-tournament expectations, South Africa's one win, one draw, and one loss, qualifying with four points, slightly exceeded expectations, leading to a slight score increase."
+      "reason_zh": "南非以一勝一和一負的戰績晉級下一輪，表現尚可，使其整體狀態評分略有提升。",
+      "reason_en": "Qualifying for the next round with 1 win, 1 draw, and 1 loss is a decent performance, slightly improving South Africa's overall form score."
     }
   }
 }
