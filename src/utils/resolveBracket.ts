@@ -5,6 +5,21 @@ type StandingsGroup = {
   teams: Array<{ name: string; mp: number; position?: number }>;
 };
 
+type KnockoutResult = {
+  stage: string;
+  homeTeam: string;
+  awayTeam: string;
+  status: string;
+  winner: string | null;
+};
+
+type BracketMatch = {
+  id: string;
+  round: string;
+  slotA: any;
+  slotB: any;
+};
+
 export type ResolvedSlot = {
   // Final display text — either a real team name, or a placeholder
   // describing which slot this is (e.g. "E組第一" or "最佳第三名：A/B/C/D/F").
@@ -15,24 +30,32 @@ export type ResolvedSlot = {
 
 const groupLetter = (group: string) => group.replace('Group ', '');
 
-// FIFA's slot-assignment table for "which of the 8 qualifying third-placed
-// groups goes into which bracket slot" isn't reproduced here — it's a large
-// reference table tied to the exact combination of 8 groups that qualify,
-// which won't be known until the group stage finishes. Rather than
-// reconstruct that table, once the actual fixture is published (in
-// matches.json, sourced from the live odds feed), we just read the real
-// opponent off of it directly: a thirdWildcard slot's match partner is
-// already a confirmed, fixed team, so look up the fixture containing that
-// team and take the other side.
-export function resolveSlot(
+// Finds the football-data.org fixture two given teams played each other in
+// (any knockout stage) — used to find the winner of a winnerOf/loserOf
+// reference once both sides of that match are known.
+function findFixture(results: KnockoutResult[], teamA: string, teamB: string) {
+  return results.find(r =>
+    (r.homeTeam === teamA && r.awayTeam === teamB) ||
+    (r.homeTeam === teamB && r.awayTeam === teamA)
+  );
+}
+
+// Resolves a single slot. thirdWildcard and winnerOf/loserOf slots need to
+// know what's on the OTHER side of their own match (to look up the real
+// fixture or result), so this recurses rather than handling each slot in
+// total isolation — knockoutResults (sourced from football-data.org, which
+// publishes the full bracket draw progressively as each round is decided)
+// is the persistent source of truth for both "who's the wildcard" and
+// "who actually won," replacing the old approach of scanning the live odds
+// feed (which drops a fixture the moment it's no longer upcoming).
+function resolveSlotInternal(
   slot: any,
   standingsData: StandingsGroup[],
+  knockoutResults: KnockoutResult[],
+  bracketMatches: BracketMatch[],
   lang: string,
-  opponentTeamName?: string | null,
-  liveMatches?: Array<{ home_team: string; away_team: string }>
+  tTeam: (name: string) => string
 ): ResolvedSlot {
-  const tTeam = useTeamTranslations(lang as any);
-
   if (slot.type === 'position') {
     const group = standingsData.find(g => g.group === slot.group);
     const finished = group && group.teams.every(t => t.mp === 3);
@@ -53,13 +76,18 @@ export function resolveSlot(
   }
 
   if (slot.type === 'thirdWildcard') {
-    if (opponentTeamName && liveMatches) {
-      const fixture = liveMatches.find(m =>
-        m.home_team === opponentTeamName || m.away_team === opponentTeamName
-      );
-      if (fixture) {
-        const teamName = fixture.home_team === opponentTeamName ? fixture.away_team : fixture.home_team;
-        return { label: tTeam(teamName), teamName };
+    const ownMatch = bracketMatches.find(m => m.slotA === slot || m.slotB === slot);
+    if (ownMatch) {
+      const sibling = ownMatch.slotA === slot ? ownMatch.slotB : ownMatch.slotA;
+      const siblingResolved = resolveSlotInternal(sibling, standingsData, knockoutResults, bracketMatches, lang, tTeam);
+      if (siblingResolved.teamName) {
+        const fixture = knockoutResults.find(r =>
+          r.stage === 'LAST_32' && (r.homeTeam === siblingResolved.teamName || r.awayTeam === siblingResolved.teamName)
+        );
+        if (fixture) {
+          const teamName = fixture.homeTeam === siblingResolved.teamName ? fixture.awayTeam : fixture.homeTeam;
+          return { label: tTeam(teamName), teamName };
+        }
       }
     }
     const letters = slot.groups.map(groupLetter).join('/');
@@ -72,11 +100,36 @@ export function resolveSlot(
   }
 
   if (slot.type === 'winnerOf' || slot.type === 'loserOf') {
-    // The knockout rounds haven't been played yet, so there's no result to
-    // chase through the chain — just show a pending placeholder.
+    const referencedMatch = bracketMatches.find(m => m.id === slot.matchId);
     const tbd = lang === 'zh-tw' ? '待定' : lang === 'th' ? 'รอผล' : 'TBD';
+    if (!referencedMatch) return { label: tbd, teamName: null };
+
+    const refA = resolveSlotInternal(referencedMatch.slotA, standingsData, knockoutResults, bracketMatches, lang, tTeam);
+    const refB = resolveSlotInternal(referencedMatch.slotB, standingsData, knockoutResults, bracketMatches, lang, tTeam);
+    if (refA.teamName && refB.teamName) {
+      const fixture = findFixture(knockoutResults, refA.teamName, refB.teamName);
+      if (fixture?.winner) {
+        const teamName = slot.type === 'winnerOf'
+          ? fixture.winner
+          : (fixture.winner === refA.teamName ? refB.teamName : refA.teamName);
+        return { label: tTeam(teamName), teamName };
+      }
+    }
     return { label: tbd, teamName: null };
   }
 
   return { label: '?', teamName: null };
+}
+
+export function resolveMatchSlots(
+  match: BracketMatch,
+  standingsData: StandingsGroup[],
+  knockoutResults: KnockoutResult[],
+  bracketMatches: BracketMatch[],
+  lang: string
+) {
+  const tTeam = useTeamTranslations(lang as any);
+  const slotA = resolveSlotInternal(match.slotA, standingsData, knockoutResults, bracketMatches, lang, tTeam);
+  const slotB = resolveSlotInternal(match.slotB, standingsData, knockoutResults, bracketMatches, lang, tTeam);
+  return { slotA, slotB };
 }

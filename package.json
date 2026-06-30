@@ -12,10 +12,11 @@
     "astro": "astro",
     "update:matches": "node --env-file-if-exists=.env scripts/update_matches.mjs",
     "update:standings": "node --env-file-if-exists=.env scripts/update_standings.mjs",
+    "update:bracket": "node --env-file-if-exists=.env scripts/update_bracket_results.mjs",
     "update:ai": "node --env-file-if-exists=.env scripts/update_ai_stats.mjs",
     "update:h2h": "node --env-file-if-exists=.env scripts/update_h2h.mjs",
     "update:predictions": "node --env-file-if-exists=.env scripts/update_predictions.mjs",
-    "update:all": "npm run update:matches && npm run update:standings && npm run update:ai && npm run update:h2h && npm run update:predictions && node --env-file-if-exists=.env scripts/generate_expert_csv.mjs",
+    "update:all": "npm run update:matches && npm run update:standings && npm run update:bracket && npm run update:ai && npm run update:h2h && npm run update:predictions && node --env-file-if-exists=.env scripts/generate_expert_csv.mjs",
     "push": "node scripts/safe-push.mjs"
   },
   "dependencies": {

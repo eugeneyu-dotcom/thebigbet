@@ -34,7 +34,21 @@
       "Bash(gh workflow *)",
       "Bash(git commit *)",
       "Bash(git pull *)",
-      "Bash(git stash *)"
+      "Bash(git stash *)",
+      "Bash(sed -n '1p' EXPERT_PREDICTIONS.csv)",
+      "Bash(sed -n '3,46p' EXPERT_PREDICTIONS.csv)",
+      "Bash(node --env-file-if-exists=.env scripts/generate_expert_csv.mjs)",
+      "Bash(python3 /Users/eugeneyu/.claude/skills/ui-ux-pro-max/scripts/search.py \"sports betting dark mode footer contrast disclaimer\" --design-system -p \"The Big Bet\")",
+      "Bash(gh repo *)",
+      "Bash(git remote *)",
+      "Read(//Users/eugeneyu/Desktop/**)",
+      "Bash(python3 -c ' *)",
+      "Bash(mdls -name kMDItemNumberOfPages \"fifa_world_cup_wallchart_chinese.pdf\")",
+      "Bash(brew install *)",
+      "Bash(sips -z 877 1241 page-1.png --out overview.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight overview.png)",
+      "Bash(timeout 180 npx astro build)",
+      "Bash(npx astro *)"
     ]
   }
 }

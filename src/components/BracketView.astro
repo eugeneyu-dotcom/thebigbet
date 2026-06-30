@@ -1,10 +1,10 @@
 ---
 import { useTranslations } from '../i18n/ui';
-import { resolveSlot } from '../utils/resolveBracket';
+import { resolveMatchSlots } from '../utils/resolveBracket';
 import { formatFullDateLabel, getTimeZoneLabel } from '../utils/timezone';
 import standingsData from '../data/worldCupStandings.json';
 import bracketData from '../data/knockoutBracket.json';
-import liveMatches from '../data/matches.json';
+import knockoutResults from '../data/knockoutResults.json';
 
 interface Props {
   lang: string;
@@ -13,7 +13,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang as any);
 
-const matches = bracketData.matches;
+const matches = bracketData.matches as any[];
 const venues = bracketData.venues as Record<string, Record<string, string>>;
 
 const dateLabel = (iso: string) => formatFullDateLabel(iso, lang);
@@ -44,23 +44,8 @@ const columns = ROUND_ORDER.map(round => ({
 
 const thirdMatch = matches.find((m: any) => m.round === 'THIRD');
 
-function renderSlot(slot: any) {
-  return resolveSlot(slot, standingsData as any, lang);
-}
-
-// A thirdWildcard slot's actual occupant is read off the real fixture
-// once it's published — so it needs its sibling slot's resolved team name
-// (if known) to look up the right match.
 function renderMatchSlots(match: any) {
-  const rawA = renderSlot(match.slotA);
-  const rawB = renderSlot(match.slotB);
-  const slotA = match.slotA.type === 'thirdWildcard'
-    ? resolveSlot(match.slotA, standingsData as any, lang, rawB.teamName, liveMatches as any)
-    : rawA;
-  const slotB = match.slotB.type === 'thirdWildcard'
-    ? resolveSlot(match.slotB, standingsData as any, lang, rawA.teamName, liveMatches as any)
-    : rawB;
-  return { slotA, slotB };
+  return resolveMatchSlots(match, standingsData as any, knockoutResults as any, matches, lang);
 }
 ---
 

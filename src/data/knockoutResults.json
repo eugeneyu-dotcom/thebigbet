@@ -1,0 +1,121 @@
+[
+  {
+    "stage": "LAST_32",
+    "homeTeam": "South Africa",
+    "awayTeam": "Canada",
+    "status": "FINISHED",
+    "winner": "Canada"
+  },
+  {
+    "stage": "LAST_32",
+    "homeTeam": "Brazil",
+    "awayTeam": "Japan",
+    "status": "FINISHED",
+    "winner": "Brazil"
+  },
+  {
+    "stage": "LAST_32",
+    "homeTeam": "Germany",
+    "awayTeam": "Paraguay",
+    "status": "FINISHED",
+    "winner": "Paraguay"
+  },
+  {
+    "stage": "LAST_32",
+    "homeTeam": "Netherlands",
+    "awayTeam": "Morocco",
+    "status": "FINISHED",
+    "winner": "Morocco"
+  },
+  {
+    "stage": "LAST_32",
+    "homeTeam": "Ivory Coast",
+    "awayTeam": "Norway",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "LAST_32",
+    "homeTeam": "France",
+    "awayTeam": "Sweden",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "LAST_32",
+    "homeTeam": "Mexico",
+    "awayTeam": "Ecuador",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "LAST_32",
+    "homeTeam": "England",
+    "awayTeam": "DR Congo",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "LAST_32",
+    "homeTeam": "Belgium",
+    "awayTeam": "Senegal",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "LAST_32",
+    "homeTeam": "USA",
+    "awayTeam": "Bosnia & Herzegovina",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "LAST_32",
+    "homeTeam": "Spain",
+    "awayTeam": "Austria",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "LAST_32",
+    "homeTeam": "Portugal",
+    "awayTeam": "Croatia",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "LAST_32",
+    "homeTeam": "Switzerland",
+    "awayTeam": "Algeria",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "LAST_32",
+    "homeTeam": "Australia",
+    "awayTeam": "Egypt",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "LAST_32",
+    "homeTeam": "Argentina",
+    "awayTeam": "Cape Verde",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "LAST_32",
+    "homeTeam": "Colombia",
+    "awayTeam": "Ghana",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "LAST_16",
+    "homeTeam": "Canada",
+    "awayTeam": "Morocco",
+    "status": "TIMED",
+    "winner": null
+  }
+]

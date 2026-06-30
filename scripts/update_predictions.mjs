@@ -71,6 +71,7 @@ async function main() {
 You are a professional sports betting analyst. The current date is ${todayStr}.
 Analyze the upcoming 2026 FIFA World Cup match between ${homeTeam} and ${awayTeam}.
 Do not assume or imply which match number this is in the tournament for either team (e.g. do not call it an "opener," "tournament debut," or similar) — you do not know each team's match history, so avoid any language that presumes this is their first match or any other specific stage of their campaign.
+This is a knockout-stage match — it is single-elimination, not a group-stage match played for league points. Do NOT use group-stage "points" framing (e.g. "secure three points," "全取三分," "穩取三分"). Frame the prediction around winning and advancing instead.
 The current betting odds are:
 ${homeTeam} Win: ${homeOdds}
 Draw: ${drawOdds}
