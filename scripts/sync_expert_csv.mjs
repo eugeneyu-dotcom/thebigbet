@@ -86,9 +86,17 @@ async function main() {
       }
     }
 
+    // Merge: keep any existing JSON entries that have content but weren't in
+    // the CSV (e.g. completed matches that have since been dropped from the
+    // Odds API feed). CSV entries take priority when both are present.
+    const merged = { ...existingPredictions };
+    for (const [id, pred] of Object.entries(predictions)) {
+      merged[id] = pred;
+    }
+
     // Write to JSON
-    fs.writeFileSync(jsonPath, JSON.stringify(predictions, null, 2), 'utf8');
-    console.log(`✅ Successfully synced ${Object.keys(predictions).length} predictions to humanPredictions.json!`);
+    fs.writeFileSync(jsonPath, JSON.stringify(merged, null, 2), 'utf8');
+    console.log(`✅ Successfully synced ${Object.keys(merged).length} predictions to humanPredictions.json!`);
 
     // If we auto-translated anything, overwrite the CSV to keep it updated for the expert
     if (needsCsvUpdate) {
