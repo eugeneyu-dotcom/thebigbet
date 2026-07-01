@@ -31,22 +31,22 @@
     "stage": "LAST_32",
     "homeTeam": "Ivory Coast",
     "awayTeam": "Norway",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "Norway"
   },
   {
     "stage": "LAST_32",
     "homeTeam": "France",
     "awayTeam": "Sweden",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "France"
   },
   {
     "stage": "LAST_32",
     "homeTeam": "Mexico",
     "awayTeam": "Ecuador",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "Mexico"
   },
   {
     "stage": "LAST_32",
@@ -115,6 +115,20 @@
     "stage": "LAST_16",
     "homeTeam": "Canada",
     "awayTeam": "Morocco",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "LAST_16",
+    "homeTeam": "Paraguay",
+    "awayTeam": "France",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "LAST_16",
+    "homeTeam": "Brazil",
+    "awayTeam": "Norway",
     "status": "TIMED",
     "winner": null
   }
