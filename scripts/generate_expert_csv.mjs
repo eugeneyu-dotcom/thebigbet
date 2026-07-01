@@ -50,30 +50,47 @@ async function main() {
     process.exit(1);
   }
   const matches = JSON.parse(fs.readFileSync(matchesPath, 'utf8'));
-  
-  // Create CSV records
-  const csvRecords = matches.map(match => {
+  const upcomingMatchIds = new Set(matches.map(m => m.id));
+
+  // Build CSV rows: upcoming matches first (for easy editing), then completed
+  // matches that already have predictions so historical content is never lost.
+  const csvRecords = [];
+
+  for (const match of matches) {
     const matchTime = new Date(match.commence_time).toLocaleString();
     const existing = existingPredictions[match.id] || {};
-    
-    return {
+    csvRecords.push({
       Match_ID: match.id,
       Home_Team: match.home_team,
       Away_Team: match.away_team,
       Match_Time: matchTime,
       Prediction_ZH: existing.prediction_zh || '',
       Prediction_EN: existing.prediction_en || ''
-    };
-  });
+    });
+  }
+
+  // Append completed matches that aren't in the upcoming list but have predictions
+  for (const [id, pred] of Object.entries(existingPredictions)) {
+    if (!upcomingMatchIds.has(id) && (pred.prediction_zh || pred.prediction_en)) {
+      csvRecords.push({
+        Match_ID: id,
+        Home_Team: '',
+        Away_Team: '',
+        Match_Time: '',
+        Prediction_ZH: pred.prediction_zh || '',
+        Prediction_EN: pred.prediction_en || ''
+      });
+    }
+  }
 
   // Stringify and write to file
   const csvOutput = stringify(csvRecords, { header: true });
   fs.writeFileSync(csvPath, csvOutput, 'utf8');
-  
+
   // Also sync it immediately to JSON just to be safe
   fs.writeFileSync(jsonPath, JSON.stringify(existingPredictions, null, 2), 'utf8');
 
-  console.log(`✅ Successfully generated EXPERT_PREDICTIONS.csv with ${matches.length} matches!`);
+  console.log(`✅ Successfully generated EXPERT_PREDICTIONS.csv with ${matches.length} upcoming matches (+ ${csvRecords.length - matches.length} historical)!`);
 }
 
 main();

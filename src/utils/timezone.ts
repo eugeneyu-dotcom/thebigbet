@@ -33,6 +33,7 @@ export function formatMatchTime(commenceTime: string, lang: string): string {
   return new Date(commenceTime).toLocaleTimeString(getLocale(lang), {
     hour: '2-digit',
     minute: '2-digit',
+    hour12: false,
     timeZone: getLangTimeZone(lang),
   });
 }
@@ -44,6 +45,7 @@ export function formatMatchDateTime(commenceTime: string, lang: string): string 
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
+    hour12: false,
     timeZone: getLangTimeZone(lang),
   });
 }
