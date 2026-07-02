@@ -45,13 +45,17 @@ const dimLabels = JSON.stringify([t('dim.atk'), t('dim.def'), t('dim.pos'), t('d
       const canvas = this.querySelector('canvas');
       if (!canvas) return;
 
-      const teamA = canvas.dataset.teama;
-      const teamB = canvas.dataset.teamb;
-      const teamAData = JSON.parse(canvas.dataset.teamadata || '[0,0,0,0,0]');
-      const teamBData = JSON.parse(canvas.dataset.teambdata || '[0,0,0,0,0]');
-      const dimLabels = JSON.parse(canvas.dataset.labels || '[]');
+      const initChart = () => {
+        if ((canvas as any)._chartInitialized) return;
+        (canvas as any)._chartInitialized = true;
 
-      new Chart(canvas, {
+        const teamA = canvas.dataset.teama;
+        const teamB = canvas.dataset.teamb;
+        const teamAData = JSON.parse(canvas.dataset.teamadata || '[0,0,0,0,0]');
+        const teamBData = JSON.parse(canvas.dataset.teambdata || '[0,0,0,0,0]');
+        const dimLabels = JSON.parse(canvas.dataset.labels || '[]');
+
+        new Chart(canvas, {
         type: 'radar',
         data: {
           labels: dimLabels,
@@ -123,7 +127,22 @@ const dimLabels = JSON.stringify([t('dim.atk'), t('dim.def'), t('dim.pos'), t('d
             }
           }
         }
-      });
+        });
+      }; // end initChart
+
+      // Defer init until the enclosing <details> is opened so chart.js
+      // sees a non-zero canvas height. If there's no <details> ancestor
+      // (e.g. analysis article page), init immediately.
+      const details = this.closest('details');
+      if (!details) {
+        initChart();
+      } else if (details.open) {
+        initChart();
+      } else {
+        details.addEventListener('toggle', () => {
+          if (details.open) initChart();
+        });
+      }
     }
   }
 

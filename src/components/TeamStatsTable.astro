@@ -22,26 +22,16 @@ const labels = [
   { key: 'frm', name: t('dim.frm') }
 ] as const;
 
-const trendLabels = {
-  up:   lang === 'zh-tw' ? '上升' : lang === 'th' ? 'กำลังขึ้น' : 'Rising',
-  down: lang === 'zh-tw' ? '下降' : lang === 'th' ? 'กำลังลง' : 'Falling',
-  flat: lang === 'zh-tw' ? '持平' : lang === 'th' ? 'คงที่' : 'Stable',
-};
+function getTrendIcon(trend: string): string {
+  if (trend.includes('+')) return `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>`;
+  if (trend.includes('-')) return `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" /></svg>`;
+}
 
-function getTrendHTML(trend: string) {
-  if (trend.includes('+')) {
-    return `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" aria-label="${trendLabels.up}">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-            </svg>`;
-  }
-  if (trend.includes('-')) {
-    return `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" aria-label="${trendLabels.down}">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>`;
-  }
-  return `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" aria-label="${trendLabels.flat}">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
-          </svg>`;
+function getReason(stat: any): string {
+  if (lang === 'zh-tw') return stat.reason_zh;
+  if (lang === 'th' && stat.reason_th) return stat.reason_th;
+  return stat.reason_en;
 }
 ---
 
@@ -53,50 +43,41 @@ function getTrendHTML(trend: string) {
     </svg>
   </summary>
 
-  <div class="p-0 border-t border-slate-800 max-h-[400px] overflow-y-auto">
-    <table class="w-full text-left border-collapse">
-      <thead class="bg-slate-950 text-slate-400 text-xs uppercase tracking-wider sticky top-0">
-        <tr>
-          <th class="p-3 w-1/4">{t('stats.dim')}</th>
-          <th class="p-3 w-1/12 text-center">{t('stats.trend')}</th>
-          <th class="p-3 w-2/3">{t('stats.reason')}</th>
-        </tr>
-      </thead>
-      <tbody class="text-sm divide-y divide-slate-800/50">
-        <!-- Team A -->
-        <tr>
-          <td colspan="3" class="bg-amber-400/10 text-amber-200 font-bold p-2 text-center tracking-wide">{teamA}</td>
-        </tr>
-        {labels.map(l => (
-          <tr class="hover:bg-slate-800/30 transition-colors duration-200">
-            <td class="p-3 font-mono font-bold text-slate-200">
-              {l.name}
-              <span class="block text-amber-200 text-lg">{teamAStats[l.key].score}</span>
-            </td>
-            <td class="p-3 text-center" set:html={getTrendHTML(teamAStats[l.key].trend)}></td>
-            <td class="p-3 text-slate-300 leading-relaxed text-xs">
-              {lang === 'zh-tw' ? teamAStats[l.key].reason_zh : (teamAStats[l.key] as any).reason_th && lang === 'th' ? (teamAStats[l.key] as any).reason_th : teamAStats[l.key].reason_en}
-            </td>
-          </tr>
-        ))}
+  <div class="border-t border-slate-800 divide-y divide-slate-800/40">
+    <!-- Team name header -->
+    <div class="grid grid-cols-[1fr_3.5rem_1fr] px-3 py-2.5 bg-slate-950/50">
+      <p class="text-amber-300 font-black text-xs text-center truncate px-1">{teamA}</p>
+      <p></p>
+      <p class="text-cyan-300 font-black text-xs text-center truncate px-1">{teamB}</p>
+    </div>
 
-        <!-- Team B -->
-        <tr>
-          <td colspan="3" class="bg-cyan-500/10 text-cyan-300 font-bold p-2 text-center tracking-wide">{teamB}</td>
-        </tr>
-        {labels.map(l => (
-          <tr class="hover:bg-slate-800/30 transition-colors duration-200">
-            <td class="p-3 font-mono font-bold text-slate-200">
-              {l.name}
-              <span class="block text-cyan-300 text-lg">{teamBStats[l.key].score}</span>
-            </td>
-            <td class="p-3 text-center" set:html={getTrendHTML(teamBStats[l.key].trend)}></td>
-            <td class="p-3 text-slate-300 leading-relaxed text-xs">
-              {lang === 'zh-tw' ? teamBStats[l.key].reason_zh : (teamBStats[l.key] as any).reason_th && lang === 'th' ? (teamBStats[l.key] as any).reason_th : teamBStats[l.key].reason_en}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <!-- Each dimension: score row + reason row -->
+    {labels.map(l => (
+      <div class="px-3 py-3">
+        <!-- Score + trend (left / dim / right) -->
+        <div class="grid grid-cols-[1fr_3.5rem_1fr] items-center">
+          <!-- Team A: trend icon left of score, right-aligned -->
+          <div class="flex items-center justify-end gap-1.5 pr-1">
+            <span set:html={getTrendIcon(teamAStats[l.key].trend)}></span>
+            <span class="text-2xl font-mono font-black text-amber-200 leading-none tabular-nums">{teamAStats[l.key].score}</span>
+          </div>
+          <!-- Dimension label -->
+          <div class="text-center">
+            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">{l.name}</span>
+          </div>
+          <!-- Team B: score left, trend icon right -->
+          <div class="flex items-center justify-start gap-1.5 pl-1">
+            <span class="text-2xl font-mono font-black text-cyan-300 leading-none tabular-nums">{teamBStats[l.key].score}</span>
+            <span set:html={getTrendIcon(teamBStats[l.key].trend)}></span>
+          </div>
+        </div>
+
+        <!-- Reason texts: two columns -->
+        <div class="grid grid-cols-2 gap-3 mt-2">
+          <p class="text-[10px] text-slate-500 leading-relaxed">{getReason(teamAStats[l.key])}</p>
+          <p class="text-[10px] text-slate-500 leading-relaxed">{getReason(teamBStats[l.key])}</p>
+        </div>
+      </div>
+    ))}
   </div>
 </details>
