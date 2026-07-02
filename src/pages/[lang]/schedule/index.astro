@@ -2,12 +2,10 @@
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import BaseHead from '../../../components/BaseHead.astro';
-import { languages, useTeamTranslations, useSportTranslations, useTranslations } from '../../../i18n/ui';
+import { languages, useTeamTranslations, useTranslations } from '../../../i18n/ui';
 import standingsData from '../../../data/worldCupStandings.json';
 import matchesCache from '../../../data/matches.json';
 import GoogleAnalytics from '../../../components/GoogleAnalytics.astro';
-import GroupStandingsTable from '../../../components/GroupStandingsTable.astro';
-import ThirdPlaceTable from '../../../components/ThirdPlaceTable.astro';
 import { formatMatchDateTime, getTimeZoneLabel } from '../../../utils/timezone';
 
 export function getStaticPaths() {
@@ -24,22 +22,31 @@ const matches = [...(matchesCache as any[])].sort(
   (a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime()
 );
 
-const groupedMatches = standingsData.map(group => {
-  const groupMatches = matches.filter(m =>
-    group.teams.some(t => t.name === m.home_team) ||
-    group.teams.some(t => t.name === m.away_team)
-  );
-  return { ...group, matches: groupMatches };
-}).filter(g => g.matches.length > 0);
+// In knockout stage, show all upcoming matches flat (chronological).
+// In group stage, group by each team's original group to avoid duplicate entries.
+const displaySections: { label: string; matches: any[] }[] = [];
 
-const matchedIds = new Set(groupedMatches.flatMap(g => g.matches.map((m: any) => m.id)));
-const otherMatches = matches.filter(m => !matchedIds.has(m.id));
-if (otherMatches.length > 0) {
-  groupedMatches.push({
-    group: "Other Matches",
-    teams: [],
-    matches: otherMatches
-  });
+if (allGroupsFinished) {
+  // Knockout stage: deduplicate and show all matches chronologically in one list
+  const knockoutLabel = lang === 'zh-tw' ? '32強 淘汰賽' : lang === 'th' ? 'รอบ 32 ทีม' : 'Round of 32';
+  displaySections.push({ label: knockoutLabel, matches });
+} else {
+  // Group stage: group matches by their original group, no duplicates
+  const allGroupTeams = new Set(standingsData.flatMap((g: any) => g.teams.map((t: any) => t.name)));
+  const grouped = standingsData.map((group: any) => {
+    const groupMatches = matches.filter(m =>
+      group.teams.some((t: any) => t.name === m.home_team) ||
+      group.teams.some((t: any) => t.name === m.away_team)
+    );
+    return { label: group.group, matches: groupMatches };
+  }).filter(g => g.matches.length > 0);
+
+  const matchedIds = new Set(grouped.flatMap(g => g.matches.map((m: any) => m.id)));
+  const otherMatches = matches.filter(m => !matchedIds.has(m.id));
+  displaySections.push(...grouped);
+  if (otherMatches.length > 0) {
+    displaySections.push({ label: 'Other Matches', matches: otherMatches });
+  }
 }
 
 const scheduleDescription = lang === 'zh-tw'
@@ -69,31 +76,16 @@ const scheduleDescription = lang === 'zh-tw'
         </p>
       </div>
 
-      {allGroupsFinished && (
-        <div class="mb-16 space-y-14">
-          <ThirdPlaceTable lang={lang as string} />
-          {standingsData.map((groupData: any) => (
-            <div>
-              <div class="flex items-center mb-6">
-                <h2 class="text-2xl font-black text-white">{groupData.group}</h2>
-                <div class="h-[2px] bg-gradient-to-r from-amber-400/50 to-transparent flex-grow ml-6"></div>
-              </div>
-              <GroupStandingsTable groupData={groupData} lang={lang as string} />
-            </div>
-          ))}
-        </div>
-      )}
-
       <div class="space-y-16">
-        {groupedMatches.map(groupData => (
+        {displaySections.map(section => (
           <section>
             <h2 class="text-xl font-black text-amber-300 mb-6 flex items-center gap-4">
-              <span class="bg-slate-900 border border-amber-400/25 px-4 py-2 rounded-lg shadow">{groupData.group}</span>
+              <span class="bg-slate-900 border border-amber-400/25 px-4 py-2 rounded-lg shadow">{section.label}</span>
               <div class="h-[1px] bg-slate-800 flex-grow"></div>
             </h2>
 
             <div class="space-y-3">
-              {groupData.matches.map((match: any) => {
+              {section.matches.map((match: any) => {
                 const dateTime = match.commence_time === "TBD" ? "TBD" : formatMatchDateTime(match.commence_time, lang);
                 return (
                   <div class="bg-slate-900 border-l-4 border-l-amber-400 p-5 rounded-r-xl shadow flex flex-col md:flex-row md:items-center justify-between hover:bg-slate-800/70 transition-colors duration-200 cursor-default">
