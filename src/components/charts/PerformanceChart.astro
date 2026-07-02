@@ -105,6 +105,8 @@ const dimLabels = JSON.stringify([t('dim.atk'), t('dim.def'), t('dim.pos'), t('d
           },
           scales: {
             r: {
+              min: 0,
+              max: 10,
               angleLines: {
                 color: '#334155' // slate-700
               },
@@ -120,9 +122,7 @@ const dimLabels = JSON.stringify([t('dim.atk'), t('dim.def'), t('dim.pos'), t('d
                 }
               },
               ticks: {
-                display: false,
-                min: 0,
-                max: 10
+                display: false
               }
             }
           }

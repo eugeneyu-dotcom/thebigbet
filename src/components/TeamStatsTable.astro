@@ -160,13 +160,15 @@ function getReason(stat: any): string {
         },
         scales: {
           r: {
+            min: 0,
+            max: 10,
             angleLines: { color: '#334155' },
             grid: { color: '#334155' },
             pointLabels: {
               color: '#f1f5f9',
               font: { family: 'monospace', size: 12, weight: 'bold' },
             },
-            ticks: { display: false, min: 0, max: 10 },
+            ticks: { display: false },
           },
         },
       },
