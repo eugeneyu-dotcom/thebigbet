@@ -2,7 +2,6 @@
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import BaseHead from '../../components/BaseHead.astro';
-import PerformanceChart from '../../components/charts/PerformanceChart.astro';
 import TeamStatsTable from '../../components/TeamStatsTable.astro';
 import ThirdPlaceTable from '../../components/ThirdPlaceTable.astro';
 import GroupStandingsTable from '../../components/GroupStandingsTable.astro';
@@ -195,22 +194,6 @@ const homeDescription = lang === 'zh-tw'
                     </div>
                   </div>
 
-                  <!-- Collapsible performance chart -->
-                  <details class="border-t border-slate-800 pt-4 mt-4 group/chart">
-                    <summary class="cursor-pointer flex justify-between items-center text-xs font-bold text-slate-400 hover:text-slate-300 transition-colors duration-200 mb-3 select-none">
-                      <span class="uppercase tracking-widest">Performance Chart</span>
-                      <svg class="w-4 h-4 group-open/chart:rotate-180 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                      </svg>
-                    </summary>
-                    <PerformanceChart
-                      teamA={homeName}
-                      teamB={awayName}
-                      teamAData={[detailedHomeStats.atk.score, detailedHomeStats.def.score, detailedHomeStats.pos.score, detailedHomeStats.dis.score, detailedHomeStats.frm.score]}
-                      teamBData={[detailedAwayStats.atk.score, detailedAwayStats.def.score, detailedAwayStats.pos.score, detailedAwayStats.dis.score, detailedAwayStats.frm.score]}
-                    />
-                  </details>
-
                   <div class="mt-4">
                     <TeamStatsTable
                       teamA={homeName}
@@ -366,22 +349,6 @@ const homeDescription = lang === 'zh-tw'
                           <p class="text-xl font-mono font-black text-yellow-400">{awayOdds}</p>
                         </div>
                       </div>
-
-                      <!-- Collapsible performance chart -->
-                      <details class="border-t border-slate-800 pt-4 mt-4 group/chart">
-                        <summary class="cursor-pointer flex justify-between items-center text-xs font-bold text-slate-400 hover:text-slate-300 transition-colors duration-200 mb-3 select-none">
-                          <span class="uppercase tracking-widest">Performance Chart</span>
-                          <svg class="w-4 h-4 group-open/chart:rotate-180 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                          </svg>
-                        </summary>
-                        <PerformanceChart
-                          teamA={homeName}
-                          teamB={awayName}
-                          teamAData={[detailedHomeStats.atk.score, detailedHomeStats.def.score, detailedHomeStats.pos.score, detailedHomeStats.dis.score, detailedHomeStats.frm.score]}
-                          teamBData={[detailedAwayStats.atk.score, detailedAwayStats.def.score, detailedAwayStats.pos.score, detailedAwayStats.dis.score, detailedAwayStats.frm.score]}
-                        />
-                      </details>
 
                       <div class="mt-4">
                         <TeamStatsTable

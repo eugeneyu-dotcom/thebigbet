@@ -14,6 +14,11 @@ const { teamA, teamB, teamAStats, teamBStats } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
+const chartId = `radar-${Math.random().toString(36).slice(2, 8)}`;
+const radarDataA = JSON.stringify([teamAStats.atk.score, teamAStats.def.score, teamAStats.pos.score, teamAStats.dis.score, teamAStats.frm.score]);
+const radarDataB = JSON.stringify([teamBStats.atk.score, teamBStats.def.score, teamBStats.pos.score, teamBStats.dis.score, teamBStats.frm.score]);
+const radarLabels = JSON.stringify([t('dim.atk'), t('dim.def'), t('dim.pos'), t('dim.dis'), t('dim.frm')]);
+
 const labels = [
   { key: 'atk', name: t('dim.atk') },
   { key: 'def', name: t('dim.def') },
@@ -44,6 +49,22 @@ function getReason(stat: any): string {
   </summary>
 
   <div class="border-t border-slate-800 divide-y divide-slate-800/40">
+
+    <!-- Radar chart — canvas is lazy-initialized via toggle event in <script> -->
+    <div class="px-3 pt-4 pb-2">
+      <div class="relative w-full h-[220px] flex items-center justify-center bg-slate-900/50 rounded-lg border border-slate-800/50">
+        <canvas
+          id={chartId}
+          class="stats-radar-canvas"
+          data-teama={teamA}
+          data-teamb={teamB}
+          data-teamadata={radarDataA}
+          data-teambdata={radarDataB}
+          data-labels={radarLabels}
+        ></canvas>
+      </div>
+    </div>
+
     <!-- Team name header -->
     <div class="grid grid-cols-[1fr_3.5rem_1fr] px-3 py-2.5 bg-slate-950/50">
       <p class="text-amber-300 font-black text-xs text-center truncate px-1">{teamA}</p>
@@ -56,7 +77,7 @@ function getReason(stat: any): string {
       <div class="px-3 py-3">
         <!-- Score + trend (left / dim / right) -->
         <div class="grid grid-cols-[1fr_3.5rem_1fr] items-center">
-          <!-- Team A: trend icon left of score, right-aligned -->
+          <!-- Team A: trend icon + score, right-aligned -->
           <div class="flex items-center justify-end gap-1.5 pr-1">
             <span set:html={getTrendIcon(teamAStats[l.key].trend)}></span>
             <span class="text-2xl font-mono font-black text-amber-200 leading-none tabular-nums">{teamAStats[l.key].score}</span>
@@ -65,19 +86,103 @@ function getReason(stat: any): string {
           <div class="text-center">
             <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">{l.name}</span>
           </div>
-          <!-- Team B: score left, trend icon right -->
+          <!-- Team B: score + trend icon, left-aligned -->
           <div class="flex items-center justify-start gap-1.5 pl-1">
             <span class="text-2xl font-mono font-black text-cyan-300 leading-none tabular-nums">{teamBStats[l.key].score}</span>
             <span set:html={getTrendIcon(teamBStats[l.key].trend)}></span>
           </div>
         </div>
 
-        <!-- Reason texts: two columns -->
+        <!-- Reason texts: two columns, readable size -->
         <div class="grid grid-cols-2 gap-3 mt-2">
-          <p class="text-[10px] text-slate-500 leading-relaxed">{getReason(teamAStats[l.key])}</p>
-          <p class="text-[10px] text-slate-500 leading-relaxed">{getReason(teamBStats[l.key])}</p>
+          <p class="text-xs text-slate-400 leading-relaxed">{getReason(teamAStats[l.key])}</p>
+          <p class="text-xs text-slate-400 leading-relaxed">{getReason(teamBStats[l.key])}</p>
         </div>
       </div>
     ))}
   </div>
 </details>
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  function initRadarChart(canvas: HTMLCanvasElement) {
+    if ((canvas as any)._radarInit) return;
+    (canvas as any)._radarInit = true;
+
+    const teamA = canvas.dataset.teama ?? '';
+    const teamB = canvas.dataset.teamb ?? '';
+    const teamAData: number[] = JSON.parse(canvas.dataset.teamadata ?? '[0,0,0,0,0]');
+    const teamBData: number[] = JSON.parse(canvas.dataset.teambdata ?? '[0,0,0,0,0]');
+    const dimLabels: string[] = JSON.parse(canvas.dataset.labels ?? '[]');
+
+    new Chart(canvas, {
+      type: 'radar',
+      data: {
+        labels: dimLabels,
+        datasets: [
+          {
+            label: teamA,
+            data: teamAData,
+            backgroundColor: 'rgba(253, 230, 138, 0.25)',
+            borderColor: 'rgb(253, 230, 138)',
+            pointBackgroundColor: 'rgb(253, 230, 138)',
+            pointBorderColor: '#0f172a',
+            pointHoverBackgroundColor: '#0f172a',
+            pointHoverBorderColor: 'rgb(253, 230, 138)',
+            borderWidth: 2,
+          },
+          {
+            label: teamB,
+            data: teamBData,
+            backgroundColor: 'rgba(34, 211, 238, 0.2)',
+            borderColor: 'rgb(34, 211, 238)',
+            pointBackgroundColor: 'rgb(34, 211, 238)',
+            pointBorderColor: '#0f172a',
+            pointHoverBackgroundColor: '#0f172a',
+            pointHoverBorderColor: 'rgb(34, 211, 238)',
+            borderWidth: 2,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: '#cbd5e1',
+              font: { family: 'monospace', weight: 'bold', size: 13 },
+              padding: 20,
+            },
+          },
+        },
+        scales: {
+          r: {
+            angleLines: { color: '#334155' },
+            grid: { color: '#334155' },
+            pointLabels: {
+              color: '#f1f5f9',
+              font: { family: 'monospace', size: 12, weight: 'bold' },
+            },
+            ticks: { display: false, min: 0, max: 10 },
+          },
+        },
+      },
+    });
+  }
+
+  // Lazy-init: wait for the enclosing <details> to open before rendering,
+  // so chart.js sees a non-zero canvas height.
+  document.querySelectorAll<HTMLCanvasElement>('.stats-radar-canvas').forEach(canvas => {
+    const details = canvas.closest('details');
+    if (!details || details.open) {
+      initRadarChart(canvas);
+    } else {
+      details.addEventListener('toggle', () => {
+        if (details.open) initRadarChart(canvas);
+      });
+    }
+  });
+</script>
