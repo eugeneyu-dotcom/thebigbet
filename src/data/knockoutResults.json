@@ -52,43 +52,43 @@
     "stage": "LAST_32",
     "homeTeam": "England",
     "awayTeam": "DR Congo",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "England"
   },
   {
     "stage": "LAST_32",
     "homeTeam": "Belgium",
     "awayTeam": "Senegal",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "Belgium"
   },
   {
     "stage": "LAST_32",
     "homeTeam": "USA",
     "awayTeam": "Bosnia & Herzegovina",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "USA"
   },
   {
     "stage": "LAST_32",
     "homeTeam": "Spain",
     "awayTeam": "Austria",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "Spain"
   },
   {
     "stage": "LAST_32",
     "homeTeam": "Portugal",
     "awayTeam": "Croatia",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "Portugal"
   },
   {
     "stage": "LAST_32",
     "homeTeam": "Switzerland",
     "awayTeam": "Algeria",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "Switzerland"
   },
   {
     "stage": "LAST_32",
@@ -129,6 +129,20 @@
     "stage": "LAST_16",
     "homeTeam": "Brazil",
     "awayTeam": "Norway",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "LAST_16",
+    "homeTeam": "Mexico",
+    "awayTeam": "England",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "LAST_16",
+    "homeTeam": "USA",
+    "awayTeam": "Belgium",
     "status": "TIMED",
     "winner": null
   }
