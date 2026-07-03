@@ -81,7 +81,8 @@ Write a short, engaging betting prediction (around 40-50 words) based on these o
 Output ONLY a raw JSON object (no markdown, no comments) with this exact structure:
 {
   "prediction_zh": "[Traditional Chinese (zh-TW) prediction, strictly NO simplified Chinese. Do not use mainland translations like 波黑 or 爆冷门. Keep it under 50 words.]",
-  "prediction_en": "[English prediction, under 50 words.]"
+  "prediction_en": "[English prediction, under 50 words.]",
+  "prediction_th": "[Thai prediction, under 50 words.]"
 }
 `;
 
