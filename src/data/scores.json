@@ -1,65 +1,5 @@
 [
   {
-    "id": "5ff7744314f224c18d1604ee9cc19263",
-    "sport_key": "soccer_fifa_world_cup",
-    "sport_title": "FIFA World Cup",
-    "commence_time": "2026-07-01T16:00:00Z",
-    "completed": true,
-    "home_team": "England",
-    "away_team": "DR Congo",
-    "scores": [
-      {
-        "name": "England",
-        "score": "2"
-      },
-      {
-        "name": "DR Congo",
-        "score": "1"
-      }
-    ],
-    "last_update": "2026-07-04T02:02:05Z"
-  },
-  {
-    "id": "658ac8cbf214ca3cc150109b4ddc1e74",
-    "sport_key": "soccer_fifa_world_cup",
-    "sport_title": "FIFA World Cup",
-    "commence_time": "2026-07-01T20:00:00Z",
-    "completed": true,
-    "home_team": "Belgium",
-    "away_team": "Senegal",
-    "scores": [
-      {
-        "name": "Belgium",
-        "score": "3"
-      },
-      {
-        "name": "Senegal",
-        "score": "2"
-      }
-    ],
-    "last_update": "2026-07-04T02:02:05Z"
-  },
-  {
-    "id": "9eeb4876001f5a52ce3c3641bd5f1f2f",
-    "sport_key": "soccer_fifa_world_cup",
-    "sport_title": "FIFA World Cup",
-    "commence_time": "2026-07-02T00:00:00Z",
-    "completed": true,
-    "home_team": "USA",
-    "away_team": "Bosnia & Herzegovina",
-    "scores": [
-      {
-        "name": "USA",
-        "score": "2"
-      },
-      {
-        "name": "Bosnia & Herzegovina",
-        "score": "0"
-      }
-    ],
-    "last_update": "2026-07-04T02:02:05Z"
-  },
-  {
     "id": "a518ac20df8f5c732b881e213ae0c230",
     "sport_key": "soccer_fifa_world_cup",
     "sport_title": "FIFA World Cup",
@@ -184,22 +124,40 @@
     "sport_key": "soccer_fifa_world_cup",
     "sport_title": "FIFA World Cup",
     "commence_time": "2026-07-04T17:00:00Z",
-    "completed": false,
+    "completed": true,
     "home_team": "Canada",
     "away_team": "Morocco",
-    "scores": null,
-    "last_update": "2026-07-04T06:38:00Z"
+    "scores": [
+      {
+        "name": "Canada",
+        "score": "0"
+      },
+      {
+        "name": "Morocco",
+        "score": "3"
+      }
+    ],
+    "last_update": "2026-07-05T04:32:44Z"
   },
   {
     "id": "c798a1ffdeda28e82d930e7145a8ff10",
     "sport_key": "soccer_fifa_world_cup",
     "sport_title": "FIFA World Cup",
-    "commence_time": "2026-07-04T21:00:00Z",
-    "completed": false,
+    "commence_time": "2026-07-04T21:03:00Z",
+    "completed": true,
     "home_team": "Paraguay",
     "away_team": "France",
-    "scores": null,
-    "last_update": "2026-07-04T06:38:00Z"
+    "scores": [
+      {
+        "name": "Paraguay",
+        "score": "0"
+      },
+      {
+        "name": "France",
+        "score": "1"
+      }
+    ],
+    "last_update": "2026-07-05T04:32:44Z"
   },
   {
     "id": "a4634eae056c18d705e3feffb347163f",
@@ -210,7 +168,7 @@
     "home_team": "Brazil",
     "away_team": "Norway",
     "scores": null,
-    "last_update": "2026-07-04T06:38:00Z"
+    "last_update": "2026-07-05T04:32:44Z"
   },
   {
     "id": "e61a7b471cadc8e3849158ed59d49cab",
@@ -221,7 +179,7 @@
     "home_team": "Mexico",
     "away_team": "England",
     "scores": null,
-    "last_update": "2026-07-04T06:38:00Z"
+    "last_update": "2026-07-05T04:32:44Z"
   },
   {
     "id": "16ed3adcf661b3a9bea39871a2d204df",
@@ -232,7 +190,7 @@
     "home_team": "Portugal",
     "away_team": "Spain",
     "scores": null,
-    "last_update": "2026-07-04T06:38:00Z"
+    "last_update": "2026-07-05T04:32:44Z"
   },
   {
     "id": "810f80b3ae79f5e86b3747ca15718ed8",
@@ -243,7 +201,7 @@
     "home_team": "USA",
     "away_team": "Belgium",
     "scores": null,
-    "last_update": "2026-07-04T06:38:00Z"
+    "last_update": "2026-07-05T04:32:44Z"
   },
   {
     "id": "190922affd0be754bfefd71548dbf90d",
@@ -254,7 +212,7 @@
     "home_team": "Argentina",
     "away_team": "Egypt",
     "scores": null,
-    "last_update": "2026-07-04T06:38:00Z"
+    "last_update": "2026-07-05T04:32:44Z"
   },
   {
     "id": "a6da973c5749ce60adab77d64b3664f4",
@@ -265,6 +223,17 @@
     "home_team": "Switzerland",
     "away_team": "Colombia",
     "scores": null,
-    "last_update": "2026-07-04T06:38:00Z"
+    "last_update": "2026-07-05T04:32:44Z"
+  },
+  {
+    "id": "b6e926d7f026782b9cab2fa02b823d92",
+    "sport_key": "soccer_fifa_world_cup",
+    "sport_title": "FIFA World Cup",
+    "commence_time": "2026-07-09T20:00:00Z",
+    "completed": false,
+    "home_team": "France",
+    "away_team": "Morocco",
+    "scores": null,
+    "last_update": null
   }
 ]
