@@ -143,15 +143,15 @@
     "stage": "LAST_16",
     "homeTeam": "Portugal",
     "awayTeam": "Spain",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "Spain"
   },
   {
     "stage": "LAST_16",
     "homeTeam": "USA",
     "awayTeam": "Belgium",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "Belgium"
   },
   {
     "stage": "LAST_16",
@@ -171,6 +171,13 @@
     "stage": "QUARTER_FINALS",
     "homeTeam": "France",
     "awayTeam": "Morocco",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "QUARTER_FINALS",
+    "homeTeam": "Spain",
+    "awayTeam": "Belgium",
     "status": "TIMED",
     "winner": null
   },
