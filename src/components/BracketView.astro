@@ -8,9 +8,10 @@ import knockoutResults from '../data/knockoutResults.json';
 
 interface Props {
   lang: string;
+  fromRound?: string;
 }
 
-const { lang } = Astro.props;
+const { lang, fromRound = 'R32' } = Astro.props;
 const t = useTranslations(lang as any);
 
 const matches = bracketData.matches as any[];
@@ -29,20 +30,29 @@ const ROUND_LABEL: Record<string, string> = {
   FINAL: t('bracket.final'),
 };
 
-// px — vertical space allotted to a single R32 slot. Must be tall enough to
-// fit a match card's real content (date/venue header + 2 team rows, ~99px
-// with current padding) — otherwise flexbox's column min-height:auto lets
-// boxes overflow their share, which throws off the R32→R16 connector lines.
+// px — vertical space allotted to a single slot of the first shown round. Must
+// be tall enough to fit a match card's real content (date/venue header + 2 team
+// rows, ~99px with current padding) — otherwise flexbox's column min-height:auto
+// lets boxes overflow their share, which throws off the connector lines.
 const UNIT = 108;
-const totalHeight = UNIT * ROUND_SIZE.R32;
 
-const columns = ROUND_ORDER.map(round => ({
+// `fromRound` lets a caller show only part of the bracket (e.g. the homepage
+// renders QF onward). Slice ROUND_ORDER from the requested round; height and
+// width then scale to the first shown round rather than the full R32.
+const startIdx = Math.max(0, ROUND_ORDER.indexOf(fromRound as any));
+const shownOrder = ROUND_ORDER.slice(startIdx);
+const totalHeight = UNIT * ROUND_SIZE[shownOrder[0]];
+const minWidth = startIdx === 0 ? 1400 : shownOrder.length * 300;
+
+const columns = shownOrder.map(round => ({
   round,
   label: ROUND_LABEL[round],
   matches: matches.filter((m: any) => m.round === round),
 }));
 
-const thirdMatch = matches.find((m: any) => m.round === 'THIRD');
+// Only show the 3rd-place playoff on the full bracket; a partial (QF-onward)
+// view keeps the focus on the main tree.
+const thirdMatch = startIdx === 0 ? matches.find((m: any) => m.round === 'THIRD') : undefined;
 
 function renderMatchSlots(match: any) {
   return resolveMatchSlots(match, standingsData as any, knockoutResults as any, matches, lang);
@@ -55,7 +65,7 @@ function renderMatchSlots(match: any) {
 </p>
 
 <div class="overflow-x-auto pb-6">
-  <div class="flex gap-10 min-w-[1400px]" style={`height: ${totalHeight}px`}>
+  <div class="flex gap-10" style={`min-width: ${minWidth}px; height: ${totalHeight}px`}>
     {columns.map((col, colIdx) => (
       <div class="flex flex-col flex-1" style={`height: ${totalHeight}px`}>
         <div class="text-center text-xs font-black uppercase tracking-widest text-amber-300 mb-4 sticky top-16 bg-slate-950/80 py-1 rounded">

@@ -126,10 +126,10 @@ const homeDescription = lang === 'zh-tw'
       {allGroupsFinished ? (
         <div class="mb-14">
           <div class="flex items-center mb-6">
-            <h2 class="text-2xl font-black text-white">{t('bracket.title')}</h2>
+            <h2 class="text-2xl font-black text-white">{t('bracket.titleHome')}</h2>
             <div class="h-[2px] bg-gradient-to-r from-amber-400/50 to-transparent flex-grow ml-6"></div>
           </div>
-          <BracketView lang={lang as string} />
+          <BracketView lang={lang as string} fromRound="QF" />
         </div>
       ) : (
         <div class="mb-14">
