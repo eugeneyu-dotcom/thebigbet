@@ -1,45 +1,5 @@
 [
   {
-    "id": "a4634eae056c18d705e3feffb347163f",
-    "sport_key": "soccer_fifa_world_cup",
-    "sport_title": "FIFA World Cup",
-    "commence_time": "2026-07-05T20:00:00Z",
-    "completed": true,
-    "home_team": "Brazil",
-    "away_team": "Norway",
-    "scores": [
-      {
-        "name": "Brazil",
-        "score": "1"
-      },
-      {
-        "name": "Norway",
-        "score": "2"
-      }
-    ],
-    "last_update": "2026-07-07T20:14:48Z"
-  },
-  {
-    "id": "e61a7b471cadc8e3849158ed59d49cab",
-    "sport_key": "soccer_fifa_world_cup",
-    "sport_title": "FIFA World Cup",
-    "commence_time": "2026-07-06T01:00:00Z",
-    "completed": true,
-    "home_team": "Mexico",
-    "away_team": "England",
-    "scores": [
-      {
-        "name": "Mexico",
-        "score": "2"
-      },
-      {
-        "name": "England",
-        "score": "3"
-      }
-    ],
-    "last_update": "2026-07-07T20:14:48Z"
-  },
-  {
     "id": "16ed3adcf661b3a9bea39871a2d204df",
     "sport_key": "soccer_fifa_world_cup",
     "sport_title": "FIFA World Cup",
