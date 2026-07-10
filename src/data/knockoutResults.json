@@ -171,8 +171,8 @@
     "stage": "QUARTER_FINALS",
     "homeTeam": "France",
     "awayTeam": "Morocco",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "France"
   },
   {
     "stage": "QUARTER_FINALS",

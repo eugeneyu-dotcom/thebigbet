@@ -1,45 +1,5 @@
 [
   {
-    "id": "16ed3adcf661b3a9bea39871a2d204df",
-    "sport_key": "soccer_fifa_world_cup",
-    "sport_title": "FIFA World Cup",
-    "commence_time": "2026-07-06T19:00:00Z",
-    "completed": true,
-    "home_team": "Portugal",
-    "away_team": "Spain",
-    "scores": [
-      {
-        "name": "Portugal",
-        "score": "0"
-      },
-      {
-        "name": "Spain",
-        "score": "1"
-      }
-    ],
-    "last_update": "2026-07-07T20:14:48Z"
-  },
-  {
-    "id": "810f80b3ae79f5e86b3747ca15718ed8",
-    "sport_key": "soccer_fifa_world_cup",
-    "sport_title": "FIFA World Cup",
-    "commence_time": "2026-07-07T00:00:00Z",
-    "completed": true,
-    "home_team": "USA",
-    "away_team": "Belgium",
-    "scores": [
-      {
-        "name": "USA",
-        "score": "1"
-      },
-      {
-        "name": "Belgium",
-        "score": "4"
-      }
-    ],
-    "last_update": "2026-07-07T23:02:33Z"
-  },
-  {
     "id": "190922affd0be754bfefd71548dbf90d",
     "sport_key": "soccer_fifa_world_cup",
     "sport_title": "FIFA World Cup",
@@ -84,11 +44,20 @@
     "sport_key": "soccer_fifa_world_cup",
     "sport_title": "FIFA World Cup",
     "commence_time": "2026-07-09T20:00:00Z",
-    "completed": false,
+    "completed": true,
     "home_team": "France",
     "away_team": "Morocco",
-    "scores": null,
-    "last_update": "2026-07-08T04:05:21Z"
+    "scores": [
+      {
+        "name": "France",
+        "score": "2"
+      },
+      {
+        "name": "Morocco",
+        "score": "0"
+      }
+    ],
+    "last_update": "2026-07-10T03:30:20Z"
   },
   {
     "id": "fca257de4583bd4bc592e8b2a8f24ad7",
@@ -99,7 +68,7 @@
     "home_team": "Spain",
     "away_team": "Belgium",
     "scores": null,
-    "last_update": "2026-07-08T04:05:21Z"
+    "last_update": "2026-07-10T03:30:20Z"
   },
   {
     "id": "e66e4478b739fa0657a7a11235e1fcee",
@@ -110,7 +79,7 @@
     "home_team": "Norway",
     "away_team": "England",
     "scores": null,
-    "last_update": "2026-07-08T04:05:21Z"
+    "last_update": "2026-07-10T03:30:20Z"
   },
   {
     "id": "200d9cd5eda092c7eb778cc104cd2fd2",
@@ -121,6 +90,6 @@
     "home_team": "Argentina",
     "away_team": "Switzerland",
     "scores": null,
-    "last_update": "2026-07-08T04:05:21Z"
+    "last_update": "2026-07-10T03:30:20Z"
   }
 ]
