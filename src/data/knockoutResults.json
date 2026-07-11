@@ -178,8 +178,8 @@
     "stage": "QUARTER_FINALS",
     "homeTeam": "Spain",
     "awayTeam": "Belgium",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "Spain"
   },
   {
     "stage": "QUARTER_FINALS",
