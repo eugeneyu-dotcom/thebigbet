@@ -1,25 +1,5 @@
 [
   {
-    "id": "b6e926d7f026782b9cab2fa02b823d92",
-    "sport_key": "soccer_fifa_world_cup",
-    "sport_title": "FIFA World Cup",
-    "commence_time": "2026-07-09T20:00:00Z",
-    "completed": true,
-    "home_team": "France",
-    "away_team": "Morocco",
-    "scores": [
-      {
-        "name": "France",
-        "score": "2"
-      },
-      {
-        "name": "Morocco",
-        "score": "0"
-      }
-    ],
-    "last_update": "2026-07-12T02:08:30Z"
-  },
-  {
     "id": "fca257de4583bd4bc592e8b2a8f24ad7",
     "sport_key": "soccer_fifa_world_cup",
     "sport_title": "FIFA World Cup",
@@ -88,7 +68,7 @@
     "home_team": "France",
     "away_team": "Spain",
     "scores": null,
-    "last_update": "2026-07-12T06:23:59Z"
+    "last_update": "2026-07-12T09:13:56Z"
   },
   {
     "id": "ced22494ae0bbb8cc4f7108bf6f493df",
@@ -99,6 +79,6 @@
     "home_team": "England",
     "away_team": "Argentina",
     "scores": null,
-    "last_update": "2026-07-12T06:23:59Z"
+    "last_update": "2026-07-12T09:13:56Z"
   }
 ]
