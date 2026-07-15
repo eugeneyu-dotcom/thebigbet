@@ -199,8 +199,8 @@
     "stage": "SEMI_FINALS",
     "homeTeam": "France",
     "awayTeam": "Spain",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "Spain"
   },
   {
     "stage": "SEMI_FINALS",

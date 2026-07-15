@@ -1,54 +1,23 @@
 [
   {
-    "id": "e66e4478b739fa0657a7a11235e1fcee",
-    "sport_key": "soccer_fifa_world_cup",
-    "sport_title": "FIFA World Cup",
-    "commence_time": "2026-07-11T21:01:00Z",
-    "completed": true,
-    "home_team": "Norway",
-    "away_team": "England",
-    "scores": [
-      {
-        "name": "Norway",
-        "score": "1"
-      },
-      {
-        "name": "England",
-        "score": "2"
-      }
-    ],
-    "last_update": "2026-07-12T04:05:39Z"
-  },
-  {
-    "id": "200d9cd5eda092c7eb778cc104cd2fd2",
-    "sport_key": "soccer_fifa_world_cup",
-    "sport_title": "FIFA World Cup",
-    "commence_time": "2026-07-12T01:00:00Z",
-    "completed": true,
-    "home_team": "Argentina",
-    "away_team": "Switzerland",
-    "scores": [
-      {
-        "name": "Argentina",
-        "score": "3"
-      },
-      {
-        "name": "Switzerland",
-        "score": "1"
-      }
-    ],
-    "last_update": "2026-07-12T04:05:39Z"
-  },
-  {
     "id": "f9aa13a662d1658e5a02cfc06d6a2d73",
     "sport_key": "soccer_fifa_world_cup",
     "sport_title": "FIFA World Cup",
     "commence_time": "2026-07-14T19:00:00Z",
-    "completed": false,
+    "completed": true,
     "home_team": "France",
     "away_team": "Spain",
-    "scores": null,
-    "last_update": "2026-07-12T09:13:56Z"
+    "scores": [
+      {
+        "name": "France",
+        "score": "0"
+      },
+      {
+        "name": "Spain",
+        "score": "2"
+      }
+    ],
+    "last_update": "2026-07-15T02:29:47Z"
   },
   {
     "id": "ced22494ae0bbb8cc4f7108bf6f493df",
@@ -59,6 +28,6 @@
     "home_team": "England",
     "away_team": "Argentina",
     "scores": null,
-    "last_update": "2026-07-12T09:13:56Z"
+    "last_update": "2026-07-15T02:29:47Z"
   }
 ]
