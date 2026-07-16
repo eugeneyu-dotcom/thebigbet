@@ -206,7 +206,7 @@
     "stage": "SEMI_FINALS",
     "homeTeam": "England",
     "awayTeam": "Argentina",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "Argentina"
   }
 ]
