@@ -208,5 +208,19 @@
     "awayTeam": "Argentina",
     "status": "FINISHED",
     "winner": "Argentina"
+  },
+  {
+    "stage": "THIRD_PLACE",
+    "homeTeam": "France",
+    "awayTeam": "England",
+    "status": "TIMED",
+    "winner": null
+  },
+  {
+    "stage": "FINAL",
+    "homeTeam": "Spain",
+    "awayTeam": "Argentina",
+    "status": "TIMED",
+    "winner": null
   }
 ]
