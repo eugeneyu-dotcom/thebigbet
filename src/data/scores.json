@@ -1,25 +1,5 @@
 [
   {
-    "id": "f9aa13a662d1658e5a02cfc06d6a2d73",
-    "sport_key": "soccer_fifa_world_cup",
-    "sport_title": "FIFA World Cup",
-    "commence_time": "2026-07-14T19:00:00Z",
-    "completed": true,
-    "home_team": "France",
-    "away_team": "Spain",
-    "scores": [
-      {
-        "name": "France",
-        "score": "0"
-      },
-      {
-        "name": "Spain",
-        "score": "2"
-      }
-    ],
-    "last_update": "2026-07-15T23:04:37Z"
-  },
-  {
     "id": "ced22494ae0bbb8cc4f7108bf6f493df",
     "sport_key": "soccer_fifa_world_cup",
     "sport_title": "FIFA World Cup",
