@@ -213,8 +213,8 @@
     "stage": "THIRD_PLACE",
     "homeTeam": "France",
     "awayTeam": "England",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "England"
   },
   {
     "stage": "FINAL",

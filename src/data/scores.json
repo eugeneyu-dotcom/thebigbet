@@ -1,34 +1,23 @@
 [
   {
-    "id": "ced22494ae0bbb8cc4f7108bf6f493df",
-    "sport_key": "soccer_fifa_world_cup",
-    "sport_title": "FIFA World Cup",
-    "commence_time": "2026-07-15T19:00:00Z",
-    "completed": true,
-    "home_team": "England",
-    "away_team": "Argentina",
-    "scores": [
-      {
-        "name": "England",
-        "score": "1"
-      },
-      {
-        "name": "Argentina",
-        "score": "2"
-      }
-    ],
-    "last_update": "2026-07-15T23:04:37Z"
-  },
-  {
     "id": "7a49e7985534a5ff3428740d0b630fd7",
     "sport_key": "soccer_fifa_world_cup",
     "sport_title": "FIFA World Cup",
     "commence_time": "2026-07-18T21:00:00Z",
-    "completed": false,
+    "completed": true,
     "home_team": "France",
     "away_team": "England",
-    "scores": null,
-    "last_update": "2026-07-16T02:32:36Z"
+    "scores": [
+      {
+        "name": "France",
+        "score": "4"
+      },
+      {
+        "name": "England",
+        "score": "6"
+      }
+    ],
+    "last_update": "2026-07-18T23:08:08Z"
   },
   {
     "id": "fb30113e43d113f1ace48b8563ba1ee9",
@@ -39,6 +28,6 @@
     "home_team": "Spain",
     "away_team": "Argentina",
     "scores": null,
-    "last_update": null
+    "last_update": "2026-07-19T04:31:18Z"
   }
 ]
