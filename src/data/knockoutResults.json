@@ -220,7 +220,7 @@
     "stage": "FINAL",
     "homeTeam": "Spain",
     "awayTeam": "Argentina",
-    "status": "TIMED",
-    "winner": null
+    "status": "FINISHED",
+    "winner": "Spain"
   }
 ]
