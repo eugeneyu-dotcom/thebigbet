@@ -11,6 +11,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "update:matches": "node --env-file-if-exists=.env scripts/update_matches.mjs",
+    "update:mlb": "node --env-file-if-exists=.env scripts/update_mlb.mjs",
     "update:standings": "node --env-file-if-exists=.env scripts/update_standings.mjs",
     "update:bracket": "node --env-file-if-exists=.env scripts/update_bracket_results.mjs",
     "update:ai": "node --env-file-if-exists=.env scripts/update_ai_stats.mjs",
