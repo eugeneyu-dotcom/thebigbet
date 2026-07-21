@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import AnalysisArticle from '../../../../../components/AnalysisArticle.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('analysis', (entry) => (entry.data.league ?? 'world-cup') === 'world-cup');
+  return entries.map(entry => {
+    const [lang, ...slugParts] = entry.id.split('/');
+    const slug = slugParts.join('/');
+    return { params: { lang, slug }, props: { entry } };
+  });
+}
+
+const { lang } = Astro.params;
+const { entry } = Astro.props;
+---
+
+<AnalysisArticle entry={entry} lang={lang as string} />

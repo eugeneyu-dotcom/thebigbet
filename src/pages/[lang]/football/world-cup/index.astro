@@ -1,0 +1,61 @@
+---
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import BaseHead from '../../../../components/BaseHead.astro';
+import GoogleAnalytics from '../../../../components/GoogleAnalytics.astro';
+import { languages } from '../../../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const isZhTw = lang === 'zh-tw';
+const isTh = lang === 'th';
+
+const title = isZhTw ? '2026 世界盃' : isTh ? 'ฟุตบอลโลก 2026' : '2026 World Cup';
+const subtitle = isZhTw
+  ? '2026 FIFA 世界盃的完整內容：賽事分析、賽事知識、對戰樹狀圖與紀錄。'
+  : isTh ? 'เนื้อหาครบของฟุตบอลโลก 2026: บทวิเคราะห์ ความรู้ สายการแข่งขัน และสถิติ'
+    : 'Everything from the 2026 FIFA World Cup: analysis, guides, the bracket and records.';
+
+const cards = [
+  { href: `/${lang}/football/world-cup/analysis`, label: isZhTw ? '賽事分析' : isTh ? 'บทวิเคราะห์' : 'Match Analysis', desc: isZhTw ? '每場賽事的深度前瞻與預測' : isTh ? 'บทวิเคราะห์เชิงลึกและการทำนายรายแมตช์' : 'In-depth previews and predictions' },
+  { href: `/${lang}/football/world-cup/guides`, label: isZhTw ? '賽事知識' : isTh ? 'ความรู้ฟุตบอล' : 'Guides', desc: isZhTw ? '賽制、規則與觀賽知識' : isTh ? 'รูปแบบ กติกา และความรู้' : 'Format, rules and know-how' },
+  { href: `/${lang}/football/world-cup/bracket`, label: isZhTw ? '淘汰賽樹狀圖' : isTh ? 'สายการแข่งขัน' : 'Knockout Bracket', desc: isZhTw ? '32強到冠軍的完整對戰表' : isTh ? 'สายตั้งแต่ 32 ทีมถึงแชมป์' : 'Full bracket from R32 to the final' },
+  { href: `/${lang}/football/world-cup/group-stage`, label: isZhTw ? '小組賽事紀錄' : isTh ? 'ผลรอบแบ่งกลุ่ม' : 'Group Results', desc: isZhTw ? '小組排名與最佳第三名' : isTh ? 'อันดับกลุ่มและอันดับ 3 ที่ดีที่สุด' : 'Group standings and best thirds' },
+  { href: `/${lang}/football/world-cup/schedule`, label: isZhTw ? '賽程' : isTh ? 'ตารางแข่ง' : 'Schedule', desc: isZhTw ? '賽事時間與賠率' : isTh ? 'เวลาแข่งและราคา' : 'Fixtures and odds' },
+];
+---
+
+<html lang={lang}>
+  <head>
+    <BaseHead title={`${title} | The Big Bet`} description={subtitle} lang={lang} />
+    <GoogleAnalytics />
+  </head>
+  <body class="bg-slate-950 text-slate-200 font-sans min-h-screen flex flex-col">
+    <Header />
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
+      <div class="mb-10">
+        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">{isZhTw ? '足球' : isTh ? 'ฟุตบอล' : 'Football'}</p>
+        <h1 class="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 italic uppercase tracking-tighter">{title}</h1>
+        <p class="text-slate-400 mt-3 text-sm leading-relaxed max-w-2xl">{subtitle}</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {cards.map((c) => (
+          <a href={c.href} class="group block bg-slate-900 border border-slate-800 hover:border-amber-400/40 rounded-2xl p-6 transition-all duration-200">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h2 class="text-lg font-black text-white group-hover:text-amber-300 transition-colors duration-200">{c.label}</h2>
+                <p class="text-sm text-slate-400 mt-1">{c.desc}</p>
+              </div>
+              <svg class="w-5 h-5 text-slate-600 group-hover:text-amber-400 shrink-0 mt-1 transition-colors duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

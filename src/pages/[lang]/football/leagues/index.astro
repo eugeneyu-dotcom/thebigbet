@@ -1,0 +1,40 @@
+---
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import BaseHead from '../../../../components/BaseHead.astro';
+import GoogleAnalytics from '../../../../components/GoogleAnalytics.astro';
+import { languages } from '../../../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const isZhTw = lang === 'zh-tw';
+const isTh = lang === 'th';
+
+const title = isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : 'Top 5 Leagues';
+const soon = isZhTw ? '五大聯賽（英超、西甲、義甲、德甲、法甲）的賽事分析即將推出，敬請期待。'
+  : isTh ? 'บทวิเคราะห์ 5 ลีกใหญ่ (พรีเมียร์ลีก ลาลีกา เซเรียอา บุนเดสลีกา ลีกเอิง) กำลังจะมาเร็วๆ นี้'
+    : 'Analysis for the top 5 leagues (EPL, La Liga, Serie A, Bundesliga, Ligue 1) is coming soon.';
+---
+
+<html lang={lang}>
+  <head>
+    <BaseHead title={`${title} | The Big Bet`} description={soon} lang={lang} />
+    <GoogleAnalytics />
+  </head>
+  <body class="bg-slate-950 text-slate-200 font-sans min-h-screen flex flex-col">
+    <Header />
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
+      <div class="mb-10">
+        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">{isZhTw ? '足球' : isTh ? 'ฟุตบอล' : 'Football'}</p>
+        <h1 class="text-3xl font-black text-white">{title}</h1>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-12 text-center">
+        <p class="text-slate-400 text-sm leading-relaxed">{soon}</p>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

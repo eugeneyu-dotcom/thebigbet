@@ -1,0 +1,126 @@
+---
+import { getCollection } from 'astro:content';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import BaseHead from '../../../components/BaseHead.astro';
+import GoogleAnalytics from '../../../components/GoogleAnalytics.astro';
+import { languages } from '../../../i18n/ui';
+import fs from 'fs';
+import path from 'path';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const isZhTw = lang === 'zh-tw';
+const isTh = lang === 'th';
+
+// MLB odds (moneyline) from the cached feed.
+let mlbMatches: any[] = [];
+try {
+  const p = path.resolve('src/data/mlbMatches.json');
+  if (fs.existsSync(p)) mlbMatches = JSON.parse(fs.readFileSync(p, 'utf8'));
+} catch (e) {}
+mlbMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
+const upcoming = mlbMatches.slice(0, 12);
+
+function moneyline(m: any) {
+  const h2h = m.bookmakers?.[0]?.markets?.find((k: any) => k.key === 'h2h');
+  const home = h2h?.outcomes?.find((o: any) => o.name === m.home_team)?.price ?? '-';
+  const away = h2h?.outcomes?.find((o: any) => o.name === m.away_team)?.price ?? '-';
+  return { home, away };
+}
+const fmtTime = (iso: string) =>
+  new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
+
+const analysisEntries = (await getCollection('analysis', (entry) =>
+  entry.id.startsWith(lang + '/') && entry.data.league === 'mlb'))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const metaTitle = isZhTw ? 'MLB 賠率與賽事分析 | The Big Bet' : isTh ? 'MLB ราคาและวิเคราะห์ | The Big Bet' : 'MLB Odds & Analysis | The Big Bet';
+const metaDescription = isZhTw ? 'MLB 即時錢線賠率與深度賽事分析。' : isTh ? 'ราคามันนี่ไลน์ MLB แบบเรียลไทม์และบทวิเคราะห์เชิงลึก' : 'Live MLB moneyline odds and in-depth game analysis.';
+const oddsHeading = isZhTw ? 'MLB 即時賠率（錢線）' : isTh ? 'ราคา MLB สด (มันนี่ไลน์)' : 'Live MLB Odds (Moneyline)';
+const analysisHeading = isZhTw ? 'MLB 賽事分析' : isTh ? 'วิเคราะห์ MLB' : 'MLB Analysis';
+const noOdds = isZhTw ? '目前暫無 MLB 賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคา MLB' : 'No MLB odds available right now.';
+const noAnalysis = isZhTw ? '目前尚無 MLB 分析文章。' : isTh ? 'ยังไม่มีบทวิเคราะห์ MLB' : 'No MLB analysis yet.';
+---
+
+<html lang={lang}>
+  <head>
+    <BaseHead title={metaTitle} description={metaDescription} lang={lang} />
+    <GoogleAnalytics />
+  </head>
+  <body class="bg-slate-950 text-slate-200 font-sans min-h-screen flex flex-col">
+    <Header />
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
+
+      <div class="mb-8">
+        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">MLB</p>
+        <h1 class="text-3xl font-black text-white">MLB</h1>
+      </div>
+
+      <!-- Odds -->
+      <section class="mb-12">
+        <h2 class="text-xl font-black text-white mb-4">{oddsHeading}</h2>
+        {upcoming.length === 0 ? (
+          <p class="text-slate-500 text-sm">{noOdds}</p>
+        ) : (
+          <ul class="space-y-3">
+            {upcoming.map((m) => {
+              const ml = moneyline(m);
+              return (
+                <li class="bg-slate-900 border border-slate-800 rounded-xl px-5 py-4">
+                  <div class="text-xs text-slate-500 font-mono mb-2">{fmtTime(m.commence_time)}</div>
+                  <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
+                    <div class="min-w-0">
+                      <p class="font-bold text-white truncate">{m.away_team}</p>
+                      <p class="text-xs text-slate-500 uppercase">{isZhTw ? '客隊' : isTh ? 'ทีมเยือน' : 'Away'}</p>
+                    </div>
+                    <div class="flex items-center gap-3 font-mono font-black">
+                      <span class="text-amber-400">{ml.away}</span>
+                      <span class="text-slate-600 text-xs">@</span>
+                      <span class="text-amber-400">{ml.home}</span>
+                    </div>
+                    <div class="min-w-0 text-right">
+                      <p class="font-bold text-white truncate">{m.home_team}</p>
+                      <p class="text-xs text-slate-500 uppercase">{isZhTw ? '主隊' : isTh ? 'เจ้าบ้าน' : 'Home'}</p>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </section>
+
+      <!-- Analysis -->
+      <section>
+        <h2 class="text-xl font-black text-white mb-4">{analysisHeading}</h2>
+        {analysisEntries.length === 0 ? (
+          <p class="text-slate-500 text-sm">{noAnalysis}</p>
+        ) : (
+          <ul class="space-y-4">
+            {analysisEntries.map((entry) => {
+              const [, ...slugParts] = entry.id.split('/');
+              const slug = slugParts.join('/');
+              return (
+                <li>
+                  <a href={`/${lang}/mlb/analysis/${slug}`} class="group block bg-slate-900 border border-slate-800 hover:border-amber-400/40 rounded-2xl p-6 transition-all duration-200">
+                    <time class="text-xs text-slate-500 font-mono">{entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}</time>
+                    <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 truncate mt-2">{entry.data.title}</h3>
+                    {entry.data.prediction && (
+                      <p class="text-sm font-bold text-amber-400 mt-2">{isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : 'Prediction: '}{entry.data.prediction}</p>
+                    )}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </section>
+
+    </main>
+    <Footer />
+  </body>
+</html>

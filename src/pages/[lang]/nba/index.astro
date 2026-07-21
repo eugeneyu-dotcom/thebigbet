@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import { languages } from '../../../i18n/ui';
+import AnalysisList from '../../../components/AnalysisList.astro';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const isZhTw = lang === 'zh-tw';
+const isTh = lang === 'th';
+
+const entries = await getCollection('analysis', (entry) =>
+  entry.id.startsWith(lang + '/') && entry.data.league === 'nba');
+
+const metaTitle = isZhTw ? 'NBA 賽事分析 | The Big Bet' : isTh ? 'วิเคราะห์ NBA | The Big Bet' : 'NBA Analysis | The Big Bet';
+const metaDescription = isZhTw
+  ? 'NBA 賽事深度分析：賠率解讀、近況與對戰數據。'
+  : isTh ? 'วิเคราะห์เกม NBA เชิงลึก อัตราต่อรอง ฟอร์ม และสถิติการเจอกัน'
+    : 'In-depth NBA game analysis: odds breakdowns, recent form and head-to-head data.';
+const tag = 'NBA';
+const heading = isZhTw ? 'NBA 賽事分析' : isTh ? 'วิเคราะห์ NBA' : 'NBA Analysis';
+const intro = isZhTw
+  ? 'NBA 賽事深度前瞻，整合二選一盤賠率、近五場戰績與歷史交手。'
+  : isTh ? 'บทวิเคราะห์เกม NBA เชิงลึก รวมราคาสองทาง ฟอร์ม 5 นัดหลัง และสถิติการเจอกัน'
+    : 'In-depth NBA previews with two-way odds, recent form and head-to-head records.';
+const emptyText = isZhTw ? '目前尚無 NBA 分析文章，敬請期待。' : isTh ? 'ยังไม่มีบทวิเคราะห์ NBA โปรดกลับมาใหม่' : 'No NBA analysis yet. Check back soon.';
+---
+
+<AnalysisList
+  lang={lang as string}
+  entries={entries}
+  basePath={`/${lang}/nba/analysis`}
+  metaTitle={metaTitle}
+  metaDescription={metaDescription}
+  tag={tag}
+  heading={heading}
+  intro={intro}
+  emptyText={emptyText}
+/>

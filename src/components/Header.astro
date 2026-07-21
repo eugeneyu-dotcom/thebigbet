@@ -16,24 +16,33 @@ const t = useTranslations(lang);
             THE BIG BET
           </a>
         </div>
-        <nav class="hidden sm:ml-8 sm:flex sm:space-x-8">
+        <nav class="hidden sm:ml-8 sm:flex sm:items-center sm:space-x-8">
           <HeaderLink href={`/${lang}/`} class="inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-100 hover:text-amber-300 transition-colors duration-200">
             {t('nav.home')}
           </HeaderLink>
-          <HeaderLink href={`/${lang}/schedule`} class="inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
-            {t('nav.schedule')}
+
+          <!-- Football dropdown -->
+          <div class="relative group inline-flex items-center">
+            <a href={`/${lang}/football`} class="inline-flex items-center gap-1 px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
+              {t('nav.football')}
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <div class="absolute left-0 top-full pt-3 hidden group-hover:block group-focus-within:block z-50">
+              <div class="bg-slate-900 border border-slate-800 rounded-lg shadow-xl py-2 min-w-[180px]">
+                <a href={`/${lang}/football/world-cup`} class="block px-4 py-2 text-sm font-bold text-slate-300 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">{t('nav.worldcup')}</a>
+                <a href={`/${lang}/football/leagues`} class="block px-4 py-2 text-sm font-bold text-slate-300 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">{t('nav.leagues')}</a>
+              </div>
+            </div>
+          </div>
+
+          <HeaderLink href={`/${lang}/nba`} class="inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
+            NBA
           </HeaderLink>
-          <HeaderLink href={`/${lang}/group-stage`} class="inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
-            {t('nav.groupStage')}
+          <HeaderLink href={`/${lang}/mlb`} class="inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
+            MLB
           </HeaderLink>
-          <HeaderLink href={`/${lang}/analysis`} class="inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
-            {t('nav.analysis')}
-          </HeaderLink>
-          <HeaderLink href={`/${lang}/guides`} class="inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
-            {t('nav.guides')}
-          </HeaderLink>
-          <HeaderLink href={`/${lang}/bracket`} class="inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
-            {t('nav.bracket')}
+          <HeaderLink href={`/${lang}/strategy`} class="inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
+            {t('nav.strategy')}
           </HeaderLink>
         </nav>
       </div>
@@ -65,20 +74,23 @@ const t = useTranslations(lang);
       <a href={`/${lang}/`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-100 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
         {t('nav.home')}
       </a>
-      <a href={`/${lang}/schedule`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
-        {t('nav.schedule')}
+      <a href={`/${lang}/football`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
+        {t('nav.football')}
       </a>
-      <a href={`/${lang}/group-stage`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
-        {t('nav.groupStage')}
+      <a href={`/${lang}/football/world-cup`} class="block pl-7 pr-3 py-2 rounded-lg text-sm font-bold text-slate-500 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
+        {t('nav.worldcup')}
       </a>
-      <a href={`/${lang}/analysis`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
-        {t('nav.analysis')}
+      <a href={`/${lang}/football/leagues`} class="block pl-7 pr-3 py-2 rounded-lg text-sm font-bold text-slate-500 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
+        {t('nav.leagues')}
       </a>
-      <a href={`/${lang}/guides`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
-        {t('nav.guides')}
+      <a href={`/${lang}/nba`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
+        NBA
       </a>
-      <a href={`/${lang}/bracket`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
-        {t('nav.bracket')}
+      <a href={`/${lang}/mlb`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
+        MLB
+      </a>
+      <a href={`/${lang}/strategy`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
+        {t('nav.strategy')}
       </a>
     </nav>
   </div>

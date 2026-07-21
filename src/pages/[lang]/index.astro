@@ -1,18 +1,12 @@
 ---
+import { getCollection } from 'astro:content';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import BaseHead from '../../components/BaseHead.astro';
-import TeamStatsTable from '../../components/TeamStatsTable.astro';
-import ThirdPlaceTable from '../../components/ThirdPlaceTable.astro';
-import GroupStandingsTable from '../../components/GroupStandingsTable.astro';
-import BracketView from '../../components/BracketView.astro';
-import { languages, useTeamTranslations, useSportTranslations, useTranslations } from '../../i18n/ui';
-import { getDetailedTeamStats, type ScoreData } from '../../utils/calculateStats';
-import { formatMatchDateTime, getTimeZoneLabel } from '../../utils/timezone';
-import standingsData from '../../data/worldCupStandings.json';
-import matchPredictions from '../../data/matchPredictions.json';
-import humanPredictions from '../../data/humanPredictions.json';
 import GoogleAnalytics from '../../components/GoogleAnalytics.astro';
+import { languages, useTranslations } from '../../i18n/ui';
+import fs from 'fs';
+import path from 'path';
 
 export function getStaticPaths() {
   return Object.keys(languages).map((lang) => ({ params: { lang } }));
@@ -20,89 +14,63 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params;
 const t = useTranslations(lang);
-const tTeam = useTeamTranslations(lang);
-const tSport = useSportTranslations(lang);
+const isZhTw = lang === 'zh-tw';
+const isTh = lang === 'th';
 
-import fs from 'fs';
-import path from 'path';
-
-// Load cached odds and scores to prevent API quota exhaustion
-let matches: any[] = [];
-let recentScores: ScoreData[] = [];
-
+// MLB odds (moneyline) for the featured section
+let mlbMatches: any[] = [];
 try {
-  const matchesPath = path.resolve('src/data/matches.json');
-  if (fs.existsSync(matchesPath)) {
-    const now = new Date();
-    matches = JSON.parse(fs.readFileSync(matchesPath, 'utf8'))
-      .filter((m: any) => new Date(m.commence_time) > now);
-  }
-} catch (e) {
-  console.error("Error loading matches.json", e);
+  const p = path.resolve('src/data/mlbMatches.json');
+  if (fs.existsSync(p)) mlbMatches = JSON.parse(fs.readFileSync(p, 'utf8'));
+} catch (e) {}
+mlbMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
+const mlbUpcoming = mlbMatches.slice(0, 6);
+function moneyline(m: any) {
+  const h2h = m.bookmakers?.[0]?.markets?.find((k: any) => k.key === 'h2h');
+  const home = h2h?.outcomes?.find((o: any) => o.name === m.home_team)?.price ?? '-';
+  const away = h2h?.outcomes?.find((o: any) => o.name === m.away_team)?.price ?? '-';
+  return { home, away };
 }
+const fmtTime = (iso: string) =>
+  new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
 
-try {
-  const scoresPath = path.resolve('src/data/scores.json');
-  if (fs.existsSync(scoresPath)) {
-    recentScores = JSON.parse(fs.readFileSync(scoresPath, 'utf8'));
-  }
-} catch (e) {
-  console.error("Error loading scores.json", e);
+// Latest analysis across all sports
+const analysisEntries = (await getCollection('analysis', (e) => e.id.startsWith(lang + '/')))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 6);
+
+function articleHref(entry: any) {
+  const [, ...slugParts] = entry.id.split('/');
+  const slug = slugParts.join('/');
+  const league = entry.data.league ?? 'world-cup';
+  if (league === 'nba') return `/${lang}/nba/analysis/${slug}`;
+  if (league === 'mlb') return `/${lang}/mlb/analysis/${slug}`;
+  return `/${lang}/football/world-cup/analysis/${slug}`;
 }
-
-if (matches.length === 0) {
-  matches = Array(6).fill(null).map((_, i) => ({
-    id: `mock-${i}`,
-    sport_title: "Soccer",
-    commence_time: "TBD",
-    home_team: "TBD Home",
-    away_team: "TBD Away",
-    bookmakers: []
-  }));
-}
-
-// Group matches by World Cup Group
-const groupedMatches = standingsData.map(group => {
-  const groupMatches = matches.filter(m =>
-    group.teams.some(t => t.name === m.home_team) ||
-    group.teams.some(t => t.name === m.away_team)
-  );
-  return { ...group, matches: groupMatches };
-}).filter(g => g.teams.length > 0 || g.matches.length > 0);
-
-const matchedIds = new Set(groupedMatches.flatMap(g => g.matches.map(m => m.id)));
-const otherMatches = matches.filter(m => !matchedIds.has(m.id));
-if (otherMatches.length > 0) {
-  groupedMatches.push({
-    group: "Other Matches",
-    teams: [],
-    matches: otherMatches
-  });
-}
-
-const getOdds = (bookmakers: any, teamName: string) => {
-  if (!bookmakers || bookmakers.length === 0) return "TBD";
-  const market = bookmakers[0].markets.find((m: any) => m.key === 'h2h');
-  if (!market) return "TBD";
-  const outcome = market.outcomes.find((o: any) => o.name === teamName);
-  return outcome ? outcome.price : "TBD";
+const leagueLabel = (league: string) => {
+  const l = league ?? 'world-cup';
+  if (l === 'nba') return 'NBA';
+  if (l === 'mlb') return 'MLB';
+  if (l === 'club-football') return t('nav.leagues');
+  return t('nav.worldcup');
 };
 
-const getDrawOdds = (bookmakers: any) => {
-  if (!bookmakers || bookmakers.length === 0) return "TBD";
-  const market = bookmakers[0].markets.find((m: any) => m.key === 'h2h');
-  if (!market) return "TBD";
-  const outcome = market.outcomes.find((o: any) => o.name === 'Draw');
-  return outcome ? outcome.price : "TBD";
-};
+const categories = [
+  { href: `/${lang}/football`, label: t('nav.football') },
+  { href: `/${lang}/nba`, label: 'NBA' },
+  { href: `/${lang}/mlb`, label: 'MLB' },
+  { href: `/${lang}/strategy`, label: t('nav.strategy') },
+];
 
-const allGroupsFinished = standingsData.every((g: any) => g.teams.every((t: any) => t.mp === 3));
+const homeDescription = isZhTw
+  ? '運動賽事分析與博弈資訊平台：MLB、NBA、足球即時賠率、深度分析與博弈攻略。'
+  : isTh
+    ? 'แพลตฟอร์มวิเคราะห์กีฬาและข้อมูลเดิมพัน: ราคาสด MLB, NBA, ฟุตบอล พร้อมบทวิเคราะห์เชิงลึกและกลยุทธ์'
+    : 'Sports analysis and betting info: live MLB, NBA and football odds, in-depth analysis and betting strategy.';
 
-const homeDescription = lang === 'zh-tw'
-  ? '2026 FIFA 世界盃深度運彩數據分析平台，整合即時賠率、官方戰績與 AI 戰力評估。'
-  : lang === 'th'
-    ? 'แพลตฟอร์มวิเคราะห์ฟุตบอลโลก 2026 พร้อมอัตราต่อรองสด สถิติทีม และการประเมิน AI'
-    : '2026 FIFA World Cup sports analytics with live odds, official standings, and AI-powered team strength analysis.';
+const oddsHeading = isZhTw ? 'MLB 即時賠率（錢線）' : isTh ? 'ราคา MLB สด (มันนี่ไลน์)' : 'Live MLB Odds (Moneyline)';
+const latestHeading = isZhTw ? '最新賽事分析' : isTh ? 'บทวิเคราะห์ล่าสุด' : 'Latest Analysis';
+const viewAll = isZhTw ? '看全部' : isTh ? 'ดูทั้งหมด' : 'View all';
 ---
 
 <html lang={lang}>
@@ -112,331 +80,74 @@ const homeDescription = lang === 'zh-tw'
   </head>
   <body class="bg-slate-950 text-slate-200 font-sans min-h-screen flex flex-col">
     <Header />
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
 
       <div class="mb-10 text-center">
         <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 tracking-tighter uppercase italic mb-4 drop-shadow-lg">
-          {lang === 'zh-tw' ? '世界盃台灣運彩分析中心' : 'The Big Bet Analysis'}
+          THE BIG BET
         </h1>
-        <p class="text-slate-400 text-lg font-bold">
-          {lang === 'zh-tw' ? '因台灣運彩未提供公開API，本網站使用其他公開賠率。' : 'Latest Matches & Live Odds'}
-        </p>
+        <p class="text-slate-400 text-base md:text-lg font-bold max-w-2xl mx-auto">{homeDescription}</p>
       </div>
 
-      {allGroupsFinished ? (
-        <div class="mb-14">
-          <div class="flex items-center mb-6">
-            <h2 class="text-2xl font-black text-white">{t('bracket.titleHome')}</h2>
-            <div class="h-[2px] bg-gradient-to-r from-amber-400/50 to-transparent flex-grow ml-6"></div>
-          </div>
-          <BracketView lang={lang as string} fromRound="QF" />
-        </div>
-      ) : (
-        <div class="mb-14">
-          <ThirdPlaceTable lang={lang as string} />
-        </div>
-      )}
-
-      {matches[0]?.id?.startsWith('mock') && (
-        <div class="bg-amber-400/10 border border-amber-400/40 text-amber-300 p-4 rounded-lg mb-8 text-center font-bold">
-          {t('home.tbd')}
-        </div>
-      )}
-
-      {allGroupsFinished ? (
-        <div class="space-y-10">
-          {[...matches].sort((a, b) => {
-            if (a.commence_time === "TBD") return 1;
-            if (b.commence_time === "TBD") return -1;
-            return new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime();
-          }).map((match) => {
-            const homeOdds = getOdds(match.bookmakers, match.home_team);
-            const awayOdds = getOdds(match.bookmakers, match.away_team);
-            const drawOdds = getDrawOdds(match.bookmakers);
-            const matchTime = match.commence_time === "TBD" ? "TBD" : formatMatchDateTime(match.commence_time, lang);
-
-            const homeName = tTeam(match.home_team);
-            const awayName = tTeam(match.away_team);
-
-            const detailedHomeStats = getDetailedTeamStats(match.home_team, recentScores);
-            const detailedAwayStats = getDetailedTeamStats(match.away_team, recentScores);
-
-            return (
-              <div>
-                <div class="bg-slate-900 border-l-4 border-l-amber-400 p-5 rounded-t-xl shadow flex flex-col md:flex-row md:items-center justify-between">
-                  <div class="text-slate-300 font-mono font-bold text-lg mb-2 md:mb-0 md:w-48">
-                    <div>{matchTime}</div>
-                    {match.commence_time !== "TBD" && (
-                      <div class="text-[10px] text-slate-500 mt-0.5 font-normal">{getTimeZoneLabel(lang)}</div>
-                    )}
-                  </div>
-                  <div class="flex-grow flex items-center justify-center space-x-6">
-                    <div class="text-xl font-bold text-white text-right w-1/2 md:w-48">{homeName}</div>
-                    <div class="text-lg text-amber-300 font-black">VS</div>
-                    <div class="text-xl font-bold text-white text-left w-1/2 md:w-48">{awayName}</div>
-                  </div>
-                  <div class="hidden md:block md:w-48" aria-hidden="true"></div>
-                </div>
-
-                <div class="bg-slate-900 border border-slate-800 border-t-0 rounded-b-2xl shadow-lg p-6">
-                  <div class="grid grid-cols-3 gap-3 mb-5">
-                    <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 text-center">
-                      <p class="text-xs text-slate-400 mb-1 font-bold">{t('odds.home')}</p>
-                      <p class="text-xl font-mono font-black text-yellow-400">{homeOdds}</p>
-                    </div>
-                    <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 text-center">
-                      <p class="text-xs text-slate-400 mb-1 font-bold">{t('odds.draw')}</p>
-                      <p class="text-xl font-mono font-black text-slate-200">{drawOdds}</p>
-                    </div>
-                    <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 text-center">
-                      <p class="text-xs text-slate-400 mb-1 font-bold">{t('odds.away')}</p>
-                      <p class="text-xl font-mono font-black text-yellow-400">{awayOdds}</p>
-                    </div>
-                  </div>
-
-                  <div class="mt-4">
-                    <TeamStatsTable
-                      teamA={homeName}
-                      teamB={awayName}
-                      teamAStats={detailedHomeStats}
-                      teamBStats={detailedAwayStats}
-                    />
-                  </div>
-
-                  {/* Prediction panels */}
-                  <div class="mt-5 border-t border-slate-800 pt-5">
-                    <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Predictions</p>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
-
-                      {/* AI Prediction */}
-                      {(matchPredictions as any)[match.id] ? (
-                        <div class="bg-slate-950 rounded-xl border border-amber-400/20 p-4 flex flex-col gap-2">
-                          <div class="flex items-center gap-2">
-                            <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                              <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/>
-                              <circle cx="7.5" cy="14.5" r="1.5" fill="currentColor" stroke="none"/>
-                              <circle cx="16.5" cy="14.5" r="1.5" fill="currentColor" stroke="none"/>
-                            </svg>
-                            <span class="text-xs font-black text-amber-400 uppercase tracking-widest">{t('prediction.ai')}</span>
-                          </div>
-                          <p class="text-slate-300 text-sm leading-relaxed">
-                            {lang === 'zh-tw'
-                              ? (matchPredictions as any)[match.id].prediction_zh
-                              : lang === 'th' && (matchPredictions as any)[match.id].prediction_th
-                                ? (matchPredictions as any)[match.id].prediction_th
-                                : (matchPredictions as any)[match.id].prediction_en}
-                          </p>
-                        </div>
-                      ) : (
-                        <div class="bg-slate-950 rounded-xl border border-slate-800 p-4 flex flex-col gap-2 opacity-60">
-                          <div class="flex items-center gap-2">
-                            <svg class="w-3.5 h-3.5 text-slate-500 shrink-0 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                              <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
-                            </svg>
-                            <span class="text-xs font-black text-slate-500 uppercase tracking-widest">{t('prediction.ai')}</span>
-                          </div>
-                          <p class="text-slate-500 text-sm leading-relaxed">{t('prediction.ai_pending')}</p>
-                        </div>
-                      )}
-
-                      {/* Human Expert Prediction */}
-                      {(humanPredictions as any)[match.id] ? (
-                        <div class="bg-slate-950 rounded-xl border border-violet-400/20 p-4 flex flex-col gap-2">
-                          <div class="flex items-center gap-2">
-                            <svg class="w-3.5 h-3.5 text-violet-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                              <circle cx="12" cy="7" r="4"/>
-                            </svg>
-                            <span class="text-xs font-black text-violet-400 uppercase tracking-widest">{t('prediction.human')}</span>
-                          </div>
-                          <p class="text-slate-300 text-sm leading-relaxed">
-                            {lang === 'zh-tw'
-                              ? (humanPredictions as any)[match.id].prediction_zh
-                              : lang === 'th' && (humanPredictions as any)[match.id].prediction_th
-                                ? (humanPredictions as any)[match.id].prediction_th
-                                : (humanPredictions as any)[match.id].prediction_en}
-                          </p>
-                        </div>
-                      ) : (
-                        <div class="bg-slate-950 rounded-xl border border-slate-800 p-4 flex flex-col gap-2 opacity-60">
-                          <div class="flex items-center gap-2">
-                            <svg class="w-3.5 h-3.5 text-slate-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                              <circle cx="12" cy="7" r="4"/>
-                            </svg>
-                            <span class="text-xs font-black text-slate-500 uppercase tracking-widest">{t('prediction.human')}</span>
-                          </div>
-                          <p class="text-slate-500 text-sm leading-relaxed">{t('prediction.human_empty')}</p>
-                        </div>
-                      )}
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-      <div class="space-y-16">
-        {groupedMatches.map(groupData => (
-          <section>
-            <div class="flex items-center mb-6">
-              <h2 class="text-2xl font-black text-white">{groupData.group}</h2>
-              <div class="h-[2px] bg-gradient-to-r from-amber-400/50 to-transparent flex-grow ml-6"></div>
-            </div>
-
-            {!allGroupsFinished && groupData.teams.length > 0 && (
-              <div class="mb-10">
-                <GroupStandingsTable groupData={groupData} lang={lang as string} />
-              </div>
-            )}
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-              {groupData.matches.map((match) => {
-                const homeOdds = getOdds(match.bookmakers, match.home_team);
-                const awayOdds = getOdds(match.bookmakers, match.away_team);
-                const drawOdds = getDrawOdds(match.bookmakers);
-                const matchTime = match.commence_time === "TBD" ? "TBD" : formatMatchDateTime(match.commence_time, lang);
-
-                const homeName = tTeam(match.home_team);
-                const awayName = tTeam(match.away_team);
-                const sportName = tSport(match.sport_title || "Soccer");
-
-                const detailedHomeStats = getDetailedTeamStats(match.home_team, recentScores);
-                const detailedAwayStats = getDetailedTeamStats(match.away_team, recentScores);
-
-                return (
-                  <article class="bg-slate-900 rounded-2xl shadow-lg border border-slate-800 overflow-hidden hover:border-amber-400/40 transition-colors duration-200 group relative">
-                    <div class="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-amber-400 to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-
-                    <div class="p-6">
-                      <div class="flex justify-between items-center mb-5 border-b border-slate-800 pb-4">
-                        <span class="inline-flex items-center px-3 py-1 rounded text-xs font-black bg-amber-400 text-slate-950 uppercase tracking-wider">
-                          {sportName}
-                        </span>
-                        <time class="text-sm text-slate-400 font-mono text-right" datetime={match.commence_time}>
-                          <div>{matchTime}</div>
-                          {match.commence_time !== "TBD" && (
-                            <div class="text-[10px] text-slate-400 mt-0.5">{getTimeZoneLabel(lang)}</div>
-                          )}
-                        </time>
-                      </div>
-
-                      <div class="flex justify-between items-center mb-5">
-                        <div class="text-center w-2/5">
-                          <h2 class="text-xl font-bold text-white leading-tight">{homeName}</h2>
-                          <p class="text-sm text-slate-400 mt-1 font-bold">{t('label.home')}</p>
-                        </div>
-                        <div class="text-2xl font-black text-amber-300 w-1/5 text-center">VS</div>
-                        <div class="text-center w-2/5">
-                          <h2 class="text-xl font-bold text-white leading-tight">{awayName}</h2>
-                          <p class="text-sm text-slate-400 mt-1 font-bold">{t('label.away')}</p>
-                        </div>
-                      </div>
-
-                      <div class="grid grid-cols-3 gap-3 mb-5">
-                        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 text-center">
-                          <p class="text-xs text-slate-400 mb-1 font-bold">{t('odds.home')}</p>
-                          <p class="text-xl font-mono font-black text-yellow-400">{homeOdds}</p>
-                        </div>
-                        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 text-center">
-                          <p class="text-xs text-slate-400 mb-1 font-bold">{t('odds.draw')}</p>
-                          <p class="text-xl font-mono font-black text-slate-200">{drawOdds}</p>
-                        </div>
-                        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 text-center">
-                          <p class="text-xs text-slate-400 mb-1 font-bold">{t('odds.away')}</p>
-                          <p class="text-xl font-mono font-black text-yellow-400">{awayOdds}</p>
-                        </div>
-                      </div>
-
-                      <div class="mt-4">
-                        <TeamStatsTable
-                          teamA={homeName}
-                          teamB={awayName}
-                          teamAStats={detailedHomeStats}
-                          teamBStats={detailedAwayStats}
-                        />
-                      </div>
-
-                      {/* Prediction panels */}
-                      <div class="mt-5 border-t border-slate-800 pt-5">
-                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Predictions</p>
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
-
-                          {/* AI Prediction */}
-                          {(matchPredictions as any)[match.id] ? (
-                            <div class="bg-slate-950 rounded-xl border border-amber-400/20 p-4 flex flex-col gap-2">
-                              <div class="flex items-center gap-2">
-                                <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                  <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/>
-                                  <circle cx="7.5" cy="14.5" r="1.5" fill="currentColor" stroke="none"/>
-                                  <circle cx="16.5" cy="14.5" r="1.5" fill="currentColor" stroke="none"/>
-                                </svg>
-                                <span class="text-xs font-black text-amber-400 uppercase tracking-widest">{t('prediction.ai')}</span>
-                              </div>
-                              <p class="text-slate-300 text-sm leading-relaxed">
-                                {lang === 'zh-tw'
-                                  ? (matchPredictions as any)[match.id].prediction_zh
-                                  : lang === 'th' && (matchPredictions as any)[match.id].prediction_th
-                                    ? (matchPredictions as any)[match.id].prediction_th
-                                    : (matchPredictions as any)[match.id].prediction_en}
-                              </p>
-                            </div>
-                          ) : (
-                            <div class="bg-slate-950 rounded-xl border border-slate-800 p-4 flex flex-col gap-2 opacity-60">
-                              <div class="flex items-center gap-2">
-                                <svg class="w-3.5 h-3.5 text-slate-500 shrink-0 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                  <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
-                                </svg>
-                                <span class="text-xs font-black text-slate-500 uppercase tracking-widest">{t('prediction.ai')}</span>
-                              </div>
-                              <p class="text-slate-500 text-sm leading-relaxed">{t('prediction.ai_pending')}</p>
-                            </div>
-                          )}
-
-                          {/* Human Expert Prediction */}
-                          {(humanPredictions as any)[match.id] ? (
-                            <div class="bg-slate-950 rounded-xl border border-violet-400/20 p-4 flex flex-col gap-2">
-                              <div class="flex items-center gap-2">
-                                <svg class="w-3.5 h-3.5 text-violet-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                                  <circle cx="12" cy="7" r="4"/>
-                                </svg>
-                                <span class="text-xs font-black text-violet-400 uppercase tracking-widest">{t('prediction.human')}</span>
-                              </div>
-                              <p class="text-slate-300 text-sm leading-relaxed">
-                                {lang === 'zh-tw'
-                                  ? (humanPredictions as any)[match.id].prediction_zh
-                                  : lang === 'th' && (humanPredictions as any)[match.id].prediction_th
-                                    ? (humanPredictions as any)[match.id].prediction_th
-                                    : (humanPredictions as any)[match.id].prediction_en}
-                              </p>
-                            </div>
-                          ) : (
-                            <div class="bg-slate-950 rounded-xl border border-slate-800 p-4 flex flex-col gap-2 opacity-60">
-                              <div class="flex items-center gap-2">
-                                <svg class="w-3.5 h-3.5 text-slate-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                                  <circle cx="12" cy="7" r="4"/>
-                                </svg>
-                                <span class="text-xs font-black text-slate-500 uppercase tracking-widest">{t('prediction.human')}</span>
-                              </div>
-                              <p class="text-slate-500 text-sm leading-relaxed">{t('prediction.human_empty')}</p>
-                            </div>
-                          )}
-
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                )
-              })}
-            </div>
-          </section>
+      <!-- Category quick links -->
+      <div class="flex flex-wrap justify-center gap-3 mb-14">
+        {categories.map((c) => (
+          <a href={c.href} class="px-4 py-2 rounded-full bg-slate-900 border border-slate-800 hover:border-amber-400/50 text-sm font-bold text-slate-200 hover:text-amber-300 transition-colors duration-200">
+            {c.label}
+          </a>
         ))}
       </div>
-      )}
+
+      <!-- Featured: MLB odds -->
+      <section class="mb-14">
+        <div class="flex items-center mb-6">
+          <h2 class="text-2xl font-black text-white">{oddsHeading}</h2>
+          <a href={`/${lang}/mlb`} class="ml-auto text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
+        </div>
+        {mlbUpcoming.length === 0 ? (
+          <p class="text-slate-500 text-sm">{isZhTw ? '目前暫無 MLB 賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคา MLB' : 'No MLB odds available right now.'}</p>
+        ) : (
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {mlbUpcoming.map((m) => {
+              const ml = moneyline(m);
+              return (
+                <div class="bg-slate-900 border border-slate-800 rounded-xl px-5 py-4">
+                  <div class="text-xs text-slate-500 font-mono mb-2">{fmtTime(m.commence_time)}</div>
+                  <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
+                    <div class="min-w-0"><p class="font-bold text-white truncate">{m.away_team}</p></div>
+                    <div class="flex items-center gap-3 font-mono font-black"><span class="text-amber-400">{ml.away}</span><span class="text-slate-600 text-xs">@</span><span class="text-amber-400">{ml.home}</span></div>
+                    <div class="min-w-0 text-right"><p class="font-bold text-white truncate">{m.home_team}</p></div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </section>
+
+      <!-- Latest analysis across sports -->
+      <section>
+        <h2 class="text-2xl font-black text-white mb-6">{latestHeading}</h2>
+        {analysisEntries.length === 0 ? (
+          <p class="text-slate-500 text-sm">{isZhTw ? '目前尚無分析文章。' : isTh ? 'ยังไม่มีบทวิเคราะห์' : 'No analysis yet.'}</p>
+        ) : (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {analysisEntries.map((entry) => (
+              <a href={articleHref(entry)} class="group block bg-slate-900 border border-slate-800 hover:border-amber-400/40 rounded-2xl p-5 transition-all duration-200">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-black bg-slate-800 border border-slate-700 text-slate-300 uppercase">{leagueLabel(entry.data.league)}</span>
+                  <time class="text-xs text-slate-500 font-mono">{entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}</time>
+                </div>
+                <h3 class="text-base font-bold text-white group-hover:text-amber-300 transition-colors duration-200 line-clamp-2">{entry.data.title}</h3>
+                {entry.data.prediction && (
+                  <p class="text-sm font-bold text-amber-400 mt-2 truncate">{isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : 'Prediction: '}{entry.data.prediction}</p>
+                )}
+              </a>
+            ))}
+          </div>
+        )}
+      </section>
+
     </main>
     <Footer />
   </body>

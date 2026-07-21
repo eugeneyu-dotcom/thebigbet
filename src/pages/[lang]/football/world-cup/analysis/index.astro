@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import { languages } from '../../../../../i18n/ui';
+import AnalysisList from '../../../../../components/AnalysisList.astro';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const isZhTw = lang === 'zh-tw';
+const isTh = lang === 'th';
+
+const entries = await getCollection('analysis', (entry) =>
+  entry.id.startsWith(lang + '/') && (entry.data.league ?? 'world-cup') === 'world-cup');
+
+const metaTitle = isZhTw ? '世界盃賽事分析 | The Big Bet' : isTh ? 'วิเคราะห์แมตช์ฟุตบอลโลก | The Big Bet' : 'World Cup Analysis | The Big Bet';
+const metaDescription = isZhTw
+  ? '2026 FIFA 世界盃深度賽事分析文章，包含 AI 評估、賠率解讀與專家預測。'
+  : isTh
+    ? 'บทวิเคราะห์ฟุตบอลโลก 2026 เชิงลึก พร้อมการประเมิน AI อัตราต่อรอง และการทำนายของผู้เชี่ยวชาญ'
+    : '2026 FIFA World Cup in-depth match analysis with AI assessments, odds breakdowns, and expert predictions.';
+const tag = isZhTw ? '深度分析' : isTh ? 'วิเคราะห์เชิงลึก' : 'Deep Analysis';
+const heading = isZhTw ? '世界盃賽事分析' : isTh ? 'วิเคราะห์แมตช์ฟุตบอลโลก' : 'World Cup Analysis';
+const intro = isZhTw
+  ? '由 AI 輔助撰寫的世界盃賽事深度前瞻，整合賠率、歷史交鋒紀錄與戰力分析。'
+  : isTh
+    ? 'บทวิเคราะห์ฟุตบอลโลกเชิงลึก รวมอัตราต่อรอง ประวัติการพบกัน และการวิเคราะห์ความแข็งแกร่งของทีม'
+    : 'AI-assisted World Cup match previews integrating odds, head-to-head records, and team strength analysis.';
+const emptyText = isZhTw ? '目前尚無分析文章，敬請期待。' : isTh ? 'ยังไม่มีบทวิเคราะห์ โปรดกลับมาใหม่เร็วๆ นี้' : 'No analysis articles yet. Check back soon.';
+---
+
+<AnalysisList
+  lang={lang as string}
+  entries={entries}
+  basePath={`/${lang}/football/world-cup/analysis`}
+  metaTitle={metaTitle}
+  metaDescription={metaDescription}
+  tag={tag}
+  heading={heading}
+  intro={intro}
+  emptyText={emptyText}
+/>

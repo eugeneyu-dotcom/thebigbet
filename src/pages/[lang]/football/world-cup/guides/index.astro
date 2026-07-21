@@ -1,10 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
-import Header from '../../../components/Header.astro';
-import Footer from '../../../components/Footer.astro';
-import BaseHead from '../../../components/BaseHead.astro';
-import { languages, useTranslations } from '../../../i18n/ui';
-import GoogleAnalytics from '../../../components/GoogleAnalytics.astro';
+import Header from '../../../../../components/Header.astro';
+import Footer from '../../../../../components/Footer.astro';
+import BaseHead from '../../../../../components/BaseHead.astro';
+import { languages, useTranslations } from '../../../../../i18n/ui';
+import GoogleAnalytics from '../../../../../components/GoogleAnalytics.astro';
 
 export function getStaticPaths() {
   return Object.keys(languages).map((lang) => ({ params: { lang } }));
@@ -45,7 +45,7 @@ const sorted = allEntries.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDa
             return (
               <li>
                 <a
-                  href={`/${lang}/guides/${slug}`}
+                  href={`/${lang}/football/world-cup/guides/${slug}`}
                   class="group block bg-slate-900 border border-slate-800 hover:border-amber-400/40 rounded-2xl p-6 transition-all duration-200"
                 >
                   <div class="flex items-start justify-between gap-4">
