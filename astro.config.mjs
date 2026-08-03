@@ -20,6 +20,10 @@ function buildRedirects() {
     r[`/${lang}/bracket`] = `/${lang}/football/world-cup/bracket`;
     r[`/${lang}/group-stage`] = `/${lang}/football/world-cup/group-stage`;
     r[`/${lang}/schedule`] = `/${lang}/football/world-cup/schedule`;
+    // MLB was retired in favor of cricket — send any already-indexed old URLs
+    // to their closest new equivalent.
+    r[`/${lang}/mlb`] = `/${lang}/cricket`;
+    r[`/${lang}/mlb/guides`] = `/${lang}/cricket/guides`;
 
     const aDir = path.resolve(`src/content/analysis/${lang}`);
     if (fs.existsSync(aDir)) {
@@ -30,7 +34,7 @@ function buildRedirects() {
         const m = src.match(/^league:\s*(\S+)/m);
         const league = m ? m[1] : 'world-cup';
         const dest = league === 'nba' ? `/${lang}/nba/analysis/${slug}`
-          : league === 'mlb' ? `/${lang}/mlb/analysis/${slug}`
+          : league === 'cricket' ? `/${lang}/cricket/analysis/${slug}`
           : `/${lang}/football/world-cup/analysis/${slug}`;
         r[`/${lang}/analysis/${slug}`] = dest;
       }

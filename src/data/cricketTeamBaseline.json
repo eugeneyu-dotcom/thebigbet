@@ -1,0 +1,802 @@
+{
+  "Mumbai Indians": {
+    "bat": {
+      "score": 8.3,
+      "trend": "=",
+      "reason_zh": "打線深度足夠，但缺少過去羅希特領軍時的穩定開局火力。",
+      "reason_en": "Solid batting depth, though it lacks the reliable top-order firepower of the Rohit-led era."
+    },
+    "bowl": {
+      "score": 8.8,
+      "trend": "+",
+      "reason_zh": "Bumrah 領銜的快攻是聯盟頂級戰力，死球局壓制力極強。",
+      "reason_en": "Bumrah-led pace attack is elite, especially in death-over containment."
+    },
+    "fld": {
+      "score": 7.8,
+      "trend": "=",
+      "reason_zh": "外野與內野守備水準整齊，關鍵接殺率高。",
+      "reason_en": "Consistent fielding standards across the XI with a high catch-conversion rate."
+    },
+    "fin": {
+      "score": 7.5,
+      "trend": "=",
+      "reason_zh": "終結能力中規中矩，過度依賴單一強打者收尾。",
+      "reason_en": "Finishing is average, leaning too heavily on a single power-hitter late."
+    },
+    "frm": {
+      "score": 7.5,
+      "trend": "=",
+      "reason_zh": "近幾季戰績起伏，季後賽門票並非穩定。",
+      "reason_en": "Recent seasons have been inconsistent, with playoff qualification far from guaranteed."
+    }
+  },
+  "Chennai Super Kings": {
+    "bat": {
+      "score": 7.8,
+      "trend": "=",
+      "reason_zh": "陣中仍有經驗豐富的中段打者，但年輕血液補充有限。",
+      "reason_en": "Still fields experienced middle-order batters, though fresh young talent is limited."
+    },
+    "bowl": {
+      "score": 7.5,
+      "trend": "-",
+      "reason_zh": "投球輪值老化，缺乏能持續突破的頂級快投手。",
+      "reason_en": "The bowling attack is aging and lacks a consistently penetrative frontline pacer."
+    },
+    "fld": {
+      "score": 8,
+      "trend": "=",
+      "reason_zh": "Jadeja 領軍的守備體系依然是聯盟數一數二。",
+      "reason_en": "The Jadeja-anchored fielding unit remains among the league's very best."
+    },
+    "fin": {
+      "score": 8.5,
+      "trend": "=",
+      "reason_zh": "黃色軍團的終結文化深植球隊，關鍵時刻少慌亂。",
+      "reason_en": "The team's finishing culture runs deep, rarely rattled in the closing overs."
+    },
+    "frm": {
+      "score": 7,
+      "trend": "-",
+      "reason_zh": "近期戰績下滑，陣容老化的隱憂逐漸浮現。",
+      "reason_en": "Recent form has dipped, with an aging core becoming an increasing concern."
+    }
+  },
+  "Royal Challengers Bengaluru": {
+    "bat": {
+      "score": 9,
+      "trend": "+",
+      "reason_zh": "Kohli 領銜的打線火力驚人，是聯盟最具威脅性的陣容之一。",
+      "reason_en": "Kohli-led batting firepower is frightening, among the most dangerous lineups in the league."
+    },
+    "bowl": {
+      "score": 6.8,
+      "trend": "-",
+      "reason_zh": "投球資源長年是球隊的致命傷，死球局經常被打爆。",
+      "reason_en": "Bowling depth has long been the team's Achilles' heel, routinely punished in the death overs."
+    },
+    "fld": {
+      "score": 7.5,
+      "trend": "=",
+      "reason_zh": "守備水準中等，偶有關鍵漏接影響比賽走向。",
+      "reason_en": "Fielding is middling, with occasional costly drops swinging games."
+    },
+    "fin": {
+      "score": 6.5,
+      "trend": "-",
+      "reason_zh": "終結能力不穩，常在打線大爆發後功虧一簣。",
+      "reason_en": "Finishing is shaky, often squandering big totals set up by the top order."
+    },
+    "frm": {
+      "score": 7.8,
+      "trend": "=",
+      "reason_zh": "打線持續給球隊帶來競爭力，但整體戰績仍看投手發揮。",
+      "reason_en": "The batting keeps them competitive, though overall form still hinges on the bowlers showing up."
+    }
+  },
+  "Kolkata Knight Riders": {
+    "bat": {
+      "score": 8.2,
+      "trend": "=",
+      "reason_zh": "打線上下均衡，能因應不同節奏調整攻擊策略。",
+      "reason_en": "A balanced batting order capable of adjusting its approach to different match tempos."
+    },
+    "bowl": {
+      "score": 8.5,
+      "trend": "=",
+      "reason_zh": "旋轉球資源深厚，中局壓制對手效果顯著。",
+      "reason_en": "Deep spin-bowling resources squeeze opponents effectively through the middle overs."
+    },
+    "fld": {
+      "score": 8,
+      "trend": "=",
+      "reason_zh": "守備紀律嚴明，是球隊奪冠拼圖的重要一塊。",
+      "reason_en": "Disciplined fielding has been a key piece of the team's championship formula."
+    },
+    "fin": {
+      "score": 8,
+      "trend": "=",
+      "reason_zh": "終結手火力充足，死球局屢有奇兵完成收尾。",
+      "reason_en": "Ample finishing power, with unexpected heroes regularly closing out the death overs."
+    },
+    "frm": {
+      "score": 8.8,
+      "trend": "+",
+      "reason_zh": "衛冕冠軍身份加持，近期戰績穩定居於聯盟前列。",
+      "reason_en": "Riding their title-winning form, recent results keep them near the top of the table."
+    }
+  },
+  "Delhi Capitals": {
+    "bat": {
+      "score": 7.5,
+      "trend": "=",
+      "reason_zh": "年輕打者天賦不俗，但穩定性仍需比賽經驗打磨。",
+      "reason_en": "Young batting talent shows promise but still needs match experience to find consistency."
+    },
+    "bowl": {
+      "score": 7.2,
+      "trend": "=",
+      "reason_zh": "投球輪值可用資源普通，缺乏能扛主投的王牌。",
+      "reason_en": "Bowling options are unremarkable, lacking a true frontline ace to lead the attack."
+    },
+    "fld": {
+      "score": 7.5,
+      "trend": "=",
+      "reason_zh": "守備表現尚可，年輕陣容跑動積極。",
+      "reason_en": "Fielding is decent, with an energetic young unit covering ground well."
+    },
+    "fin": {
+      "score": 6.8,
+      "trend": "-",
+      "reason_zh": "終結端經驗不足，關鍵局往往缺乏冷靜的老將坐鎮。",
+      "reason_en": "Finishing lacks experience, often missing a calm veteran presence in the crunch overs."
+    },
+    "frm": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "近期戰績忽高忽低，球隊仍在尋找穩定的核心陣容。",
+      "reason_en": "Recent form has swung wildly as the team searches for a settled core XI."
+    }
+  },
+  "Rajasthan Royals": {
+    "bat": {
+      "score": 8.5,
+      "trend": "+",
+      "reason_zh": "Samson 與 Jaiswal 領銜的打線極具爆發力。",
+      "reason_en": "The Samson-and-Jaiswal-led batting order is exceptionally explosive."
+    },
+    "bowl": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "投球深度不足，過度依賴一兩名主力投手扛場。",
+      "reason_en": "Bowling depth is thin, leaning too much on one or two frontline options to carry the load."
+    },
+    "fld": {
+      "score": 7.8,
+      "trend": "=",
+      "reason_zh": "守備整體水準穩健，年輕球員跑動範圍廣。",
+      "reason_en": "Fielding is solid overall, with young players covering plenty of ground."
+    },
+    "fin": {
+      "score": 7.2,
+      "trend": "=",
+      "reason_zh": "終結能力中等，缺乏一名絕對可信賴的死球局打者。",
+      "reason_en": "Finishing is average, missing one truly trusted death-overs hitter."
+    },
+    "frm": {
+      "score": 7.5,
+      "trend": "=",
+      "reason_zh": "打線的火力讓球隊始終保有競爭力，但戰績波動明顯。",
+      "reason_en": "The batting firepower keeps them competitive, though results have fluctuated noticeably."
+    }
+  },
+  "Punjab Kings": {
+    "bat": {
+      "score": 7.8,
+      "trend": "=",
+      "reason_zh": "重建後打線潛力可期，但整體默契仍在建立中。",
+      "reason_en": "The rebuilt batting lineup shows potential, though on-field chemistry is still forming."
+    },
+    "bowl": {
+      "score": 7.3,
+      "trend": "=",
+      "reason_zh": "投球資源新鮮但未經考驗，穩定性有待驗證。",
+      "reason_en": "The bowling group is fresh but unproven, with consistency yet to be tested."
+    },
+    "fld": {
+      "score": 7.2,
+      "trend": "=",
+      "reason_zh": "守備水準普通，關鍵時刻的判斷力仍需累積。",
+      "reason_en": "Fielding is average, with decision-making under pressure still a work in progress."
+    },
+    "fin": {
+      "score": 6.8,
+      "trend": "=",
+      "reason_zh": "終結端缺乏明確戰術核心，容易在後段失去節奏。",
+      "reason_en": "Finishing lacks a clear tactical anchor, prone to losing rhythm late."
+    },
+    "frm": {
+      "score": 7.2,
+      "trend": "=",
+      "reason_zh": "球隊仍在磨合新陣容，戰績表現有待穩定下來。",
+      "reason_en": "The team is still gelling its new roster, with results yet to settle into a groove."
+    }
+  },
+  "Sunrisers Hyderabad": {
+    "bat": {
+      "score": 8.8,
+      "trend": "+",
+      "reason_zh": "高風險高獎勵的進攻打法，能在短時間內轟出天文數字比分。",
+      "reason_en": "A high-risk, high-reward batting approach capable of producing astronomical totals in a hurry."
+    },
+    "bowl": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "投球端相對保守打法顯得吃力，容易被對手打線追擊。",
+      "reason_en": "The bowling unit struggles to match the aggressive approach, often exposed by chasing lineups."
+    },
+    "fld": {
+      "score": 7.3,
+      "trend": "=",
+      "reason_zh": "守備水準普通，未必能跟上打線的進攻節奏。",
+      "reason_en": "Fielding is unremarkable, not always keeping pace with the batting unit's aggression."
+    },
+    "fin": {
+      "score": 6.5,
+      "trend": "-",
+      "reason_zh": "終結端偏好一次性爆發，穩定性不足時容易崩盤。",
+      "reason_en": "Finishing relies on one-off explosions, prone to collapse when the aggression misfires."
+    },
+    "frm": {
+      "score": 7.5,
+      "trend": "=",
+      "reason_zh": "打線風格讓戰績呈現大起大落的特徵。",
+      "reason_en": "The batting philosophy makes for a boom-or-bust form curve."
+    }
+  },
+  "Gujarat Titans": {
+    "bat": {
+      "score": 8,
+      "trend": "=",
+      "reason_zh": "打線攻守兼備，能依比賽情境靈活調整節奏。",
+      "reason_en": "The batting order is well-rounded, able to adjust tempo to match-day situations."
+    },
+    "bowl": {
+      "score": 8,
+      "trend": "=",
+      "reason_zh": "投球輪值深且具彈性，各階段都有對應人選。",
+      "reason_en": "A deep, flexible bowling roster with a fit-for-purpose option at every stage."
+    },
+    "fld": {
+      "score": 8,
+      "trend": "=",
+      "reason_zh": "整體守備紀律良好，冠軍班底的底蘊仍在。",
+      "reason_en": "Overall fielding discipline remains strong, a legacy of their championship-winning core."
+    },
+    "fin": {
+      "score": 7.8,
+      "trend": "=",
+      "reason_zh": "終結端經驗豐富，隊長戰術判斷穩健。",
+      "reason_en": "Finishing benefits from experienced heads and steady captaincy calls."
+    },
+    "frm": {
+      "score": 8,
+      "trend": "=",
+      "reason_zh": "球隊整體平衡，近期戰績維持在聯盟中上水準。",
+      "reason_en": "A well-balanced squad keeps recent form in the upper half of the table."
+    }
+  },
+  "Lucknow Super Giants": {
+    "bat": {
+      "score": 7.8,
+      "trend": "=",
+      "reason_zh": "中段打線具備一定深度，但缺少過去核心球星的穩定輸出。",
+      "reason_en": "Middle-order depth is respectable, though it misses the steady output of a past marquee player."
+    },
+    "bowl": {
+      "score": 7.5,
+      "trend": "=",
+      "reason_zh": "投球陣容仍在發展中，年輕投手需要更多大賽經驗。",
+      "reason_en": "The bowling attack is still developing, with young bowlers needing more big-match exposure."
+    },
+    "fld": {
+      "score": 7.5,
+      "trend": "=",
+      "reason_zh": "守備表現中等，尚未形成鮮明的團隊特色。",
+      "reason_en": "Fielding is middling, without yet forming a clear team identity."
+    },
+    "fin": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "終結能力普通，關鍵局的執行力仍需加強。",
+      "reason_en": "Finishing is average, with execution in the crunch overs still needing work."
+    },
+    "frm": {
+      "score": 7.3,
+      "trend": "=",
+      "reason_zh": "球隊仍在尋找穩定陣容組合，戰績表現中規中矩。",
+      "reason_en": "Still searching for a settled combination, recent results have been middle-of-the-road."
+    }
+  },
+  "Karachi Kings": {
+    "bat": {
+      "score": 7.5,
+      "trend": "=",
+      "reason_zh": "Babar 領銜的打線具備一定號召力，但支援火力不足。",
+      "reason_en": "The Babar-led top order carries star power, though support batting has been lacking."
+    },
+    "bowl": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "投球資源普通，缺少能持續突破的死球局武器。",
+      "reason_en": "Bowling resources are unremarkable, missing a consistent death-overs weapon."
+    },
+    "fld": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "守備水準中等，關鍵接殺機會轉換率不穩定。",
+      "reason_en": "Fielding is average, with an inconsistent conversion rate on key catching chances."
+    },
+    "fin": {
+      "score": 6.8,
+      "trend": "=",
+      "reason_zh": "終結端經常後段失速，比賽尾聲缺乏冷靜的收尾者。",
+      "reason_en": "Finishing frequently loses steam late, missing a composed closer."
+    },
+    "frm": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "近幾季戰績起伏不定，尚未找到穩定的獲勝公式。",
+      "reason_en": "Recent seasons have been up and down, still searching for a reliable winning formula."
+    }
+  },
+  "Lahore Qalandars": {
+    "bat": {
+      "score": 7.8,
+      "trend": "=",
+      "reason_zh": "打線雖非聯盟頂級，但關鍵時刻常有穩健表現。",
+      "reason_en": "The batting isn't top-tier league-wide, but tends to deliver steady performances when it matters."
+    },
+    "bowl": {
+      "score": 8.5,
+      "trend": "+",
+      "reason_zh": "快速投球資源深厚，是連續奪冠的核心武器。",
+      "reason_en": "Deep pace-bowling resources have been the core weapon behind back-to-back titles."
+    },
+    "fld": {
+      "score": 8,
+      "trend": "=",
+      "reason_zh": "守備紀律嚴明，團隊化學反應是聯盟範本。",
+      "reason_en": "Disciplined fielding, with team chemistry that's become a league benchmark."
+    },
+    "fin": {
+      "score": 7.8,
+      "trend": "=",
+      "reason_zh": "終結端有充分大賽經驗，很少在後段自亂陣腳。",
+      "reason_en": "Finishing benefits from ample big-game experience, rarely unraveling late."
+    },
+    "frm": {
+      "score": 8.5,
+      "trend": "+",
+      "reason_zh": "近年戰績極佳，是聯盟目前公認的最強班底之一。",
+      "reason_en": "Recent form has been excellent, widely regarded as one of the league's strongest outfits."
+    }
+  },
+  "Islamabad United": {
+    "bat": {
+      "score": 7.8,
+      "trend": "=",
+      "reason_zh": "打線深度足夠，上下棒次都能在需要時挺身而出。",
+      "reason_en": "Sufficient batting depth, with contributions available up and down the order when needed."
+    },
+    "bowl": {
+      "score": 8,
+      "trend": "=",
+      "reason_zh": "投球輪值均衡，快投與旋轉球選項齊備。",
+      "reason_en": "A balanced bowling attack with both pace and spin options readily available."
+    },
+    "fld": {
+      "score": 7.8,
+      "trend": "=",
+      "reason_zh": "守備水準穩健，多次冠軍班底的默契仍在。",
+      "reason_en": "Fielding remains solid, drawing on the chemistry of a multiple-title-winning core."
+    },
+    "fin": {
+      "score": 8,
+      "trend": "=",
+      "reason_zh": "終結端經驗豐富，關鍵局的戰術執行力值得信賴。",
+      "reason_en": "Finishing draws on plenty of experience, with trustworthy tactical execution in key overs."
+    },
+    "frm": {
+      "score": 7.8,
+      "trend": "=",
+      "reason_zh": "球隊整體平衡，近期戰績維持在聯盟前段。",
+      "reason_en": "A well-balanced squad keeps recent form near the top of the table."
+    }
+  },
+  "Peshawar Zalmi": {
+    "bat": {
+      "score": 7.3,
+      "trend": "=",
+      "reason_zh": "核心打者經驗豐富，但陣容整體年齡偏高。",
+      "reason_en": "The core batters are experienced, though the squad's average age is on the higher side."
+    },
+    "bowl": {
+      "score": 7.3,
+      "trend": "=",
+      "reason_zh": "投球資源可用但缺乏頂級突破性武器。",
+      "reason_en": "Bowling options are serviceable but lack a truly game-breaking weapon."
+    },
+    "fld": {
+      "score": 7.3,
+      "trend": "=",
+      "reason_zh": "守備水準中等，跑動能力隨陣容老化略有下滑。",
+      "reason_en": "Fielding is average, with mobility trending down slightly as the squad ages."
+    },
+    "fin": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "終結端表現普通，缺乏近年新血補充火力。",
+      "reason_en": "Finishing is unremarkable, missing fresh young firepower in recent seasons."
+    },
+    "frm": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "近期戰績維持在中段，尚未有明顯突破。",
+      "reason_en": "Recent form has settled into the middle of the table without a clear breakthrough."
+    }
+  },
+  "Multan Sultans": {
+    "bat": {
+      "score": 8.3,
+      "trend": "+",
+      "reason_zh": "打線深且穩，近年聯盟最具統治力的陣容之一。",
+      "reason_en": "Deep and steady batting, among the league's most dominant lineups in recent years."
+    },
+    "bowl": {
+      "score": 8.2,
+      "trend": "=",
+      "reason_zh": "投球輪值完整，各階段皆有可信賴的執行者。",
+      "reason_en": "A complete bowling roster with a trustworthy option available at every stage."
+    },
+    "fld": {
+      "score": 8,
+      "trend": "=",
+      "reason_zh": "守備水準整齊，冠軍班底的紀律感明顯。",
+      "reason_en": "Consistent fielding, with the discipline of a championship-caliber squad on display."
+    },
+    "fin": {
+      "score": 8.3,
+      "trend": "+",
+      "reason_zh": "終結端戰績卓越，死球局幾乎是聯盟標竿。",
+      "reason_en": "Finishing has been outstanding, effectively the league benchmark in the death overs."
+    },
+    "frm": {
+      "score": 8.5,
+      "trend": "+",
+      "reason_zh": "近幾季戰績極為強勢，是奪冠的頭號熱門。",
+      "reason_en": "Recent form has been dominant, making them the clear title favorites."
+    }
+  },
+  "Quetta Gladiators": {
+    "bat": {
+      "score": 7.5,
+      "trend": "=",
+      "reason_zh": "打線具備一定深度，核心打者狀態回溫。",
+      "reason_en": "Reasonable batting depth, with the core batters trending back into form."
+    },
+    "bowl": {
+      "score": 7.5,
+      "trend": "=",
+      "reason_zh": "投球資源中等，缺乏能持續壓制對手的頂級武器。",
+      "reason_en": "Bowling resources are average, missing a top-tier option to consistently stifle opponents."
+    },
+    "fld": {
+      "score": 7.3,
+      "trend": "=",
+      "reason_zh": "守備水準普通，關鍵時刻表現不穩定。",
+      "reason_en": "Fielding is unremarkable, with inconsistent performances in key moments."
+    },
+    "fin": {
+      "score": 7.3,
+      "trend": "=",
+      "reason_zh": "終結端表現中等，近期有復甦跡象。",
+      "reason_en": "Finishing is middling, though there are recent signs of a revival."
+    },
+    "frm": {
+      "score": 7.3,
+      "trend": "=",
+      "reason_zh": "球隊近期戰績回穩，重返奪冠行列的希望仍在。",
+      "reason_en": "Recent form has stabilized, keeping title hopes alive."
+    }
+  },
+  "India": {
+    "bat": {
+      "score": 9.2,
+      "trend": "+",
+      "reason_zh": "板球世界最深厚的打線人才庫，各棒次都有頂級選手候補。",
+      "reason_en": "The deepest batting talent pool in world cricket, with elite options waiting at every position."
+    },
+    "bowl": {
+      "score": 9,
+      "trend": "+",
+      "reason_zh": "快投與旋轉球資源俱全，是各賽制皆具威脅的頂級投球陣容。",
+      "reason_en": "A complete pace-and-spin attack, an elite bowling unit that threatens across every format."
+    },
+    "fld": {
+      "score": 8.8,
+      "trend": "=",
+      "reason_zh": "守備紀律與跑動能力均為世界頂級水準。",
+      "reason_en": "Fielding discipline and athleticism sit at world-class levels."
+    },
+    "fin": {
+      "score": 8.5,
+      "trend": "=",
+      "reason_zh": "終結端深度充足，鮮少因單點失誤崩盤。",
+      "reason_en": "Ample finishing depth means a single lapse rarely triggers a collapse."
+    },
+    "frm": {
+      "score": 9,
+      "trend": "+",
+      "reason_zh": "長期穩居世界排名前列，近期戰績同樣強勢。",
+      "reason_en": "Long a top-ranked side, recent form has been equally dominant."
+    }
+  },
+  "Pakistan": {
+    "bat": {
+      "score": 8,
+      "trend": "=",
+      "reason_zh": "打線天賦出眾但穩定性起伏，容易出現爆發或崩盤兩極表現。",
+      "reason_en": "Talented but streaky batting, prone to swinging between explosive highs and sudden collapses."
+    },
+    "bowl": {
+      "score": 8.3,
+      "trend": "=",
+      "reason_zh": "快速投球傳統深厚，關鍵局屢能製造突破。",
+      "reason_en": "A deep fast-bowling tradition that regularly produces breakthroughs in key moments."
+    },
+    "fld": {
+      "score": 7.5,
+      "trend": "=",
+      "reason_zh": "守備水準中等，關鍵接殺機會偶有失手。",
+      "reason_en": "Fielding is middling, with occasional drops on key catching chances."
+    },
+    "fin": {
+      "score": 7,
+      "trend": "-",
+      "reason_zh": "終結端穩定性不足，近期關鍵賽事屢有失常。",
+      "reason_en": "Finishing lacks consistency, with recent big matches exposing some jitters."
+    },
+    "frm": {
+      "score": 7.3,
+      "trend": "=",
+      "reason_zh": "近期戰績波動明顯，狀態陰晴不定。",
+      "reason_en": "Recent form has swung noticeably, hard to pin down."
+    }
+  },
+  "Sri Lanka": {
+    "bat": {
+      "score": 7.3,
+      "trend": "=",
+      "reason_zh": "打線經驗豐富但新血補充有限，長期依賴少數核心球員。",
+      "reason_en": "Experienced batting but limited fresh depth, still leaning heavily on a handful of core players."
+    },
+    "bowl": {
+      "score": 7.5,
+      "trend": "=",
+      "reason_zh": "旋轉球傳統仍在，但整體投球深度較過去下滑。",
+      "reason_en": "The spin tradition endures, though overall bowling depth has faded from past highs."
+    },
+    "fld": {
+      "score": 7.3,
+      "trend": "=",
+      "reason_zh": "守備水準普通，缺乏突出的專職守備球員。",
+      "reason_en": "Fielding is average, without a standout specialist in the unit."
+    },
+    "fin": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "終結端經驗尚可，但缺乏近年成功案例累積信心。",
+      "reason_en": "Finishing experience is decent, though recent success stories to build confidence are scarce."
+    },
+    "frm": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "近期戰績中等，球隊正處於陣容交替期。",
+      "reason_en": "Recent form has been middling as the squad works through a generational transition."
+    }
+  },
+  "Bangladesh": {
+    "bat": {
+      "score": 6.8,
+      "trend": "=",
+      "reason_zh": "打線基礎穩健但缺乏長打火力，容易受限於中規中矩的比分。",
+      "reason_en": "Batting is solid at the base but lacks power-hitting, often capped at modest totals."
+    },
+    "bowl": {
+      "score": 7.3,
+      "trend": "=",
+      "reason_zh": "旋轉球資源是球隊招牌，本土條件下具備一定優勢。",
+      "reason_en": "Spin bowling is the team's calling card, offering an edge in home conditions."
+    },
+    "fld": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "守備水準逐步進步，但整體仍有改善空間。",
+      "reason_en": "Fielding has steadily improved, though there's still room to close the gap."
+    },
+    "fin": {
+      "score": 6.5,
+      "trend": "=",
+      "reason_zh": "終結端火力有限，後段常無法追趕高分目標。",
+      "reason_en": "Finishing power is limited, often falling short when chasing big totals late."
+    },
+    "frm": {
+      "score": 6.8,
+      "trend": "=",
+      "reason_zh": "近期戰績穩定但天花板有限，屬於穩健型球隊。",
+      "reason_en": "Recent form has been steady but capped, a reliably mid-tier side."
+    }
+  },
+  "Afghanistan": {
+    "bat": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "打線正逐步成長，年輕打者展現不錯潛力。",
+      "reason_en": "Batting is developing well, with young players showing promising potential."
+    },
+    "bowl": {
+      "score": 8.5,
+      "trend": "+",
+      "reason_zh": "Rashid Khan 領銜的旋轉球三叉戟是世界級戰力。",
+      "reason_en": "The Rashid Khan-led spin trio is a genuinely world-class weapon."
+    },
+    "fld": {
+      "score": 7.3,
+      "trend": "=",
+      "reason_zh": "守備水準持續進步，年輕陣容跑動積極。",
+      "reason_en": "Fielding keeps improving, with an energetic young unit covering good ground."
+    },
+    "fin": {
+      "score": 6.8,
+      "trend": "=",
+      "reason_zh": "終結端火力尚在建立，仍需更多大賽經驗累積。",
+      "reason_en": "Finishing firepower is still being built, needing more big-match reps to mature."
+    },
+    "frm": {
+      "score": 7.8,
+      "trend": "+",
+      "reason_zh": "近年在世界大賽屢有黑馬表現，聲勢持續上升。",
+      "reason_en": "A recent string of giant-killing performances on the world stage has their momentum rising."
+    }
+  },
+  "Nepal": {
+    "bat": {
+      "score": 5.8,
+      "trend": "=",
+      "reason_zh": "打線仍在發展階段，偶有驚喜但缺乏穩定深度。",
+      "reason_en": "The batting is still developing — capable of surprises but lacking consistent depth."
+    },
+    "bowl": {
+      "score": 6,
+      "trend": "=",
+      "reason_zh": "投球資源有限，仍在累積國際賽經驗。",
+      "reason_en": "Bowling resources are limited, still building international match experience."
+    },
+    "fld": {
+      "score": 6.3,
+      "trend": "=",
+      "reason_zh": "守備熱情十足，但基本功仍有進步空間。",
+      "reason_en": "Fielding effort is full of energy, though the fundamentals still have room to grow."
+    },
+    "fin": {
+      "score": 5.5,
+      "trend": "=",
+      "reason_zh": "終結端經驗不足，關鍵局容易失去節奏。",
+      "reason_en": "Finishing lacks experience, often losing rhythm in the crunch overs."
+    },
+    "frm": {
+      "score": 6,
+      "trend": "=",
+      "reason_zh": "作為新興板球國家，近期戰績起伏是成長過程的一部分。",
+      "reason_en": "As an emerging cricket nation, up-and-down recent form is part of the growing process."
+    }
+  },
+  "United Arab Emirates": {
+    "bat": {
+      "score": 5.5,
+      "trend": "=",
+      "reason_zh": "打線深度有限，主要依賴少數歸化球員撐場。",
+      "reason_en": "Batting depth is limited, relying heavily on a handful of naturalized players."
+    },
+    "bowl": {
+      "score": 5.8,
+      "trend": "=",
+      "reason_zh": "投球資源普通，國際賽經驗仍在累積中。",
+      "reason_en": "Bowling resources are unremarkable, still accumulating international experience."
+    },
+    "fld": {
+      "score": 6,
+      "trend": "=",
+      "reason_zh": "守備基本功尚可，整體水準與強隊仍有落差。",
+      "reason_en": "Fielding fundamentals are decent, though still a step behind the top nations."
+    },
+    "fin": {
+      "score": 5.3,
+      "trend": "=",
+      "reason_zh": "終結端火力薄弱，高分追逐戰中容易吃虧。",
+      "reason_en": "Finishing power is thin, often struggling in high-scoring chases."
+    },
+    "frm": {
+      "score": 5.8,
+      "trend": "=",
+      "reason_zh": "作為協會會員國，戰績起伏反映實力與強隊的差距。",
+      "reason_en": "As an associate nation, fluctuating results reflect the gap to the top-tier sides."
+    }
+  },
+  "Oman": {
+    "bat": {
+      "score": 5,
+      "trend": "=",
+      "reason_zh": "打線整體實力仍在起步階段，面對強隊時火力明顯不足。",
+      "reason_en": "The batting is still at an early stage of development, clearly outgunned against top sides."
+    },
+    "bowl": {
+      "score": 5.3,
+      "trend": "=",
+      "reason_zh": "投球資源有限，尚缺乏具國際水準的主力投手。",
+      "reason_en": "Bowling resources are limited, still lacking a genuinely international-standard frontline option."
+    },
+    "fld": {
+      "score": 5.5,
+      "trend": "=",
+      "reason_zh": "守備態度積極，但基本功與強隊仍有明顯差距。",
+      "reason_en": "Fielding effort is positive, though fundamentals still lag clearly behind the top nations."
+    },
+    "fin": {
+      "score": 5,
+      "trend": "=",
+      "reason_zh": "終結端經驗匱乏，高分局面下難以持續競爭。",
+      "reason_en": "Finishing experience is scarce, making it hard to stay competitive in high-scoring contests."
+    },
+    "frm": {
+      "score": 5.3,
+      "trend": "=",
+      "reason_zh": "作為板球發展中國家，近期戰績反映整體實力仍在追趕階段。",
+      "reason_en": "As a developing cricket nation, recent form reflects a side still catching up to the elite."
+    }
+  },
+  "default": {
+    "bat": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "打線整體實力中等，具備一定得分能力但缺乏頂級火力。",
+      "reason_en": "Overall batting strength is average, capable of scoring but lacking top-tier firepower."
+    },
+    "bowl": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "投球資源普通，尚未形成鮮明的戰術特色。",
+      "reason_en": "Bowling resources are unremarkable, without a clearly defined tactical identity yet."
+    },
+    "fld": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "守備水準中規中矩，基本功尚屬穩健。",
+      "reason_en": "Fielding is middle-of-the-road, with solid if unremarkable fundamentals."
+    },
+    "fin": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "終結能力普通，關鍵局表現有待觀察。",
+      "reason_en": "Finishing ability is average, with performance in key overs still to be proven."
+    },
+    "frm": {
+      "score": 7,
+      "trend": "=",
+      "reason_zh": "近期戰績持平，缺乏明顯的上升或下滑趨勢。",
+      "reason_en": "Recent form has been flat, without a clear upward or downward trend."
+    }
+  }
+}

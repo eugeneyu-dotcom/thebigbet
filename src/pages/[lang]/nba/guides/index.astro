@@ -1,0 +1,14 @@
+---
+import { languages } from '../../../../i18n/ui';
+import ComingSoon from '../../../../components/ComingSoon.astro';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+const { lang } = Astro.params;
+const isZhTw = lang === 'zh-tw';
+const isTh = lang === 'th';
+const title = isZhTw ? 'NBA 賽事知識' : isTh ? 'ความรู้ NBA' : 'NBA Guides';
+const message = isZhTw ? 'NBA 賽事知識與教學內容即將推出，敬請期待。' : isTh ? 'เนื้อหาความรู้ NBA กำลังจะมาเร็วๆ นี้' : 'NBA guides and explainers are coming soon.';
+---
+<ComingSoon lang={lang as string} tag="NBA" title={title} message={message} />

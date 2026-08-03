@@ -4,16 +4,17 @@ import { getLangFromUrl, useTranslations } from '../../i18n/ui';
 export interface Props {
   teamA: string;
   teamB: string;
-  teamAData: number[]; // [攻擊, 防守, 控球, 紀律, 狀態]
+  teamAData: number[]; // defaults to football's [攻擊, 防守, 控球, 紀律, 狀態]
   teamBData: number[];
+  labels?: string[]; // override for non-football sports (e.g. cricket dims)
 }
 
-const { teamA, teamB, teamAData, teamBData } = Astro.props;
+const { teamA, teamB, teamAData, teamBData, labels } = Astro.props;
 const chartId = `perf-chart-${Math.random().toString(36).substring(7)}`;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const dimLabels = JSON.stringify([t('dim.atk'), t('dim.def'), t('dim.pos'), t('dim.dis'), t('dim.frm')]);
+const dimLabels = JSON.stringify(labels ?? [t('dim.atk'), t('dim.def'), t('dim.pos'), t('dim.dis'), t('dim.frm')]);
 ---
 
 <perf-chart>
@@ -24,7 +25,7 @@ const dimLabels = JSON.stringify([t('dim.atk'), t('dim.def'), t('dim.pos'), t('d
       <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">{t('stats.badge')}</span>
     </div>
   </div>
-  <div class="w-full relative h-[250px] flex items-center justify-center bg-slate-900/50 rounded-lg p-2 border border-slate-800/50">
+  <div class="w-full relative h-[250px] flex items-center justify-center bg-[#10241a]/50 rounded-lg p-2 border border-[#1a3a29]/50">
     <canvas
       id={chartId}
       data-teama={teamA}
@@ -63,7 +64,7 @@ const dimLabels = JSON.stringify([t('dim.atk'), t('dim.def'), t('dim.pos'), t('d
             {
               label: teamA,
               data: teamAData,
-              // Team A: amber-200 — clearly distinct from brand yellow-400
+              // Team A: amber-300 — clearly distinct from brand yellow-400
               backgroundColor: 'rgba(253, 230, 138, 0.25)',
               borderColor: 'rgb(253, 230, 138)',
               pointBackgroundColor: 'rgb(253, 230, 138)',
@@ -108,10 +109,10 @@ const dimLabels = JSON.stringify([t('dim.atk'), t('dim.def'), t('dim.pos'), t('d
               min: 0,
               max: 10,
               angleLines: {
-                color: '#334155' // slate-700
+                color: '#334155' // [#265039]
               },
               grid: {
-                color: '#334155' // slate-700
+                color: '#334155' // [#265039]
               },
               pointLabels: {
                 color: '#f1f5f9', // slate-100

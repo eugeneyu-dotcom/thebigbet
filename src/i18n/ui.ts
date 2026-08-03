@@ -22,6 +22,7 @@ export const ui = {
     'nav.football': '足球',
     'nav.worldcup': '2026 世界盃',
     'nav.leagues': '五大聯賽',
+    'nav.cricket': '板球',
     'strategy.tag': '博弈攻略',
     'strategy.title': '博弈知識與攻略',
     'strategy.description': '從賠率、隱含機率、期望值到資金控管，用理性的方式看待博弈。',
@@ -42,6 +43,7 @@ export const ui = {
     'sport.football': '足球',
     'sport.basketball': '籃球',
     'sport.baseball': '棒球',
+    'sport.cricket': '板球',
     'label.win': '勝',
     'label.loss': '敗',
     'schedule.viewOdds': '查看賠率',
@@ -78,6 +80,10 @@ export const ui = {
     'dim.pos': '控球 (POS)',
     'dim.dis': '紀律 (DIS)',
     'dim.frm': '狀態 (FRM)',
+    'dim.bat': '打擊 (BAT)',
+    'dim.bowl': '投球 (BOWL)',
+    'dim.fld': '守備 (FLD)',
+    'dim.fin': '決勝能力 (FIN)',
   },
   en: {
     'nav.home': 'Home',
@@ -94,6 +100,7 @@ export const ui = {
     'nav.football': 'Football',
     'nav.worldcup': '2026 World Cup',
     'nav.leagues': 'Top 5 Leagues',
+    'nav.cricket': 'Cricket',
     'strategy.tag': 'Betting Strategy',
     'strategy.title': 'Betting Knowledge & Strategy',
     'strategy.description': 'From odds, implied probability and expected value to bankroll management — how to approach betting rationally.',
@@ -114,6 +121,7 @@ export const ui = {
     'sport.football': 'Football',
     'sport.basketball': 'Basketball',
     'sport.baseball': 'Baseball',
+    'sport.cricket': 'Cricket',
     'label.win': 'W',
     'label.loss': 'L',
     'schedule.viewOdds': 'View Odds',
@@ -150,6 +158,10 @@ export const ui = {
     'dim.pos': 'Possession (POS)',
     'dim.dis': 'Discipline (DIS)',
     'dim.frm': 'Form (FRM)',
+    'dim.bat': 'Batting (BAT)',
+    'dim.bowl': 'Bowling (BOWL)',
+    'dim.fld': 'Fielding (FLD)',
+    'dim.fin': 'Finishing (FIN)',
   },
   th: {
     'nav.home': 'หน้าแรก',
@@ -166,6 +178,7 @@ export const ui = {
     'nav.football': 'ฟุตบอล',
     'nav.worldcup': 'ฟุตบอลโลก 2026',
     'nav.leagues': '5 ลีกใหญ่',
+    'nav.cricket': 'คริกเก็ต',
     'strategy.tag': 'กลยุทธ์การเดิมพัน',
     'strategy.title': 'ความรู้และกลยุทธ์การเดิมพัน',
     'strategy.description': 'ตั้งแต่ราคาต่อรอง ความน่าจะเป็นแฝง ค่าคาดหวัง ไปจนถึงการบริหารเงินทุน มองการเดิมพันอย่างมีเหตุผล',
@@ -186,6 +199,7 @@ export const ui = {
     'sport.football': 'ฟุตบอล',
     'sport.basketball': 'บาสเกตบอล',
     'sport.baseball': 'เบสบอล',
+    'sport.cricket': 'คริกเก็ต',
     'label.win': 'ชนะ',
     'label.loss': 'แพ้',
     'schedule.viewOdds': 'ดูอัตราต่อรอง',
@@ -222,6 +236,10 @@ export const ui = {
     'dim.pos': 'ครองบอล (POS)',
     'dim.dis': 'วินัย (DIS)',
     'dim.frm': 'ฟอร์ม (FRM)',
+    'dim.bat': 'การตี (BAT)',
+    'dim.bowl': 'การโยน (BOWL)',
+    'dim.fld': 'การรับลูก (FLD)',
+    'dim.fin': 'ความเด็ดขาด (FIN)',
   },
 } as const;
 
@@ -324,7 +342,15 @@ export const teamTranslations: Record<string, Record<string, string>> = {
     'South Africa': '南非',
     'Honduras': '宏都拉斯',
     'El Salvador': '薩爾瓦多',
-    'United Arab Emirates': '阿聯'
+    'United Arab Emirates': '阿聯',
+    // Cricket nations
+    'India': '印度',
+    'Pakistan': '巴基斯坦',
+    'Sri Lanka': '斯里蘭卡',
+    'Bangladesh': '孟加拉',
+    'Afghanistan': '阿富汗',
+    'Nepal': '尼泊爾',
+    'Oman': '阿曼'
   },
   'th': {
     // Countries
@@ -391,6 +417,14 @@ export const teamTranslations: Record<string, Record<string, string>> = {
     'Honduras': 'ฮอนดูรัส',
     'El Salvador': 'เอลซัลวาดอร์',
     'United Arab Emirates': 'สหรัฐอาหรับเอมิเรตส์',
+    // Cricket nations
+    'India': 'อินเดีย',
+    'Pakistan': 'ปากีสถาน',
+    'Sri Lanka': 'ศรีลังกา',
+    'Bangladesh': 'บังกลาเทศ',
+    'Afghanistan': 'อัฟกานิสถาน',
+    'Nepal': 'เนปาล',
+    'Oman': 'โอมาน',
   }
 };
 

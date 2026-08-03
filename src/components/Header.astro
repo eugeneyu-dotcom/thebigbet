@@ -5,9 +5,44 @@ import { getLangFromUrl, useTranslations } from '../i18n/ui';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Nav structure: some top items open a dropdown; football's dropdown items each
+// open a further flyout submenu.
+const analysisLbl = t('nav.analysis');
+const guidesLbl = t('nav.guides');
+
+const footballGroups = [
+  {
+    label: t('nav.leagues'),
+    href: `/${lang}/football/leagues`,
+    items: [
+      { label: guidesLbl, href: `/${lang}/football/leagues/guides` },
+      { label: analysisLbl, href: `/${lang}/football/leagues/analysis` },
+    ],
+  },
+  {
+    label: t('nav.worldcup'),
+    href: `/${lang}/football/world-cup`,
+    items: [
+      { label: analysisLbl, href: `/${lang}/football/world-cup/analysis` },
+      { label: guidesLbl, href: `/${lang}/football/world-cup/guides` },
+      { label: t('nav.bracket'), href: `/${lang}/football/world-cup/bracket` },
+      { label: t('nav.groupStage'), href: `/${lang}/football/world-cup/group-stage` },
+      { label: t('nav.schedule'), href: `/${lang}/football/world-cup/schedule` },
+    ],
+  },
+];
+
+const simpleDropdowns = [
+  { label: 'NBA', href: `/${lang}/nba`, items: [ { label: guidesLbl, href: `/${lang}/nba/guides` }, { label: analysisLbl, href: `/${lang}/nba` } ] },
+  { label: t('nav.cricket'), href: `/${lang}/cricket`, items: [ { label: guidesLbl, href: `/${lang}/cricket/guides` }, { label: analysisLbl, href: `/${lang}/cricket` } ] },
+];
+
+const chevronDown = 'm6 9 6 6 6-6';
+const chevronRight = 'm9 6 6 6-6 6';
 ---
 
-<header class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+<header class="bg-[#0c1a13] border-b border-[#1a3a29] sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16 items-center">
       <div class="flex">
@@ -16,31 +51,55 @@ const t = useTranslations(lang);
             THE BIG BET
           </a>
         </div>
-        <nav class="hidden sm:ml-8 sm:flex sm:items-center sm:space-x-8">
+        <nav class="hidden md:ml-8 md:flex md:items-center md:space-x-7">
           <HeaderLink href={`/${lang}/`} class="inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-100 hover:text-amber-300 transition-colors duration-200">
             {t('nav.home')}
           </HeaderLink>
 
-          <!-- Football dropdown -->
-          <div class="relative group inline-flex items-center">
+          <!-- Football: two-level dropdown -->
+          <div class="relative group/fb inline-flex items-center">
             <a href={`/${lang}/football`} class="inline-flex items-center gap-1 px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
               {t('nav.football')}
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={chevronDown}/></svg>
             </a>
-            <div class="absolute left-0 top-full pt-3 hidden group-hover:block group-focus-within:block z-50">
-              <div class="bg-slate-900 border border-slate-800 rounded-lg shadow-xl py-2 min-w-[180px]">
-                <a href={`/${lang}/football/world-cup`} class="block px-4 py-2 text-sm font-bold text-slate-300 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">{t('nav.worldcup')}</a>
-                <a href={`/${lang}/football/leagues`} class="block px-4 py-2 text-sm font-bold text-slate-300 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">{t('nav.leagues')}</a>
+            <div class="absolute left-0 top-full pt-3 hidden group-hover/fb:block group-focus-within/fb:block z-50">
+              <div class="bg-[#10241a] border border-[#1a3a29] rounded-lg shadow-xl py-2 min-w-[180px]">
+                {footballGroups.map((g) => (
+                  <div class="relative group/sub">
+                    <a href={g.href} class="flex items-center justify-between gap-4 px-4 py-2 text-sm font-bold text-slate-300 hover:text-amber-300 hover:bg-[#1a3a29] transition-colors duration-200">
+                      {g.label}
+                      <svg class="w-3.5 h-3.5 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={chevronRight}/></svg>
+                    </a>
+                    <div class="absolute left-full top-0 pl-2 hidden group-hover/sub:block group-focus-within/sub:block">
+                      <div class="bg-[#10241a] border border-[#1a3a29] rounded-lg shadow-xl py-2 min-w-[170px]">
+                        {g.items.map((it) => (
+                          <a href={it.href} class="block px-4 py-2 text-sm font-bold text-slate-300 hover:text-amber-300 hover:bg-[#1a3a29] transition-colors duration-200">{it.label}</a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          <HeaderLink href={`/${lang}/nba`} class="inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
-            NBA
-          </HeaderLink>
-          <HeaderLink href={`/${lang}/mlb`} class="inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
-            MLB
-          </HeaderLink>
+          <!-- NBA / Cricket: single-level dropdowns -->
+          {simpleDropdowns.map((d) => (
+            <div class="relative group/d inline-flex items-center">
+              <a href={d.href} class="inline-flex items-center gap-1 px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
+                {d.label}
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={chevronDown}/></svg>
+              </a>
+              <div class="absolute left-0 top-full pt-3 hidden group-hover/d:block group-focus-within/d:block z-50">
+                <div class="bg-[#10241a] border border-[#1a3a29] rounded-lg shadow-xl py-2 min-w-[150px]">
+                  {d.items.map((it) => (
+                    <a href={it.href} class="block px-4 py-2 text-sm font-bold text-slate-300 hover:text-amber-300 hover:bg-[#1a3a29] transition-colors duration-200">{it.label}</a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+
           <HeaderLink href={`/${lang}/strategy`} class="inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
             {t('nav.strategy')}
           </HeaderLink>
@@ -48,14 +107,13 @@ const t = useTranslations(lang);
       </div>
       <div class="flex items-center gap-3">
         <LanguagePicker />
-        <!-- Mobile menu button -->
         <button
           id="mobile-menu-btn"
           type="button"
           aria-label="Toggle navigation menu"
           aria-expanded="false"
           aria-controls="mobile-menu"
-          class="sm:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200"
+          class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg text-slate-400 hover:text-amber-300 hover:bg-[#1a3a29] transition-colors duration-200"
         >
           <svg id="menu-icon-open" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
@@ -68,30 +126,31 @@ const t = useTranslations(lang);
     </div>
   </div>
 
-  <!-- Mobile nav dropdown -->
-  <div id="mobile-menu" class="hidden sm:hidden border-t border-slate-800 bg-slate-950">
+  <!-- Mobile nav (flattened, indented) -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-[#1a3a29] bg-[#0c1a13] max-h-[80vh] overflow-y-auto">
     <nav class="px-4 py-3 space-y-1">
-      <a href={`/${lang}/`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-100 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
-        {t('nav.home')}
-      </a>
-      <a href={`/${lang}/football`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
-        {t('nav.football')}
-      </a>
-      <a href={`/${lang}/football/world-cup`} class="block pl-7 pr-3 py-2 rounded-lg text-sm font-bold text-slate-500 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
-        {t('nav.worldcup')}
-      </a>
-      <a href={`/${lang}/football/leagues`} class="block pl-7 pr-3 py-2 rounded-lg text-sm font-bold text-slate-500 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
-        {t('nav.leagues')}
-      </a>
-      <a href={`/${lang}/nba`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
-        NBA
-      </a>
-      <a href={`/${lang}/mlb`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
-        MLB
-      </a>
-      <a href={`/${lang}/strategy`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-slate-800 transition-colors duration-200">
-        {t('nav.strategy')}
-      </a>
+      <a href={`/${lang}/`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-100 hover:text-amber-300 hover:bg-[#1a3a29]">{t('nav.home')}</a>
+
+      <a href={`/${lang}/football`} class="block px-3 py-2.5 rounded-lg text-sm font-black text-slate-200 hover:text-amber-300 hover:bg-[#1a3a29]">{t('nav.football')}</a>
+      {footballGroups.map((g) => (
+        <>
+          <a href={g.href} class="block pl-6 pr-3 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-amber-300 hover:bg-[#1a3a29]">{g.label}</a>
+          {g.items.map((it) => (
+            <a href={it.href} class="block pl-10 pr-3 py-1.5 rounded-lg text-xs font-bold text-slate-500 hover:text-amber-300 hover:bg-[#1a3a29]">{it.label}</a>
+          ))}
+        </>
+      ))}
+
+      {simpleDropdowns.map((d) => (
+        <>
+          <a href={d.href} class="block px-3 py-2.5 rounded-lg text-sm font-black text-slate-200 hover:text-amber-300 hover:bg-[#1a3a29]">{d.label}</a>
+          {d.items.map((it) => (
+            <a href={it.href} class="block pl-6 pr-3 py-1.5 rounded-lg text-xs font-bold text-slate-500 hover:text-amber-300 hover:bg-[#1a3a29]">{it.label}</a>
+          ))}
+        </>
+      ))}
+
+      <a href={`/${lang}/strategy`} class="block px-3 py-2.5 rounded-lg text-sm font-bold text-slate-200 hover:text-amber-300 hover:bg-[#1a3a29]">{t('nav.strategy')}</a>
     </nav>
   </div>
 </header>

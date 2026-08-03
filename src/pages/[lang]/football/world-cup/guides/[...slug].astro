@@ -33,14 +33,14 @@ const t = useTranslations(lang);
     />
     <GoogleAnalytics />
   </head>
-  <body class="bg-slate-950 text-slate-200 font-sans min-h-screen flex flex-col">
+  <body class="bg-[#0c1a13] text-slate-200 font-sans min-h-screen flex flex-col">
     <Header />
     <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow">
-      <article class="bg-slate-900 rounded-2xl shadow-lg border border-slate-800 p-8">
+      <article class="bg-[#10241a] rounded-2xl shadow-lg border border-[#1a3a29] p-8">
         <header class="mb-8">
           <div class="flex flex-wrap items-center gap-x-3 gap-y-2 mb-6">
             <span class="text-xs font-black text-amber-400 uppercase tracking-widest">{t('guides.tag')}</span>
-            <span class="text-slate-700">·</span>
+            <span class="text-[#265039]">·</span>
             <time class="text-sm text-slate-400 font-mono" datetime={entry.data.pubDate.toISOString()}>
               {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}
             </time>
@@ -57,11 +57,11 @@ const t = useTranslations(lang);
           .article-body li { color: rgb(203 213 225); }
           .article-body a { text-decoration: none; }
           .article-body table { width: 100%; border-collapse: collapse; }
-          .article-body th, .article-body td { border: 1px solid rgb(30 41 59); padding: 0.5rem 0.75rem; }
-          .article-body th { color: #fff; background: rgb(15 23 42); }
+          .article-body th, .article-body td { border: 1px solid rgb(26 58 41); padding: 0.5rem 0.75rem; }
+          .article-body th { color: #fff; background: rgb(16 36 26); }
           .article-body h3 { font-size: 1.05rem; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #fff; font-weight: 800; }
           .article-body figure { margin: 2rem 0; }
-          .article-body figure img { border-radius: 0.75rem; border: 1px solid rgb(30 41 59); width: 100%; }
+          .article-body figure img { border-radius: 0.75rem; border: 1px solid rgb(26 58 41); width: 100%; }
           .article-body figcaption { margin-top: 0.65rem; font-size: 0.8rem; color: rgb(148 163 184); line-height: 1.6; text-align: center; }
         </style>
       </article>

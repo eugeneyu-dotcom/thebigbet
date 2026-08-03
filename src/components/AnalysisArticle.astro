@@ -7,7 +7,7 @@ import PerformanceChart from './charts/PerformanceChart.astro';
 import H2HChart from './charts/H2HChart.astro';
 import TeamStatsTable from './TeamStatsTable.astro';
 import { useTeamTranslations, useTranslations } from '../i18n/ui';
-import { getDetailedTeamStats, type ScoreData } from '../utils/calculateStats';
+import { getDetailedTeamStats, getDetailedCricketTeamStats, type ScoreData } from '../utils/calculateStats';
 import GoogleAnalytics from './GoogleAnalytics.astro';
 import AnalysisAnchor from './AnalysisAnchor.astro';
 import h2hDatabase from '../data/h2hData.json';
@@ -24,11 +24,22 @@ const { Content } = await render(entry);
 const t = useTranslations(lang as any);
 const tTeam = useTeamTranslations(lang as any);
 
-// Which sport drives the layout. Football keeps the radar/H2H charts;
-// basketball/baseball use a two-way (no-draw) layout with a simple H2H + form block.
+// Which sport drives the layout. Football and cricket each get a radar-chart
+// layout (fed by different data sources); basketball/baseball use a simpler
+// two-way (no-draw) layout with just an H2H bar + recent-form block.
 const sport = entry.data.sport ?? 'football';
 const isFootball = sport === 'football';
+const isCricket = sport === 'cricket';
+const hasRadar = isFootball || isCricket;
 const sportLabel = t(`sport.${sport}` as any);
+
+const cricketDims = [
+  { key: 'bat', name: t('dim.bat') },
+  { key: 'bowl', name: t('dim.bowl') },
+  { key: 'fld', name: t('dim.fld') },
+  { key: 'fin', name: t('dim.fin') },
+  { key: 'frm', name: t('dim.frm') },
+] as const;
 
 // Parse teamA and teamB from "Argentina vs France"
 const matchParts = entry.data.match.split(' vs ');
@@ -50,6 +61,9 @@ try {
 
 const detailedHomeStats = getDetailedTeamStats(rawHomeTeam, recentScores);
 const detailedAwayStats = getDetailedTeamStats(rawAwayTeam, recentScores);
+
+const detailedCricketHomeStats = isCricket ? getDetailedCricketTeamStats(rawHomeTeam) : null;
+const detailedCricketAwayStats = isCricket ? getDetailedCricketTeamStats(rawAwayTeam) : null;
 
 // Resolve H2H data: prefer auto-fetched DB, fall back to frontmatter
 const h2hFromDB = (h2hDatabase as any)[entry.data.match] as number[] | undefined;
@@ -87,17 +101,17 @@ const hasTwoWayStats = !!(twoWayH2H || homeForm || awayForm);
     />
     <GoogleAnalytics />
   </head>
-  <body class="bg-slate-950 text-slate-200 font-sans min-h-screen flex flex-col">
+  <body class="bg-[#0c1a13] text-slate-200 font-sans min-h-screen flex flex-col">
     <Header />
     <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow">
-      <article class="bg-slate-900 rounded-2xl shadow-lg border border-slate-800 p-8">
+      <article class="bg-[#10241a] rounded-2xl shadow-lg border border-[#1a3a29] p-8">
         <header class="mb-8">
           <!-- Meta row: label · sport · date · confidence -->
           <div class="flex flex-wrap items-center gap-x-3 gap-y-2 mb-6">
             <span class="text-xs font-black text-amber-400 uppercase tracking-widest">{t('analysis.tag')}</span>
-            <span class="text-slate-700">·</span>
-            <span class="text-xs font-black uppercase tracking-widest px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300">{sportLabel}</span>
-            <span class="text-slate-700">·</span>
+            <span class="text-[#265039]">·</span>
+            <span class="text-xs font-black uppercase tracking-widest px-2 py-0.5 rounded bg-violet-400/10 border border-violet-400/30 text-violet-300">{sportLabel}</span>
+            <span class="text-[#265039]">·</span>
             <time class="text-sm text-slate-400 font-mono" datetime={entry.data.pubDate.toISOString()}>
               {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}
             </time>
@@ -113,20 +127,20 @@ const hasTwoWayStats = !!(twoWayH2H || homeForm || awayForm);
           <h1 class="text-3xl md:text-4xl font-black text-white leading-tight mb-7">{entry.data.title}</h1>
 
           <!-- Match info card -->
-          <div class="bg-slate-950 rounded-2xl border border-slate-800 p-6">
+          <div class="bg-[#0c1a13] rounded-2xl border border-[#1a3a29] p-6">
             <div class="grid grid-cols-3 gap-2">
               <div class="text-center">
                 <p class="text-2xl font-black text-white leading-tight">{homeName}</p>
                 <p class="text-xs text-slate-500 uppercase tracking-wide mt-1">{t('label.home')}</p>
-                <div class="mt-4 pt-4 border-t border-slate-800/60">
+                <div class="mt-4 pt-4 border-t border-[#1a3a29]/60">
                   <p class="text-xs text-slate-600 mb-1">{t('odds.home')}</p>
                   <p class="text-2xl font-mono font-black text-amber-400">{homeOddsVal}</p>
                 </div>
               </div>
               <div class="text-center flex flex-col items-center justify-center">
-                <span class="inline-block text-xs font-black text-slate-400 uppercase tracking-widest bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5">VS</span>
+                <span class="inline-block text-xs font-black text-slate-400 uppercase tracking-widest bg-[#1a3a29] border border-[#265039] rounded-lg px-3 py-1.5">VS</span>
                 {isFootball && (
-                  <div class="mt-4 pt-4 border-t border-slate-800/60 w-full">
+                  <div class="mt-4 pt-4 border-t border-[#1a3a29]/60 w-full">
                     <p class="text-xs text-slate-600 mb-1">{t('odds.draw')}</p>
                     <p class="text-2xl font-mono font-black text-slate-400">{drawOddsVal}</p>
                   </div>
@@ -135,9 +149,9 @@ const hasTwoWayStats = !!(twoWayH2H || homeForm || awayForm);
               <div class="text-center">
                 <p class="text-2xl font-black text-white leading-tight">{awayName}</p>
                 <p class="text-xs text-slate-500 uppercase tracking-wide mt-1">{t('label.away')}</p>
-                <div class="mt-4 pt-4 border-t border-slate-800/60">
+                <div class="mt-4 pt-4 border-t border-[#1a3a29]/60">
                   <p class="text-xs text-slate-600 mb-1">{t('odds.away')}</p>
-                  <p class="text-2xl font-mono font-black text-amber-400">{awayOddsVal}</p>
+                  <p class="text-2xl font-mono font-black text-violet-400">{awayOddsVal}</p>
                 </div>
               </div>
             </div>
@@ -151,7 +165,7 @@ const hasTwoWayStats = !!(twoWayH2H || homeForm || awayForm);
           </div>
         </header>
 
-        <div class="article-body prose prose-invert max-w-none prose-img:rounded-xl prose-headings:font-black prose-headings:text-white prose-a:text-amber-400 prose-strong:text-white mb-10 pb-10 border-b border-slate-800">
+        <div class="article-body prose prose-invert max-w-none prose-img:rounded-xl prose-headings:font-black prose-headings:text-white prose-a:text-amber-400 prose-strong:text-white mb-10 pb-10 border-b border-[#1a3a29]">
           <Content components={{ a: AnalysisAnchor }} />
         </div>
         <style>
@@ -167,12 +181,12 @@ const hasTwoWayStats = !!(twoWayH2H || homeForm || awayForm);
             <svg class="w-5 h-5 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/>
             </svg>
-            <h2 class="text-xl font-black text-white uppercase tracking-tight">{isFootball ? t('analysis.aiSection') : t('analysis.statsSection')}</h2>
+            <h2 class="text-xl font-black text-white uppercase tracking-tight">{hasRadar ? t('analysis.aiSection') : t('analysis.statsSection')}</h2>
             <div class="h-px bg-gradient-to-r from-amber-400/30 to-transparent flex-grow"></div>
           </div>
 
           {isFootball ? (
-            <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800">
+            <div class="bg-[#0c1a13] p-6 rounded-2xl border border-[#1a3a29]">
               {h2hResults && h2hResults.length === 3 && (
                 <div class="mb-8">
                   <H2HChart teamA={homeName} teamB={awayName} results={h2hResults} lang={lang} />
@@ -195,14 +209,69 @@ const hasTwoWayStats = !!(twoWayH2H || homeForm || awayForm);
                 />
               </div>
             </div>
-          ) : (
-            <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800">
+          ) : isCricket && detailedCricketHomeStats && detailedCricketAwayStats ? (
+            <div class="bg-[#0c1a13] p-6 rounded-2xl border border-[#1a3a29]">
               {twoWayH2H && (
                 <div class="mb-8">
                   <h3 class="text-sm font-black text-slate-300 mb-3">{t('analysis.h2h')}</h3>
                   <div class="flex items-center gap-3">
                     <span class="text-base font-black text-white w-1/4 truncate">{homeName}</span>
-                    <div class="flex-1 flex h-6 rounded-full overflow-hidden bg-slate-800 border border-slate-700">
+                    <div class="flex-1 flex h-6 rounded-full overflow-hidden bg-[#1a3a29] border border-[#265039]">
+                      <div class="bg-amber-500 h-full" style={`width:${homeWinPct}%`}></div>
+                      <div class="bg-violet-500 h-full" style={`width:${awayWinPct}%`}></div>
+                    </div>
+                    <span class="text-base font-black text-white w-1/4 text-right truncate">{awayName}</span>
+                  </div>
+                  <div class="flex justify-between mt-2 text-xs font-mono text-slate-400">
+                    <span>{twoWayH2H.home} {t('label.win')}</span>
+                    <span>{twoWayH2H.away} {t('label.win')}</span>
+                  </div>
+                </div>
+              )}
+
+              <PerformanceChart
+                teamA={homeName}
+                teamB={awayName}
+                teamAData={cricketDims.map(d => detailedCricketHomeStats[d.key].score)}
+                teamBData={cricketDims.map(d => detailedCricketAwayStats[d.key].score)}
+                labels={cricketDims.map(d => d.name)}
+              />
+
+              <div class="mt-6">
+                <TeamStatsTable
+                  teamA={homeName}
+                  teamB={awayName}
+                  teamAStats={detailedCricketHomeStats}
+                  teamBStats={detailedCricketAwayStats}
+                  dims={cricketDims}
+                />
+              </div>
+
+              {(homeForm || awayForm) && (
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+                  {[{ name: homeName, form: homeForm }, { name: awayName, form: awayForm }].map((tm) => tm.form && (
+                    <div>
+                      <h4 class="text-xs text-slate-500 uppercase tracking-wide mb-2">{tm.name} · {t('analysis.recentForm')}</h4>
+                      <div class="flex gap-1.5">
+                        {tm.form.map((r: number) => (
+                          <span class={`w-7 h-7 rounded flex items-center justify-center text-xs font-black ${r === 1 ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40' : 'bg-rose-500/20 text-rose-400 border border-rose-500/40'}`}>
+                            {r === 1 ? t('label.win') : t('label.loss')}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <div class="bg-[#0c1a13] p-6 rounded-2xl border border-[#1a3a29]">
+              {twoWayH2H && (
+                <div class="mb-8">
+                  <h3 class="text-sm font-black text-slate-300 mb-3">{t('analysis.h2h')}</h3>
+                  <div class="flex items-center gap-3">
+                    <span class="text-base font-black text-white w-1/4 truncate">{homeName}</span>
+                    <div class="flex-1 flex h-6 rounded-full overflow-hidden bg-[#1a3a29] border border-[#265039]">
                       <div class="bg-amber-500 h-full" style={`width:${homeWinPct}%`}></div>
                       <div class="bg-sky-500 h-full" style={`width:${awayWinPct}%`}></div>
                     </div>

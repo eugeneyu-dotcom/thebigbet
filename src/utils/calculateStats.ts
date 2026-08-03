@@ -1,4 +1,5 @@
 import baselineData from '../data/aiTeamBaseline.json';
+import cricketBaselineData from '../data/cricketTeamBaseline.json';
 
 export interface ScoreData {
   id: string;
@@ -130,4 +131,22 @@ export function getDynamicTeamStats(teamName: string, recentMatches: ScoreData[]
     detailed.dis.score,
     detailed.frm.score
   ];
+}
+
+export interface DetailedCricketTeamStats {
+  bat: StatDetail;
+  bowl: StatDetail;
+  fld: StatDetail;
+  fin: StatDetail;
+  frm: StatDetail;
+}
+
+/**
+ * Cricket team stats — static baseline lookup only. Unlike football's
+ * getDetailedTeamStats, there is no live-results feed to adjust these
+ * dynamically yet (no cricket equivalent of scores.json).
+ */
+export function getDetailedCricketTeamStats(teamName: string): DetailedCricketTeamStats {
+  const baseline = cricketBaselineData[teamName as keyof typeof cricketBaselineData] || cricketBaselineData.default;
+  return JSON.parse(JSON.stringify(baseline));
 }

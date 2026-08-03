@@ -68,7 +68,7 @@ function renderMatchSlots(match: any) {
   <div class="flex gap-10" style={`min-width: ${minWidth}px; height: ${totalHeight}px`}>
     {columns.map((col, colIdx) => (
       <div class="flex flex-col flex-1" style={`height: ${totalHeight}px`}>
-        <div class="text-center text-xs font-black uppercase tracking-widest text-amber-300 mb-4 sticky top-16 bg-slate-950/80 py-1 rounded">
+        <div class="text-center text-xs font-black uppercase tracking-widest text-amber-300 mb-4 sticky top-16 bg-[#0c1a13]/80 py-1 rounded">
           {col.label}
         </div>
         <div class="flex flex-col flex-1">
@@ -83,9 +83,9 @@ function renderMatchSlots(match: any) {
                     class={`absolute right-[-2.5rem] w-10 border-r-2 border-slate-500 ${isTop ? 'border-b-2 top-1/2 h-1/2' : 'border-t-2 bottom-1/2 h-1/2'}`}
                   ></div>
                 )}
-                <div class="w-full bg-slate-800 border border-slate-600 rounded-lg shadow-md text-xs overflow-hidden">
-                  <div class="bg-slate-900 px-2 py-1 text-[11px] font-mono">
-                    <div class="font-bold text-amber-200">{dateLabel(match.date)}</div>
+                <div class="w-full bg-[#1a3a29] border border-slate-600 rounded-lg shadow-md text-xs overflow-hidden">
+                  <div class="bg-[#10241a] px-2 py-1 text-[11px] font-mono">
+                    <div class="font-bold text-amber-300">{dateLabel(match.date)}</div>
                     <div class="truncate text-slate-300">{venueLabel(match.venue)}</div>
                   </div>
                   <div class={`px-2 py-1.5 border-b border-slate-600/70 font-bold truncate ${slotA.teamName ? 'text-white' : 'text-slate-300 italic'}`}>
@@ -109,9 +109,9 @@ function renderMatchSlots(match: any) {
     <div class="text-center text-xs font-black uppercase tracking-widest text-amber-300 mb-3">
       {t('bracket.third')}
     </div>
-    <div class="bg-slate-800 border border-slate-600 rounded-lg shadow-md text-xs overflow-hidden">
-      <div class="bg-slate-900 px-2 py-1 text-[11px] font-mono">
-        <div class="font-bold text-amber-200">{dateLabel(thirdMatch.date)}</div>
+    <div class="bg-[#1a3a29] border border-slate-600 rounded-lg shadow-md text-xs overflow-hidden">
+      <div class="bg-[#10241a] px-2 py-1 text-[11px] font-mono">
+        <div class="font-bold text-amber-300">{dateLabel(thirdMatch.date)}</div>
         <div class="truncate text-slate-300">{venueLabel(thirdMatch.venue)}</div>
       </div>
       {(() => {

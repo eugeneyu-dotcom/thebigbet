@@ -1,34 +1,39 @@
 ---
-import { type DetailedTeamStats } from '../utils/calculateStats';
+import { type DetailedTeamStats, type StatDetail } from '../utils/calculateStats';
 import { getLangFromUrl, useTranslations } from '../i18n/ui';
 
 export interface Props {
   teamA: string;
   teamB: string;
-  teamAStats: DetailedTeamStats;
-  teamBStats: DetailedTeamStats;
+  teamAStats: DetailedTeamStats | Record<string, StatDetail>;
+  teamBStats: DetailedTeamStats | Record<string, StatDetail>;
+  // Override for non-football sports (e.g. cricket's bat/bowl/fld/fin/frm).
+  dims?: { key: string; name: string }[];
 }
 
-const { teamA, teamB, teamAStats, teamBStats } = Astro.props;
+const { teamA, teamB, dims } = Astro.props;
+const teamAStats = Astro.props.teamAStats as Record<string, StatDetail>;
+const teamBStats = Astro.props.teamBStats as Record<string, StatDetail>;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const chartId = `radar-${Math.random().toString(36).slice(2, 8)}`;
-const radarDataA = JSON.stringify([teamAStats.atk.score, teamAStats.def.score, teamAStats.pos.score, teamAStats.dis.score, teamAStats.frm.score]);
-const radarDataB = JSON.stringify([teamBStats.atk.score, teamBStats.def.score, teamBStats.pos.score, teamBStats.dis.score, teamBStats.frm.score]);
-const radarLabels = JSON.stringify([t('dim.atk'), t('dim.def'), t('dim.pos'), t('dim.dis'), t('dim.frm')]);
 
-const labels = [
+const labels = dims ?? [
   { key: 'atk', name: t('dim.atk') },
   { key: 'def', name: t('dim.def') },
   { key: 'pos', name: t('dim.pos') },
   { key: 'dis', name: t('dim.dis') },
   { key: 'frm', name: t('dim.frm') }
-] as const;
+];
+
+const radarDataA = JSON.stringify(labels.map(l => teamAStats[l.key].score));
+const radarDataB = JSON.stringify(labels.map(l => teamBStats[l.key].score));
+const radarLabels = JSON.stringify(labels.map(l => l.name));
 
 function getTrendIcon(trend: string): string {
-  if (trend.includes('+')) return `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>`;
+  if (trend.includes('+')) return `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-amber-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>`;
   if (trend.includes('-')) return `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>`;
   return `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" /></svg>`;
 }
@@ -40,19 +45,19 @@ function getReason(stat: any): string {
 }
 ---
 
-<details class="w-full bg-slate-900 border border-slate-800 rounded-lg overflow-hidden group">
-  <summary class="cursor-pointer p-4 flex justify-between items-center bg-slate-800/50 hover:bg-slate-800 transition-colors duration-200 font-bold text-sm text-amber-300 tracking-wide">
+<details class="w-full bg-[#10241a] border border-[#1a3a29] rounded-lg overflow-hidden group">
+  <summary class="cursor-pointer p-4 flex justify-between items-center bg-[#1a3a29]/50 hover:bg-[#1a3a29] transition-colors duration-200 font-bold text-sm text-amber-300 tracking-wide">
     <span>{t('stats.title')}</span>
     <svg class="w-4 h-4 text-slate-500 group-open:rotate-180 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
     </svg>
   </summary>
 
-  <div class="border-t border-slate-800 divide-y divide-slate-800/40">
+  <div class="border-t border-[#1a3a29] divide-y divide-[#1a3a29]/40">
 
     <!-- Radar chart — canvas is lazy-initialized via toggle event in <script> -->
     <div class="px-3 pt-4 pb-2">
-      <div class="relative w-full h-[220px] flex items-center justify-center bg-slate-900/50 rounded-lg border border-slate-800/50">
+      <div class="relative w-full h-[220px] flex items-center justify-center bg-[#10241a]/50 rounded-lg border border-[#1a3a29]/50">
         <canvas
           id={chartId}
           class="stats-radar-canvas"
@@ -66,7 +71,7 @@ function getReason(stat: any): string {
     </div>
 
     <!-- Team name header -->
-    <div class="grid grid-cols-[1fr_3.5rem_1fr] px-3 py-2.5 bg-slate-950/50">
+    <div class="grid grid-cols-[1fr_3.5rem_1fr] px-3 py-2.5 bg-[#0c1a13]/50">
       <p class="text-amber-300 font-black text-xs text-center truncate px-1">{teamA}</p>
       <p></p>
       <p class="text-cyan-300 font-black text-xs text-center truncate px-1">{teamB}</p>
@@ -80,7 +85,7 @@ function getReason(stat: any): string {
           <!-- Team A: trend icon + score, right-aligned -->
           <div class="flex items-center justify-end gap-1.5 pr-1">
             <span set:html={getTrendIcon(teamAStats[l.key].trend)}></span>
-            <span class="text-2xl font-mono font-black text-amber-200 leading-none tabular-nums">{teamAStats[l.key].score}</span>
+            <span class="text-2xl font-mono font-black text-amber-300 leading-none tabular-nums">{teamAStats[l.key].score}</span>
           </div>
           <!-- Dimension label -->
           <div class="text-center">

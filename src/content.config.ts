@@ -9,16 +9,16 @@ const analysis = defineCollection({
     description: z.string().optional(),
     pubDate: z.coerce.date(),
     // Which sport this analysis covers. Drives the detail-page template:
-    // 'football' keeps the original radar/H2H charts (fed by scores.json);
+    // 'football' and 'cricket' each get their own radar-chart layout;
     // 'basketball' / 'baseball' use a two-way (no-draw) layout with a simple
     // H2H + recent-form block. Defaults to football so existing articles are
     // unaffected.
-    sport: z.enum(['football', 'basketball', 'baseball']).default('football'),
+    sport: z.enum(['football', 'basketball', 'baseball', 'cricket']).default('football'),
     // Competition/league this article belongs to. Drives the top-nav category
-    // routing: world-cup + club-football live under Football; nba/mlb are their
-    // own categories. Defaults to world-cup so existing football articles map
-    // to the 2026 World Cup section without edits.
-    league: z.enum(['world-cup', 'club-football', 'nba', 'mlb']).default('world-cup'),
+    // routing: world-cup + club-football live under Football; nba/cricket are
+    // their own categories. Defaults to world-cup so existing football articles
+    // map to the 2026 World Cup section without edits.
+    league: z.enum(['world-cup', 'club-football', 'nba', 'cricket']).default('world-cup'),
     match: z.string(),
     odds: z.string(),
     prediction: z.string(),

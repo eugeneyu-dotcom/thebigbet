@@ -4,7 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import GoogleAnalytics from '../../components/GoogleAnalytics.astro';
-import { languages, useTranslations } from '../../i18n/ui';
+import { languages, useTranslations, useTeamTranslations } from '../../i18n/ui';
 import fs from 'fs';
 import path from 'path';
 
@@ -14,22 +14,47 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params;
 const t = useTranslations(lang);
+const tTeam = useTeamTranslations(lang);
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
 
-// MLB odds (moneyline) for the featured section
-let mlbMatches: any[] = [];
-try {
-  const p = path.resolve('src/data/mlbMatches.json');
-  if (fs.existsSync(p)) mlbMatches = JSON.parse(fs.readFileSync(p, 'utf8'));
-} catch (e) {}
-mlbMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
-const mlbUpcoming = mlbMatches.slice(0, 6);
+function loadJson(relPath: string): any {
+  try {
+    const p = path.resolve(relPath);
+    if (fs.existsSync(p)) return JSON.parse(fs.readFileSync(p, 'utf8'));
+  } catch (e) {}
+  return null;
+}
+
+// Cricket + football (World Cup) upcoming matches for the homepage's
+// per-match prediction cards. NBA is skipped here for now — the basketball
+// season hasn't started.
+const cricketMatches: any[] = loadJson('src/data/cricketMatches.json') ?? [];
+const footballMatches: any[] = loadJson('src/data/matches.json') ?? [];
+cricketMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
+footballMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
+const cricketUpcoming = cricketMatches.slice(0, 6);
+const footballUpcoming = footballMatches.slice(0, 6);
+
+// AI predictions (shared file, keyed by match id, spans both sports) and the
+// homepage-only human predictions (separate from the World-Cup-article-only
+// humanPredictions.json — that file stays untouched).
+const aiPredictions: Record<string, any> = loadJson('src/data/matchPredictions.json') ?? {};
+const homeHumanPredictions: Record<string, any> = loadJson('src/data/homeHumanPredictions.json') ?? {};
+
+function pickLang(pred: any): string | null {
+  if (!pred) return null;
+  if (isZhTw) return pred.prediction_zh || pred.prediction_en || pred.prediction_th || null;
+  if (isTh) return pred.prediction_th || pred.prediction_en || pred.prediction_zh || null;
+  return pred.prediction_en || pred.prediction_zh || pred.prediction_th || null;
+}
+
 function moneyline(m: any) {
   const h2h = m.bookmakers?.[0]?.markets?.find((k: any) => k.key === 'h2h');
   const home = h2h?.outcomes?.find((o: any) => o.name === m.home_team)?.price ?? '-';
   const away = h2h?.outcomes?.find((o: any) => o.name === m.away_team)?.price ?? '-';
-  return { home, away };
+  const draw = h2h?.outcomes?.find((o: any) => o.name === 'Draw')?.price ?? null;
+  return { home, away, draw };
 }
 const fmtTime = (iso: string) =>
   new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
@@ -44,33 +69,37 @@ function articleHref(entry: any) {
   const slug = slugParts.join('/');
   const league = entry.data.league ?? 'world-cup';
   if (league === 'nba') return `/${lang}/nba/analysis/${slug}`;
-  if (league === 'mlb') return `/${lang}/mlb/analysis/${slug}`;
+  if (league === 'cricket') return `/${lang}/cricket/analysis/${slug}`;
   return `/${lang}/football/world-cup/analysis/${slug}`;
 }
 const leagueLabel = (league: string) => {
   const l = league ?? 'world-cup';
   if (l === 'nba') return 'NBA';
-  if (l === 'mlb') return 'MLB';
+  if (l === 'cricket') return isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket';
   if (l === 'club-football') return t('nav.leagues');
   return t('nav.worldcup');
 };
 
 const categories = [
   { href: `/${lang}/football`, label: t('nav.football') },
+  { href: `/${lang}/cricket`, label: isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket' },
   { href: `/${lang}/nba`, label: 'NBA' },
-  { href: `/${lang}/mlb`, label: 'MLB' },
   { href: `/${lang}/strategy`, label: t('nav.strategy') },
 ];
 
 const homeDescription = isZhTw
-  ? '運動賽事分析與博弈資訊平台：MLB、NBA、足球即時賠率、深度分析與博弈攻略。'
+  ? '運動賽事分析與博弈資訊平台：板球、足球即時賠率、AI 與專家預測、深度分析與博弈攻略。'
   : isTh
-    ? 'แพลตฟอร์มวิเคราะห์กีฬาและข้อมูลเดิมพัน: ราคาสด MLB, NBA, ฟุตบอล พร้อมบทวิเคราะห์เชิงลึกและกลยุทธ์'
-    : 'Sports analysis and betting info: live MLB, NBA and football odds, in-depth analysis and betting strategy.';
+    ? 'แพลตฟอร์มวิเคราะห์กีฬาและข้อมูลเดิมพัน: ราคาสดคริกเก็ตและฟุตบอล คำทำนายจาก AI และผู้เชี่ยวชาญ พร้อมบทวิเคราะห์เชิงลึก'
+    : 'Sports analysis and betting info: live cricket and football odds, AI + expert predictions, in-depth analysis and betting strategy.';
 
-const oddsHeading = isZhTw ? 'MLB 即時賠率（錢線）' : isTh ? 'ราคา MLB สด (มันนี่ไลน์)' : 'Live MLB Odds (Moneyline)';
 const latestHeading = isZhTw ? '最新賽事分析' : isTh ? 'บทวิเคราะห์ล่าสุด' : 'Latest Analysis';
 const viewAll = isZhTw ? '看全部' : isTh ? 'ดูทั้งหมด' : 'View all';
+
+const cricketHeading = isZhTw ? '板球賽事預測' : isTh ? 'ทำนายคริกเก็ต' : 'Cricket Predictions';
+const footballHeading = isZhTw ? '足球賽事預測' : isTh ? 'ทำนายฟุตบอล' : 'Football Predictions';
+const noCricket = isZhTw ? '目前暫無板球賠率資料（IPL／PSL 為季節性賽事，休賽期間不會有資料）。' : isTh ? 'ยังไม่มีข้อมูลราคาคริกเก็ต (IPL/PSL เป็นการแข่งขันตามฤดูกาล)' : 'No cricket odds available right now (IPL/PSL are seasonal and empty out of season).';
+const noFootball = isZhTw ? '目前暫無世界盃賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคาฟุตบอลโลก' : 'No World Cup odds available right now.';
 ---
 
 <html lang={lang}>
@@ -78,46 +107,119 @@ const viewAll = isZhTw ? '看全部' : isTh ? 'ดูทั้งหมด' : 'V
     <BaseHead title={t('home.title')} description={homeDescription} lang={lang} />
     <GoogleAnalytics />
   </head>
-  <body class="bg-slate-950 text-slate-200 font-sans min-h-screen flex flex-col">
+  <body class="bg-[#0c1a13] text-slate-200 font-sans min-h-screen flex flex-col">
     <Header />
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
 
-      <div class="mb-10 text-center">
-        <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 tracking-tighter uppercase italic mb-4 drop-shadow-lg">
-          THE BIG BET
-        </h1>
-        <p class="text-slate-400 text-base md:text-lg font-bold max-w-2xl mx-auto">{homeDescription}</p>
+      <div class="mb-10">
+        <div class="flex items-center justify-center gap-4 sm:gap-8 md:gap-12">
+          <img
+            src="/images/hero/cricket.webp"
+            alt=""
+            aria-hidden="true"
+            loading="eager"
+            class="hidden sm:block w-20 h-20 md:w-32 md:h-32 rounded-2xl shrink-0 shadow-lg shadow-amber-500/10 transition-transform duration-300 hover:scale-105"
+          />
+          <div class="text-center">
+            <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 tracking-tighter uppercase italic mb-4 drop-shadow-lg">
+              THE BIG BET
+            </h1>
+            <p class="text-slate-400 text-base md:text-lg font-bold max-w-2xl mx-auto">{homeDescription}</p>
+          </div>
+          <img
+            src="/images/hero/football.webp"
+            alt=""
+            aria-hidden="true"
+            loading="eager"
+            class="hidden sm:block w-20 h-20 md:w-32 md:h-32 rounded-2xl shrink-0 shadow-lg shadow-violet-500/10 transition-transform duration-300 hover:scale-105"
+          />
+        </div>
       </div>
 
       <!-- Category quick links -->
       <div class="flex flex-wrap justify-center gap-3 mb-14">
         {categories.map((c) => (
-          <a href={c.href} class="px-4 py-2 rounded-full bg-slate-900 border border-slate-800 hover:border-amber-400/50 text-sm font-bold text-slate-200 hover:text-amber-300 transition-colors duration-200">
+          <a href={c.href} class="px-4 py-2 rounded-full bg-[#10241a] border border-[#1a3a29] hover:border-amber-400/50 text-sm font-bold text-slate-200 hover:text-amber-300 transition-colors duration-200">
             {c.label}
           </a>
         ))}
       </div>
 
-      <!-- Featured: MLB odds -->
+      <!-- Cricket predictions -->
       <section class="mb-14">
         <div class="flex items-center mb-6">
-          <h2 class="text-2xl font-black text-white">{oddsHeading}</h2>
-          <a href={`/${lang}/mlb`} class="ml-auto text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
+          <h2 class="text-2xl font-black text-white">{cricketHeading}</h2>
+          <a href={`/${lang}/cricket`} class="ml-auto text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
         </div>
-        {mlbUpcoming.length === 0 ? (
-          <p class="text-slate-500 text-sm">{isZhTw ? '目前暫無 MLB 賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคา MLB' : 'No MLB odds available right now.'}</p>
+        {cricketUpcoming.length === 0 ? (
+          <p class="text-slate-500 text-sm">{noCricket}</p>
         ) : (
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {mlbUpcoming.map((m) => {
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {cricketUpcoming.map((m) => {
               const ml = moneyline(m);
+              const aiText = pickLang(aiPredictions[m.id]);
+              const humanText = pickLang(homeHumanPredictions[m.id]);
               return (
-                <div class="bg-slate-900 border border-slate-800 rounded-xl px-5 py-4">
+                <div class="bg-[#10241a] border border-[#1a3a29] rounded-xl px-5 py-4">
                   <div class="text-xs text-slate-500 font-mono mb-2">{fmtTime(m.commence_time)}</div>
-                  <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
-                    <div class="min-w-0"><p class="font-bold text-white truncate">{m.away_team}</p></div>
-                    <div class="flex items-center gap-3 font-mono font-black"><span class="text-amber-400">{ml.away}</span><span class="text-slate-600 text-xs">@</span><span class="text-amber-400">{ml.home}</span></div>
-                    <div class="min-w-0 text-right"><p class="font-bold text-white truncate">{m.home_team}</p></div>
+                  <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 mb-3">
+                    <div class="min-w-0"><p class="font-bold text-white truncate">{tTeam(m.away_team)}</p></div>
+                    <div class="flex items-center gap-3 font-mono font-black"><span class="text-violet-400">{ml.away}</span><span class="text-slate-600 text-xs">@</span><span class="text-amber-400">{ml.home}</span></div>
+                    <div class="min-w-0 text-right"><p class="font-bold text-white truncate">{tTeam(m.home_team)}</p></div>
                   </div>
+                  <div class="pt-3 border-t border-[#1a3a29]/60">
+                    <p class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">{t('prediction.ai')}</p>
+                    <p class="text-xs text-slate-300 leading-relaxed">{aiText ?? t('prediction.ai_pending')}</p>
+                  </div>
+                  {humanText && (
+                    <div class="pt-3 mt-3 border-t border-[#1a3a29]/60">
+                      <p class="text-[10px] font-black text-violet-300 uppercase tracking-widest mb-1">{t('prediction.human')}</p>
+                      <p class="text-xs text-slate-300 leading-relaxed">{humanText}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </section>
+
+      <!-- Football (World Cup) predictions -->
+      <section class="mb-14">
+        <div class="flex items-center mb-6">
+          <h2 class="text-2xl font-black text-white">{footballHeading}</h2>
+          <a href={`/${lang}/football/world-cup`} class="ml-auto text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
+        </div>
+        {footballUpcoming.length === 0 ? (
+          <p class="text-slate-500 text-sm">{noFootball}</p>
+        ) : (
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {footballUpcoming.map((m) => {
+              const ml = moneyline(m);
+              const aiText = pickLang(aiPredictions[m.id]);
+              const humanText = pickLang(homeHumanPredictions[m.id]);
+              return (
+                <div class="bg-[#10241a] border border-[#1a3a29] rounded-xl px-5 py-4">
+                  <div class="text-xs text-slate-500 font-mono mb-2">{fmtTime(m.commence_time)}</div>
+                  <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 mb-3">
+                    <div class="min-w-0"><p class="font-bold text-white truncate">{tTeam(m.away_team)}</p></div>
+                    <div class="flex items-center gap-2 font-mono font-black text-sm">
+                      <span class="text-violet-400">{ml.away}</span>
+                      {ml.draw && <span class="text-slate-500">{ml.draw}</span>}
+                      <span class="text-amber-400">{ml.home}</span>
+                    </div>
+                    <div class="min-w-0 text-right"><p class="font-bold text-white truncate">{tTeam(m.home_team)}</p></div>
+                  </div>
+                  <div class="pt-3 border-t border-[#1a3a29]/60">
+                    <p class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">{t('prediction.ai')}</p>
+                    <p class="text-xs text-slate-300 leading-relaxed">{aiText ?? t('prediction.ai_pending')}</p>
+                  </div>
+                  {humanText && (
+                    <div class="pt-3 mt-3 border-t border-[#1a3a29]/60">
+                      <p class="text-[10px] font-black text-violet-300 uppercase tracking-widest mb-1">{t('prediction.human')}</p>
+                      <p class="text-xs text-slate-300 leading-relaxed">{humanText}</p>
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -133,9 +235,9 @@ const viewAll = isZhTw ? '看全部' : isTh ? 'ดูทั้งหมด' : 'V
         ) : (
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {analysisEntries.map((entry) => (
-              <a href={articleHref(entry)} class="group block bg-slate-900 border border-slate-800 hover:border-amber-400/40 rounded-2xl p-5 transition-all duration-200">
+              <a href={articleHref(entry)} class="group block bg-[#10241a] border border-[#1a3a29] hover:border-amber-400/40 rounded-2xl p-5 transition-all duration-200">
                 <div class="flex items-center gap-2 mb-2">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-black bg-slate-800 border border-slate-700 text-slate-300 uppercase">{leagueLabel(entry.data.league)}</span>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-black bg-violet-400/10 border border-violet-400/30 text-violet-300 uppercase">{leagueLabel(entry.data.league)}</span>
                   <time class="text-xs text-slate-500 font-mono">{entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}</time>
                 </div>
                 <h3 class="text-base font-bold text-white group-hover:text-amber-300 transition-colors duration-200 line-clamp-2">{entry.data.title}</h3>

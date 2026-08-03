@@ -23,7 +23,7 @@ const awayWinsLabel = isZh ? '客隊勝' : isTh ? 'ทีมเยือนช�
 const matchesLabel  = isZh ? `共 ${total} 場交鋒紀錄` : isTh ? `รวม ${total} นัด` : `${total} matches all-time`;
 ---
 
-<div class="w-full p-5 rounded-xl border border-slate-700/60 bg-slate-900/60 mb-6">
+<div class="w-full p-5 rounded-xl border border-[#265039]/60 bg-[#10241a]/60 mb-6">
   <p class="text-xs font-black text-slate-500 uppercase tracking-widest text-center mb-5">{title}</p>
 
   <!-- Three metric boxes -->
@@ -33,7 +33,7 @@ const matchesLabel  = isZh ? `共 ${total} 場交鋒紀錄` : isTh ? `รวม 
       <p class="text-4xl font-black text-emerald-400 leading-none">{aWins}</p>
       <p class="text-xs text-slate-500 mt-2">{homeWinsLabel}</p>
     </div>
-    <div class="text-center bg-slate-700/20 border border-slate-700/50 rounded-xl p-4">
+    <div class="text-center bg-[#265039]/20 border border-[#265039]/50 rounded-xl p-4">
       <p class="text-xs text-slate-500 mb-2 font-bold">—</p>
       <p class="text-4xl font-black text-slate-300 leading-none">{draws}</p>
       <p class="text-xs text-slate-500 mt-2">{drawsLabel}</p>
@@ -47,7 +47,7 @@ const matchesLabel  = isZh ? `共 ${total} 場交鋒紀錄` : isTh ? `รวม 
 
   <!-- Proportional bar -->
   {total > 0 && (
-    <div class="flex h-1.5 rounded-full overflow-hidden bg-slate-800">
+    <div class="flex h-1.5 rounded-full overflow-hidden bg-[#1a3a29]">
       <div class="bg-emerald-500" style={`width: ${aPercent}%`}></div>
       <div class="bg-slate-600" style={`width: ${dPercent}%`}></div>
       <div class="bg-rose-500" style={`width: ${bPercent}%`}></div>
