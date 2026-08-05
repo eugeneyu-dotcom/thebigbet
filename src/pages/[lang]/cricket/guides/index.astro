@@ -1,15 +1,79 @@
 ---
+import { getCollection } from 'astro:content';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import BaseHead from '../../../../components/BaseHead.astro';
 import { languages } from '../../../../i18n/ui';
-import ComingSoon from '../../../../components/ComingSoon.astro';
+import GoogleAnalytics from '../../../../components/GoogleAnalytics.astro';
 
 export function getStaticPaths() {
   return Object.keys(languages).map((lang) => ({ params: { lang } }));
 }
+
 const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+
+const allEntries = await getCollection('guides', (entry) => entry.id.startsWith(lang + '/') && entry.data.sport === 'cricket');
+const sorted = allEntries.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
 const tag = isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket';
 const title = isZhTw ? '板球賽事知識' : isTh ? 'ความรู้คริกเก็ต' : 'Cricket Guides';
-const message = isZhTw ? '板球賽事知識與教學內容即將推出，敬請期待。' : isTh ? 'เนื้อหาความรู้คริกเก็ตกำลังจะมาเร็วๆ นี้' : 'Cricket guides and explainers are coming soon.';
+const description = isZhTw ? '板球賽制、規則與投注觀念解析。' : isTh ? 'อธิบายรูปแบบการแข่งขัน กฎ และแนวคิดการเดิมพันคริกเก็ต' : 'Cricket formats, rules and betting concepts explained.';
+const empty = isZhTw ? '目前尚無板球賽事知識文章，敬請期待。' : isTh ? 'ยังไม่มีบทความความรู้คริกเก็ต โปรดกลับมาใหม่เร็วๆ นี้' : 'No cricket guides published yet. Check back soon.';
 ---
-<ComingSoon lang={lang as string} tag={tag} title={title} message={message} />
+
+<html lang={lang}>
+  <head>
+    <BaseHead title={`${title} | The Big Bet`} description={description} lang={lang} />
+    <GoogleAnalytics />
+  </head>
+  <body class="bg-[#0c1a13] text-slate-200 font-sans min-h-screen flex flex-col">
+    <Header />
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow">
+
+      <div class="mb-10">
+        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">{tag}</p>
+        <h1 class="text-3xl font-black text-white">{title}</h1>
+        <p class="text-slate-400 mt-2 text-sm leading-relaxed">{description}</p>
+      </div>
+
+      {sorted.length === 0 ? (
+        <div class="bg-[#10241a] border border-[#1a3a29] rounded-2xl p-12 text-center">
+          <p class="text-slate-500 text-sm">{empty}</p>
+        </div>
+      ) : (
+        <ul class="space-y-4">
+          {sorted.map((entry) => {
+            const [entryLang, ...slugParts] = entry.id.split('/');
+            const slug = slugParts.join('/');
+
+            return (
+              <li>
+                <a
+                  href={`/${lang}/cricket/guides/${slug}`}
+                  class="group block bg-[#10241a] border border-[#1a3a29] hover:border-amber-400/40 rounded-2xl p-6 transition-all duration-200"
+                >
+                  <div class="flex items-start justify-between gap-4">
+                    <div class="flex-grow min-w-0">
+                      <time class="text-xs text-slate-500 font-mono" datetime={entry.data.pubDate.toISOString()}>
+                        {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}
+                      </time>
+                      <h2 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 truncate mt-2">
+                        {entry.data.title}
+                      </h2>
+                    </div>
+                    <svg class="w-5 h-5 text-slate-600 group-hover:text-amber-400 shrink-0 mt-1 transition-colors duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </div>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -13,7 +13,7 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const t = useTranslations(lang);
 
-const allEntries = await getCollection('guides', (entry) => entry.id.startsWith(lang + '/'));
+const allEntries = await getCollection('guides', (entry) => entry.id.startsWith(lang + '/') && entry.data.sport === 'football');
 const sorted = allEntries.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
