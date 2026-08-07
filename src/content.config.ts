@@ -32,6 +32,24 @@ const analysis = defineCollection({
   }),
 });
 
+// Team/season trend analysis — commentary on a single team's outlook (squad,
+// form, competition landscape), not a single-match preview. Kept separate
+// from `analysis` because it has no opponent, odds, or per-game prediction —
+// forcing it into that schema would mean fabricating a fake match.
+const trends = defineCollection({
+  loader: glob({ base: './src/content/trends', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    pubDate: z.coerce.date(),
+    sport: z.enum(['football', 'basketball', 'baseball', 'cricket']),
+    // Drives top-nav category routing, same values as `analysis.league`.
+    league: z.enum(['world-cup', 'club-football', 'nba', 'cricket']),
+    // The team this piece is about (shown as a badge instead of a match VS card).
+    team: z.string(),
+  }),
+});
+
 // Betting knowledge & strategy — evergreen how-to/explainer content, kept in
 // its own section (separate from match-focused `guides`). Same simple shape.
 const strategy = defineCollection({
@@ -71,4 +89,4 @@ const promotions = defineCollection({
   }),
 });
 
-export const collections = { analysis, strategy, guides, casinos, promotions };
+export const collections = { analysis, trends, strategy, guides, casinos, promotions };

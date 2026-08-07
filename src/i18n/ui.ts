@@ -7,6 +7,23 @@ export const languages = {
 
 export const defaultLang = 'en';
 
+// Which sports each locale surfaces in nav/homepage. This is a soft filter —
+// existing routes/content for a hidden sport stay live at their URL, they're
+// just not linked from nav or the homepage for that locale.
+// zh-tw: cricket has no local audience, keep it off nav. bn: added for the
+// cricket expansion into Bangladesh — show cricket + all football, skip NBA
+// (no content anyway). en/th are the unrestricted/catch-all locales.
+export const localeSports: Record<string, string[]> = {
+  'zh-tw': ['football', 'nba'],
+  en: ['football', 'cricket', 'nba'],
+  th: ['football', 'cricket', 'nba'],
+  bn: ['football', 'cricket'],
+};
+
+export function getVisibleSports(lang: string): string[] {
+  return localeSports[lang] ?? ['football', 'cricket', 'nba'];
+}
+
 export const ui = {
   'zh-tw': {
     'nav.home': '首頁',
@@ -15,6 +32,7 @@ export const ui = {
     'nav.groupStage': '小組賽事紀錄',
     'nav.guides': '賽事知識',
     'nav.bracket': '32強樹狀圖',
+    'nav.trends': '趨勢分析',
     'guides.tag': '賽事知識',
     'guides.title': '賽事知識文章',
     'guides.description': '世界盃晉級規則、賽制與術語解析。',
@@ -93,6 +111,7 @@ export const ui = {
     'nav.groupStage': 'Group Results',
     'nav.guides': 'Guides',
     'nav.bracket': 'Bracket',
+    'nav.trends': 'Trend Analysis',
     'guides.tag': 'Match Guide',
     'guides.title': 'Match Guides',
     'guides.description': 'World Cup qualification rules, format breakdowns, and terminology explained.',
@@ -169,8 +188,9 @@ export const ui = {
     'nav.analysis': 'วิเคราะห์',
     'nav.schedule': 'ตารางแข่ง',
     'nav.groupStage': 'ผลรอบแบ่งกลุ่ม',
-    'nav.guides': 'ความรู้ฟุตบอล',
+    'nav.guides': 'ความรู้การแข่งขัน',
     'nav.bracket': 'สายการแข่งขัน',
+    'nav.trends': 'วิเคราะห์เทรนด์',
     'guides.tag': 'ความรู้ฟุตบอล',
     'guides.title': 'บทความความรู้ฟุตบอล',
     'guides.description': 'กฎการผ่านรอบ รูปแบบการแข่งขัน และคำศัพท์ฟุตบอลโลก',
@@ -249,6 +269,7 @@ export const ui = {
     'nav.groupStage': 'গ্রুপ পর্বের ফলাফল',
     'nav.guides': 'ম্যাচ গাইড',
     'nav.bracket': 'ব্র্যাকেট',
+    'nav.trends': 'ট্রেন্ড বিশ্লেষণ',
     'guides.tag': 'ম্যাচ গাইড',
     'guides.title': 'ম্যাচ গাইড',
     'guides.description': 'বিশ্বকাপের যোগ্যতা নিয়ম, ফরম্যাট এবং পরিভাষা ব্যাখ্যা করা হয়েছে।',
@@ -345,6 +366,8 @@ export const teamTranslations: Record<string, Record<string, string>> = {
     'Tottenham Hotspur': '熱刺',
     'West Ham United': '西漢姆聯',
     'Wolverhampton Wanderers': '狼隊',
+    // NBA
+    'Philadelphia 76ers': '費城76人',
     // La Liga
     'Real Madrid': '皇家馬德里',
     'Barcelona': '巴塞隆納',

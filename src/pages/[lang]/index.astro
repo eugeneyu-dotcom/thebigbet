@@ -4,7 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import GoogleAnalytics from '../../components/GoogleAnalytics.astro';
-import { languages, useTranslations, useTeamTranslations } from '../../i18n/ui';
+import { languages, useTranslations, useTeamTranslations, getVisibleSports } from '../../i18n/ui';
 import fs from 'fs';
 import path from 'path';
 
@@ -17,6 +17,7 @@ const t = useTranslations(lang);
 const tTeam = useTeamTranslations(lang);
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+const visibleSports = getVisibleSports(lang);
 
 function loadJson(relPath: string): any {
   try {
@@ -59,8 +60,14 @@ function moneyline(m: any) {
 const fmtTime = (iso: string) =>
   new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
 
-// Latest analysis across all sports
-const analysisEntries = (await getCollection('analysis', (e) => e.id.startsWith(lang + '/')))
+// Latest analysis across all sports visible to this locale
+const analysisEntries = (await getCollection('analysis', (e) => {
+  if (!e.id.startsWith(lang + '/')) return false;
+  const league = e.data.league ?? 'world-cup';
+  if (league === 'nba') return visibleSports.includes('nba');
+  if (league === 'cricket') return visibleSports.includes('cricket');
+  return visibleSports.includes('football');
+}))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
   .slice(0, 6);
 
@@ -81,14 +88,14 @@ const leagueLabel = (league: string) => {
 };
 
 const categories = [
-  { href: `/${lang}/football`, label: t('nav.football') },
-  { href: `/${lang}/cricket`, label: isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket' },
-  { href: `/${lang}/nba`, label: 'NBA' },
-  { href: `/${lang}/strategy`, label: t('nav.strategy') },
-];
+  { key: 'football', href: `/${lang}/football`, label: t('nav.football') },
+  { key: 'cricket', href: `/${lang}/cricket`, label: isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket' },
+  { key: 'nba', href: `/${lang}/nba`, label: 'NBA' },
+  { key: 'strategy', href: `/${lang}/strategy`, label: t('nav.strategy') },
+].filter((c) => c.key === 'strategy' || visibleSports.includes(c.key));
 
 const homeDescription = isZhTw
-  ? '運動賽事分析與博弈資訊平台：板球、足球即時賠率、AI 與專家預測、深度分析與博弈攻略。'
+  ? '運動賽事分析與博弈資訊平台：足球即時賠率、AI 與專家預測、深度分析與博弈攻略。'
   : isTh
     ? 'แพลตฟอร์มวิเคราะห์กีฬาและข้อมูลเดิมพัน: ราคาสดคริกเก็ตและฟุตบอล คำทำนายจาก AI และผู้เชี่ยวชาญ พร้อมบทวิเคราะห์เชิงลึก'
     : 'Sports analysis and betting info: live cricket and football odds, AI + expert predictions, in-depth analysis and betting strategy.';
@@ -145,44 +152,46 @@ const noFootball = isZhTw ? '目前暫無世界盃賠率資料。' : isTh ? 'ย
         ))}
       </div>
 
-      <!-- Cricket predictions -->
-      <section class="mb-14">
-        <div class="flex items-center mb-6">
-          <h2 class="text-2xl font-black text-white">{cricketHeading}</h2>
-          <a href={`/${lang}/cricket`} class="ml-auto text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
-        </div>
-        {cricketUpcoming.length === 0 ? (
-          <p class="text-slate-500 text-sm">{noCricket}</p>
-        ) : (
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {cricketUpcoming.map((m) => {
-              const ml = moneyline(m);
-              const aiText = pickLang(aiPredictions[m.id]);
-              const humanText = pickLang(homeHumanPredictions[m.id]);
-              return (
-                <div class="bg-[#10241a] border border-[#1a3a29] rounded-xl px-5 py-4">
-                  <div class="text-xs text-slate-500 font-mono mb-2">{fmtTime(m.commence_time)}</div>
-                  <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 mb-3">
-                    <div class="min-w-0"><p class="font-bold text-white truncate">{tTeam(m.away_team)}</p></div>
-                    <div class="flex items-center gap-3 font-mono font-black"><span class="text-violet-400">{ml.away}</span><span class="text-slate-600 text-xs">@</span><span class="text-amber-400">{ml.home}</span></div>
-                    <div class="min-w-0 text-right"><p class="font-bold text-white truncate">{tTeam(m.home_team)}</p></div>
-                  </div>
-                  <div class="pt-3 border-t border-[#1a3a29]/60">
-                    <p class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">{t('prediction.ai')}</p>
-                    <p class="text-xs text-slate-300 leading-relaxed">{aiText ?? t('prediction.ai_pending')}</p>
-                  </div>
-                  {humanText && (
-                    <div class="pt-3 mt-3 border-t border-[#1a3a29]/60">
-                      <p class="text-[10px] font-black text-violet-300 uppercase tracking-widest mb-1">{t('prediction.human')}</p>
-                      <p class="text-xs text-slate-300 leading-relaxed">{humanText}</p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+      <!-- Cricket predictions (locale-gated — see localeSports in i18n/ui.ts) -->
+      {visibleSports.includes('cricket') && (
+        <section class="mb-14">
+          <div class="flex items-center mb-6">
+            <h2 class="text-2xl font-black text-white">{cricketHeading}</h2>
+            <a href={`/${lang}/cricket`} class="ml-auto text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
           </div>
-        )}
-      </section>
+          {cricketUpcoming.length === 0 ? (
+            <p class="text-slate-500 text-sm">{noCricket}</p>
+          ) : (
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {cricketUpcoming.map((m) => {
+                const ml = moneyline(m);
+                const aiText = pickLang(aiPredictions[m.id]);
+                const humanText = pickLang(homeHumanPredictions[m.id]);
+                return (
+                  <div class="bg-[#10241a] border border-[#1a3a29] rounded-xl px-5 py-4">
+                    <div class="text-xs text-slate-500 font-mono mb-2">{fmtTime(m.commence_time)}</div>
+                    <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 mb-3">
+                      <div class="min-w-0"><p class="font-bold text-white truncate">{tTeam(m.away_team)}</p></div>
+                      <div class="flex items-center gap-3 font-mono font-black"><span class="text-violet-400">{ml.away}</span><span class="text-slate-600 text-xs">@</span><span class="text-amber-400">{ml.home}</span></div>
+                      <div class="min-w-0 text-right"><p class="font-bold text-white truncate">{tTeam(m.home_team)}</p></div>
+                    </div>
+                    <div class="pt-3 border-t border-[#1a3a29]/60">
+                      <p class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">{t('prediction.ai')}</p>
+                      <p class="text-xs text-slate-300 leading-relaxed">{aiText ?? t('prediction.ai_pending')}</p>
+                    </div>
+                    {humanText && (
+                      <div class="pt-3 mt-3 border-t border-[#1a3a29]/60">
+                        <p class="text-[10px] font-black text-violet-300 uppercase tracking-widest mb-1">{t('prediction.human')}</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">{humanText}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </section>
+      )}
 
       <!-- Football (World Cup) predictions -->
       <section class="mb-14">

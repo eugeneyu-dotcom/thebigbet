@@ -1,0 +1,70 @@
+---
+import { render } from 'astro:content';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import BaseHead from './BaseHead.astro';
+import GoogleAnalytics from './GoogleAnalytics.astro';
+import AnalysisAnchor from './AnalysisAnchor.astro';
+import { useTeamTranslations, useTranslations } from '../i18n/ui';
+
+interface Props {
+  entry: any;
+  lang: string;
+}
+
+const { entry, lang } = Astro.props;
+const { Content } = await render(entry);
+const t = useTranslations(lang as any);
+const tTeam = useTeamTranslations(lang as any);
+const teamName = tTeam(entry.data.team);
+const sportLabel = t(`sport.${entry.data.sport}` as any);
+const trendTag = lang === 'zh-tw' ? '球隊趨勢分析' : lang === 'th' ? 'วิเคราะห์เทรนด์ทีม' : 'Team Trend Analysis';
+---
+
+<html lang={lang}>
+  <head>
+    <BaseHead
+      title={`${entry.data.title} | The Big Bet`}
+      description={entry.data.description}
+      lang={lang}
+      type="article"
+    />
+    <GoogleAnalytics />
+  </head>
+  <body class="bg-[#0c1a13] text-slate-200 font-sans min-h-screen flex flex-col">
+    <Header />
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow">
+      <article class="bg-[#10241a] rounded-2xl shadow-lg border border-[#1a3a29] p-8">
+        <header class="mb-8">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-2 mb-6">
+            <span class="text-xs font-black text-amber-400 uppercase tracking-widest">{trendTag}</span>
+            <span class="text-[#265039]">·</span>
+            <span class="text-xs font-black uppercase tracking-widest px-2 py-0.5 rounded bg-violet-400/10 border border-violet-400/30 text-violet-300">{sportLabel}</span>
+            <span class="text-[#265039]">·</span>
+            <time class="text-sm text-slate-400 font-mono" datetime={entry.data.pubDate.toISOString()}>
+              {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}
+            </time>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl font-black text-white leading-tight mb-6">{entry.data.title}</h1>
+
+          <div class="inline-flex items-center gap-2 bg-[#0c1a13] rounded-full border border-[#1a3a29] px-4 py-2">
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            <span class="text-sm font-black text-white">{teamName}</span>
+          </div>
+        </header>
+
+        <div class="article-body prose prose-invert max-w-none prose-img:rounded-xl prose-headings:font-black prose-headings:text-white prose-a:text-amber-400 prose-strong:text-white">
+          <Content components={{ a: AnalysisAnchor }} />
+        </div>
+        <style>
+          .article-body p { color: rgb(203 213 225); line-height: 1.875; }
+          .article-body h2 { font-size: 1.2rem; margin-top: 2.5rem; margin-bottom: 0.75rem; padding-left: 1rem; border-left: 4px solid rgb(245 158 11); color: #fff; }
+          .article-body li { color: rgb(203 213 225); }
+          .article-body a { text-decoration: none; }
+        </style>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>
