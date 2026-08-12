@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import { languages } from '../../../../../i18n/ui';
+import TrendList from '../../../../../components/TrendList.astro';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const isZhTw = lang === 'zh-tw';
+const isTh = lang === 'th';
+
+const entries = await getCollection('trends', (entry) =>
+  entry.id.startsWith(lang + '/') && entry.data.league === 'club-football');
+
+const metaTitle = isZhTw ? '五大聯賽趨勢分析 | The Big Bet' : isTh ? 'วิเคราะห์เทรนด์ 5 ลีกใหญ่ | The Big Bet' : 'Top 5 Leagues Trend Analysis | The Big Bet';
+const metaDescription = isZhTw
+  ? '五大聯賽球隊整季戰力趨勢分析：陣容補強、戰績走勢與爭冠形勢。'
+  : isTh ? 'วิเคราะห์เทรนด์ทีมใน 5 ลีกใหญ่ตลอดฤดูกาล: การเสริมทัพ ฟอร์ม และการลุ้นแชมป์'
+    : 'Top 5 Leagues team season trend analysis: transfers, form, and title-race outlook.';
+const tag = isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : 'Top 5 Leagues';
+const heading = isZhTw ? '五大聯賽趨勢分析' : isTh ? 'วิเคราะห์เทรนด์ 5 ลีกใหญ่' : 'Top 5 Leagues Trend Analysis';
+const intro = isZhTw
+  ? '不是單場比賽前瞻，而是球隊整季戰力走向的觀察與評論。'
+  : isTh ? 'ไม่ใช่การวิเคราะห์รายนัด แต่เป็นมุมมองต่อทิศทางทีมตลอดฤดูกาล'
+    : 'Not a single-game preview — season-long commentary on where a team is headed.';
+const emptyText = isZhTw ? '目前尚無五大聯賽趨勢分析文章，敬請期待。' : isTh ? 'ยังไม่มีบทวิเคราะห์เทรนด์ 5 ลีกใหญ่ โปรดกลับมาใหม่' : 'No Top 5 Leagues trend analysis yet. Check back soon.';
+---
+
+<TrendList
+  lang={lang as string}
+  entries={entries}
+  basePath={`/${lang}/football/leagues/trends`}
+  metaTitle={metaTitle}
+  metaDescription={metaDescription}
+  tag={tag}
+  heading={heading}
+  intro={intro}
+  emptyText={emptyText}
+/>
