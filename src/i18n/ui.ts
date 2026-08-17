@@ -369,6 +369,7 @@ export const teamTranslations: Record<string, Record<string, string>> = {
     // NBA
     'Philadelphia 76ers': '費城76人',
     'Premier League': '英超',
+    'La Liga': '西甲',
     // La Liga
     'Real Madrid': '皇家馬德里',
     'Barcelona': '巴塞隆納',
