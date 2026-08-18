@@ -65,21 +65,43 @@ function moneyline(m: any) {
 const fmtTime = (iso: string) =>
   new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
 
-// Latest analysis across all sports visible to this locale
-const analysisEntries = (await getCollection('analysis', (e) => {
-  if (!e.id.startsWith(lang + '/')) return false;
-  const league = e.data.league ?? 'world-cup';
-  if (league === 'nba') return visibleSports.includes('nba');
-  if (league === 'cricket') return visibleSports.includes('cricket');
-  return visibleSports.includes('football');
-}))
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+// Latest content across all three article-like collections (match analysis,
+// knowledge guides, team/season trends), unified and sorted by pubDate —
+// not limited to any one category — then filtered to this locale's visible
+// sports.
+function sportBucketOf(entry: any, type: string): string {
+  if (type === 'guides') return entry.data.sport; // 'football' | 'cricket'
+  const league = entry.data.league ?? 'world-cup';
+  if (league === 'nba') return 'nba';
+  if (league === 'cricket') return 'cricket';
+  return 'football';
+}
+
+const [analysisAll, guidesAll, trendsAll] = await Promise.all([
+  getCollection('analysis', (e) => e.id.startsWith(lang + '/')),
+  getCollection('guides', (e) => e.id.startsWith(lang + '/')),
+  getCollection('trends', (e) => e.id.startsWith(lang + '/')),
+]);
+
+const latestEntries = [
+  ...analysisAll.map((entry) => ({ entry, type: 'analysis' })),
+  ...guidesAll.map((entry) => ({ entry, type: 'guides' })),
+  ...trendsAll.map((entry) => ({ entry, type: 'trends' })),
+]
+  .filter((item) => visibleSports.includes(sportBucketOf(item.entry, item.type)))
+  .sort((a, b) => b.entry.data.pubDate.getTime() - a.entry.data.pubDate.getTime())
   .slice(0, 6);
 
-function articleHref(entry: any) {
+function contentHref({ entry, type }: { entry: any; type: string }) {
   const [, ...slugParts] = entry.id.split('/');
   const slug = slugParts.join('/');
+  if (type === 'guides') {
+    return entry.data.sport === 'cricket' ? `/${lang}/cricket/guides/${slug}` : `/${lang}/football/world-cup/guides/${slug}`;
+  }
   const league = entry.data.league ?? 'world-cup';
+  if (type === 'trends') {
+    return league === 'nba' ? `/${lang}/nba/trends/${slug}` : `/${lang}/football/leagues/trends/${slug}`;
+  }
   if (league === 'nba') return `/${lang}/nba/analysis/${slug}`;
   if (league === 'cricket') return `/${lang}/cricket/analysis/${slug}`;
   return `/${lang}/football/world-cup/analysis/${slug}`;
@@ -91,6 +113,12 @@ const leagueLabel = (league: string) => {
   if (l === 'club-football') return t('nav.leagues');
   return t('nav.worldcup');
 };
+function contentBadge({ entry, type }: { entry: any; type: string }) {
+  if (type === 'guides') {
+    return entry.data.sport === 'cricket' ? (isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket') : t('nav.worldcup');
+  }
+  return leagueLabel(entry.data.league);
+}
 
 const categories = [
   { key: 'football', href: `/${lang}/football`, label: t('nav.football') },
@@ -105,7 +133,7 @@ const homeDescription = isZhTw
     ? 'แพลตฟอร์มวิเคราะห์กีฬาและข้อมูลเดิมพัน: ราคาสดคริกเก็ตและฟุตบอล คำทำนายจาก AI และผู้เชี่ยวชาญ พร้อมบทวิเคราะห์เชิงลึก'
     : 'Sports analysis and betting info: live cricket and football odds, AI + expert predictions, in-depth analysis and betting strategy.';
 
-const latestHeading = isZhTw ? '最新賽事分析' : isTh ? 'บทวิเคราะห์ล่าสุด' : 'Latest Analysis';
+const latestHeading = isZhTw ? '最新文章' : isTh ? 'บทความล่าสุด' : 'Latest Articles';
 const viewAll = isZhTw ? '看全部' : isTh ? 'ดูทั้งหมด' : 'View all';
 
 const cricketHeading = isZhTw ? '板球賽事預測' : isTh ? 'ทำนายคริกเก็ต' : 'Cricket Predictions';
@@ -241,22 +269,22 @@ const noFootball = isZhTw ? '目前暫無足球賠率資料。' : isTh ? 'ยั
         )}
       </section>
 
-      <!-- Latest analysis across sports -->
+      <!-- Latest content across analysis/guides/trends -->
       <section>
         <h2 class="text-2xl font-black text-white mb-6">{latestHeading}</h2>
-        {analysisEntries.length === 0 ? (
-          <p class="text-slate-500 text-sm">{isZhTw ? '目前尚無分析文章。' : isTh ? 'ยังไม่มีบทวิเคราะห์' : 'No analysis yet.'}</p>
+        {latestEntries.length === 0 ? (
+          <p class="text-slate-500 text-sm">{isZhTw ? '目前尚無文章。' : isTh ? 'ยังไม่มีบทความ' : 'No articles yet.'}</p>
         ) : (
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {analysisEntries.map((entry) => (
-              <a href={articleHref(entry)} class="group block bg-[#10241a] border border-[#1a3a29] hover:border-amber-400/40 rounded-2xl p-5 transition-all duration-200">
+            {latestEntries.map((item) => (
+              <a href={contentHref(item)} class="group block bg-[#10241a] border border-[#1a3a29] hover:border-amber-400/40 rounded-2xl p-5 transition-all duration-200">
                 <div class="flex items-center gap-2 mb-2">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-black bg-violet-400/10 border border-violet-400/30 text-violet-300 uppercase">{leagueLabel(entry.data.league)}</span>
-                  <time class="text-xs text-slate-500 font-mono">{entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}</time>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-black bg-violet-400/10 border border-violet-400/30 text-violet-300 uppercase">{contentBadge(item)}</span>
+                  <time class="text-xs text-slate-500 font-mono">{item.entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}</time>
                 </div>
-                <h3 class="text-base font-bold text-white group-hover:text-amber-300 transition-colors duration-200 line-clamp-2">{entry.data.title}</h3>
-                {entry.data.prediction && (
-                  <p class="text-sm font-bold text-amber-400 mt-2 truncate">{isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : 'Prediction: '}{entry.data.prediction}</p>
+                <h3 class="text-base font-bold text-white group-hover:text-amber-300 transition-colors duration-200 line-clamp-2">{item.entry.data.title}</h3>
+                {item.entry.data.prediction && (
+                  <p class="text-sm font-bold text-amber-400 mt-2 truncate">{isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : 'Prediction: '}{item.entry.data.prediction}</p>
                 )}
               </a>
             ))}
