@@ -27,11 +27,16 @@ function loadJson(relPath: string): any {
   return null;
 }
 
-// Cricket + football (World Cup) upcoming matches for the homepage's
-// per-match prediction cards. NBA is skipped here for now — the basketball
-// season hasn't started.
+// Cricket + football upcoming matches for the homepage's per-match
+// prediction cards. NBA is skipped here for now — the basketball season
+// hasn't started. Football combines World Cup matches (empty once the
+// tournament ends) with Top 5 Leagues matches, so the section keeps
+// showing real fixtures across tournament cycles instead of going empty.
 const cricketMatches: any[] = loadJson('src/data/cricketMatches.json') ?? [];
-const footballMatches: any[] = loadJson('src/data/matches.json') ?? [];
+const footballMatches: any[] = [
+  ...(loadJson('src/data/matches.json') ?? []),
+  ...(loadJson('src/data/leagueMatches.json') ?? []),
+];
 cricketMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
 footballMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
 const cricketUpcoming = cricketMatches.slice(0, 6);
@@ -106,7 +111,7 @@ const viewAll = isZhTw ? '看全部' : isTh ? 'ดูทั้งหมด' : 'V
 const cricketHeading = isZhTw ? '板球賽事預測' : isTh ? 'ทำนายคริกเก็ต' : 'Cricket Predictions';
 const footballHeading = isZhTw ? '足球賽事預測' : isTh ? 'ทำนายฟุตบอล' : 'Football Predictions';
 const noCricket = isZhTw ? '目前暫無板球賠率資料（IPL／PSL 為季節性賽事，休賽期間不會有資料）。' : isTh ? 'ยังไม่มีข้อมูลราคาคริกเก็ต (IPL/PSL เป็นการแข่งขันตามฤดูกาล)' : 'No cricket odds available right now (IPL/PSL are seasonal and empty out of season).';
-const noFootball = isZhTw ? '目前暫無世界盃賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคาฟุตบอลโลก' : 'No World Cup odds available right now.';
+const noFootball = isZhTw ? '目前暫無足球賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคาฟุตบอล' : 'No football odds available right now.';
 ---
 
 <html lang={lang}>
@@ -193,11 +198,11 @@ const noFootball = isZhTw ? '目前暫無世界盃賠率資料。' : isTh ? 'ย
         </section>
       )}
 
-      <!-- Football (World Cup) predictions -->
+      <!-- Football (World Cup + Top 5 Leagues) predictions -->
       <section class="mb-14">
         <div class="flex items-center mb-6">
           <h2 class="text-2xl font-black text-white">{footballHeading}</h2>
-          <a href={`/${lang}/football/world-cup`} class="ml-auto text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
+          <a href={`/${lang}/football`} class="ml-auto text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
         </div>
         {footballUpcoming.length === 0 ? (
           <p class="text-slate-500 text-sm">{noFootball}</p>

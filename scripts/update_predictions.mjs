@@ -70,6 +70,33 @@ Output ONLY a raw JSON object (no markdown, no comments) with this exact structu
 `;
 }
 
+function buildLeaguePrompt(match, todayStr) {
+  const homeTeam = match.home_team;
+  const awayTeam = match.away_team;
+  const homeOdds = getOddsString(match.bookmakers, homeTeam);
+  const awayOdds = getOddsString(match.bookmakers, awayTeam);
+  const drawOdds = getDrawOddsString(match.bookmakers);
+  const league = match.sport_title || 'a top European league';
+
+  return `
+You are a professional sports betting analyst. The current date is ${todayStr}.
+Analyze the upcoming ${league} match between ${homeTeam} and ${awayTeam}.
+This is a domestic league match (not a cup/knockout tie) — normal league-points framing is fine.
+The current betting odds are:
+${homeTeam} Win: ${homeOdds}
+Draw: ${drawOdds}
+${awayTeam} Win: ${awayOdds}
+
+Write a short, engaging betting prediction (around 40-50 words) based on these odds and the teams' general strengths.
+Output ONLY a raw JSON object (no markdown, no comments) with this exact structure:
+{
+  "prediction_zh": "[Traditional Chinese (zh-TW) prediction, strictly NO simplified Chinese. Keep it under 50 words.]",
+  "prediction_en": "[English prediction, under 50 words.]",
+  "prediction_th": "[Thai prediction, under 50 words.]"
+}
+`;
+}
+
 function buildCricketPrompt(match, todayStr) {
   const homeTeam = match.home_team;
   const awayTeam = match.away_team;
@@ -142,16 +169,18 @@ async function main() {
 
   try {
     const footballMatches = loadUpcoming(path.resolve('src/data/matches.json'));
+    const leagueMatches = loadUpcoming(path.resolve('src/data/leagueMatches.json'));
     const cricketMatches = loadUpcoming(path.resolve('src/data/cricketMatches.json'));
 
-    if (footballMatches.length === 0 && cricketMatches.length === 0) {
-      console.error("⚠️ No upcoming matches found in matches.json or cricketMatches.json.");
+    if (footballMatches.length === 0 && leagueMatches.length === 0 && cricketMatches.length === 0) {
+      console.error("⚠️ No upcoming matches found in matches.json, leagueMatches.json or cricketMatches.json.");
     }
 
     const now = new Date();
     const todayStr = now.toISOString().slice(0, 10);
 
     await generateForMatches(footballMatches, predictions, buildFootballPrompt, todayStr);
+    await generateForMatches(leagueMatches, predictions, buildLeaguePrompt, todayStr);
     await generateForMatches(cricketMatches, predictions, buildCricketPrompt, todayStr);
 
     fs.writeFileSync(predictionsPath, JSON.stringify(predictions, null, 2), 'utf8');

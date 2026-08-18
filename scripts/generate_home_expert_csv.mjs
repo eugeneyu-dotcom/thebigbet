@@ -44,14 +44,17 @@ async function main() {
     });
   }
 
-  // Load upcoming matches from both sports' local caches
+  // Load upcoming matches from all sports' local caches
   const matchesPath = path.resolve('src/data/matches.json');
+  const leaguesPath = path.resolve('src/data/leagueMatches.json');
   const cricketPath = path.resolve('src/data/cricketMatches.json');
   const football = fs.existsSync(matchesPath) ? JSON.parse(fs.readFileSync(matchesPath, 'utf8')) : [];
+  const leagues = fs.existsSync(leaguesPath) ? JSON.parse(fs.readFileSync(leaguesPath, 'utf8')) : [];
   const cricket = fs.existsSync(cricketPath) ? JSON.parse(fs.readFileSync(cricketPath, 'utf8')) : [];
 
   const allMatches = [
-    ...football.map(m => ({ ...m, _sport: 'Football' })),
+    ...football.map(m => ({ ...m, _sport: 'Football (World Cup)' })),
+    ...leagues.map(m => ({ ...m, _sport: 'Football (Top 5 Leagues)' })),
     ...cricket.map(m => ({ ...m, _sport: 'Cricket' })),
   ];
   const upcomingMatchIds = new Set(allMatches.map(m => m.id));
