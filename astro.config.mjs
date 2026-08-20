@@ -31,6 +31,7 @@ function buildRedirects() {
         if (!/\.(md|mdx)$/.test(file)) continue;
         const slug = file.replace(/\.(md|mdx)$/, '');
         const src = fs.readFileSync(path.join(aDir, file), 'utf8');
+        if (/^draft:\s*true/m.test(src)) continue;
         const m = src.match(/^league:\s*(\S+)/m);
         const league = m ? m[1] : 'world-cup';
         const dest = league === 'nba' ? `/${lang}/nba/analysis/${slug}`

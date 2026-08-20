@@ -78,7 +78,7 @@ function sportBucketOf(entry: any, type: string): string {
 }
 
 const [analysisAll, guidesAll, trendsAll] = await Promise.all([
-  getCollection('analysis', (e) => e.id.startsWith(lang + '/')),
+  getCollection('analysis', (e) => e.id.startsWith(lang + '/') && !e.data.draft),
   getCollection('guides', (e) => e.id.startsWith(lang + '/')),
   getCollection('trends', (e) => e.id.startsWith(lang + '/')),
 ]);

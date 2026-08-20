@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import AnalysisArticle from '../../../../components/AnalysisArticle.astro';
 
 export async function getStaticPaths() {
-  const entries = await getCollection('analysis', (entry) => entry.data.league === 'cricket');
+  const entries = await getCollection('analysis', (entry) => entry.data.league === 'cricket' && !entry.data.draft);
   return entries.map(entry => {
     const [lang, ...slugParts] = entry.id.split('/');
     const slug = slugParts.join('/');

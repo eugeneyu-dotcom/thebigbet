@@ -35,7 +35,7 @@ const fmtTime = (iso: string) =>
   new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
 
 const analysisEntries = (await getCollection('analysis', (entry) =>
-  entry.id.startsWith(lang + '/') && entry.data.league === 'cricket'))
+  entry.id.startsWith(lang + '/') && entry.data.league === 'cricket' && !entry.data.draft))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
 const metaTitle = isZhTw ? '板球賠率與賽事分析 | The Big Bet' : isTh ? 'ราคาคริกเก็ตและวิเคราะห์ | The Big Bet' : 'Cricket Odds & Analysis | The Big Bet';

@@ -29,6 +29,11 @@ const analysis = defineCollection({
     h2hData: z.array(z.number()).optional(),
     teamAForm: z.array(z.number()).optional(),
     teamBForm: z.array(z.number()).optional(),
+    // Excludes the entry from all listing pages and the homepage "latest"
+    // feed (e.g. template/sample articles). The detail page route is also
+    // skipped so it never builds. Defaults to false so existing articles
+    // are unaffected.
+    draft: z.boolean().default(false),
   }),
 });
 
