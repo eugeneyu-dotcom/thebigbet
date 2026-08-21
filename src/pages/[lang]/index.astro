@@ -70,7 +70,7 @@ const fmtTime = (iso: string) =>
 // not limited to any one category — then filtered to this locale's visible
 // sports.
 function sportBucketOf(entry: any, type: string): string {
-  if (type === 'guides') return entry.data.sport; // 'football' | 'cricket'
+  if (type === 'guides') return entry.data.sport === 'basketball' ? 'nba' : entry.data.sport; // 'football' | 'cricket' | 'nba'
   const league = entry.data.league ?? 'world-cup';
   if (league === 'nba') return 'nba';
   if (league === 'cricket') return 'cricket';
@@ -84,7 +84,12 @@ const [analysisAll, guidesAll, trendsAll] = await Promise.all([
 ]);
 
 const latestEntries = [
-  ...analysisAll.map((entry) => ({ entry, type: 'analysis' })),
+  // World Cup match analysis is excluded here now that the tournament is
+  // winding down — those pages stay fully live under their own section,
+  // just no longer surfaced as "latest" alongside evergreen/current content.
+  ...analysisAll
+    .filter((entry) => (entry.data.league ?? 'world-cup') !== 'world-cup')
+    .map((entry) => ({ entry, type: 'analysis' })),
   ...guidesAll.map((entry) => ({ entry, type: 'guides' })),
   ...trendsAll.map((entry) => ({ entry, type: 'trends' })),
 ]
@@ -96,7 +101,9 @@ function contentHref({ entry, type }: { entry: any; type: string }) {
   const [, ...slugParts] = entry.id.split('/');
   const slug = slugParts.join('/');
   if (type === 'guides') {
-    return entry.data.sport === 'cricket' ? `/${lang}/cricket/guides/${slug}` : `/${lang}/football/world-cup/guides/${slug}`;
+    if (entry.data.sport === 'cricket') return `/${lang}/cricket/guides/${slug}`;
+    if (entry.data.sport === 'basketball') return `/${lang}/nba/guides/${slug}`;
+    return `/${lang}/football/world-cup/guides/${slug}`;
   }
   const league = entry.data.league ?? 'world-cup';
   if (type === 'trends') {
@@ -115,7 +122,9 @@ const leagueLabel = (league: string) => {
 };
 function contentBadge({ entry, type }: { entry: any; type: string }) {
   if (type === 'guides') {
-    return entry.data.sport === 'cricket' ? (isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket') : t('nav.worldcup');
+    if (entry.data.sport === 'cricket') return isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket';
+    if (entry.data.sport === 'basketball') return 'NBA';
+    return t('nav.worldcup');
   }
   return leagueLabel(entry.data.league);
 }

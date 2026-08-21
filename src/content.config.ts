@@ -74,7 +74,7 @@ const guides = defineCollection({
     pubDate: z.coerce.date(),
     // Drives which category's guides page/index a guide shows up under.
     // Defaults to football so all existing (World Cup) guides are unaffected.
-    sport: z.enum(['football', 'cricket']).default('football'),
+    sport: z.enum(['football', 'cricket', 'basketball']).default('football'),
   }),
 });
 
