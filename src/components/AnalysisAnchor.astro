@@ -17,7 +17,10 @@ if (href?.startsWith('/analysis/')) {
 } else if (href?.startsWith('wiki:')) {
   // Language-aware Wikipedia link
   // Format: wiki:en_slug  OR  wiki:en_slug|zh_slug
-  const slugs = href.slice(5).split('|');
+  // The markdown parser percent-encodes the raw '|' in the link destination
+  // to '%7C' before this component ever sees it, so it has to be decoded
+  // back before splitting on it.
+  const slugs = href.slice(5).replace(/%7C/gi, '|').split('|');
   const enSlug = slugs[0];
   const zhSlug = slugs[1] ?? slugs[0];
   resolvedHref = lang === 'zh-tw'
