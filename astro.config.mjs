@@ -48,7 +48,12 @@ function buildRedirects() {
         const src = fs.readFileSync(path.join(gDir, file), 'utf8');
         const m = src.match(/^sport:\s*(\S+)/m);
         const sport = m ? m[1] : 'football';
-        const dest = sport === 'cricket' ? `/${lang}/cricket/guides/${slug}` : `/${lang}/football/world-cup/guides/${slug}`;
+        const lm = src.match(/^league:\s*(\S+)/m);
+        const guideLeague = lm ? lm[1] : 'world-cup';
+        const dest = sport === 'cricket' ? `/${lang}/cricket/guides/${slug}`
+          : sport === 'basketball' ? `/${lang}/nba/guides/${slug}`
+          : guideLeague === 'club-football' ? `/${lang}/football/leagues/guides/${slug}`
+          : `/${lang}/football/world-cup/guides/${slug}`;
         r[`/${lang}/guides/${slug}`] = dest;
       }
     }

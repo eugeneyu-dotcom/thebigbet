@@ -75,6 +75,10 @@ const guides = defineCollection({
     // Drives which category's guides page/index a guide shows up under.
     // Defaults to football so all existing (World Cup) guides are unaffected.
     sport: z.enum(['football', 'cricket', 'basketball']).default('football'),
+    // Football-only: distinguishes World Cup guides from Top 5 Leagues guides,
+    // which live under separate nav sections. Ignored for other sports.
+    // Defaults to world-cup so all existing football guides are unaffected.
+    league: z.enum(['world-cup', 'club-football']).default('world-cup'),
   }),
 });
 

@@ -3,12 +3,11 @@ import { getCollection, render } from 'astro:content';
 import Header from '../../../../../components/Header.astro';
 import Footer from '../../../../../components/Footer.astro';
 import BaseHead from '../../../../../components/BaseHead.astro';
-import { useTranslations } from '../../../../../i18n/ui';
 import GoogleAnalytics from '../../../../../components/GoogleAnalytics.astro';
 import AnalysisAnchor from '../../../../../components/AnalysisAnchor.astro';
 
 export async function getStaticPaths() {
-  const guideEntries = await getCollection('guides', (entry) => entry.data.sport === 'football' && entry.data.league === 'world-cup');
+  const guideEntries = await getCollection('guides', (entry) => entry.data.sport === 'football' && entry.data.league === 'club-football');
 
   return guideEntries.map(entry => {
     const [lang, ...slugParts] = entry.id.split('/');
@@ -20,7 +19,9 @@ export async function getStaticPaths() {
 const { lang } = Astro.params;
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const t = useTranslations(lang);
+const isZhTw = lang === 'zh-tw';
+const isTh = lang === 'th';
+const tag = isZhTw ? '五大聯賽 賽事知識' : isTh ? 'ความรู้ 5 ลีกใหญ่' : 'Top 5 Leagues Guide';
 ---
 
 <html lang={lang}>
@@ -39,7 +40,7 @@ const t = useTranslations(lang);
       <article class="bg-[#10241a] rounded-2xl shadow-lg border border-[#1a3a29] p-8">
         <header class="mb-8">
           <div class="flex flex-wrap items-center gap-x-3 gap-y-2 mb-6">
-            <span class="text-xs font-black text-amber-400 uppercase tracking-widest">{t('guides.tag')}</span>
+            <span class="text-xs font-black text-amber-400 uppercase tracking-widest">{tag}</span>
             <span class="text-[#265039]">·</span>
             <time class="text-sm text-slate-400 font-mono" datetime={entry.data.pubDate.toISOString()}>
               {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}

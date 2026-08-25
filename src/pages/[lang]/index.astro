@@ -103,7 +103,7 @@ function contentHref({ entry, type }: { entry: any; type: string }) {
   if (type === 'guides') {
     if (entry.data.sport === 'cricket') return `/${lang}/cricket/guides/${slug}`;
     if (entry.data.sport === 'basketball') return `/${lang}/nba/guides/${slug}`;
-    return `/${lang}/football/world-cup/guides/${slug}`;
+    return entry.data.league === 'club-football' ? `/${lang}/football/leagues/guides/${slug}` : `/${lang}/football/world-cup/guides/${slug}`;
   }
   const league = entry.data.league ?? 'world-cup';
   if (type === 'trends') {
@@ -124,7 +124,7 @@ function contentBadge({ entry, type }: { entry: any; type: string }) {
   if (type === 'guides') {
     if (entry.data.sport === 'cricket') return isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket';
     if (entry.data.sport === 'basketball') return 'NBA';
-    return t('nav.worldcup');
+    return entry.data.league === 'club-football' ? t('nav.leagues') : t('nav.worldcup');
   }
   return leagueLabel(entry.data.league);
 }
