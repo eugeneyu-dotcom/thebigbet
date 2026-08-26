@@ -38,7 +38,27 @@ const footballMatches: any[] = [
   ...(loadJson('src/data/leagueMatches.json') ?? []),
 ];
 cricketMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
-footballMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
+
+// Editorial focus (2026-08): coverage is centered on EPL/La Liga, with these
+// nine clubs as the priority — Serie A/Bundesliga/Ligue 1 get lighter
+// treatment. The homepage surfaces that by sorting focus-club matches first,
+// then other EPL/La Liga matches, then everything else, chronologically
+// within each tier — nav/routing are unchanged, every match is still there.
+const FOCUS_CLUBS = new Set([
+  'Arsenal', 'Manchester City', 'Manchester United', 'Tottenham Hotspur', 'Chelsea', 'Liverpool',
+  'Real Madrid', 'Barcelona', 'Atlético Madrid',
+]);
+const FOCUS_LEAGUES = new Set(['EPL', 'La Liga - Spain']);
+function footballPriority(m: any): number {
+  if (FOCUS_CLUBS.has(m.home_team) || FOCUS_CLUBS.has(m.away_team)) return 0;
+  if (FOCUS_LEAGUES.has(m.sport_title)) return 1;
+  return 2;
+}
+footballMatches.sort((a, b) => {
+  const p = footballPriority(a) - footballPriority(b);
+  if (p !== 0) return p;
+  return new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime();
+});
 const cricketUpcoming = cricketMatches.slice(0, 6);
 const footballUpcoming = footballMatches.slice(0, 6);
 
