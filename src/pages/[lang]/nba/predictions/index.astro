@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import { languages } from '../../../../i18n/ui';
+import TrendList from '../../../../components/TrendList.astro';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const isZhTw = lang === 'zh-tw';
+const isTh = lang === 'th';
+
+const entries = await getCollection('predictions', (entry) =>
+  entry.id.startsWith(lang + '/') && entry.data.league === 'nba');
+
+const metaTitle = isZhTw ? 'NBA 賽事預測 | The Big Bet' : isTh ? 'ทำนายผล NBA | The Big Bet' : 'NBA Predictions | The Big Bet';
+const metaDescription = isZhTw
+  ? 'NBA 新賽季戰績與排名預測，包含分區與聯盟整體排名展望。'
+  : isTh ? 'ทำนายผลงานและอันดับ NBA ฤดูกาลใหม่ ทั้งระดับดิวิชั่นและภาพรวมสาย'
+    : 'NBA season predictions — division and conference standings outlook.';
+const tag = 'NBA';
+const heading = isZhTw ? 'NBA 賽事預測' : isTh ? 'ทำนายผล NBA' : 'NBA Predictions';
+const intro = isZhTw
+  ? '不是球隊整季走向的觀察，而是針對排名與戰績給出的具體預測。'
+  : isTh ? 'ไม่ใช่มุมมองทิศทางทีมตลอดฤดูกาล แต่เป็นการทำนายอันดับและผลงานอย่างเจาะจง'
+    : 'Not season-long team commentary — concrete predictions for standings and outcomes.';
+const emptyText = isZhTw ? '目前尚無 NBA 賽事預測文章，敬請期待。' : isTh ? 'ยังไม่มีบทความทำนายผล NBA โปรดกลับมาใหม่' : 'No NBA predictions yet. Check back soon.';
+---
+
+<TrendList
+  lang={lang as string}
+  entries={entries}
+  basePath={`/${lang}/nba/predictions`}
+  metaTitle={metaTitle}
+  metaDescription={metaDescription}
+  tag={tag}
+  heading={heading}
+  intro={intro}
+  emptyText={emptyText}
+/>
