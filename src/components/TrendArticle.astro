@@ -10,15 +10,19 @@ import { useTeamTranslations, useTranslations } from '../i18n/ui';
 interface Props {
   entry: any;
   lang: string;
+  // Overrides the tag shown above the title (defaults to the team-trend
+  // label) — used by collections other than `trends` that reuse this
+  // component, e.g. `predictions`.
+  articleTag?: string;
 }
 
-const { entry, lang } = Astro.props;
+const { entry, lang, articleTag } = Astro.props;
 const { Content } = await render(entry);
 const t = useTranslations(lang as any);
 const tTeam = useTeamTranslations(lang as any);
 const teamName = tTeam(entry.data.team);
 const sportLabel = t(`sport.${entry.data.sport}` as any);
-const trendTag = lang === 'zh-tw' ? '球隊趨勢分析' : lang === 'th' ? 'วิเคราะห์เทรนด์ทีม' : 'Team Trend Analysis';
+const trendTag = articleTag ?? (lang === 'zh-tw' ? '球隊趨勢分析' : lang === 'th' ? 'วิเคราะห์เทรนด์ทีม' : 'Team Trend Analysis');
 ---
 
 <html lang={lang}>

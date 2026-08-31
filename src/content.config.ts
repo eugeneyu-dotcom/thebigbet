@@ -82,6 +82,27 @@ const guides = defineCollection({
   }),
 });
 
+// Multi-match prediction round-ups — quick picks across several upcoming
+// fixtures in one article (e.g. "this matchweek's 6 focus-club predictions").
+// Kept separate from `trends` (a single team's season outlook, no picks) and
+// from `analysis` (one structured match with odds/h2h/confidence) — this is
+// forward-looking, multi-match, and informal, so forcing it into either
+// existing schema would be a poor fit. Same shape as `trends` since it also
+// has no single opponent to build a match VS card from.
+const predictions = defineCollection({
+  loader: glob({ base: './src/content/predictions', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    pubDate: z.coerce.date(),
+    sport: z.enum(['football', 'basketball', 'baseball', 'cricket']),
+    // Drives top-nav category routing, same values as `analysis.league`.
+    league: z.enum(['world-cup', 'club-football', 'nba', 'cricket']),
+    // Shown as a badge instead of a match VS card — e.g. "Premier League".
+    team: z.string(),
+  }),
+});
+
 const casinos = defineCollection({
   loader: glob({ base: './src/content/casinos', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
@@ -98,4 +119,4 @@ const promotions = defineCollection({
   }),
 });
 
-export const collections = { analysis, trends, strategy, guides, casinos, promotions };
+export const collections = { analysis, trends, predictions, strategy, guides, casinos, promotions };

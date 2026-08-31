@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import TrendArticle from '../../../../../components/TrendArticle.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('predictions', (entry) => entry.data.league === 'club-football');
+  return entries.map(entry => {
+    const [lang, ...slugParts] = entry.id.split('/');
+    const slug = slugParts.join('/');
+    return { params: { lang, slug }, props: { entry } };
+  });
+}
+
+const { lang } = Astro.params;
+const { entry } = Astro.props;
+const articleTag = lang === 'zh-tw' ? '賽事預測' : lang === 'th' ? 'การทำนายผลการแข่งขัน' : 'Match Predictions';
+---
+
+<TrendArticle entry={entry} lang={lang as string} articleTag={articleTag} />
