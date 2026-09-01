@@ -38,7 +38,7 @@ const footballGroups = [
 
 const simpleDropdowns = [
   { key: 'nba', label: 'NBA', href: `/${lang}/nba`, items: [ { label: guidesLbl, href: `/${lang}/nba/guides` }, { label: analysisLbl, href: `/${lang}/nba` }, { label: t('nav.predictions'), href: `/${lang}/nba/predictions` }, { label: t('nav.trends'), href: `/${lang}/nba/trends` } ] },
-  { key: 'cricket', label: t('nav.cricket'), href: `/${lang}/cricket`, items: [ { label: guidesLbl, href: `/${lang}/cricket/guides` }, { label: analysisLbl, href: `/${lang}/cricket` } ] },
+  { key: 'cricket', label: t('nav.cricket'), href: `/${lang}/cricket`, items: [ { label: guidesLbl, href: `/${lang}/cricket/guides` }, { label: analysisLbl, href: `/${lang}/cricket` }, { label: t('nav.trends'), href: `/${lang}/cricket/trends` } ] },
 ].filter((d) => visibleSports.includes(d.key));
 
 const chevronDown = 'm6 9 6 6 6-6';

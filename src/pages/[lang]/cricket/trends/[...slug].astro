@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import TrendArticle from '../../../../components/TrendArticle.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('trends', (entry) => entry.data.league === 'cricket');
+  return entries.map(entry => {
+    const [lang, ...slugParts] = entry.id.split('/');
+    const slug = slugParts.join('/');
+    return { params: { lang, slug }, props: { entry } };
+  });
+}
+
+const { lang } = Astro.params;
+const { entry } = Astro.props;
+---
+
+<TrendArticle entry={entry} lang={lang as string} />

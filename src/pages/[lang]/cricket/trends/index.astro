@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import { languages } from '../../../../i18n/ui';
+import TrendList from '../../../../components/TrendList.astro';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const isZhTw = lang === 'zh-tw';
+const isTh = lang === 'th';
+
+const entries = await getCollection('trends', (entry) =>
+  entry.id.startsWith(lang + '/') && entry.data.league === 'cricket');
+
+const metaTitle = isZhTw ? '板球趨勢分析 | The Big Bet' : isTh ? 'วิเคราะห์เทรนด์คริกเก็ต | The Big Bet' : 'Cricket Trend Analysis | The Big Bet';
+const metaDescription = isZhTw
+  ? '板球系列賽戰報與趨勢分析：戰績走勢、球員表現與系列賽形勢。'
+  : isTh ? 'วิเคราะห์เทรนด์และผลการแข่งขันซีรีส์คริกเก็ต: ฟอร์ม ผลงานนักเตะ และสถานการณ์ซีรีส์'
+    : 'Cricket series reviews and trend analysis: form, player performances, and series outlook.';
+const tag = isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket';
+const heading = isZhTw ? '板球趨勢分析' : isTh ? 'วิเคราะห์เทรนด์คริกเก็ต' : 'Cricket Trend Analysis';
+const intro = isZhTw
+  ? '不是單場比賽前瞻，而是系列賽戰況與球隊走向的觀察與評論。'
+  : isTh ? 'ไม่ใช่การวิเคราะห์รายนัด แต่เป็นมุมมองต่อสถานการณ์ซีรีส์และทิศทางทีม'
+    : 'Not a single-match preview — commentary on series form and where a team is headed.';
+const emptyText = isZhTw ? '目前尚無板球趨勢分析文章，敬請期待。' : isTh ? 'ยังไม่มีบทวิเคราะห์เทรนด์คริกเก็ต โปรดกลับมาใหม่' : 'No cricket trend analysis yet. Check back soon.';
+---
+
+<TrendList
+  lang={lang as string}
+  entries={entries}
+  basePath={`/${lang}/cricket/trends`}
+  metaTitle={metaTitle}
+  metaDescription={metaDescription}
+  tag={tag}
+  heading={heading}
+  intro={intro}
+  emptyText={emptyText}
+/>
