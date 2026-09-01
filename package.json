@@ -18,7 +18,7 @@
     "update:ai": "node --env-file-if-exists=.env scripts/update_ai_stats.mjs",
     "update:h2h": "node --env-file-if-exists=.env scripts/update_h2h.mjs",
     "update:predictions": "node --env-file-if-exists=.env scripts/update_predictions.mjs",
-    "update:all": "npm run update:matches && npm run update:leagues && npm run update:cricket && npm run update:standings && npm run update:bracket && node --env-file-if-exists=.env scripts/generate_expert_csv.mjs && node --env-file-if-exists=.env scripts/generate_home_expert_csv.mjs",
+    "update:all": "npm run update:matches && npm run update:leagues && npm run update:cricket && npm run update:bracket && node --env-file-if-exists=.env scripts/generate_expert_csv.mjs && node --env-file-if-exists=.env scripts/generate_home_expert_csv.mjs",
     "push": "node scripts/safe-push.mjs"
   },
   "dependencies": {
