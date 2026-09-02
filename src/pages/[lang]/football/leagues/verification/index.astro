@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import { languages } from '../../../../../i18n/ui';
+import TrendList from '../../../../../components/TrendList.astro';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const isZhTw = lang === 'zh-tw';
+const isTh = lang === 'th';
+
+const entries = await getCollection('verification', (entry) =>
+  entry.id.startsWith(lang + '/') && entry.data.league === 'club-football');
+
+const metaTitle = isZhTw ? '五大聯賽預測驗證 | The Big Bet' : isTh ? 'ตรวจสอบผลทำนาย 5 ลีกใหญ่ | The Big Bet' : 'Top 5 Leagues Prediction Verification | The Big Bet';
+const metaDescription = isZhTw
+  ? '回頭核對過去預測的命中率，逐場檢視預測邏輯哪裡站得住腳、哪裡失準。'
+  : isTh ? 'ย้อนดูอัตราความแม่นยำของการทำนายที่ผ่านมา ตรวจสอบทีละนัดว่าตรงไหนแม่น ตรงไหนพลาด'
+    : 'Looking back at past predictions to check the hit rate — match by match, what held up and what didn\'t.';
+const tag = isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : 'Top 5 Leagues';
+const heading = isZhTw ? '五大聯賽預測驗證' : isTh ? 'ตรวจสอบผลทำนาย 5 ลีกใหญ่' : 'Top 5 Leagues Prediction Verification';
+const intro = isZhTw
+  ? '不是新的預測，而是回頭核對過去預測的實際命中結果。'
+  : isTh ? 'ไม่ใช่การทำนายใหม่ แต่เป็นการย้อนดูผลจริงของการทำนายที่ผ่านมา'
+    : 'Not a new prediction — a look back at how previous predictions actually turned out.';
+const emptyText = isZhTw ? '目前尚無預測驗證文章，敬請期待。' : isTh ? 'ยังไม่มีบทความตรวจสอบผลทำนาย โปรดกลับมาใหม่' : 'No prediction verification articles yet. Check back soon.';
+---
+
+<TrendList
+  lang={lang as string}
+  entries={entries}
+  basePath={`/${lang}/football/leagues/verification`}
+  metaTitle={metaTitle}
+  metaDescription={metaDescription}
+  tag={tag}
+  heading={heading}
+  intro={intro}
+  emptyText={emptyText}
+/>

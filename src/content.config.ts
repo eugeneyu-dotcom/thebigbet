@@ -103,6 +103,25 @@ const predictions = defineCollection({
   }),
 });
 
+// Prediction track record — looking back at a batch of previously-published
+// predictions against what actually happened. Kept separate from
+// `predictions` (forward-looking picks, no outcome yet) even though the
+// shape is identical, since mixing settled/verified results into the same
+// listing as still-open picks would be confusing.
+const verification = defineCollection({
+  loader: glob({ base: './src/content/verification', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    pubDate: z.coerce.date(),
+    sport: z.enum(['football', 'basketball', 'baseball', 'cricket']),
+    // Drives top-nav category routing, same values as `analysis.league`.
+    league: z.enum(['world-cup', 'club-football', 'nba', 'cricket']),
+    // Shown as a badge instead of a match VS card — e.g. "Premier League".
+    team: z.string(),
+  }),
+});
+
 const casinos = defineCollection({
   loader: glob({ base: './src/content/casinos', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
@@ -119,4 +138,4 @@ const promotions = defineCollection({
   }),
 });
 
-export const collections = { analysis, trends, predictions, strategy, guides, casinos, promotions };
+export const collections = { analysis, trends, predictions, verification, strategy, guides, casinos, promotions };
