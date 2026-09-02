@@ -55,6 +55,27 @@ const trends = defineCollection({
   }),
 });
 
+// Analysis anchored to one or more specific matches — a post-match tactical
+// breakdown (e.g. a single team's performance in one game) or a round-up of
+// several matches' results, as opposed to `trends` (a team's ongoing
+// squad/tactical trajectory, not tied to a specific match) or `predictions`
+// (forward-looking picks, not yet decided). Same simple shape as `trends`
+// since a review doesn't need odds/confidence/a prediction field either.
+const matchAnalysis = defineCollection({
+  loader: glob({ base: './src/content/matchAnalysis', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    pubDate: z.coerce.date(),
+    sport: z.enum(['football', 'basketball', 'baseball', 'cricket']),
+    // Drives top-nav category routing, same values as `analysis.league`.
+    league: z.enum(['world-cup', 'club-football', 'nba', 'cricket']),
+    // Shown as a badge instead of a match VS card — e.g. "Manchester City"
+    // for a single-team match report, or "Premier League" for a round-up.
+    team: z.string(),
+  }),
+});
+
 // Betting knowledge & strategy — evergreen how-to/explainer content, kept in
 // its own section (separate from match-focused `guides`). Same simple shape.
 const strategy = defineCollection({
@@ -138,4 +159,4 @@ const promotions = defineCollection({
   }),
 });
 
-export const collections = { analysis, trends, predictions, verification, strategy, guides, casinos, promotions };
+export const collections = { analysis, trends, matchAnalysis, predictions, verification, strategy, guides, casinos, promotions };

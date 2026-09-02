@@ -1,15 +1,41 @@
 ---
+import { getCollection } from 'astro:content';
 import { languages } from '../../../../../i18n/ui';
-import ComingSoon from '../../../../../components/ComingSoon.astro';
+import TrendList from '../../../../../components/TrendList.astro';
 
 export function getStaticPaths() {
   return Object.keys(languages).map((lang) => ({ params: { lang } }));
 }
+
 const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+
+const entries = await getCollection('matchAnalysis', (entry) =>
+  entry.id.startsWith(lang + '/') && entry.data.league === 'club-football');
+
+const metaTitle = isZhTw ? '五大聯賽賽事分析 | The Big Bet' : isTh ? 'บทวิเคราะห์ 5 ลีกใหญ่ | The Big Bet' : 'Top 5 Leagues Analysis | The Big Bet';
+const metaDescription = isZhTw
+  ? '五大聯賽單場或多場賽事的戰術分析與戰報，聚焦具體比賽本身。'
+  : isTh ? 'บทวิเคราะห์เชิงลึกของ 5 ลีกใหญ่ ทั้งรายนัดและสรุปหลายนัด เจาะจงที่ตัวเกมการแข่งขัน'
+    : 'Tactical breakdowns and match reports for Top 5 Leagues fixtures — focused on the games themselves.';
 const tag = isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : 'Top 5 Leagues';
-const title = isZhTw ? '五大聯賽 賽事分析' : isTh ? 'บทวิเคราะห์ 5 ลีกใหญ่' : 'Top 5 Leagues Analysis';
-const message = isZhTw ? '英超、西甲、義甲、德甲、法甲的賽事分析即將推出，敬請期待。' : isTh ? 'บทวิเคราะห์ 5 ลีกใหญ่กำลังจะมาเร็วๆ นี้' : 'Analysis for the top 5 leagues is coming soon.';
+const heading = isZhTw ? '五大聯賽賽事分析' : isTh ? 'บทวิเคราะห์ 5 ลีกใหญ่' : 'Top 5 Leagues Analysis';
+const intro = isZhTw
+  ? '針對具體比賽（單場或多場）的戰術與戰況分析，不是球隊整季走向的觀察。'
+  : isTh ? 'บทวิเคราะห์เชิงกลยุทธ์และสถานการณ์ของนัดที่แข่งไปแล้ว (นัดเดียวหรือหลายนัด) ไม่ใช่มุมมองทิศทางทีมตลอดฤดูกาล'
+    : 'Tactical and match-state analysis tied to specific games (one or several) — not season-long team commentary.';
+const emptyText = isZhTw ? '目前尚無五大聯賽賽事分析文章，敬請期待。' : isTh ? 'ยังไม่มีบทวิเคราะห์ 5 ลีกใหญ่ โปรดกลับมาใหม่' : 'No Top 5 Leagues analysis yet. Check back soon.';
 ---
-<ComingSoon lang={lang as string} tag={tag} title={title} message={message} />
+
+<TrendList
+  lang={lang as string}
+  entries={entries}
+  basePath={`/${lang}/football/leagues/analysis`}
+  metaTitle={metaTitle}
+  metaDescription={metaDescription}
+  tag={tag}
+  heading={heading}
+  intro={intro}
+  emptyText={emptyText}
+/>

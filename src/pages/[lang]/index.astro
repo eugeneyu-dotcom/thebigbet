@@ -97,10 +97,13 @@ function sportBucketOf(entry: any, type: string): string {
   return 'football';
 }
 
-const [analysisAll, guidesAll, trendsAll] = await Promise.all([
+const [analysisAll, guidesAll, trendsAll, matchAnalysisAll, predictionsAll, verificationAll] = await Promise.all([
   getCollection('analysis', (e) => e.id.startsWith(lang + '/') && !e.data.draft),
   getCollection('guides', (e) => e.id.startsWith(lang + '/')),
   getCollection('trends', (e) => e.id.startsWith(lang + '/')),
+  getCollection('matchAnalysis', (e) => e.id.startsWith(lang + '/')),
+  getCollection('predictions', (e) => e.id.startsWith(lang + '/')),
+  getCollection('verification', (e) => e.id.startsWith(lang + '/')),
 ]);
 
 const latestEntries = [
@@ -112,6 +115,9 @@ const latestEntries = [
     .map((entry) => ({ entry, type: 'analysis' })),
   ...guidesAll.map((entry) => ({ entry, type: 'guides' })),
   ...trendsAll.map((entry) => ({ entry, type: 'trends' })),
+  ...matchAnalysisAll.map((entry) => ({ entry, type: 'matchAnalysis' })),
+  ...predictionsAll.map((entry) => ({ entry, type: 'predictions' })),
+  ...verificationAll.map((entry) => ({ entry, type: 'verification' })),
 ]
   .filter((item) => visibleSports.includes(sportBucketOf(item.entry, item.type)))
   .sort((a, b) => b.entry.data.pubDate.getTime() - a.entry.data.pubDate.getTime())
@@ -126,8 +132,16 @@ function contentHref({ entry, type }: { entry: any; type: string }) {
     return entry.data.league === 'club-football' ? `/${lang}/football/leagues/guides/${slug}` : `/${lang}/football/world-cup/guides/${slug}`;
   }
   const league = entry.data.league ?? 'world-cup';
-  if (type === 'trends') {
-    return league === 'nba' ? `/${lang}/nba/trends/${slug}` : `/${lang}/football/leagues/trends/${slug}`;
+  // trends/matchAnalysis/predictions/verification all route the same way —
+  // by league, under whichever section-specific path exists for that
+  // combination. Not every league has every one of these built out yet
+  // (e.g. cricket only has `trends` so far), but no entries exist yet for
+  // the missing combinations, so this doesn't produce a dead link today.
+  if (type === 'trends' || type === 'matchAnalysis' || type === 'predictions' || type === 'verification') {
+    const base = type === 'matchAnalysis' ? 'analysis' : type;
+    if (league === 'nba') return `/${lang}/nba/${base}/${slug}`;
+    if (league === 'cricket') return `/${lang}/cricket/${base}/${slug}`;
+    return `/${lang}/football/leagues/${base}/${slug}`;
   }
   if (league === 'nba') return `/${lang}/nba/analysis/${slug}`;
   if (league === 'cricket') return `/${lang}/cricket/analysis/${slug}`;

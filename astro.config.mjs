@@ -25,6 +25,13 @@ function buildRedirects() {
     r[`/${lang}/mlb`] = `/${lang}/cricket`;
     r[`/${lang}/mlb/guides`] = `/${lang}/cricket/guides`;
 
+    // These two started out in `trends` before match-specific analysis was
+    // split into its own `matchAnalysis` collection/route — redirect their
+    // old URLs in case they were already shared or indexed.
+    for (const slug of ['epl-matchweek-1-review', 'man-city-matchweek-2-analysis']) {
+      r[`/${lang}/football/leagues/trends/${slug}`] = `/${lang}/football/leagues/analysis/${slug}`;
+    }
+
     const aDir = path.resolve(`src/content/analysis/${lang}`);
     if (fs.existsSync(aDir)) {
       for (const file of fs.readdirSync(aDir)) {
