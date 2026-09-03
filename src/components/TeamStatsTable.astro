@@ -45,19 +45,19 @@ function getReason(stat: any): string {
 }
 ---
 
-<details class="w-full bg-[#10241a] border border-[#1a3a29] rounded-lg overflow-hidden group">
-  <summary class="cursor-pointer p-4 flex justify-between items-center bg-[#1a3a29]/50 hover:bg-[#1a3a29] transition-colors duration-200 font-bold text-sm text-amber-300 tracking-wide">
+<details class="w-full bg-[#211d19] border border-[#3c352c] rounded-lg overflow-hidden group">
+  <summary class="cursor-pointer p-4 flex justify-between items-center bg-[#3c352c]/50 hover:bg-[#3c352c] transition-colors duration-200 font-bold text-sm text-amber-300 tracking-wide">
     <span>{t('stats.title')}</span>
     <svg class="w-4 h-4 text-slate-500 group-open:rotate-180 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
     </svg>
   </summary>
 
-  <div class="border-t border-[#1a3a29] divide-y divide-[#1a3a29]/40">
+  <div class="border-t border-[#3c352c] divide-y divide-[#3c352c]/40">
 
     <!-- Radar chart — canvas is lazy-initialized via toggle event in <script> -->
     <div class="px-3 pt-4 pb-2">
-      <div class="relative w-full h-[220px] flex items-center justify-center bg-[#10241a]/50 rounded-lg border border-[#1a3a29]/50">
+      <div class="relative w-full h-[220px] flex items-center justify-center bg-[#211d19]/50 rounded-lg border border-[#3c352c]/50">
         <canvas
           id={chartId}
           class="stats-radar-canvas"
@@ -71,7 +71,7 @@ function getReason(stat: any): string {
     </div>
 
     <!-- Team name header -->
-    <div class="grid grid-cols-[1fr_3.5rem_1fr] px-3 py-2.5 bg-[#0c1a13]/50">
+    <div class="grid grid-cols-[1fr_3.5rem_1fr] px-3 py-2.5 bg-[#0a150f]/50">
       <p class="text-amber-300 font-black text-xs text-center truncate px-1">{teamA}</p>
       <p></p>
       <p class="text-cyan-300 font-black text-xs text-center truncate px-1">{teamB}</p>

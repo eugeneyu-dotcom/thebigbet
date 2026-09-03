@@ -18,14 +18,14 @@ const { lang, tag, title, message } = Astro.props;
     <BaseHead title={`${title} | The Big Bet`} description={message} lang={lang} />
     <GoogleAnalytics />
   </head>
-  <body class="bg-[#0c1a13] text-slate-200 font-sans min-h-screen flex flex-col">
+  <body class="bg-[#0a150f] text-slate-200 font-sans min-h-screen flex flex-col">
     <Header />
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
       <div class="mb-10">
         <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">{tag}</p>
         <h1 class="text-3xl font-black text-white">{title}</h1>
       </div>
-      <div class="bg-[#10241a] border border-[#1a3a29] rounded-2xl p-12 text-center">
+      <div class="bg-[#211d19] border border-[#3c352c] rounded-2xl p-12 text-center">
         <p class="text-slate-400 text-sm leading-relaxed">{message}</p>
       </div>
     </main>
