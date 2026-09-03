@@ -4,6 +4,7 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import BaseHead from './BaseHead.astro';
 import GoogleAnalytics from './GoogleAnalytics.astro';
+import GoogleAdsense from './GoogleAdsense.astro';
 import AnalysisAnchor from './AnalysisAnchor.astro';
 import TeamIcon from './TeamIcon.astro';
 import TeamHeading from './TeamHeading.astro';
@@ -39,6 +40,7 @@ const trendTag = articleTag ?? (lang === 'zh-tw' ? '球隊趨勢分析' : lang =
       type="article"
     />
     <GoogleAnalytics />
+    <GoogleAdsense />
   </head>
   <body class="bg-[#0a150f] text-slate-200 font-sans min-h-screen flex flex-col">
     <Header />

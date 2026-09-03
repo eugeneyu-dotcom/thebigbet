@@ -3,6 +3,7 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import BaseHead from './BaseHead.astro';
 import GoogleAnalytics from './GoogleAnalytics.astro';
+import GoogleAdsense from './GoogleAdsense.astro';
 
 interface Props {
   lang: string;
@@ -17,6 +18,7 @@ const { lang, tag, title, message } = Astro.props;
   <head>
     <BaseHead title={`${title} | The Big Bet`} description={message} lang={lang} />
     <GoogleAnalytics />
+    <GoogleAdsense />
   </head>
   <body class="bg-[#0a150f] text-slate-200 font-sans min-h-screen flex flex-col">
     <Header />

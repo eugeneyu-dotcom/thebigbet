@@ -5,6 +5,7 @@ import Footer from '../../../../components/Footer.astro';
 import BaseHead from '../../../../components/BaseHead.astro';
 import { languages } from '../../../../i18n/ui';
 import GoogleAnalytics from '../../../../components/GoogleAnalytics.astro';
+import GoogleAdsense from '../../../../components/GoogleAdsense.astro';
 
 export function getStaticPaths() {
   return Object.keys(languages).map((lang) => ({ params: { lang } }));
@@ -27,6 +28,7 @@ const empty = isZhTw ? '目前尚無 NBA 賽事知識文章，敬請期待。' :
   <head>
     <BaseHead title={`${title} | The Big Bet`} description={description} lang={lang} />
     <GoogleAnalytics />
+    <GoogleAdsense />
   </head>
   <body class="bg-[#0a150f] text-slate-200 font-sans min-h-screen flex flex-col">
     <Header />
