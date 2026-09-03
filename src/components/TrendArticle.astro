@@ -5,7 +5,10 @@ import Footer from './Footer.astro';
 import BaseHead from './BaseHead.astro';
 import GoogleAnalytics from './GoogleAnalytics.astro';
 import AnalysisAnchor from './AnalysisAnchor.astro';
+import TeamIcon from './TeamIcon.astro';
+import TeamHeading from './TeamHeading.astro';
 import { useTeamTranslations, useTranslations } from '../i18n/ui';
+import teamLogosData from '../data/teamLogos.json';
 
 interface Props {
   entry: any;
@@ -21,6 +24,8 @@ const { Content } = await render(entry);
 const t = useTranslations(lang as any);
 const tTeam = useTeamTranslations(lang as any);
 const teamName = tTeam(entry.data.team);
+const teamLogos = teamLogosData as Record<string, string>;
+const hasTeamIcon = Boolean(teamLogos[entry.data.team]);
 const sportLabel = t(`sport.${entry.data.sport}` as any);
 const trendTag = articleTag ?? (lang === 'zh-tw' ? '球隊趨勢分析' : lang === 'th' ? 'วิเคราะห์เทรนด์ทีม' : 'Team Trend Analysis');
 ---
@@ -53,13 +58,17 @@ const trendTag = articleTag ?? (lang === 'zh-tw' ? '球隊趨勢分析' : lang =
           <h1 class="text-3xl md:text-4xl font-black text-white leading-tight mb-6">{entry.data.title}</h1>
 
           <div class="inline-flex items-center gap-2 bg-[#0c1a13] rounded-full border border-[#1a3a29] px-4 py-2">
-            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            {hasTeamIcon ? (
+              <TeamIcon team={entry.data.team} class="w-5 h-5" />
+            ) : (
+              <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            )}
             <span class="text-sm font-black text-white">{teamName}</span>
           </div>
         </header>
 
         <div class="article-body prose prose-invert max-w-none prose-img:rounded-xl prose-headings:font-black prose-headings:text-white prose-a:text-amber-400 prose-strong:text-white">
-          <Content components={{ a: AnalysisAnchor }} />
+          <Content components={{ a: AnalysisAnchor, h2: TeamHeading }} />
         </div>
         <style>
           .article-body p { color: rgb(203 213 225); line-height: 1.875; }

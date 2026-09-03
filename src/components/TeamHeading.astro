@@ -1,0 +1,25 @@
+---
+// Drop-in replacement for MDX's <h2>, used via <Content components={{ h2: TeamHeading }} />.
+// Division-preview articles (e.g. NBA) write section headings as plain
+// "## Team Name: subtitle" text with no special markup — there's no existing
+// hook to attach an icon to. Rather than retrofitting every published MDX
+// file, this inspects the heading's own rendered text at render time and
+// prepends a crest if it starts with a name we recognize. Team names that
+// don't match (e.g. "我的看法：..." wrap-up headings, or any other prose)
+// render unchanged — this only ever adds an icon, never alters text.
+import teamLogosData from '../data/teamLogos.json';
+
+const teamLogos = teamLogosData as Record<string, string>;
+// Longest name first so e.g. a name that's a prefix of another can't shadow it.
+const teamNames = Object.keys(teamLogos).sort((a, b) => b.length - a.length);
+
+const headingHtml = await Astro.slots.render('default');
+const headingText = headingHtml.replace(/<[^>]+>/g, '').trim();
+const matchedTeam = teamNames.find((name) => headingText.startsWith(name));
+const src = matchedTeam ? teamLogos[matchedTeam] : undefined;
+---
+
+<h2>
+  {src && <img src={src} alt="" class="inline-block w-6 h-6 object-contain align-middle mr-2 -mt-1" loading="lazy" />}
+  <Fragment set:html={headingHtml} />
+</h2>

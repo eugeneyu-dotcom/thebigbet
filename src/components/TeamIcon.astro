@@ -1,0 +1,21 @@
+---
+// Renders a team crest/logo if one is known for the given team name — looked
+// up from src/data/teamLogos.json, keyed by the raw team name as it appears
+// in the site's data (English club/team names, plus Chinese NBA team names
+// used as zh-tw article headings — see that file's generation notes).
+// Silently renders nothing for an unknown name (e.g. non-club values like
+// "Premier League" used as a trends `team` badge) rather than erroring.
+import teamLogosData from '../data/teamLogos.json';
+
+const teamLogos = teamLogosData as Record<string, string>;
+
+interface Props {
+  team: string | null | undefined;
+  class?: string;
+}
+
+const { team, class: className = 'w-6 h-6' } = Astro.props;
+const src = team ? teamLogos[team] : undefined;
+---
+
+{src && <img src={src} alt="" class={`${className} object-contain shrink-0`} loading="lazy" />}

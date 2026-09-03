@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import GoogleAnalytics from '../../components/GoogleAnalytics.astro';
+import TeamIcon from '../../components/TeamIcon.astro';
 import { languages, useTranslations, useTeamTranslations, getVisibleSports } from '../../i18n/ui';
 import fs from 'fs';
 import path from 'path';
@@ -287,13 +288,19 @@ const noFootball = isZhTw ? '目前暫無足球賠率資料。' : isTh ? 'ยั
                 <div class="bg-[#10241a] border border-[#1a3a29] rounded-xl px-5 py-4">
                   <div class="text-xs text-slate-500 font-mono mb-2">{fmtTime(m.commence_time)}</div>
                   <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 mb-3">
-                    <div class="min-w-0"><p class="font-bold text-white truncate">{tTeam(m.away_team)}</p></div>
+                    <div class="min-w-0 flex items-center gap-2">
+                      <TeamIcon team={m.away_team} class="w-6 h-6" />
+                      <p class="font-bold text-white truncate">{tTeam(m.away_team)}</p>
+                    </div>
                     <div class="flex items-center gap-2 font-mono font-black text-sm">
                       <span class="text-violet-400">{ml.away}</span>
                       {ml.draw && <span class="text-slate-500">{ml.draw}</span>}
                       <span class="text-amber-400">{ml.home}</span>
                     </div>
-                    <div class="min-w-0 text-right"><p class="font-bold text-white truncate">{tTeam(m.home_team)}</p></div>
+                    <div class="min-w-0 flex items-center justify-end gap-2 text-right">
+                      <p class="font-bold text-white truncate">{tTeam(m.home_team)}</p>
+                      <TeamIcon team={m.home_team} class="w-6 h-6" />
+                    </div>
                   </div>
                   <div class="pt-3 border-t border-[#1a3a29]/60">
                     <p class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">{t('prediction.ai')}</p>
