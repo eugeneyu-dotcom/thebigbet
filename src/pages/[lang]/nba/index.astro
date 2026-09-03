@@ -1,7 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import BaseHead from '../../../components/BaseHead.astro';
+import GoogleAnalytics from '../../../components/GoogleAnalytics.astro';
 import { languages } from '../../../i18n/ui';
-import AnalysisList from '../../../components/AnalysisList.astro';
 
 export function getStaticPaths() {
   return Object.keys(languages).map((lang) => ({ params: { lang } }));
@@ -11,31 +14,97 @@ const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
 
-const entries = await getCollection('analysis', (entry) =>
-  entry.id.startsWith(lang + '/') && entry.data.league === 'nba');
+// NBA's own landing page, not the World-Cup-style single-game "analysis"
+// list — the season hasn't started, so there's no schedule/odds data for
+// structured game previews yet, and that list would just be empty. Instead
+// this pulls every NBA article across all content types (division/team
+// trends, conference predictions, guides, and — once they exist — analysis/
+// verification pieces too) into one feed, newest first, so the page always
+// has something real to show.
+const [analysisAll, guidesAll, trendsAll, matchAnalysisAll, predictionsAll, verificationAll] = await Promise.all([
+  getCollection('analysis', (e) => e.id.startsWith(lang + '/') && !e.data.draft && e.data.league === 'nba'),
+  getCollection('guides', (e) => e.id.startsWith(lang + '/') && e.data.sport === 'basketball'),
+  getCollection('trends', (e) => e.id.startsWith(lang + '/') && e.data.league === 'nba'),
+  getCollection('matchAnalysis', (e) => e.id.startsWith(lang + '/') && e.data.league === 'nba'),
+  getCollection('predictions', (e) => e.id.startsWith(lang + '/') && e.data.league === 'nba'),
+  getCollection('verification', (e) => e.id.startsWith(lang + '/') && e.data.league === 'nba'),
+]);
 
-const metaTitle = isZhTw ? 'NBA 賽事分析 | The Big Bet' : isTh ? 'วิเคราะห์ NBA | The Big Bet' : 'NBA Analysis | The Big Bet';
+const entries = [
+  ...analysisAll.map((entry) => ({ entry, type: 'analysis' })),
+  ...guidesAll.map((entry) => ({ entry, type: 'guides' })),
+  ...trendsAll.map((entry) => ({ entry, type: 'trends' })),
+  ...matchAnalysisAll.map((entry) => ({ entry, type: 'matchAnalysis' })),
+  ...predictionsAll.map((entry) => ({ entry, type: 'predictions' })),
+  ...verificationAll.map((entry) => ({ entry, type: 'verification' })),
+].sort((a, b) => b.entry.data.pubDate.getTime() - a.entry.data.pubDate.getTime());
+
+function contentHref({ entry, type }: { entry: any; type: string }) {
+  const [, ...slugParts] = entry.id.split('/');
+  const slug = slugParts.join('/');
+  if (type === 'guides') return `/${lang}/nba/guides/${slug}`;
+  if (type === 'analysis') return `/${lang}/nba/analysis/${slug}`;
+  const base = type === 'matchAnalysis' ? 'analysis' : type; // trends | predictions | verification
+  return `/${lang}/nba/${base}/${slug}`;
+}
+function typeBadge(type: string) {
+  if (type === 'guides') return isZhTw ? '賽事知識' : isTh ? 'ความรู้การแข่งขัน' : 'Guides';
+  if (type === 'analysis' || type === 'matchAnalysis') return isZhTw ? '賽事分析' : isTh ? 'บทวิเคราะห์การแข่งขัน' : 'Match Analysis';
+  if (type === 'trends') return isZhTw ? '趨勢分析' : isTh ? 'วิเคราะห์เทรนด์' : 'Trend Analysis';
+  if (type === 'predictions') return isZhTw ? '賽事預測' : isTh ? 'ทำนายผลการแข่งขัน' : 'Predictions';
+  return isZhTw ? '預測驗證' : isTh ? 'ตรวจสอบผลทำนาย' : 'Verification';
+}
+
+const metaTitle = isZhTw ? 'NBA | The Big Bet' : isTh ? 'NBA | The Big Bet' : 'NBA | The Big Bet';
 const metaDescription = isZhTw
-  ? 'NBA 賽事深度分析：賠率解讀、近況與對戰數據。'
-  : isTh ? 'วิเคราะห์เกม NBA เชิงลึก อัตราต่อรอง ฟอร์ม และสถิติการเจอกัน'
-    : 'In-depth NBA game analysis: odds breakdowns, recent form and head-to-head data.';
-const tag = 'NBA';
-const heading = isZhTw ? 'NBA 賽事分析' : isTh ? 'วิเคราะห์ NBA' : 'NBA Analysis';
+  ? 'NBA 分區前瞻、聯盟預測與最新文章總覽。'
+  : isTh ? 'ภาพรวมแนวโน้มรายดิวิชั่น ทำนายผลลีก และบทความล่าสุดของ NBA'
+    : 'NBA division previews, league predictions, and the latest articles all in one place.';
+const heading = 'NBA';
 const intro = isZhTw
-  ? 'NBA 賽事深度前瞻，整合二選一盤賠率、近五場戰績與歷史交手。'
-  : isTh ? 'บทวิเคราะห์เกม NBA เชิงลึก รวมราคาสองทาง ฟอร์ม 5 นัดหลัง และสถิติการเจอกัน'
-    : 'In-depth NBA previews with two-way odds, recent form and head-to-head records.';
-const emptyText = isZhTw ? '目前尚無 NBA 分析文章，敬請期待。' : isTh ? 'ยังไม่มีบทวิเคราะห์ NBA โปรดกลับมาใหม่' : 'No NBA analysis yet. Check back soon.';
+  ? '賽季尚未開打，暫無賠率式賽事分析——這裡改為顯示 NBA 底下所有分類的最新文章。'
+  : isTh ? 'ฤดูกาลยังไม่เริ่ม จึงยังไม่มีบทวิเคราะห์แบบราคาต่อรอง หน้านี้จึงแสดงบทความล่าสุดของ NBA จากทุกหมวดหมู่แทน'
+    : "The season hasn't started, so there are no odds-driven game previews yet — this shows the latest NBA articles across every category instead.";
+const emptyText = isZhTw ? '目前尚無 NBA 文章，敬請期待。' : isTh ? 'ยังไม่มีบทความ NBA โปรดกลับมาใหม่' : 'No NBA articles yet. Check back soon.';
 ---
 
-<AnalysisList
-  lang={lang as string}
-  entries={entries}
-  basePath={`/${lang}/nba/analysis`}
-  metaTitle={metaTitle}
-  metaDescription={metaDescription}
-  tag={tag}
-  heading={heading}
-  intro={intro}
-  emptyText={emptyText}
-/>
+<html lang={lang}>
+  <head>
+    <BaseHead title={metaTitle} description={metaDescription} lang={lang} />
+    <GoogleAnalytics />
+  </head>
+  <body class="bg-[#0c1a13] text-slate-200 font-sans min-h-screen flex flex-col">
+    <Header />
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
+
+      <div class="mb-10">
+        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">NBA</p>
+        <h1 class="text-3xl font-black text-white">{heading}</h1>
+        <p class="text-slate-400 mt-2 text-sm leading-relaxed">{intro}</p>
+      </div>
+
+      {entries.length === 0 ? (
+        <div class="bg-[#10241a] border border-[#1a3a29] rounded-2xl p-12 text-center">
+          <p class="text-slate-500 text-sm">{emptyText}</p>
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {entries.map((item) => (
+            <a href={contentHref(item)} class="group block bg-[#10241a] border border-[#1a3a29] hover:border-amber-400/40 rounded-2xl p-5 transition-all duration-200">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-black bg-violet-400/10 border border-violet-400/30 text-violet-300 uppercase">{typeBadge(item.type)}</span>
+                <time class="text-xs text-slate-500 font-mono">{item.entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}</time>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-amber-300 transition-colors duration-200 line-clamp-2">{item.entry.data.title}</h3>
+              {item.entry.data.prediction && (
+                <p class="text-sm font-bold text-amber-400 mt-2 truncate">{isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : 'Prediction: '}{item.entry.data.prediction}</p>
+              )}
+            </a>
+          ))}
+        </div>
+      )}
+
+    </main>
+    <Footer />
+  </body>
+</html>
