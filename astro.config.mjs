@@ -71,7 +71,7 @@ const redirects = buildRedirects();
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://thebigbet.org',
+  site: 'https://www.thebigbet.org',
   redirects,
   i18n: {
     defaultLocale: 'zh-tw',
