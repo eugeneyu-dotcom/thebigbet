@@ -60,6 +60,7 @@ function buildRedirects() {
         const dest = sport === 'cricket' ? `/${lang}/cricket/guides/${slug}`
           : sport === 'basketball' ? `/${lang}/nba/guides/${slug}`
           : guideLeague === 'club-football' ? `/${lang}/football/leagues/guides/${slug}`
+          : guideLeague === 'champions-league' ? `/${lang}/football/champions-league/guides/${slug}`
           : `/${lang}/football/world-cup/guides/${slug}`;
         r[`/${lang}/guides/${slug}`] = dest;
       }

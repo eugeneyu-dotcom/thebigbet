@@ -24,7 +24,7 @@ try {
   const p = path.resolve('src/data/leagueMatches.json');
   if (fs.existsSync(p)) leagueMatches = JSON.parse(fs.readFileSync(p, 'utf8'));
 } catch (e) {}
-leagueMatches = leagueMatches.filter((m) => m.sport_key !== 'soccer_uefa_champs_league');
+leagueMatches = leagueMatches.filter((m) => m.sport_key === 'soccer_uefa_champs_league');
 leagueMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
 const upcoming = leagueMatches.slice(0, 12);
 
@@ -39,29 +39,18 @@ const fmtTime = (iso: string) =>
   new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
 
 const analysisEntries = (await getCollection('analysis', (entry) =>
-  entry.id.startsWith(lang + '/') && entry.data.league === 'club-football'))
+  entry.id.startsWith(lang + '/') && entry.data.league === 'champions-league'))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
-const title = isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : 'Top 5 Leagues';
+const title = isZhTw ? '歐冠' : isTh ? 'แชมเปียนส์ลีก' : 'Champions League';
 const metaDescription = isZhTw
-  ? '英超、西甲、義甲、德甲、法甲即時賠率與深度賽事分析。'
-  : isTh ? 'ราคาสดและบทวิเคราะห์เชิงลึกของพรีเมียร์ลีก ลาลีกา เซเรียอา บุนเดสลีกา และลีกเอิง'
-    : 'Live EPL, La Liga, Serie A, Bundesliga and Ligue 1 odds and in-depth match analysis.';
-const oddsHeading = isZhTw ? '五大聯賽即時賠率' : isTh ? 'ราคาสด 5 ลีกใหญ่' : 'Live Top 5 Leagues Odds';
-const analysisHeading = isZhTw ? '五大聯賽賽事分析' : isTh ? 'วิเคราะห์ 5 ลีกใหญ่' : 'Top 5 Leagues Analysis';
-const noOdds = isZhTw ? '目前暫無五大聯賽賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคา 5 ลีกใหญ่' : 'No Top 5 Leagues odds available right now.';
-const noAnalysis = isZhTw ? '目前尚無五大聯賽分析文章。' : isTh ? 'ยังไม่มีบทวิเคราะห์ 5 ลีกใหญ่' : 'No Top 5 Leagues analysis yet.';
-
-const leagueLabel = (sportTitle: string) => {
-  const map: Record<string, [string, string]> = {
-    'EPL': [isZhTw ? '英超' : isTh ? 'พรีเมียร์ลีก' : 'EPL', ''],
-    'La Liga - Spain': [isZhTw ? '西甲' : isTh ? 'ลาลีกา' : 'La Liga', ''],
-    'Serie A - Italy': [isZhTw ? '義甲' : isTh ? 'เซเรียอา' : 'Serie A', ''],
-    'Bundesliga - Germany': [isZhTw ? '德甲' : isTh ? 'บุนเดสลีกา' : 'Bundesliga', ''],
-    'Ligue 1 - France': [isZhTw ? '法甲' : isTh ? 'ลีกเอิง' : 'Ligue 1', ''],
-  };
-  return map[sportTitle]?.[0] ?? sportTitle;
-};
+  ? '歐洲冠軍聯賽即時賠率與深度賽事分析。'
+  : isTh ? 'ราคาสดและบทวิเคราะห์เชิงลึกของยูฟ่าแชมเปียนส์ลีก'
+    : 'Live UEFA Champions League odds and in-depth match analysis.';
+const oddsHeading = isZhTw ? '歐冠即時賠率' : isTh ? 'ราคาสดแชมเปียนส์ลีก' : 'Live Champions League Odds';
+const analysisHeading = isZhTw ? '歐冠賽事分析' : isTh ? 'วิเคราะห์แชมเปียนส์ลีก' : 'Champions League Analysis';
+const noOdds = isZhTw ? '目前暫無歐冠賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคาแชมเปียนส์ลีก' : 'No Champions League odds available right now.';
+const noAnalysis = isZhTw ? '目前尚無歐冠分析文章。' : isTh ? 'ยังไม่มีบทวิเคราะห์แชมเปียนส์ลีก' : 'No Champions League analysis yet.';
 ---
 
 <html lang={lang}>
@@ -92,7 +81,7 @@ const leagueLabel = (sportTitle: string) => {
                 <li class="bg-[#211d19] border border-[#3c352c] rounded-xl px-5 py-4">
                   <div class="flex items-center justify-between mb-2">
                     <span class="text-xs text-slate-500 font-mono">{fmtTime(m.commence_time)}</span>
-                    <span class="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded bg-violet-400/10 border border-violet-400/30 text-violet-300">{leagueLabel(m.sport_title)}</span>
+                    <span class="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded bg-violet-400/10 border border-violet-400/30 text-violet-300">{title}</span>
                   </div>
                   <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
                     <div class="min-w-0 flex items-center gap-2">
@@ -134,7 +123,7 @@ const leagueLabel = (sportTitle: string) => {
               const slug = slugParts.join('/');
               return (
                 <li>
-                  <a href={`/${lang}/football/leagues/analysis/${slug}`} class="group block bg-[#211d19] border border-[#3c352c] hover:border-amber-400/40 rounded-2xl p-6 transition-all duration-200">
+                  <a href={`/${lang}/football/champions-league/analysis/${slug}`} class="group block bg-[#211d19] border border-[#3c352c] hover:border-amber-400/40 rounded-2xl p-6 transition-all duration-200">
                     <time class="text-xs text-slate-500 font-mono">{entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}</time>
                     <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 truncate mt-2">{entry.data.title}</h3>
                     {entry.data.prediction && (

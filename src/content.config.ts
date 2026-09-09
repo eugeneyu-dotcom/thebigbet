@@ -18,7 +18,7 @@ const analysis = defineCollection({
     // routing: world-cup + club-football live under Football; nba/cricket are
     // their own categories. Defaults to world-cup so existing football articles
     // map to the 2026 World Cup section without edits.
-    league: z.enum(['world-cup', 'club-football', 'nba', 'cricket']).default('world-cup'),
+    league: z.enum(['world-cup', 'club-football', 'champions-league', 'nba', 'cricket']).default('world-cup'),
     match: z.string(),
     odds: z.string(),
     prediction: z.string(),
@@ -49,7 +49,7 @@ const trends = defineCollection({
     pubDate: z.coerce.date(),
     sport: z.enum(['football', 'basketball', 'baseball', 'cricket']),
     // Drives top-nav category routing, same values as `analysis.league`.
-    league: z.enum(['world-cup', 'club-football', 'nba', 'cricket']),
+    league: z.enum(['world-cup', 'club-football', 'champions-league', 'nba', 'cricket']),
     // The team this piece is about (shown as a badge instead of a match VS card).
     team: z.string(),
   }),
@@ -69,7 +69,7 @@ const matchAnalysis = defineCollection({
     pubDate: z.coerce.date(),
     sport: z.enum(['football', 'basketball', 'baseball', 'cricket']),
     // Drives top-nav category routing, same values as `analysis.league`.
-    league: z.enum(['world-cup', 'club-football', 'nba', 'cricket']),
+    league: z.enum(['world-cup', 'club-football', 'champions-league', 'nba', 'cricket']),
     // Shown as a badge instead of a match VS card — e.g. "Manchester City"
     // for a single-team match report, or "Premier League" for a round-up.
     team: z.string(),
@@ -99,7 +99,7 @@ const guides = defineCollection({
     // Football-only: distinguishes World Cup guides from Top 5 Leagues guides,
     // which live under separate nav sections. Ignored for other sports.
     // Defaults to world-cup so all existing football guides are unaffected.
-    league: z.enum(['world-cup', 'club-football']).default('world-cup'),
+    league: z.enum(['world-cup', 'club-football', 'champions-league']).default('world-cup'),
   }),
 });
 
@@ -118,7 +118,7 @@ const predictions = defineCollection({
     pubDate: z.coerce.date(),
     sport: z.enum(['football', 'basketball', 'baseball', 'cricket']),
     // Drives top-nav category routing, same values as `analysis.league`.
-    league: z.enum(['world-cup', 'club-football', 'nba', 'cricket']),
+    league: z.enum(['world-cup', 'club-football', 'champions-league', 'nba', 'cricket']),
     // Shown as a badge instead of a match VS card — e.g. "Premier League".
     team: z.string(),
   }),
@@ -137,7 +137,7 @@ const verification = defineCollection({
     pubDate: z.coerce.date(),
     sport: z.enum(['football', 'basketball', 'baseball', 'cricket']),
     // Drives top-nav category routing, same values as `analysis.league`.
-    league: z.enum(['world-cup', 'club-football', 'nba', 'cricket']),
+    league: z.enum(['world-cup', 'club-football', 'champions-league', 'nba', 'cricket']),
     // Shown as a badge instead of a match VS card — e.g. "Premier League".
     team: z.string(),
   }),

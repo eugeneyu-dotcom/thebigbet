@@ -131,7 +131,9 @@ function contentHref({ entry, type }: { entry: any; type: string }) {
   if (type === 'guides') {
     if (entry.data.sport === 'cricket') return `/${lang}/cricket/guides/${slug}`;
     if (entry.data.sport === 'basketball') return `/${lang}/nba/guides/${slug}`;
-    return entry.data.league === 'club-football' ? `/${lang}/football/leagues/guides/${slug}` : `/${lang}/football/world-cup/guides/${slug}`;
+    if (entry.data.league === 'club-football') return `/${lang}/football/leagues/guides/${slug}`;
+    if (entry.data.league === 'champions-league') return `/${lang}/football/champions-league/guides/${slug}`;
+    return `/${lang}/football/world-cup/guides/${slug}`;
   }
   const league = entry.data.league ?? 'world-cup';
   // trends/matchAnalysis/predictions/verification all route the same way —
@@ -143,10 +145,12 @@ function contentHref({ entry, type }: { entry: any; type: string }) {
     const base = type === 'matchAnalysis' ? 'analysis' : type;
     if (league === 'nba') return `/${lang}/nba/${base}/${slug}`;
     if (league === 'cricket') return `/${lang}/cricket/${base}/${slug}`;
+    if (league === 'champions-league') return `/${lang}/football/champions-league/${base}/${slug}`;
     return `/${lang}/football/leagues/${base}/${slug}`;
   }
   if (league === 'nba') return `/${lang}/nba/analysis/${slug}`;
   if (league === 'cricket') return `/${lang}/cricket/analysis/${slug}`;
+  if (league === 'champions-league') return `/${lang}/football/champions-league/analysis/${slug}`;
   return `/${lang}/football/world-cup/analysis/${slug}`;
 }
 const leagueLabel = (league: string) => {
@@ -154,13 +158,16 @@ const leagueLabel = (league: string) => {
   if (l === 'nba') return 'NBA';
   if (l === 'cricket') return isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket';
   if (l === 'club-football') return t('nav.leagues');
+  if (l === 'champions-league') return t('nav.championsLeague');
   return t('nav.worldcup');
 };
 function contentBadge({ entry, type }: { entry: any; type: string }) {
   if (type === 'guides') {
     if (entry.data.sport === 'cricket') return isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket';
     if (entry.data.sport === 'basketball') return 'NBA';
-    return entry.data.league === 'club-football' ? t('nav.leagues') : t('nav.worldcup');
+    if (entry.data.league === 'club-football') return t('nav.leagues');
+    if (entry.data.league === 'champions-league') return t('nav.championsLeague');
+    return t('nav.worldcup');
   }
   return leagueLabel(entry.data.league);
 }
