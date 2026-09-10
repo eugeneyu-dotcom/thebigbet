@@ -41,18 +41,19 @@ const footballMatches: any[] = [
 ];
 cricketMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
 
-// Editorial focus: coverage is centered on the user's 9 tracked clubs — the
-// EPL six plus Barcelona, Real Madrid and Bayern Munich (see CLAUDE.md's
-// "Tracked Focus Clubs" section) — with EPL/La Liga/Bundesliga as their home
-// leagues; Serie A/Ligue 1 get lighter treatment. The homepage surfaces that
-// by sorting focus-club matches first, then other EPL/La Liga/Bundesliga
-// matches, then everything else, chronologically within each tier — nav/
-// routing are unchanged, every match is still there.
+// Editorial focus: coverage is centered on the user's 10 tracked clubs — the
+// EPL six plus Barcelona, Real Madrid, Bayern Munich and Paris Saint Germain
+// (see CLAUDE.md's "Tracked Focus Clubs" section) — with EPL/La Liga/
+// Bundesliga/Ligue 1 as their home leagues; Serie A gets lighter treatment.
+// The homepage surfaces that by sorting focus-club matches first, then other
+// EPL/La Liga/Bundesliga/Ligue 1 matches, then everything else,
+// chronologically within each tier — nav/routing are unchanged, every match
+// is still there.
 const FOCUS_CLUBS = new Set([
   'Arsenal', 'Manchester City', 'Manchester United', 'Tottenham Hotspur', 'Chelsea', 'Liverpool',
-  'Real Madrid', 'Barcelona', 'Bayern Munich',
+  'Real Madrid', 'Barcelona', 'Bayern Munich', 'Paris Saint Germain',
 ]);
-const FOCUS_LEAGUES = new Set(['EPL', 'La Liga - Spain', 'Bundesliga - Germany']);
+const FOCUS_LEAGUES = new Set(['EPL', 'La Liga - Spain', 'Bundesliga - Germany', 'Ligue 1 - France']);
 function footballPriority(m: any): number {
   if (FOCUS_CLUBS.has(m.home_team) || FOCUS_CLUBS.has(m.away_team)) return 0;
   if (FOCUS_LEAGUES.has(m.sport_title)) return 1;
