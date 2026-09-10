@@ -13,6 +13,7 @@ if (API_KEYS.length === 0) {
 }
 
 const matchesPath = path.resolve('src/data/leagueMatches.json');
+const predictionsPath = path.resolve('src/data/matchPredictions.json');
 const SPORT_KEYS = [
   'soccer_epl',
   'soccer_spain_la_liga',
@@ -21,6 +22,33 @@ const SPORT_KEYS = [
   'soccer_france_ligue_one',
   'soccer_uefa_champs_league',
 ];
+
+// Kept in sync with CLAUDE.md's "Tracked Focus Clubs" section and
+// src/pages/[lang]/index.astro's FOCUS_CLUBS — update all three together.
+// AI predictions (matchPredictions.json) are 100% hand-written by Claude,
+// never auto-generated (see CLAUDE.md), so this can't auto-fix a gap — it
+// only prints a warning so a coverage drop is visible in the daily cron log
+// instead of silently sitting until someone happens to look at the homepage.
+const FOCUS_CLUBS = new Set([
+  'Arsenal', 'Manchester City', 'Manchester United', 'Tottenham Hotspur', 'Chelsea', 'Liverpool',
+  'Real Madrid', 'Barcelona', 'Bayern Munich', 'Paris Saint Germain',
+]);
+
+function checkFocusClubPredictionCoverage(matches) {
+  let predictions = {};
+  try { predictions = JSON.parse(fs.readFileSync(predictionsPath, 'utf8')); } catch (e) {}
+  const focusMatches = matches.filter(m => FOCUS_CLUBS.has(m.home_team) || FOCUS_CLUBS.has(m.away_team));
+  const missing = focusMatches.filter(m => !(m.id in predictions));
+  if (missing.length === 0) {
+    console.log(`✅ Prediction coverage: all ${focusMatches.length} focus-club matches have a matchPredictions.json entry.`);
+    return;
+  }
+  console.warn(`⚠️  Prediction coverage gap: ${missing.length}/${focusMatches.length} focus-club matches have NO matchPredictions.json entry (homepage will show the "結算中" placeholder for these):`);
+  for (const m of missing) {
+    console.warn(`   - [${m.id}] ${m.commence_time} ${m.home_team} vs ${m.away_team} (${m.sport_title})`);
+  }
+  console.warn(`   Ask Claude to backfill predictions for these — this script never writes predictions itself.`);
+}
 
 async function fetchWithKeyRotation(urlTemplate) {
   for (let i = 0; i < API_KEYS.length; i++) {
@@ -73,6 +101,8 @@ async function main() {
   });
   fs.writeFileSync(matchesPath, JSON.stringify(merged, null, 2), 'utf8');
   console.log(`✅ Successfully cached ${merged.length} Top 5 Leagues matches to leagueMatches.json.`);
+
+  checkFocusClubPredictionCoverage(merged);
 }
 
 main();
