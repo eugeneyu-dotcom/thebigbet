@@ -71,7 +71,7 @@ const sorted = [...entries].sort((a, b) => b.data.pubDate.getTime() - a.data.pub
                           {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}
                         </time>
                       </div>
-                      <h2 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 truncate">
+                      <h2 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 line-clamp-2">
                         {entry.data.title}
                       </h2>
                       <p class="text-sm text-slate-400 mt-1">

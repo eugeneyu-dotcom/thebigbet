@@ -61,7 +61,7 @@ const empty = isZhTw ? '目前尚無歐冠賽事知識文章，敬請期待。' 
                       <time class="text-xs text-slate-500 font-mono" datetime={entry.data.pubDate.toISOString()}>
                         {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}
                       </time>
-                      <h2 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 truncate mt-2">
+                      <h2 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 line-clamp-2 mt-2">
                         {entry.data.title}
                       </h2>
                     </div>
