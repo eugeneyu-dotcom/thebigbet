@@ -37,7 +37,7 @@ function loadJson(relPath: string): any {
 const cricketMatches: any[] = loadJson('src/data/cricketMatches.json') ?? [];
 const footballMatches: any[] = [
   ...(loadJson('src/data/matches.json') ?? []),
-  ...(loadJson('src/data/leagueMatches.json') ?? []),
+  ...(loadJson('src/data/leagueMatches.json') ?? []).filter((m: any) => m.sport_key !== 'soccer_uefa_nations_league'),
 ];
 cricketMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
 

@@ -21,6 +21,14 @@ const SPORT_KEYS = [
   'soccer_germany_bundesliga',
   'soccer_france_ligue_one',
   'soccer_uefa_champs_league',
+  // Added 2026-09-23 so international-break weeks (when no Top 5 Leagues
+  // clubs play) still capture fixtures/odds for the national teams tied to
+  // the 10 tracked focus clubs (England/Spain/Germany/France). Not surfaced
+  // anywhere yet — /football/leagues and the homepage both explicitly filter
+  // this sport_key out below/in index.astro, same pattern as champions-league
+  // used to be filtered before it got its own section — this just lands the
+  // data in leagueMatches.json for reference or a future write-up.
+  'soccer_uefa_nations_league',
 ];
 
 // Kept in sync with CLAUDE.md's "Tracked Focus Clubs" section and

@@ -24,7 +24,7 @@ try {
   const p = path.resolve('src/data/leagueMatches.json');
   if (fs.existsSync(p)) leagueMatches = JSON.parse(fs.readFileSync(p, 'utf8'));
 } catch (e) {}
-leagueMatches = leagueMatches.filter((m) => m.sport_key !== 'soccer_uefa_champs_league');
+leagueMatches = leagueMatches.filter((m) => m.sport_key !== 'soccer_uefa_champs_league' && m.sport_key !== 'soccer_uefa_nations_league');
 leagueMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
 const upcoming = leagueMatches.slice(0, 12);
 
