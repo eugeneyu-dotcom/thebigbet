@@ -35,11 +35,28 @@ function loadJson(relPath: string): any {
 // tournament ends) with Top 5 Leagues matches, so the section keeps
 // showing real fixtures across tournament cycles instead of going empty.
 const cricketMatches: any[] = loadJson('src/data/cricketMatches.json') ?? [];
+const allLeagueMatches: any[] = loadJson('src/data/leagueMatches.json') ?? [];
 const footballMatches: any[] = [
   ...(loadJson('src/data/matches.json') ?? []),
-  ...(loadJson('src/data/leagueMatches.json') ?? []).filter((m: any) => m.sport_key !== 'soccer_uefa_nations_league'),
+  ...allLeagueMatches.filter((m: any) => m.sport_key !== 'soccer_uefa_nations_league'),
 ];
 cricketMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
+
+// International matches (UEFA Nations League etc., added 2026-09-24) — its
+// own homepage section, separate from the club-football section above, kept
+// in sync with CLAUDE.md's "Tracked Focus Clubs" international-breaks note.
+// Prioritizes national teams tied to the 10 focus clubs (England for the EPL
+// six, Spain/Germany/France for Barcelona-Real Madrid/Bayern/PSG) same way
+// the football section prioritizes focus clubs.
+const FOCUS_NATIONS = new Set(['England', 'Spain', 'Germany', 'France']);
+const internationalMatches: any[] = allLeagueMatches.filter((m: any) => m.sport_key === 'soccer_uefa_nations_league');
+internationalMatches.sort((a, b) => {
+  const pa = FOCUS_NATIONS.has(a.home_team) || FOCUS_NATIONS.has(a.away_team) ? 0 : 1;
+  const pb = FOCUS_NATIONS.has(b.home_team) || FOCUS_NATIONS.has(b.away_team) ? 0 : 1;
+  if (pa !== pb) return pa - pb;
+  return new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime();
+});
+const internationalUpcoming = internationalMatches.slice(0, 6);
 
 // Editorial focus: coverage is centered on the user's 10 tracked clubs — the
 // EPL six plus Barcelona, Real Madrid, Bayern Munich and Paris Saint Germain
@@ -193,8 +210,10 @@ const viewAll = isZhTw ? '看全部' : isTh ? 'ดูทั้งหมด' : 'V
 
 const cricketHeading = isZhTw ? '板球賽事預測' : isTh ? 'ทำนายคริกเก็ต' : 'Cricket Predictions';
 const footballHeading = isZhTw ? '足球賽事預測' : isTh ? 'ทำนายฟุตบอล' : 'Football Predictions';
+const internationalHeading = isZhTw ? '國際賽事預測' : isTh ? 'ทำนายเกมทีมชาติ' : 'International Predictions';
 const noCricket = isZhTw ? '目前暫無板球賠率資料（IPL／PSL 為季節性賽事，休賽期間不會有資料）。' : isTh ? 'ยังไม่มีข้อมูลราคาคริกเก็ต (IPL/PSL เป็นการแข่งขันตามฤดูกาล)' : 'No cricket odds available right now (IPL/PSL are seasonal and empty out of season).';
 const noFootball = isZhTw ? '目前暫無足球賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคาฟุตบอล' : 'No football odds available right now.';
+const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคาเกมทีมชาติ' : 'No international match odds available right now.';
 ---
 
 <html lang={lang}>
@@ -293,6 +312,55 @@ const noFootball = isZhTw ? '目前暫無足球賠率資料。' : isTh ? 'ยั
         ) : (
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             {footballUpcoming.map((m) => {
+              const ml = moneyline(m);
+              const aiText = pickLang(aiPredictions[m.id]);
+              const humanText = pickLang(homeHumanPredictions[m.id]);
+              return (
+                <div class="bg-[#211d19] border border-[#3c352c] rounded-xl px-5 py-4">
+                  <div class="text-xs text-slate-500 font-mono mb-2">{fmtTime(m.commence_time)}</div>
+                  <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 mb-3">
+                    <div class="min-w-0 flex items-center gap-2">
+                      <TeamIcon team={m.away_team} class="w-6 h-6" />
+                      <p class="font-bold text-white truncate">{tTeam(m.away_team)}</p>
+                    </div>
+                    <div class="flex items-center gap-2 font-mono font-black text-sm">
+                      <span class="text-violet-400">{ml.away}</span>
+                      {ml.draw && <span class="text-slate-500">{ml.draw}</span>}
+                      <span class="text-amber-400">{ml.home}</span>
+                    </div>
+                    <div class="min-w-0 flex items-center justify-end gap-2 text-right">
+                      <p class="font-bold text-white truncate">{tTeam(m.home_team)}</p>
+                      <TeamIcon team={m.home_team} class="w-6 h-6" />
+                    </div>
+                  </div>
+                  <div class="pt-3 border-t border-[#3c352c]/60">
+                    <p class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">{t('prediction.ai')}</p>
+                    <p class="text-xs text-slate-300 leading-relaxed">{aiText ?? t('prediction.ai_pending')}</p>
+                  </div>
+                  {humanText && (
+                    <div class="pt-3 mt-3 border-t border-[#3c352c]/60">
+                      <p class="text-[10px] font-black text-violet-300 uppercase tracking-widest mb-1">{t('prediction.human')}</p>
+                      <p class="text-xs text-slate-300 leading-relaxed">{humanText}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </section>
+
+      <!-- International (UEFA Nations League, etc.) predictions -->
+      <section class="mb-14">
+        <div class="flex items-center mb-6">
+          <h2 class="text-2xl font-black text-white">{internationalHeading}</h2>
+          <a href={`/${lang}/football/world-cup`} class="ml-auto text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
+        </div>
+        {internationalUpcoming.length === 0 ? (
+          <p class="text-slate-500 text-sm">{noInternational}</p>
+        ) : (
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {internationalUpcoming.map((m) => {
               const ml = moneyline(m);
               const aiText = pickLang(aiPredictions[m.id]);
               const humanText = pickLang(homeHumanPredictions[m.id]);

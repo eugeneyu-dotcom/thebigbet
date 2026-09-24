@@ -35,18 +35,24 @@ const footballGroups = [
       { label: t('nav.trends'), href: `/${lang}/football/champions-league/trends` },
     ],
   },
-  {
-    label: t('nav.worldcup'),
-    href: `/${lang}/football/world-cup`,
-    items: [
-      { label: analysisLbl, href: `/${lang}/football/world-cup/analysis` },
-      { label: guidesLbl, href: `/${lang}/football/world-cup/guides` },
-      { label: t('nav.bracket'), href: `/${lang}/football/world-cup/bracket` },
-      { label: t('nav.groupStage'), href: `/${lang}/football/world-cup/group-stage` },
-      { label: t('nav.schedule'), href: `/${lang}/football/world-cup/schedule` },
-    ],
-  },
 ];
+
+// International: World Cup content, grouped under its own top-level nav
+// entry instead of nested inside the Football flyout (as of 2026-09-24,
+// alongside the homepage's international-matches section for UEFA Nations
+// League). URLs are unchanged (`/football/world-cup/...`) — this is purely
+// a nav-display regrouping, not a route move, so no redirects needed.
+const internationalDropdown = {
+  label: t('nav.international'),
+  href: `/${lang}/football/world-cup`,
+  items: [
+    { label: analysisLbl, href: `/${lang}/football/world-cup/analysis` },
+    { label: guidesLbl, href: `/${lang}/football/world-cup/guides` },
+    { label: t('nav.bracket'), href: `/${lang}/football/world-cup/bracket` },
+    { label: t('nav.groupStage'), href: `/${lang}/football/world-cup/group-stage` },
+    { label: t('nav.schedule'), href: `/${lang}/football/world-cup/schedule` },
+  ],
+};
 
 const simpleDropdowns = [
   { key: 'nba', label: 'NBA', href: `/${lang}/nba`, items: [ { label: guidesLbl, href: `/${lang}/nba/guides` }, { label: analysisLbl, href: `/${lang}/nba` }, { label: t('nav.predictions'), href: `/${lang}/nba/predictions` }, { label: t('nav.trends'), href: `/${lang}/nba/trends` } ] },
@@ -93,6 +99,21 @@ const chevronRight = 'm9 6 6 6-6 6';
                       </div>
                     </div>
                   </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- International (World Cup): single-level dropdown -->
+          <div class="relative group/intl inline-flex items-center">
+            <a href={internationalDropdown.href} class="inline-flex items-center gap-1 px-1 pt-1 text-sm font-bold text-slate-400 hover:text-amber-300 transition-colors duration-200">
+              {internationalDropdown.label}
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={chevronDown}/></svg>
+            </a>
+            <div class="absolute left-0 top-full pt-3 hidden group-hover/intl:block group-focus-within/intl:block z-50">
+              <div class="bg-[#211d19] border border-[#3c352c] rounded-lg shadow-xl py-2 min-w-[150px]">
+                {internationalDropdown.items.map((it) => (
+                  <a href={it.href} class="block px-4 py-2 text-sm font-bold text-slate-300 hover:text-amber-300 hover:bg-[#3c352c] transition-colors duration-200">{it.label}</a>
                 ))}
               </div>
             </div>
@@ -154,6 +175,11 @@ const chevronRight = 'm9 6 6 6-6 6';
             <a href={it.href} class="block pl-10 pr-3 py-1.5 rounded-lg text-xs font-bold text-slate-500 hover:text-amber-300 hover:bg-[#3c352c]">{it.label}</a>
           ))}
         </>
+      ))}
+
+      <a href={internationalDropdown.href} class="block px-3 py-2.5 rounded-lg text-sm font-black text-slate-200 hover:text-amber-300 hover:bg-[#3c352c]">{internationalDropdown.label}</a>
+      {internationalDropdown.items.map((it) => (
+        <a href={it.href} class="block pl-6 pr-3 py-1.5 rounded-lg text-xs font-bold text-slate-500 hover:text-amber-300 hover:bg-[#3c352c]">{it.label}</a>
       ))}
 
       {simpleDropdowns.map((d) => (
