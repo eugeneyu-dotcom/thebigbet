@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "node --env-file=.env scripts/sync_expert_csv.mjs && node --env-file=.env scripts/sync_home_expert_csv.mjs && astro dev",
-    "build": "node --env-file-if-exists=.env scripts/sync_expert_csv.mjs && node --env-file-if-exists=.env scripts/sync_home_expert_csv.mjs && astro build",
+    "build": "node --env-file-if-exists=.env scripts/sync_expert_csv.mjs && node --env-file-if-exists=.env scripts/sync_home_expert_csv.mjs && node scripts/generate_vercel_redirects.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "update:matches": "node --env-file-if-exists=.env scripts/update_matches.mjs",

@@ -1,1 +1,1575 @@
-{}
+{
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/zh-tw/analysis",
+      "destination": "/zh-tw/football/world-cup/analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/",
+      "destination": "/zh-tw/football/world-cup/analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides",
+      "destination": "/zh-tw/football/world-cup/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/",
+      "destination": "/zh-tw/football/world-cup/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/bracket",
+      "destination": "/zh-tw/football/world-cup/bracket/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/bracket/",
+      "destination": "/zh-tw/football/world-cup/bracket/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/group-stage",
+      "destination": "/zh-tw/football/world-cup/group-stage/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/group-stage/",
+      "destination": "/zh-tw/football/world-cup/group-stage/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/schedule",
+      "destination": "/zh-tw/football/world-cup/schedule/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/schedule/",
+      "destination": "/zh-tw/football/world-cup/schedule/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/mlb",
+      "destination": "/zh-tw/cricket/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/mlb/",
+      "destination": "/zh-tw/cricket/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/mlb/guides",
+      "destination": "/zh-tw/cricket/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/mlb/guides/",
+      "destination": "/zh-tw/cricket/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/football/leagues/trends/epl-matchweek-1-review",
+      "destination": "/zh-tw/football/leagues/analysis/epl-matchweek-1-review/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/football/leagues/trends/epl-matchweek-1-review/",
+      "destination": "/zh-tw/football/leagues/analysis/epl-matchweek-1-review/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/football/leagues/trends/man-city-matchweek-2-analysis",
+      "destination": "/zh-tw/football/leagues/analysis/man-city-matchweek-2-analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/football/leagues/trends/man-city-matchweek-2-analysis/",
+      "destination": "/zh-tw/football/leagues/analysis/man-city-matchweek-2-analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/argentina-vs-austria",
+      "destination": "/zh-tw/football/world-cup/analysis/argentina-vs-austria/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/argentina-vs-austria/",
+      "destination": "/zh-tw/football/world-cup/analysis/argentina-vs-austria/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/argentina-vs-switzerland",
+      "destination": "/zh-tw/football/world-cup/analysis/argentina-vs-switzerland/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/argentina-vs-switzerland/",
+      "destination": "/zh-tw/football/world-cup/analysis/argentina-vs-switzerland/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/brazil-vs-haiti",
+      "destination": "/zh-tw/football/world-cup/analysis/brazil-vs-haiti/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/brazil-vs-haiti/",
+      "destination": "/zh-tw/football/world-cup/analysis/brazil-vs-haiti/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/brazil-vs-japan",
+      "destination": "/zh-tw/football/world-cup/analysis/brazil-vs-japan/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/brazil-vs-japan/",
+      "destination": "/zh-tw/football/world-cup/analysis/brazil-vs-japan/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/canada-vs-morocco",
+      "destination": "/zh-tw/football/world-cup/analysis/canada-vs-morocco/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/canada-vs-morocco/",
+      "destination": "/zh-tw/football/world-cup/analysis/canada-vs-morocco/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/canada-vs-qatar",
+      "destination": "/zh-tw/football/world-cup/analysis/canada-vs-qatar/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/canada-vs-qatar/",
+      "destination": "/zh-tw/football/world-cup/analysis/canada-vs-qatar/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/england-vs-argentina",
+      "destination": "/zh-tw/football/world-cup/analysis/england-vs-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/england-vs-argentina/",
+      "destination": "/zh-tw/football/world-cup/analysis/england-vs-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/france-vs-morocco",
+      "destination": "/zh-tw/football/world-cup/analysis/france-vs-morocco/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/france-vs-morocco/",
+      "destination": "/zh-tw/football/world-cup/analysis/france-vs-morocco/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/france-vs-spain",
+      "destination": "/zh-tw/football/world-cup/analysis/france-vs-spain/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/france-vs-spain/",
+      "destination": "/zh-tw/football/world-cup/analysis/france-vs-spain/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/france-vs-sweden",
+      "destination": "/zh-tw/football/world-cup/analysis/france-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/france-vs-sweden/",
+      "destination": "/zh-tw/football/world-cup/analysis/france-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/ivory-coast-vs-norway",
+      "destination": "/zh-tw/football/world-cup/analysis/ivory-coast-vs-norway/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/ivory-coast-vs-norway/",
+      "destination": "/zh-tw/football/world-cup/analysis/ivory-coast-vs-norway/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/japan-vs-sweden",
+      "destination": "/zh-tw/football/world-cup/analysis/japan-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/japan-vs-sweden/",
+      "destination": "/zh-tw/football/world-cup/analysis/japan-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/mexico-vs-south-korea",
+      "destination": "/zh-tw/football/world-cup/analysis/mexico-vs-south-korea/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/mexico-vs-south-korea/",
+      "destination": "/zh-tw/football/world-cup/analysis/mexico-vs-south-korea/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/netherlands-vs-sweden",
+      "destination": "/zh-tw/football/world-cup/analysis/netherlands-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/netherlands-vs-sweden/",
+      "destination": "/zh-tw/football/world-cup/analysis/netherlands-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/norway-vs-england",
+      "destination": "/zh-tw/football/world-cup/analysis/norway-vs-england/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/norway-vs-england/",
+      "destination": "/zh-tw/football/world-cup/analysis/norway-vs-england/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/norway-vs-senegal",
+      "destination": "/zh-tw/football/world-cup/analysis/norway-vs-senegal/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/norway-vs-senegal/",
+      "destination": "/zh-tw/football/world-cup/analysis/norway-vs-senegal/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/portugal-vs-croatia",
+      "destination": "/zh-tw/football/world-cup/analysis/portugal-vs-croatia/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/portugal-vs-croatia/",
+      "destination": "/zh-tw/football/world-cup/analysis/portugal-vs-croatia/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/portugal-vs-spain",
+      "destination": "/zh-tw/football/world-cup/analysis/portugal-vs-spain/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/portugal-vs-spain/",
+      "destination": "/zh-tw/football/world-cup/analysis/portugal-vs-spain/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/spain-vs-argentina",
+      "destination": "/zh-tw/football/world-cup/analysis/spain-vs-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/spain-vs-argentina/",
+      "destination": "/zh-tw/football/world-cup/analysis/spain-vs-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/spain-vs-austria",
+      "destination": "/zh-tw/football/world-cup/analysis/spain-vs-austria/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/spain-vs-austria/",
+      "destination": "/zh-tw/football/world-cup/analysis/spain-vs-austria/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/spain-vs-belgium",
+      "destination": "/zh-tw/football/world-cup/analysis/spain-vs-belgium/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/spain-vs-belgium/",
+      "destination": "/zh-tw/football/world-cup/analysis/spain-vs-belgium/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/switzerland-vs-canada",
+      "destination": "/zh-tw/football/world-cup/analysis/switzerland-vs-canada/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/switzerland-vs-canada/",
+      "destination": "/zh-tw/football/world-cup/analysis/switzerland-vs-canada/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/switzerland-vs-colombia",
+      "destination": "/zh-tw/football/world-cup/analysis/switzerland-vs-colombia/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/switzerland-vs-colombia/",
+      "destination": "/zh-tw/football/world-cup/analysis/switzerland-vs-colombia/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/tunisia-vs-japan",
+      "destination": "/zh-tw/football/world-cup/analysis/tunisia-vs-japan/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/tunisia-vs-japan/",
+      "destination": "/zh-tw/football/world-cup/analysis/tunisia-vs-japan/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/usa-vs-australia",
+      "destination": "/zh-tw/football/world-cup/analysis/usa-vs-australia/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/usa-vs-australia/",
+      "destination": "/zh-tw/football/world-cup/analysis/usa-vs-australia/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/usa-vs-belgium",
+      "destination": "/zh-tw/football/world-cup/analysis/usa-vs-belgium/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/analysis/usa-vs-belgium/",
+      "destination": "/zh-tw/football/world-cup/analysis/usa-vs-belgium/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/2026-vs-2022-rule-changes",
+      "destination": "/zh-tw/football/world-cup/guides/2026-vs-2022-rule-changes/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/2026-vs-2022-rule-changes/",
+      "destination": "/zh-tw/football/world-cup/guides/2026-vs-2022-rule-changes/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/2026-world-cup-qualification-rules",
+      "destination": "/zh-tw/football/world-cup/guides/2026-world-cup-qualification-rules/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/2026-world-cup-qualification-rules/",
+      "destination": "/zh-tw/football/world-cup/guides/2026-world-cup-qualification-rules/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/cricket-formats-betting-basics",
+      "destination": "/zh-tw/cricket/guides/cricket-formats-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/cricket-formats-betting-basics/",
+      "destination": "/zh-tw/cricket/guides/cricket-formats-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/cricket-rules-basics",
+      "destination": "/zh-tw/cricket/guides/cricket-rules-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/cricket-rules-basics/",
+      "destination": "/zh-tw/cricket/guides/cricket-rules-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/extra-time-rules-trivia",
+      "destination": "/zh-tw/football/world-cup/guides/extra-time-rules-trivia/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/extra-time-rules-trivia/",
+      "destination": "/zh-tw/football/world-cup/guides/extra-time-rules-trivia/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/five-leagues-style-guide",
+      "destination": "/zh-tw/football/leagues/guides/five-leagues-style-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/five-leagues-style-guide/",
+      "destination": "/zh-tw/football/leagues/guides/five-leagues-style-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/football-betting-basics",
+      "destination": "/zh-tw/football/leagues/guides/football-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/football-betting-basics/",
+      "destination": "/zh-tw/football/leagues/guides/football-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/nba-betting-basics",
+      "destination": "/zh-tw/nba/guides/nba-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/nba-betting-basics/",
+      "destination": "/zh-tw/nba/guides/nba-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/norway-england-common-questions",
+      "destination": "/zh-tw/football/world-cup/guides/norway-england-common-questions/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/norway-england-common-questions/",
+      "destination": "/zh-tw/football/world-cup/guides/norway-england-common-questions/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/portugal-ronaldo-golden-midfield",
+      "destination": "/zh-tw/football/world-cup/guides/portugal-ronaldo-golden-midfield/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/portugal-ronaldo-golden-midfield/",
+      "destination": "/zh-tw/football/world-cup/guides/portugal-ronaldo-golden-midfield/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/var-rules-egypt-argentina",
+      "destination": "/zh-tw/football/world-cup/guides/var-rules-egypt-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/var-rules-egypt-argentina/",
+      "destination": "/zh-tw/football/world-cup/guides/var-rules-egypt-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/world-cup-curses",
+      "destination": "/zh-tw/football/world-cup/guides/world-cup-curses/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/world-cup-curses/",
+      "destination": "/zh-tw/football/world-cup/guides/world-cup-curses/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/world-cup-group-tiebreaker-rules-explained",
+      "destination": "/zh-tw/football/world-cup/guides/world-cup-group-tiebreaker-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/world-cup-group-tiebreaker-rules-explained/",
+      "destination": "/zh-tw/football/world-cup/guides/world-cup-group-tiebreaker-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis",
+      "destination": "/en/football/world-cup/analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/",
+      "destination": "/en/football/world-cup/analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides",
+      "destination": "/en/football/world-cup/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/",
+      "destination": "/en/football/world-cup/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/en/bracket",
+      "destination": "/en/football/world-cup/bracket/",
+      "permanent": true
+    },
+    {
+      "source": "/en/bracket/",
+      "destination": "/en/football/world-cup/bracket/",
+      "permanent": true
+    },
+    {
+      "source": "/en/group-stage",
+      "destination": "/en/football/world-cup/group-stage/",
+      "permanent": true
+    },
+    {
+      "source": "/en/group-stage/",
+      "destination": "/en/football/world-cup/group-stage/",
+      "permanent": true
+    },
+    {
+      "source": "/en/schedule",
+      "destination": "/en/football/world-cup/schedule/",
+      "permanent": true
+    },
+    {
+      "source": "/en/schedule/",
+      "destination": "/en/football/world-cup/schedule/",
+      "permanent": true
+    },
+    {
+      "source": "/en/mlb",
+      "destination": "/en/cricket/",
+      "permanent": true
+    },
+    {
+      "source": "/en/mlb/",
+      "destination": "/en/cricket/",
+      "permanent": true
+    },
+    {
+      "source": "/en/mlb/guides",
+      "destination": "/en/cricket/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/en/mlb/guides/",
+      "destination": "/en/cricket/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/en/football/leagues/trends/epl-matchweek-1-review",
+      "destination": "/en/football/leagues/analysis/epl-matchweek-1-review/",
+      "permanent": true
+    },
+    {
+      "source": "/en/football/leagues/trends/epl-matchweek-1-review/",
+      "destination": "/en/football/leagues/analysis/epl-matchweek-1-review/",
+      "permanent": true
+    },
+    {
+      "source": "/en/football/leagues/trends/man-city-matchweek-2-analysis",
+      "destination": "/en/football/leagues/analysis/man-city-matchweek-2-analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/en/football/leagues/trends/man-city-matchweek-2-analysis/",
+      "destination": "/en/football/leagues/analysis/man-city-matchweek-2-analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/argentina-vs-austria",
+      "destination": "/en/football/world-cup/analysis/argentina-vs-austria/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/argentina-vs-austria/",
+      "destination": "/en/football/world-cup/analysis/argentina-vs-austria/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/argentina-vs-switzerland",
+      "destination": "/en/football/world-cup/analysis/argentina-vs-switzerland/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/argentina-vs-switzerland/",
+      "destination": "/en/football/world-cup/analysis/argentina-vs-switzerland/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/brazil-vs-haiti",
+      "destination": "/en/football/world-cup/analysis/brazil-vs-haiti/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/brazil-vs-haiti/",
+      "destination": "/en/football/world-cup/analysis/brazil-vs-haiti/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/brazil-vs-japan",
+      "destination": "/en/football/world-cup/analysis/brazil-vs-japan/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/brazil-vs-japan/",
+      "destination": "/en/football/world-cup/analysis/brazil-vs-japan/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/canada-vs-morocco",
+      "destination": "/en/football/world-cup/analysis/canada-vs-morocco/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/canada-vs-morocco/",
+      "destination": "/en/football/world-cup/analysis/canada-vs-morocco/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/canada-vs-qatar",
+      "destination": "/en/football/world-cup/analysis/canada-vs-qatar/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/canada-vs-qatar/",
+      "destination": "/en/football/world-cup/analysis/canada-vs-qatar/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/england-vs-argentina",
+      "destination": "/en/football/world-cup/analysis/england-vs-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/england-vs-argentina/",
+      "destination": "/en/football/world-cup/analysis/england-vs-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/france-vs-morocco",
+      "destination": "/en/football/world-cup/analysis/france-vs-morocco/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/france-vs-morocco/",
+      "destination": "/en/football/world-cup/analysis/france-vs-morocco/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/france-vs-spain",
+      "destination": "/en/football/world-cup/analysis/france-vs-spain/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/france-vs-spain/",
+      "destination": "/en/football/world-cup/analysis/france-vs-spain/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/france-vs-sweden",
+      "destination": "/en/football/world-cup/analysis/france-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/france-vs-sweden/",
+      "destination": "/en/football/world-cup/analysis/france-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/ivory-coast-vs-norway",
+      "destination": "/en/football/world-cup/analysis/ivory-coast-vs-norway/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/ivory-coast-vs-norway/",
+      "destination": "/en/football/world-cup/analysis/ivory-coast-vs-norway/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/japan-vs-sweden",
+      "destination": "/en/football/world-cup/analysis/japan-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/japan-vs-sweden/",
+      "destination": "/en/football/world-cup/analysis/japan-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/mexico-vs-south-korea",
+      "destination": "/en/football/world-cup/analysis/mexico-vs-south-korea/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/mexico-vs-south-korea/",
+      "destination": "/en/football/world-cup/analysis/mexico-vs-south-korea/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/netherlands-vs-sweden",
+      "destination": "/en/football/world-cup/analysis/netherlands-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/netherlands-vs-sweden/",
+      "destination": "/en/football/world-cup/analysis/netherlands-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/norway-vs-england",
+      "destination": "/en/football/world-cup/analysis/norway-vs-england/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/norway-vs-england/",
+      "destination": "/en/football/world-cup/analysis/norway-vs-england/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/norway-vs-senegal",
+      "destination": "/en/football/world-cup/analysis/norway-vs-senegal/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/norway-vs-senegal/",
+      "destination": "/en/football/world-cup/analysis/norway-vs-senegal/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/portugal-vs-croatia",
+      "destination": "/en/football/world-cup/analysis/portugal-vs-croatia/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/portugal-vs-croatia/",
+      "destination": "/en/football/world-cup/analysis/portugal-vs-croatia/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/portugal-vs-spain",
+      "destination": "/en/football/world-cup/analysis/portugal-vs-spain/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/portugal-vs-spain/",
+      "destination": "/en/football/world-cup/analysis/portugal-vs-spain/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/spain-vs-argentina",
+      "destination": "/en/football/world-cup/analysis/spain-vs-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/spain-vs-argentina/",
+      "destination": "/en/football/world-cup/analysis/spain-vs-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/spain-vs-austria",
+      "destination": "/en/football/world-cup/analysis/spain-vs-austria/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/spain-vs-austria/",
+      "destination": "/en/football/world-cup/analysis/spain-vs-austria/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/spain-vs-belgium",
+      "destination": "/en/football/world-cup/analysis/spain-vs-belgium/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/spain-vs-belgium/",
+      "destination": "/en/football/world-cup/analysis/spain-vs-belgium/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/switzerland-vs-canada",
+      "destination": "/en/football/world-cup/analysis/switzerland-vs-canada/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/switzerland-vs-canada/",
+      "destination": "/en/football/world-cup/analysis/switzerland-vs-canada/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/switzerland-vs-colombia",
+      "destination": "/en/football/world-cup/analysis/switzerland-vs-colombia/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/switzerland-vs-colombia/",
+      "destination": "/en/football/world-cup/analysis/switzerland-vs-colombia/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/tunisia-vs-japan",
+      "destination": "/en/football/world-cup/analysis/tunisia-vs-japan/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/tunisia-vs-japan/",
+      "destination": "/en/football/world-cup/analysis/tunisia-vs-japan/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/usa-vs-australia",
+      "destination": "/en/football/world-cup/analysis/usa-vs-australia/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/usa-vs-australia/",
+      "destination": "/en/football/world-cup/analysis/usa-vs-australia/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/usa-vs-belgium",
+      "destination": "/en/football/world-cup/analysis/usa-vs-belgium/",
+      "permanent": true
+    },
+    {
+      "source": "/en/analysis/usa-vs-belgium/",
+      "destination": "/en/football/world-cup/analysis/usa-vs-belgium/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/2026-vs-2022-rule-changes",
+      "destination": "/en/football/world-cup/guides/2026-vs-2022-rule-changes/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/2026-vs-2022-rule-changes/",
+      "destination": "/en/football/world-cup/guides/2026-vs-2022-rule-changes/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/2026-world-cup-qualification-rules",
+      "destination": "/en/football/world-cup/guides/2026-world-cup-qualification-rules/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/2026-world-cup-qualification-rules/",
+      "destination": "/en/football/world-cup/guides/2026-world-cup-qualification-rules/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/cricket-formats-betting-basics",
+      "destination": "/en/cricket/guides/cricket-formats-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/cricket-formats-betting-basics/",
+      "destination": "/en/cricket/guides/cricket-formats-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/cricket-rules-basics",
+      "destination": "/en/cricket/guides/cricket-rules-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/cricket-rules-basics/",
+      "destination": "/en/cricket/guides/cricket-rules-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/extra-time-rules-trivia",
+      "destination": "/en/football/world-cup/guides/extra-time-rules-trivia/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/extra-time-rules-trivia/",
+      "destination": "/en/football/world-cup/guides/extra-time-rules-trivia/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/five-leagues-style-guide",
+      "destination": "/en/football/leagues/guides/five-leagues-style-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/five-leagues-style-guide/",
+      "destination": "/en/football/leagues/guides/five-leagues-style-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/football-betting-basics",
+      "destination": "/en/football/leagues/guides/football-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/football-betting-basics/",
+      "destination": "/en/football/leagues/guides/football-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/nba-betting-basics",
+      "destination": "/en/nba/guides/nba-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/nba-betting-basics/",
+      "destination": "/en/nba/guides/nba-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/norway-england-common-questions",
+      "destination": "/en/football/world-cup/guides/norway-england-common-questions/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/norway-england-common-questions/",
+      "destination": "/en/football/world-cup/guides/norway-england-common-questions/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/portugal-ronaldo-golden-midfield",
+      "destination": "/en/football/world-cup/guides/portugal-ronaldo-golden-midfield/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/portugal-ronaldo-golden-midfield/",
+      "destination": "/en/football/world-cup/guides/portugal-ronaldo-golden-midfield/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/var-rules-egypt-argentina",
+      "destination": "/en/football/world-cup/guides/var-rules-egypt-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/var-rules-egypt-argentina/",
+      "destination": "/en/football/world-cup/guides/var-rules-egypt-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/world-cup-curses",
+      "destination": "/en/football/world-cup/guides/world-cup-curses/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/world-cup-curses/",
+      "destination": "/en/football/world-cup/guides/world-cup-curses/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/world-cup-group-tiebreaker-rules-explained",
+      "destination": "/en/football/world-cup/guides/world-cup-group-tiebreaker-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/world-cup-group-tiebreaker-rules-explained/",
+      "destination": "/en/football/world-cup/guides/world-cup-group-tiebreaker-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis",
+      "destination": "/th/football/world-cup/analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/",
+      "destination": "/th/football/world-cup/analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides",
+      "destination": "/th/football/world-cup/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/",
+      "destination": "/th/football/world-cup/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/th/bracket",
+      "destination": "/th/football/world-cup/bracket/",
+      "permanent": true
+    },
+    {
+      "source": "/th/bracket/",
+      "destination": "/th/football/world-cup/bracket/",
+      "permanent": true
+    },
+    {
+      "source": "/th/group-stage",
+      "destination": "/th/football/world-cup/group-stage/",
+      "permanent": true
+    },
+    {
+      "source": "/th/group-stage/",
+      "destination": "/th/football/world-cup/group-stage/",
+      "permanent": true
+    },
+    {
+      "source": "/th/schedule",
+      "destination": "/th/football/world-cup/schedule/",
+      "permanent": true
+    },
+    {
+      "source": "/th/schedule/",
+      "destination": "/th/football/world-cup/schedule/",
+      "permanent": true
+    },
+    {
+      "source": "/th/mlb",
+      "destination": "/th/cricket/",
+      "permanent": true
+    },
+    {
+      "source": "/th/mlb/",
+      "destination": "/th/cricket/",
+      "permanent": true
+    },
+    {
+      "source": "/th/mlb/guides",
+      "destination": "/th/cricket/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/th/mlb/guides/",
+      "destination": "/th/cricket/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/th/football/leagues/trends/epl-matchweek-1-review",
+      "destination": "/th/football/leagues/analysis/epl-matchweek-1-review/",
+      "permanent": true
+    },
+    {
+      "source": "/th/football/leagues/trends/epl-matchweek-1-review/",
+      "destination": "/th/football/leagues/analysis/epl-matchweek-1-review/",
+      "permanent": true
+    },
+    {
+      "source": "/th/football/leagues/trends/man-city-matchweek-2-analysis",
+      "destination": "/th/football/leagues/analysis/man-city-matchweek-2-analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/th/football/leagues/trends/man-city-matchweek-2-analysis/",
+      "destination": "/th/football/leagues/analysis/man-city-matchweek-2-analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/argentina-vs-austria",
+      "destination": "/th/football/world-cup/analysis/argentina-vs-austria/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/argentina-vs-austria/",
+      "destination": "/th/football/world-cup/analysis/argentina-vs-austria/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/argentina-vs-switzerland",
+      "destination": "/th/football/world-cup/analysis/argentina-vs-switzerland/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/argentina-vs-switzerland/",
+      "destination": "/th/football/world-cup/analysis/argentina-vs-switzerland/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/brazil-vs-haiti",
+      "destination": "/th/football/world-cup/analysis/brazil-vs-haiti/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/brazil-vs-haiti/",
+      "destination": "/th/football/world-cup/analysis/brazil-vs-haiti/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/brazil-vs-japan",
+      "destination": "/th/football/world-cup/analysis/brazil-vs-japan/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/brazil-vs-japan/",
+      "destination": "/th/football/world-cup/analysis/brazil-vs-japan/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/canada-vs-morocco",
+      "destination": "/th/football/world-cup/analysis/canada-vs-morocco/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/canada-vs-morocco/",
+      "destination": "/th/football/world-cup/analysis/canada-vs-morocco/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/canada-vs-qatar",
+      "destination": "/th/football/world-cup/analysis/canada-vs-qatar/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/canada-vs-qatar/",
+      "destination": "/th/football/world-cup/analysis/canada-vs-qatar/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/england-vs-argentina",
+      "destination": "/th/football/world-cup/analysis/england-vs-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/england-vs-argentina/",
+      "destination": "/th/football/world-cup/analysis/england-vs-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/france-vs-morocco",
+      "destination": "/th/football/world-cup/analysis/france-vs-morocco/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/france-vs-morocco/",
+      "destination": "/th/football/world-cup/analysis/france-vs-morocco/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/france-vs-spain",
+      "destination": "/th/football/world-cup/analysis/france-vs-spain/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/france-vs-spain/",
+      "destination": "/th/football/world-cup/analysis/france-vs-spain/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/france-vs-sweden",
+      "destination": "/th/football/world-cup/analysis/france-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/france-vs-sweden/",
+      "destination": "/th/football/world-cup/analysis/france-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/ivory-coast-vs-norway",
+      "destination": "/th/football/world-cup/analysis/ivory-coast-vs-norway/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/ivory-coast-vs-norway/",
+      "destination": "/th/football/world-cup/analysis/ivory-coast-vs-norway/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/japan-vs-sweden",
+      "destination": "/th/football/world-cup/analysis/japan-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/japan-vs-sweden/",
+      "destination": "/th/football/world-cup/analysis/japan-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/mexico-vs-south-korea",
+      "destination": "/th/football/world-cup/analysis/mexico-vs-south-korea/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/mexico-vs-south-korea/",
+      "destination": "/th/football/world-cup/analysis/mexico-vs-south-korea/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/netherlands-vs-sweden",
+      "destination": "/th/football/world-cup/analysis/netherlands-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/netherlands-vs-sweden/",
+      "destination": "/th/football/world-cup/analysis/netherlands-vs-sweden/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/norway-vs-england",
+      "destination": "/th/football/world-cup/analysis/norway-vs-england/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/norway-vs-england/",
+      "destination": "/th/football/world-cup/analysis/norway-vs-england/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/norway-vs-senegal",
+      "destination": "/th/football/world-cup/analysis/norway-vs-senegal/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/norway-vs-senegal/",
+      "destination": "/th/football/world-cup/analysis/norway-vs-senegal/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/portugal-vs-croatia",
+      "destination": "/th/football/world-cup/analysis/portugal-vs-croatia/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/portugal-vs-croatia/",
+      "destination": "/th/football/world-cup/analysis/portugal-vs-croatia/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/portugal-vs-spain",
+      "destination": "/th/football/world-cup/analysis/portugal-vs-spain/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/portugal-vs-spain/",
+      "destination": "/th/football/world-cup/analysis/portugal-vs-spain/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/spain-vs-argentina",
+      "destination": "/th/football/world-cup/analysis/spain-vs-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/spain-vs-argentina/",
+      "destination": "/th/football/world-cup/analysis/spain-vs-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/spain-vs-austria",
+      "destination": "/th/football/world-cup/analysis/spain-vs-austria/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/spain-vs-austria/",
+      "destination": "/th/football/world-cup/analysis/spain-vs-austria/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/spain-vs-belgium",
+      "destination": "/th/football/world-cup/analysis/spain-vs-belgium/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/spain-vs-belgium/",
+      "destination": "/th/football/world-cup/analysis/spain-vs-belgium/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/switzerland-vs-canada",
+      "destination": "/th/football/world-cup/analysis/switzerland-vs-canada/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/switzerland-vs-canada/",
+      "destination": "/th/football/world-cup/analysis/switzerland-vs-canada/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/switzerland-vs-colombia",
+      "destination": "/th/football/world-cup/analysis/switzerland-vs-colombia/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/switzerland-vs-colombia/",
+      "destination": "/th/football/world-cup/analysis/switzerland-vs-colombia/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/tunisia-vs-japan",
+      "destination": "/th/football/world-cup/analysis/tunisia-vs-japan/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/tunisia-vs-japan/",
+      "destination": "/th/football/world-cup/analysis/tunisia-vs-japan/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/usa-vs-australia",
+      "destination": "/th/football/world-cup/analysis/usa-vs-australia/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/usa-vs-australia/",
+      "destination": "/th/football/world-cup/analysis/usa-vs-australia/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/usa-vs-belgium",
+      "destination": "/th/football/world-cup/analysis/usa-vs-belgium/",
+      "permanent": true
+    },
+    {
+      "source": "/th/analysis/usa-vs-belgium/",
+      "destination": "/th/football/world-cup/analysis/usa-vs-belgium/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/2026-vs-2022-rule-changes",
+      "destination": "/th/football/world-cup/guides/2026-vs-2022-rule-changes/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/2026-vs-2022-rule-changes/",
+      "destination": "/th/football/world-cup/guides/2026-vs-2022-rule-changes/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/2026-world-cup-qualification-rules",
+      "destination": "/th/football/world-cup/guides/2026-world-cup-qualification-rules/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/2026-world-cup-qualification-rules/",
+      "destination": "/th/football/world-cup/guides/2026-world-cup-qualification-rules/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/cricket-formats-betting-basics",
+      "destination": "/th/cricket/guides/cricket-formats-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/cricket-formats-betting-basics/",
+      "destination": "/th/cricket/guides/cricket-formats-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/cricket-rules-basics",
+      "destination": "/th/cricket/guides/cricket-rules-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/cricket-rules-basics/",
+      "destination": "/th/cricket/guides/cricket-rules-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/extra-time-rules-trivia",
+      "destination": "/th/football/world-cup/guides/extra-time-rules-trivia/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/extra-time-rules-trivia/",
+      "destination": "/th/football/world-cup/guides/extra-time-rules-trivia/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/five-leagues-style-guide",
+      "destination": "/th/football/leagues/guides/five-leagues-style-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/five-leagues-style-guide/",
+      "destination": "/th/football/leagues/guides/five-leagues-style-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/football-betting-basics",
+      "destination": "/th/football/leagues/guides/football-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/football-betting-basics/",
+      "destination": "/th/football/leagues/guides/football-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/nba-betting-basics",
+      "destination": "/th/nba/guides/nba-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/nba-betting-basics/",
+      "destination": "/th/nba/guides/nba-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/norway-england-common-questions",
+      "destination": "/th/football/world-cup/guides/norway-england-common-questions/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/norway-england-common-questions/",
+      "destination": "/th/football/world-cup/guides/norway-england-common-questions/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/portugal-ronaldo-golden-midfield",
+      "destination": "/th/football/world-cup/guides/portugal-ronaldo-golden-midfield/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/portugal-ronaldo-golden-midfield/",
+      "destination": "/th/football/world-cup/guides/portugal-ronaldo-golden-midfield/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/var-rules-egypt-argentina",
+      "destination": "/th/football/world-cup/guides/var-rules-egypt-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/var-rules-egypt-argentina/",
+      "destination": "/th/football/world-cup/guides/var-rules-egypt-argentina/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/world-cup-curses",
+      "destination": "/th/football/world-cup/guides/world-cup-curses/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/world-cup-curses/",
+      "destination": "/th/football/world-cup/guides/world-cup-curses/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/world-cup-group-tiebreaker-rules-explained",
+      "destination": "/th/football/world-cup/guides/world-cup-group-tiebreaker-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/world-cup-group-tiebreaker-rules-explained/",
+      "destination": "/th/football/world-cup/guides/world-cup-group-tiebreaker-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/analysis",
+      "destination": "/bn/football/world-cup/analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/analysis/",
+      "destination": "/bn/football/world-cup/analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/guides",
+      "destination": "/bn/football/world-cup/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/guides/",
+      "destination": "/bn/football/world-cup/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/bracket",
+      "destination": "/bn/football/world-cup/bracket/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/bracket/",
+      "destination": "/bn/football/world-cup/bracket/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/group-stage",
+      "destination": "/bn/football/world-cup/group-stage/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/group-stage/",
+      "destination": "/bn/football/world-cup/group-stage/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/schedule",
+      "destination": "/bn/football/world-cup/schedule/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/schedule/",
+      "destination": "/bn/football/world-cup/schedule/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/mlb",
+      "destination": "/bn/cricket/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/mlb/",
+      "destination": "/bn/cricket/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/mlb/guides",
+      "destination": "/bn/cricket/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/mlb/guides/",
+      "destination": "/bn/cricket/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/football/leagues/trends/epl-matchweek-1-review",
+      "destination": "/bn/football/leagues/analysis/epl-matchweek-1-review/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/football/leagues/trends/epl-matchweek-1-review/",
+      "destination": "/bn/football/leagues/analysis/epl-matchweek-1-review/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/football/leagues/trends/man-city-matchweek-2-analysis",
+      "destination": "/bn/football/leagues/analysis/man-city-matchweek-2-analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/football/leagues/trends/man-city-matchweek-2-analysis/",
+      "destination": "/bn/football/leagues/analysis/man-city-matchweek-2-analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/guides/cricket-formats-betting-basics",
+      "destination": "/bn/cricket/guides/cricket-formats-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/guides/cricket-formats-betting-basics/",
+      "destination": "/bn/cricket/guides/cricket-formats-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/guides/football-betting-basics",
+      "destination": "/bn/football/leagues/guides/football-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/guides/football-betting-basics/",
+      "destination": "/bn/football/leagues/guides/football-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/guides/nba-betting-basics",
+      "destination": "/bn/nba/guides/nba-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/guides/nba-betting-basics/",
+      "destination": "/bn/nba/guides/nba-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/guides/world-cup-group-tiebreaker-rules-explained",
+      "destination": "/bn/football/world-cup/guides/world-cup-group-tiebreaker-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/guides/world-cup-group-tiebreaker-rules-explained/",
+      "destination": "/bn/football/world-cup/guides/world-cup-group-tiebreaker-rules-explained/",
+      "permanent": true
+    }
+  ]
+}
