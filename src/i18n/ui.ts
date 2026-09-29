@@ -154,7 +154,7 @@ export const ui = {
     'label.loss': 'L',
     'schedule.viewOdds': 'View Odds',
     'schedule.timezoneNote': 'All times shown below are in',
-    'home.title': 'The Big Bet — Sports Analysis & Betting Info',
+    'home.title': 'The Big Bet — Football, NBA & Cricket Odds, Predictions & Analysis',
     'home.tbd': 'Note: Odds cache not loaded yet — displaying placeholder data. Run npm run update:all to fetch the latest odds.',
     'trend.up': 'Rising',
     'trend.down': 'Falling',
