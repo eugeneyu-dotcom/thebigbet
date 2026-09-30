@@ -432,6 +432,26 @@
       "permanent": true
     },
     {
+      "source": "/zh-tw/guides/nba-play-in-tournament-rules-explained",
+      "destination": "/zh-tw/nba/guides/nba-play-in-tournament-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/nba-play-in-tournament-rules-explained/",
+      "destination": "/zh-tw/nba/guides/nba-play-in-tournament-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/nba-playoff-format-seeding-rules-explained",
+      "destination": "/zh-tw/nba/guides/nba-playoff-format-seeding-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/nba-playoff-format-seeding-rules-explained/",
+      "destination": "/zh-tw/nba/guides/nba-playoff-format-seeding-rules-explained/",
+      "permanent": true
+    },
+    {
       "source": "/zh-tw/guides/norway-england-common-questions",
       "destination": "/zh-tw/football/world-cup/guides/norway-england-common-questions/",
       "permanent": true
@@ -909,6 +929,26 @@
     {
       "source": "/en/guides/nba-betting-basics/",
       "destination": "/en/nba/guides/nba-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/nba-play-in-tournament-rules-explained",
+      "destination": "/en/nba/guides/nba-play-in-tournament-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/nba-play-in-tournament-rules-explained/",
+      "destination": "/en/nba/guides/nba-play-in-tournament-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/nba-playoff-format-seeding-rules-explained",
+      "destination": "/en/nba/guides/nba-playoff-format-seeding-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/nba-playoff-format-seeding-rules-explained/",
+      "destination": "/en/nba/guides/nba-playoff-format-seeding-rules-explained/",
       "permanent": true
     },
     {
@@ -1392,6 +1432,26 @@
       "permanent": true
     },
     {
+      "source": "/th/guides/nba-play-in-tournament-rules-explained",
+      "destination": "/th/nba/guides/nba-play-in-tournament-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/nba-play-in-tournament-rules-explained/",
+      "destination": "/th/nba/guides/nba-play-in-tournament-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/nba-playoff-format-seeding-rules-explained",
+      "destination": "/th/nba/guides/nba-playoff-format-seeding-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/nba-playoff-format-seeding-rules-explained/",
+      "destination": "/th/nba/guides/nba-playoff-format-seeding-rules-explained/",
+      "permanent": true
+    },
+    {
       "source": "/th/guides/norway-england-common-questions",
       "destination": "/th/football/world-cup/guides/norway-england-common-questions/",
       "permanent": true
@@ -1559,6 +1619,26 @@
     {
       "source": "/bn/guides/nba-betting-basics/",
       "destination": "/bn/nba/guides/nba-betting-basics/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/guides/nba-play-in-tournament-rules-explained",
+      "destination": "/bn/nba/guides/nba-play-in-tournament-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/guides/nba-play-in-tournament-rules-explained/",
+      "destination": "/bn/nba/guides/nba-play-in-tournament-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/guides/nba-playoff-format-seeding-rules-explained",
+      "destination": "/bn/nba/guides/nba-playoff-format-seeding-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/guides/nba-playoff-format-seeding-rules-explained/",
+      "destination": "/bn/nba/guides/nba-playoff-format-seeding-rules-explained/",
       "permanent": true
     },
     {
