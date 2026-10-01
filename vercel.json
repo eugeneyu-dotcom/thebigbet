@@ -452,6 +452,16 @@
       "permanent": true
     },
     {
+      "source": "/zh-tw/guides/nba-trade-deadline-salary-cap-apron-rules-explained",
+      "destination": "/zh-tw/nba/guides/nba-trade-deadline-salary-cap-apron-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/guides/nba-trade-deadline-salary-cap-apron-rules-explained/",
+      "destination": "/zh-tw/nba/guides/nba-trade-deadline-salary-cap-apron-rules-explained/",
+      "permanent": true
+    },
+    {
       "source": "/zh-tw/guides/norway-england-common-questions",
       "destination": "/zh-tw/football/world-cup/guides/norway-england-common-questions/",
       "permanent": true
@@ -949,6 +959,16 @@
     {
       "source": "/en/guides/nba-playoff-format-seeding-rules-explained/",
       "destination": "/en/nba/guides/nba-playoff-format-seeding-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/nba-trade-deadline-salary-cap-apron-rules-explained",
+      "destination": "/en/nba/guides/nba-trade-deadline-salary-cap-apron-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/en/guides/nba-trade-deadline-salary-cap-apron-rules-explained/",
+      "destination": "/en/nba/guides/nba-trade-deadline-salary-cap-apron-rules-explained/",
       "permanent": true
     },
     {
@@ -1452,6 +1472,16 @@
       "permanent": true
     },
     {
+      "source": "/th/guides/nba-trade-deadline-salary-cap-apron-rules-explained",
+      "destination": "/th/nba/guides/nba-trade-deadline-salary-cap-apron-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/th/guides/nba-trade-deadline-salary-cap-apron-rules-explained/",
+      "destination": "/th/nba/guides/nba-trade-deadline-salary-cap-apron-rules-explained/",
+      "permanent": true
+    },
+    {
       "source": "/th/guides/norway-england-common-questions",
       "destination": "/th/football/world-cup/guides/norway-england-common-questions/",
       "permanent": true
@@ -1639,6 +1669,16 @@
     {
       "source": "/bn/guides/nba-playoff-format-seeding-rules-explained/",
       "destination": "/bn/nba/guides/nba-playoff-format-seeding-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/guides/nba-trade-deadline-salary-cap-apron-rules-explained",
+      "destination": "/bn/nba/guides/nba-trade-deadline-salary-cap-apron-rules-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/guides/nba-trade-deadline-salary-cap-apron-rules-explained/",
+      "destination": "/bn/nba/guides/nba-trade-deadline-salary-cap-apron-rules-explained/",
       "permanent": true
     },
     {
