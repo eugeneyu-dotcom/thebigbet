@@ -69976,6 +69976,616 @@
     ]
   },
   {
+    "id": "1156265e39cc2b943da422a53d2a832a",
+    "sport_key": "soccer_uefa_nations_league",
+    "sport_title": "UEFA Nations League",
+    "commence_time": "2026-10-03T18:45:00Z",
+    "home_team": "North Macedonia",
+    "away_team": "Scotland",
+    "bookmakers": [
+      {
+        "key": "betfred_uk",
+        "title": "Betfred (UK)",
+        "last_update": "2026-10-01T10:29:57Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:57Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.5
+              },
+              {
+                "name": "Scotland",
+                "price": 1.73
+              },
+              {
+                "name": "Draw",
+                "price": 3.4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "boylesports",
+        "title": "BoyleSports",
+        "last_update": "2026-10-01T10:30:17Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:17Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.75
+              },
+              {
+                "name": "Scotland",
+                "price": 1.73
+              },
+              {
+                "name": "Draw",
+                "price": 3.4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "sport888",
+        "title": "888sport",
+        "last_update": "2026-10-01T10:30:28Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:28Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.6
+              },
+              {
+                "name": "Scotland",
+                "price": 1.75
+              },
+              {
+                "name": "Draw",
+                "price": 3.4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "livescorebet",
+        "title": "LiveScore Bet",
+        "last_update": "2026-10-01T10:30:29Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:29Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.5
+              },
+              {
+                "name": "Scotland",
+                "price": 1.74
+              },
+              {
+                "name": "Draw",
+                "price": 3.45
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "virginbet",
+        "title": "Virgin Bet",
+        "last_update": "2026-10-01T10:30:44Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:44Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.5
+              },
+              {
+                "name": "Scotland",
+                "price": 1.74
+              },
+              {
+                "name": "Draw",
+                "price": 3.45
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "winamax_de",
+        "title": "Winamax (DE)",
+        "last_update": "2026-10-01T10:29:59Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:59Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.3
+              },
+              {
+                "name": "Scotland",
+                "price": 1.7
+              },
+              {
+                "name": "Draw",
+                "price": 3.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "winamax_fr",
+        "title": "Winamax (FR)",
+        "last_update": "2026-10-01T10:30:30Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:30Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.2
+              },
+              {
+                "name": "Scotland",
+                "price": 1.68
+              },
+              {
+                "name": "Draw",
+                "price": 3.4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betway",
+        "title": "Betway",
+        "last_update": "2026-10-01T10:30:44Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:44Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.5
+              },
+              {
+                "name": "Scotland",
+                "price": 1.73
+              },
+              {
+                "name": "Draw",
+                "price": 3.6
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "williamhill",
+        "title": "William Hill",
+        "last_update": "2026-10-01T10:30:30Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:30Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.5
+              },
+              {
+                "name": "Scotland",
+                "price": 1.75
+              },
+              {
+                "name": "Draw",
+                "price": 3.3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "pmu_fr",
+        "title": "PMU (FR)",
+        "last_update": "2026-10-01T10:30:10Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:10Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.25
+              },
+              {
+                "name": "Scotland",
+                "price": 1.68
+              },
+              {
+                "name": "Draw",
+                "price": 3.3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "unibet_se",
+        "title": "Unibet (SE)",
+        "last_update": "2026-10-01T10:30:28Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:28Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.75
+              },
+              {
+                "name": "Scotland",
+                "price": 1.81
+              },
+              {
+                "name": "Draw",
+                "price": 3.65
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "ladbrokes_uk",
+        "title": "Ladbrokes",
+        "last_update": "2026-10-01T10:30:27Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:27Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.6
+              },
+              {
+                "name": "Scotland",
+                "price": 1.75
+              },
+              {
+                "name": "Draw",
+                "price": 3.6
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "leovegas_se",
+        "title": "LeoVegas (SE)",
+        "last_update": "2026-10-01T10:30:27Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:27Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.5
+              },
+              {
+                "name": "Scotland",
+                "price": 1.75
+              },
+              {
+                "name": "Draw",
+                "price": 3.45
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "coral",
+        "title": "Coral",
+        "last_update": "2026-10-01T10:29:57Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:57Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.6
+              },
+              {
+                "name": "Scotland",
+                "price": 1.75
+              },
+              {
+                "name": "Draw",
+                "price": 3.6
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "marathonbet",
+        "title": "Marathon Bet",
+        "last_update": "2026-10-01T10:30:31Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:31Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.85
+              },
+              {
+                "name": "Scotland",
+                "price": 1.79
+              },
+              {
+                "name": "Draw",
+                "price": 3.6
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "casumo",
+        "title": "Casumo",
+        "last_update": "2026-10-01T10:30:28Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:28Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.6
+              },
+              {
+                "name": "Scotland",
+                "price": 1.77
+              },
+              {
+                "name": "Draw",
+                "price": 3.55
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "onexbet",
+        "title": "1xBet",
+        "last_update": "2026-10-01T10:30:27Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:26Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.91
+              },
+              {
+                "name": "Scotland",
+                "price": 1.81
+              },
+              {
+                "name": "Draw",
+                "price": 3.64
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "leovegas",
+        "title": "LeoVegas",
+        "last_update": "2026-10-01T10:30:12Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:12Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.6
+              },
+              {
+                "name": "Scotland",
+                "price": 1.75
+              },
+              {
+                "name": "Draw",
+                "price": 3.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "mybookieag",
+        "title": "MyBookie.ag",
+        "last_update": "2026-10-01T10:29:56Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:56Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.6
+              },
+              {
+                "name": "Scotland",
+                "price": 1.72
+              },
+              {
+                "name": "Draw",
+                "price": 3.44
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "suprabets",
+        "title": "Suprabets",
+        "last_update": "2026-10-01T10:27:14Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:27:14Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.6
+              },
+              {
+                "name": "Scotland",
+                "price": 1.71
+              },
+              {
+                "name": "Draw",
+                "price": 3.47
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betvictor",
+        "title": "Bet Victor",
+        "last_update": "2026-10-01T10:29:39Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:39Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.75
+              },
+              {
+                "name": "Scotland",
+                "price": 1.7
+              },
+              {
+                "name": "Draw",
+                "price": 3.4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betano_uk",
+        "title": "Betano (UK)",
+        "last_update": "2026-10-01T10:28:31Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:28:31Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.75
+              },
+              {
+                "name": "Scotland",
+                "price": 1.7
+              },
+              {
+                "name": "Draw",
+                "price": 3.4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "unibet_uk",
+        "title": "Unibet (UK)",
+        "last_update": "2026-10-01T10:30:28Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:28Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.75
+              },
+              {
+                "name": "Scotland",
+                "price": 1.75
+              },
+              {
+                "name": "Draw",
+                "price": 3.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betclic_fr",
+        "title": "Betclic (FR)",
+        "last_update": "2026-10-01T10:29:55Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:55Z",
+            "outcomes": [
+              {
+                "name": "North Macedonia",
+                "price": 4.5
+              },
+              {
+                "name": "Scotland",
+                "price": 1.71
+              },
+              {
+                "name": "Draw",
+                "price": 3.4
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "b6048b1da7816b2a0944013e6c139609",
     "sport_key": "soccer_uefa_nations_league",
     "sport_title": "UEFA Nations League",
@@ -72718,6 +73328,1271 @@
               {
                 "name": "Draw",
                 "price": 3.85
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "6619e1fedfdf11ec54f2ff721efd209f",
+    "sport_key": "soccer_uefa_nations_league",
+    "sport_title": "UEFA Nations League",
+    "commence_time": "2026-10-05T18:45:00Z",
+    "home_team": "France",
+    "away_team": "Belgium",
+    "bookmakers": [
+      {
+        "key": "boylesports",
+        "title": "BoyleSports",
+        "last_update": "2026-10-01T10:30:17Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:17Z",
+            "outcomes": [
+              {
+                "name": "Belgium",
+                "price": 5.5
+              },
+              {
+                "name": "France",
+                "price": 1.44
+              },
+              {
+                "name": "Draw",
+                "price": 4.33
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betway",
+        "title": "Betway",
+        "last_update": "2026-10-01T10:30:44Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:44Z",
+            "outcomes": [
+              {
+                "name": "Belgium",
+                "price": 5
+              },
+              {
+                "name": "France",
+                "price": 1.45
+              },
+              {
+                "name": "Draw",
+                "price": 4.75
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfred_uk",
+        "title": "Betfred (UK)",
+        "last_update": "2026-10-01T10:29:57Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:57Z",
+            "outcomes": [
+              {
+                "name": "Belgium",
+                "price": 6
+              },
+              {
+                "name": "France",
+                "price": 1.5
+              },
+              {
+                "name": "Draw",
+                "price": 4.6
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "paddypower",
+        "title": "Paddy Power",
+        "last_update": "2026-10-01T10:30:26Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:26Z",
+            "outcomes": [
+              {
+                "name": "Belgium",
+                "price": 5.5
+              },
+              {
+                "name": "France",
+                "price": 1.44
+              },
+              {
+                "name": "Draw",
+                "price": 4.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betclic_fr",
+        "title": "Betclic (FR)",
+        "last_update": "2026-10-01T10:29:55Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:55Z",
+            "outcomes": [
+              {
+                "name": "Belgium",
+                "price": 5.75
+              },
+              {
+                "name": "France",
+                "price": 1.45
+              },
+              {
+                "name": "Draw",
+                "price": 4.2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_eu",
+        "title": "Betfair",
+        "last_update": "2026-10-01T10:30:28Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:28Z",
+            "outcomes": [
+              {
+                "name": "Belgium",
+                "price": 1.1
+              },
+              {
+                "name": "France",
+                "price": 1.4
+              },
+              {
+                "name": "Draw",
+                "price": 1.1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_uk",
+        "title": "Betfair",
+        "last_update": "2026-10-01T10:30:44Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:44Z",
+            "outcomes": [
+              {
+                "name": "Belgium",
+                "price": 1.1
+              },
+              {
+                "name": "France",
+                "price": 1.4
+              },
+              {
+                "name": "Draw",
+                "price": 1.1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "sport888",
+        "title": "888sport",
+        "last_update": "2026-10-01T10:30:28Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:28Z",
+            "outcomes": [
+              {
+                "name": "Belgium",
+                "price": 5.5
+              },
+              {
+                "name": "France",
+                "price": 1.44
+              },
+              {
+                "name": "Draw",
+                "price": 4.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "williamhill",
+        "title": "William Hill",
+        "last_update": "2026-10-01T10:30:30Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:30Z",
+            "outcomes": [
+              {
+                "name": "Belgium",
+                "price": 5
+              },
+              {
+                "name": "France",
+                "price": 1.44
+              },
+              {
+                "name": "Draw",
+                "price": 4.4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "leovegas",
+        "title": "LeoVegas",
+        "last_update": "2026-10-01T10:30:12Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:12Z",
+            "outcomes": [
+              {
+                "name": "Belgium",
+                "price": 6
+              },
+              {
+                "name": "France",
+                "price": 1.48
+              },
+              {
+                "name": "Draw",
+                "price": 4.3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "winamax_fr",
+        "title": "Winamax (FR)",
+        "last_update": "2026-10-01T10:30:30Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:30Z",
+            "outcomes": [
+              {
+                "name": "Belgium",
+                "price": 5.2
+              },
+              {
+                "name": "France",
+                "price": 1.42
+              },
+              {
+                "name": "Draw",
+                "price": 4.1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "winamax_de",
+        "title": "Winamax (DE)",
+        "last_update": "2026-10-01T10:29:59Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:58Z",
+            "outcomes": [
+              {
+                "name": "Belgium",
+                "price": 5.4
+              },
+              {
+                "name": "France",
+                "price": 1.44
+              },
+              {
+                "name": "Draw",
+                "price": 4.2
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d2f1973a0c6e22f7846864e97db3e78d",
+    "sport_key": "soccer_uefa_nations_league",
+    "sport_title": "UEFA Nations League",
+    "commence_time": "2026-10-05T18:45:00Z",
+    "home_team": "Italy",
+    "away_team": "Turkey",
+    "bookmakers": [
+      {
+        "key": "betway",
+        "title": "Betway",
+        "last_update": "2026-10-01T10:30:44Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:44Z",
+            "outcomes": [
+              {
+                "name": "Italy",
+                "price": 1.61
+              },
+              {
+                "name": "Turkey",
+                "price": 4.33
+              },
+              {
+                "name": "Draw",
+                "price": 4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "sport888",
+        "title": "888sport",
+        "last_update": "2026-10-01T10:30:28Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:28Z",
+            "outcomes": [
+              {
+                "name": "Italy",
+                "price": 1.61
+              },
+              {
+                "name": "Turkey",
+                "price": 4.8
+              },
+              {
+                "name": "Draw",
+                "price": 3.9
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfred_uk",
+        "title": "Betfred (UK)",
+        "last_update": "2026-10-01T10:29:57Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:57Z",
+            "outcomes": [
+              {
+                "name": "Italy",
+                "price": 1.67
+              },
+              {
+                "name": "Turkey",
+                "price": 5
+              },
+              {
+                "name": "Draw",
+                "price": 4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "williamhill",
+        "title": "William Hill",
+        "last_update": "2026-10-01T10:30:30Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:30Z",
+            "outcomes": [
+              {
+                "name": "Italy",
+                "price": 1.62
+              },
+              {
+                "name": "Turkey",
+                "price": 4.6
+              },
+              {
+                "name": "Draw",
+                "price": 3.8
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "boylesports",
+        "title": "BoyleSports",
+        "last_update": "2026-10-01T10:30:17Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:17Z",
+            "outcomes": [
+              {
+                "name": "Italy",
+                "price": 1.6
+              },
+              {
+                "name": "Turkey",
+                "price": 4.75
+              },
+              {
+                "name": "Draw",
+                "price": 3.8
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "onexbet",
+        "title": "1xBet",
+        "last_update": "2026-10-01T10:30:27Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:27Z",
+            "outcomes": [
+              {
+                "name": "Italy",
+                "price": 1.72
+              },
+              {
+                "name": "Turkey",
+                "price": 4.91
+              },
+              {
+                "name": "Draw",
+                "price": 4.05
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "paddypower",
+        "title": "Paddy Power",
+        "last_update": "2026-10-01T10:30:26Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:26Z",
+            "outcomes": [
+              {
+                "name": "Italy",
+                "price": 1.57
+              },
+              {
+                "name": "Turkey",
+                "price": 5
+              },
+              {
+                "name": "Draw",
+                "price": 4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "leovegas",
+        "title": "LeoVegas",
+        "last_update": "2026-10-01T10:30:12Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:12Z",
+            "outcomes": [
+              {
+                "name": "Italy",
+                "price": 1.55
+              },
+              {
+                "name": "Turkey",
+                "price": 5.5
+              },
+              {
+                "name": "Draw",
+                "price": 3.95
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betclic_fr",
+        "title": "Betclic (FR)",
+        "last_update": "2026-10-01T10:29:55Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:55Z",
+            "outcomes": [
+              {
+                "name": "Italy",
+                "price": 1.52
+              },
+              {
+                "name": "Turkey",
+                "price": 5.5
+              },
+              {
+                "name": "Draw",
+                "price": 3.83
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "winamax_fr",
+        "title": "Winamax (FR)",
+        "last_update": "2026-10-01T10:30:30Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:30Z",
+            "outcomes": [
+              {
+                "name": "Italy",
+                "price": 1.5
+              },
+              {
+                "name": "Turkey",
+                "price": 5
+              },
+              {
+                "name": "Draw",
+                "price": 3.75
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "winamax_de",
+        "title": "Winamax (DE)",
+        "last_update": "2026-10-01T10:29:59Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:58Z",
+            "outcomes": [
+              {
+                "name": "Italy",
+                "price": 1.52
+              },
+              {
+                "name": "Turkey",
+                "price": 5.1
+              },
+              {
+                "name": "Draw",
+                "price": 3.85
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_eu",
+        "title": "Betfair",
+        "last_update": "2026-10-01T10:30:28Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:28Z",
+            "outcomes": [
+              {
+                "name": "Italy",
+                "price": 1.1
+              },
+              {
+                "name": "Turkey",
+                "price": 2.54
+              },
+              {
+                "name": "Draw",
+                "price": 2.52
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_uk",
+        "title": "Betfair",
+        "last_update": "2026-10-01T10:30:44Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:44Z",
+            "outcomes": [
+              {
+                "name": "Italy",
+                "price": 1.1
+              },
+              {
+                "name": "Turkey",
+                "price": 2.54
+              },
+              {
+                "name": "Draw",
+                "price": 2.52
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "5d9aac1a239e87ecc555aba2fe4426cf",
+    "sport_key": "soccer_uefa_nations_league",
+    "sport_title": "UEFA Nations League",
+    "commence_time": "2026-10-06T18:45:00Z",
+    "home_team": "Croatia",
+    "away_team": "Spain",
+    "bookmakers": [
+      {
+        "key": "betway",
+        "title": "Betway",
+        "last_update": "2026-10-01T10:30:44Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:44Z",
+            "outcomes": [
+              {
+                "name": "Croatia",
+                "price": 6
+              },
+              {
+                "name": "Spain",
+                "price": 1.38
+              },
+              {
+                "name": "Draw",
+                "price": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "sport888",
+        "title": "888sport",
+        "last_update": "2026-10-01T10:30:28Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:28Z",
+            "outcomes": [
+              {
+                "name": "Croatia",
+                "price": 7
+              },
+              {
+                "name": "Spain",
+                "price": 1.36
+              },
+              {
+                "name": "Draw",
+                "price": 4.8
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfred_uk",
+        "title": "Betfred (UK)",
+        "last_update": "2026-10-01T10:29:57Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:57Z",
+            "outcomes": [
+              {
+                "name": "Croatia",
+                "price": 7
+              },
+              {
+                "name": "Spain",
+                "price": 1.4
+              },
+              {
+                "name": "Draw",
+                "price": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "williamhill",
+        "title": "William Hill",
+        "last_update": "2026-10-01T10:30:30Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:30Z",
+            "outcomes": [
+              {
+                "name": "Croatia",
+                "price": 7
+              },
+              {
+                "name": "Spain",
+                "price": 1.36
+              },
+              {
+                "name": "Draw",
+                "price": 4.6
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "boylesports",
+        "title": "BoyleSports",
+        "last_update": "2026-10-01T10:30:17Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:17Z",
+            "outcomes": [
+              {
+                "name": "Croatia",
+                "price": 7
+              },
+              {
+                "name": "Spain",
+                "price": 1.36
+              },
+              {
+                "name": "Draw",
+                "price": 4.75
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "paddypower",
+        "title": "Paddy Power",
+        "last_update": "2026-10-01T10:30:26Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:26Z",
+            "outcomes": [
+              {
+                "name": "Croatia",
+                "price": 7
+              },
+              {
+                "name": "Spain",
+                "price": 1.36
+              },
+              {
+                "name": "Draw",
+                "price": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "leovegas",
+        "title": "LeoVegas",
+        "last_update": "2026-10-01T10:30:12Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:12Z",
+            "outcomes": [
+              {
+                "name": "Croatia",
+                "price": 6
+              },
+              {
+                "name": "Spain",
+                "price": 1.47
+              },
+              {
+                "name": "Draw",
+                "price": 4.33
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betclic_fr",
+        "title": "Betclic (FR)",
+        "last_update": "2026-10-01T10:29:55Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:55Z",
+            "outcomes": [
+              {
+                "name": "Croatia",
+                "price": 5.9
+              },
+              {
+                "name": "Spain",
+                "price": 1.41
+              },
+              {
+                "name": "Draw",
+                "price": 4.1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "winamax_fr",
+        "title": "Winamax (FR)",
+        "last_update": "2026-10-01T10:30:30Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:30Z",
+            "outcomes": [
+              {
+                "name": "Croatia",
+                "price": 5.4
+              },
+              {
+                "name": "Spain",
+                "price": 1.41
+              },
+              {
+                "name": "Draw",
+                "price": 4.1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "winamax_de",
+        "title": "Winamax (DE)",
+        "last_update": "2026-10-01T10:29:59Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:59Z",
+            "outcomes": [
+              {
+                "name": "Croatia",
+                "price": 5.6
+              },
+              {
+                "name": "Spain",
+                "price": 1.43
+              },
+              {
+                "name": "Draw",
+                "price": 4.2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_uk",
+        "title": "Betfair",
+        "last_update": "2026-10-01T10:30:44Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:44Z",
+            "outcomes": [
+              {
+                "name": "Croatia",
+                "price": 1.1
+              },
+              {
+                "name": "Spain",
+                "price": 1.1
+              },
+              {
+                "name": "Draw",
+                "price": 1.12
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_eu",
+        "title": "Betfair",
+        "last_update": "2026-10-01T10:30:28Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:28Z",
+            "outcomes": [
+              {
+                "name": "Croatia",
+                "price": 1.1
+              },
+              {
+                "name": "Spain",
+                "price": 1.1
+              },
+              {
+                "name": "Draw",
+                "price": 1.12
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "8012c0d9c6c0b99e57d9465837c5ae94",
+    "sport_key": "soccer_uefa_nations_league",
+    "sport_title": "UEFA Nations League",
+    "commence_time": "2026-10-06T18:45:00Z",
+    "home_team": "England",
+    "away_team": "Czech Republic",
+    "bookmakers": [
+      {
+        "key": "betway",
+        "title": "Betway",
+        "last_update": "2026-10-01T10:30:44Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:44Z",
+            "outcomes": [
+              {
+                "name": "Czech Republic",
+                "price": 13
+              },
+              {
+                "name": "England",
+                "price": 1.15
+              },
+              {
+                "name": "Draw",
+                "price": 7
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "boylesports",
+        "title": "BoyleSports",
+        "last_update": "2026-10-01T10:30:17Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:17Z",
+            "outcomes": [
+              {
+                "name": "Czech Republic",
+                "price": 15
+              },
+              {
+                "name": "England",
+                "price": 1.18
+              },
+              {
+                "name": "Draw",
+                "price": 6.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfred_uk",
+        "title": "Betfred (UK)",
+        "last_update": "2026-10-01T10:29:57Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:57Z",
+            "outcomes": [
+              {
+                "name": "Czech Republic",
+                "price": 15
+              },
+              {
+                "name": "England",
+                "price": 1.2
+              },
+              {
+                "name": "Draw",
+                "price": 6.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "paddypower",
+        "title": "Paddy Power",
+        "last_update": "2026-10-01T10:30:26Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:26Z",
+            "outcomes": [
+              {
+                "name": "Czech Republic",
+                "price": 15
+              },
+              {
+                "name": "England",
+                "price": 1.17
+              },
+              {
+                "name": "Draw",
+                "price": 6.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_eu",
+        "title": "Betfair",
+        "last_update": "2026-10-01T10:30:28Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:28Z",
+            "outcomes": [
+              {
+                "name": "Czech Republic",
+                "price": 1.1
+              },
+              {
+                "name": "England",
+                "price": 1.1
+              },
+              {
+                "name": "Draw",
+                "price": 1.1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_uk",
+        "title": "Betfair",
+        "last_update": "2026-10-01T10:30:44Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:44Z",
+            "outcomes": [
+              {
+                "name": "Czech Republic",
+                "price": 1.1
+              },
+              {
+                "name": "England",
+                "price": 1.1
+              },
+              {
+                "name": "Draw",
+                "price": 1.1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "sport888",
+        "title": "888sport",
+        "last_update": "2026-10-01T10:30:28Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:28Z",
+            "outcomes": [
+              {
+                "name": "Czech Republic",
+                "price": 17
+              },
+              {
+                "name": "England",
+                "price": 1.18
+              },
+              {
+                "name": "Draw",
+                "price": 6
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "williamhill",
+        "title": "William Hill",
+        "last_update": "2026-10-01T10:30:30Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:30Z",
+            "outcomes": [
+              {
+                "name": "Czech Republic",
+                "price": 17
+              },
+              {
+                "name": "England",
+                "price": 1.17
+              },
+              {
+                "name": "Draw",
+                "price": 6
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "leovegas",
+        "title": "LeoVegas",
+        "last_update": "2026-10-01T10:30:12Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:12Z",
+            "outcomes": [
+              {
+                "name": "Czech Republic",
+                "price": 15
+              },
+              {
+                "name": "England",
+                "price": 1.16
+              },
+              {
+                "name": "Draw",
+                "price": 7
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betclic_fr",
+        "title": "Betclic (FR)",
+        "last_update": "2026-10-01T10:29:55Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:55Z",
+            "outcomes": [
+              {
+                "name": "Czech Republic",
+                "price": 13.75
+              },
+              {
+                "name": "England",
+                "price": 1.13
+              },
+              {
+                "name": "Draw",
+                "price": 6.25
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "winamax_fr",
+        "title": "Winamax (FR)",
+        "last_update": "2026-10-01T10:30:30Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:30:30Z",
+            "outcomes": [
+              {
+                "name": "Czech Republic",
+                "price": 11.5
+              },
+              {
+                "name": "England",
+                "price": 1.12
+              },
+              {
+                "name": "Draw",
+                "price": 6.25
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "winamax_de",
+        "title": "Winamax (DE)",
+        "last_update": "2026-10-01T10:29:59Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-01T10:29:59Z",
+            "outcomes": [
+              {
+                "name": "Czech Republic",
+                "price": 12
+              },
+              {
+                "name": "England",
+                "price": 1.13
+              },
+              {
+                "name": "Draw",
+                "price": 6.5
               }
             ]
           }
