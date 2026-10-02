@@ -10,6 +10,7 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+const isBn = lang === 'bn';
 
 const entries = await getCollection('trends', (entry) =>
   entry.id.startsWith(lang + '/') && entry.data.league === 'nba');
@@ -22,9 +23,10 @@ const metaDescription = isZhTw
 const tag = 'NBA';
 const heading = isZhTw ? 'NBA 趨勢分析' : isTh ? 'วิเคราะห์เทรนด์ NBA' : 'NBA Trend Analysis';
 const intro = isZhTw
-  ? '不是單場比賽前瞻，而是整季戰力走向的觀察與評論。'
-  : isTh ? 'ไม่ใช่การวิเคราะห์รายนัด แต่เป็นมุมมองต่อทิศทางทีมตลอดฤดูกาล'
-    : 'Not a single-game preview — season-long commentary on where a team is headed.';
+  ? '2026-27球季將於10月20日開打，開幕夜在NBC三連戰登場：塞爾提克（Celtics）客場挑戰活塞（Pistons）、76人（76ers）作客紐約挑戰衛冕冠軍尼克（Knicks）——尼克將在賽前升起隊史近幾十年來首座冠軍旗幟，LeBron James也將首度以76人球衣登場；雷霆（Thunder）則在聖安東尼奧迎戰馬刺（Spurs），重演上季西區冠軍賽的對陣。休賽期最大的話題是塞爾提克把Jaylen Brown交易去76人換來LeBron，塞爾提克則組建Tatum+Paul George的全新搭檔——這些變動會如何影響分區排序，以下整理各分區的詳細走勢觀察。'
+  : isTh ? 'ฤดูกาล 2026-27 เปิดฉาก 20 ตุลาคม ด้วยไตรเปิลเฮดเดอร์ทาง NBC ในคืนเปิดฤดูกาล: Celtics บุกเยือน Pistons, 76ers เยือนนิวยอร์กพบแชมป์เก่า Knicks ที่จะชักธงแชมป์ผืนแรกในรอบหลายสิบปีก่อนเกมเริ่ม พร้อมการเปิดตัวของ LeBron James กับเสื้อ 76ers คืนเดียวกัน ส่วน Thunder เปิดบ้านพบ Spurs ที่ซานอันโตนิโอ รีแมตช์รอบชิงชนะเลิศสายตะวันตกของฤดูกาลก่อน เรื่องใหญ่ที่สุดของออฟซีซันคือ Celtics เทรด Jaylen Brown ไปฟิลาเดลเฟียในดีลที่ได้ LeBron มาแทน ส่วน Boston ก็สร้างคู่หูใหม่ Tatum-Paul George ขึ้นมาแทน นี่คือภาพรวมแต่ละดิวิชั่นหลังความเปลี่ยนแปลงทั้งหมดนี้'
+    : isBn ? '২০২৬-২৭ মৌসুম শুরু হচ্ছে ২০ অক্টোবর, NBC-তে ওপেনিং নাইটের ট্রিপলহেডার দিয়ে: Celtics যাবে Pistons-এর মাঠে, 76ers নিউ ইয়র্কে যাবে ডিফেন্ডিং চ্যাম্পিয়ন Knicks-এর বিপক্ষে — যারা খেলা শুরুর আগে কয়েক দশকের মধ্যে তাদের প্রথম চ্যাম্পিয়নশিপ ব্যানার তুলবে, সেই রাতেই LeBron James করবেন তার 76ers অভিষেক; আর Thunder স্যান অ্যান্টোনিওতে স্বাগত জানাবে Spurs-কে, গত মৌসুমের ওয়েস্টার্ন কনফারেন্স ফাইনালের পুনরাবৃত্তি। অফসিজনের সবচেয়ে বড় খবর হলো Celtics, Jaylen Brown-কে ফিলাডেলফিয়ায় ট্রেড করে বদলে LeBron-কে এনেছে, আর Boston গড়েছে নতুন Tatum-Paul George জুটি। এসব পরিবর্তন ডিভিশনের হিসেব কীভাবে বদলে দেয়, তার বিস্তারিত বিশ্লেষণ নিচে ডিভিশন ধরে ধরে।'
+    : 'The 2026-27 season tips off October 20 with an NBC tripleheader on opening night: the Celtics travel to face the Pistons, the 76ers visit New York to face defending champion the Knicks — who\'ll raise their first championship banner in decades before tip-off, with LeBron James making his 76ers debut the same night — and the Thunder host the Spurs in San Antonio in a rematch of last season\'s Western Conference Finals. The biggest offseason storyline was the Celtics trading Jaylen Brown to Philadelphia in the deal that brought LeBron the other way, while Boston built a new Tatum-Paul George pairing in return. Here\'s how all of that is shaking out division by division.';
 const emptyText = isZhTw ? '目前尚無 NBA 趨勢分析文章，敬請期待。' : isTh ? 'ยังไม่มีบทวิเคราะห์เทรนด์ NBA โปรดกลับมาใหม่' : 'No NBA trend analysis yet. Check back soon.';
 ---
 
