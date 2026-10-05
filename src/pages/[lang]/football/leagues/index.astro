@@ -17,6 +17,7 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+const isBn = lang === 'bn';
 const tTeam = useTeamTranslations(lang as any);
 
 let leagueMatches: any[] = [];
@@ -36,29 +37,29 @@ function moneyline(m: any) {
   return { home, away, draw };
 }
 const fmtTime = (iso: string) =>
-  new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
+  new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
 
 const analysisEntries = (await getCollection('analysis', (entry) =>
   entry.id.startsWith(lang + '/') && entry.data.league === 'club-football'))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
-const title = isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : 'Top 5 Leagues';
+const title = isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : isBn ? 'শীর্ষ ৫ লিগ' : 'Top 5 Leagues';
 const metaDescription = isZhTw
   ? '英超、西甲、義甲、德甲、法甲即時賠率與深度賽事分析。'
   : isTh ? 'ราคาสดและบทวิเคราะห์เชิงลึกของพรีเมียร์ลีก ลาลีกา เซเรียอา บุนเดสลีกา และลีกเอิง'
-    : 'Live EPL, La Liga, Serie A, Bundesliga and Ligue 1 odds and in-depth match analysis.';
-const oddsHeading = isZhTw ? '五大聯賽即時賠率' : isTh ? 'ราคาสด 5 ลีกใหญ่' : 'Live Top 5 Leagues Odds';
-const analysisHeading = isZhTw ? '五大聯賽賽事分析' : isTh ? 'วิเคราะห์ 5 ลีกใหญ่' : 'Top 5 Leagues Analysis';
-const noOdds = isZhTw ? '目前暫無五大聯賽賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคา 5 ลีกใหญ่' : 'No Top 5 Leagues odds available right now.';
-const noAnalysis = isZhTw ? '目前尚無五大聯賽分析文章。' : isTh ? 'ยังไม่มีบทวิเคราะห์ 5 ลีกใหญ่' : 'No Top 5 Leagues analysis yet.';
+    : isBn ? 'ইপিএল, লা লিগা, সিরি আ, বুন্দেসলিগা ও লিগ ১-এর লাইভ অডস এবং গভীর ম্যাচ বিশ্লেষণ।' : 'Live EPL, La Liga, Serie A, Bundesliga and Ligue 1 odds and in-depth match analysis.';
+const oddsHeading = isZhTw ? '五大聯賽即時賠率' : isTh ? 'ราคาสด 5 ลีกใหญ่' : isBn ? 'শীর্ষ ৫ লিগের লাইভ অডস' : 'Live Top 5 Leagues Odds';
+const analysisHeading = isZhTw ? '五大聯賽賽事分析' : isTh ? 'วิเคราะห์ 5 ลีกใหญ่' : isBn ? 'শীর্ষ ৫ লিগ বিশ্লেষণ' : 'Top 5 Leagues Analysis';
+const noOdds = isZhTw ? '目前暫無五大聯賽賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคา 5 ลีกใหญ่' : isBn ? 'এই মুহূর্তে শীর্ষ ৫ লিগের কোনো অডস নেই।' : 'No Top 5 Leagues odds available right now.';
+const noAnalysis = isZhTw ? '目前尚無五大聯賽分析文章。' : isTh ? 'ยังไม่มีบทวิเคราะห์ 5 ลีกใหญ่' : isBn ? 'এখনও শীর্ষ ৫ লিগের কোনো বিশ্লেষণ নেই।' : 'No Top 5 Leagues analysis yet.';
 
 const leagueLabel = (sportTitle: string) => {
   const map: Record<string, [string, string]> = {
-    'EPL': [isZhTw ? '英超' : isTh ? 'พรีเมียร์ลีก' : 'EPL', ''],
-    'La Liga - Spain': [isZhTw ? '西甲' : isTh ? 'ลาลีกา' : 'La Liga', ''],
-    'Serie A - Italy': [isZhTw ? '義甲' : isTh ? 'เซเรียอา' : 'Serie A', ''],
-    'Bundesliga - Germany': [isZhTw ? '德甲' : isTh ? 'บุนเดสลีกา' : 'Bundesliga', ''],
-    'Ligue 1 - France': [isZhTw ? '法甲' : isTh ? 'ลีกเอิง' : 'Ligue 1', ''],
+    'EPL': [isZhTw ? '英超' : isTh ? 'พรีเมียร์ลีก' : isBn ? 'ইপিএল' : 'EPL', ''],
+    'La Liga - Spain': [isZhTw ? '西甲' : isTh ? 'ลาลีกา' : isBn ? 'লা লিগা' : 'La Liga', ''],
+    'Serie A - Italy': [isZhTw ? '義甲' : isTh ? 'เซเรียอา' : isBn ? 'সিরি আ' : 'Serie A', ''],
+    'Bundesliga - Germany': [isZhTw ? '德甲' : isTh ? 'บุนเดสลีกา' : isBn ? 'বুন্দেসলিগা' : 'Bundesliga', ''],
+    'Ligue 1 - France': [isZhTw ? '法甲' : isTh ? 'ลีกเอิง' : isBn ? 'লিগ ১' : 'Ligue 1', ''],
   };
   return map[sportTitle]?.[0] ?? sportTitle;
 };
@@ -75,7 +76,7 @@ const leagueLabel = (sportTitle: string) => {
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full min-w-0">
 
       <div class="mb-8">
-        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">{isZhTw ? '足球' : isTh ? 'ฟุตบอล' : 'Football'}</p>
+        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">{isZhTw ? '足球' : isTh ? 'ฟุตบอล' : isBn ? 'ফুটবল' : 'Football'}</p>
         <h1 class="text-3xl font-black text-white">{title}</h1>
       </div>
 
@@ -99,7 +100,7 @@ const leagueLabel = (sportTitle: string) => {
                       <TeamIcon team={m.away_team} class="w-6 h-6" />
                       <div class="min-w-0">
                         <p class="font-bold text-white truncate">{tTeam(m.away_team)}</p>
-                        <p class="text-xs text-slate-500 uppercase">{isZhTw ? '客隊' : isTh ? 'ทีมเยือน' : 'Away'}</p>
+                        <p class="text-xs text-slate-500 uppercase">{isZhTw ? '客隊' : isTh ? 'ทีมเยือน' : isBn ? 'অ্যাওয়ে' : 'Away'}</p>
                       </div>
                     </div>
                     <div class="flex items-center gap-2 font-mono font-black text-sm">
@@ -110,7 +111,7 @@ const leagueLabel = (sportTitle: string) => {
                     <div class="min-w-0 flex items-center justify-end gap-2 text-right">
                       <div class="min-w-0">
                         <p class="font-bold text-white truncate">{tTeam(m.home_team)}</p>
-                        <p class="text-xs text-slate-500 uppercase">{isZhTw ? '主隊' : isTh ? 'เจ้าบ้าน' : 'Home'}</p>
+                        <p class="text-xs text-slate-500 uppercase">{isZhTw ? '主隊' : isTh ? 'เจ้าบ้าน' : isBn ? 'হোম' : 'Home'}</p>
                       </div>
                       <TeamIcon team={m.home_team} class="w-6 h-6" />
                     </div>
@@ -135,10 +136,10 @@ const leagueLabel = (sportTitle: string) => {
               return (
                 <li>
                   <a href={`/${lang}/football/leagues/analysis/${slug}`} class="group block bg-[#211d19] border border-[#3c352c] hover:border-amber-400/40 rounded-2xl p-6 transition-all duration-200">
-                    <time class="text-xs text-slate-500 font-mono">{entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}</time>
+                    <time class="text-xs text-slate-500 font-mono">{entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US')}</time>
                     <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 truncate mt-2">{entry.data.title}</h3>
                     {entry.data.prediction && (
-                      <p class="text-sm font-bold text-amber-400 mt-2">{isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : 'Prediction: '}{entry.data.prediction}</p>
+                      <p class="text-sm font-bold text-amber-400 mt-2">{isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : isBn ? 'পূর্বাভাস: ' : 'Prediction: '}{entry.data.prediction}</p>
                     )}
                   </a>
                 </li>

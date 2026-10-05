@@ -17,6 +17,7 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+const isBn = lang === 'bn';
 const tTeam = useTeamTranslations(lang as any);
 
 let leagueMatches: any[] = [];
@@ -36,21 +37,21 @@ function moneyline(m: any) {
   return { home, away, draw };
 }
 const fmtTime = (iso: string) =>
-  new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
+  new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
 
 const analysisEntries = (await getCollection('analysis', (entry) =>
   entry.id.startsWith(lang + '/') && entry.data.league === 'champions-league'))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
-const title = isZhTw ? '歐冠' : isTh ? 'แชมเปียนส์ลีก' : 'Champions League';
+const title = isZhTw ? '歐冠' : isTh ? 'แชมเปียนส์ลีก' : isBn ? 'চ্যাম্পিয়নস লিগ' : 'Champions League';
 const metaDescription = isZhTw
   ? '歐洲冠軍聯賽即時賠率與深度賽事分析。'
   : isTh ? 'ราคาสดและบทวิเคราะห์เชิงลึกของยูฟ่าแชมเปียนส์ลีก'
-    : 'Live UEFA Champions League odds and in-depth match analysis.';
-const oddsHeading = isZhTw ? '歐冠即時賠率' : isTh ? 'ราคาสดแชมเปียนส์ลีก' : 'Live Champions League Odds';
-const analysisHeading = isZhTw ? '歐冠賽事分析' : isTh ? 'วิเคราะห์แชมเปียนส์ลีก' : 'Champions League Analysis';
-const noOdds = isZhTw ? '目前暫無歐冠賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคาแชมเปียนส์ลีก' : 'No Champions League odds available right now.';
-const noAnalysis = isZhTw ? '目前尚無歐冠分析文章。' : isTh ? 'ยังไม่มีบทวิเคราะห์แชมเปียนส์ลีก' : 'No Champions League analysis yet.';
+    : isBn ? 'উয়েফা চ্যাম্পিয়নস লিগের লাইভ অডস এবং গভীর ম্যাচ বিশ্লেষণ।' : 'Live UEFA Champions League odds and in-depth match analysis.';
+const oddsHeading = isZhTw ? '歐冠即時賠率' : isTh ? 'ราคาสดแชมเปียนส์ลีก' : isBn ? 'চ্যাম্পিয়নস লিগের লাইভ অডস' : 'Live Champions League Odds';
+const analysisHeading = isZhTw ? '歐冠賽事分析' : isTh ? 'วิเคราะห์แชมเปียนส์ลีก' : isBn ? 'চ্যাম্পিয়নস লিগ বিশ্লেষণ' : 'Champions League Analysis';
+const noOdds = isZhTw ? '目前暫無歐冠賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคาแชมเปียนส์ลีก' : isBn ? 'এই মুহূর্তে চ্যাম্পিয়নস লিগের কোনো অডস নেই।' : 'No Champions League odds available right now.';
+const noAnalysis = isZhTw ? '目前尚無歐冠分析文章。' : isTh ? 'ยังไม่มีบทวิเคราะห์แชมเปียนส์ลีก' : isBn ? 'এখনও চ্যাম্পিয়নস লিগের কোনো বিশ্লেষণ নেই।' : 'No Champions League analysis yet.';
 ---
 
 <html lang={lang}>
@@ -64,7 +65,7 @@ const noAnalysis = isZhTw ? '目前尚無歐冠分析文章。' : isTh ? 'ยั
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full min-w-0">
 
       <div class="mb-8">
-        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">{isZhTw ? '足球' : isTh ? 'ฟุตบอล' : 'Football'}</p>
+        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">{isZhTw ? '足球' : isTh ? 'ฟุตบอล' : isBn ? 'ফুটবল' : 'Football'}</p>
         <h1 class="text-3xl font-black text-white">{title}</h1>
       </div>
 
@@ -88,7 +89,7 @@ const noAnalysis = isZhTw ? '目前尚無歐冠分析文章。' : isTh ? 'ยั
                       <TeamIcon team={m.away_team} class="w-6 h-6" />
                       <div class="min-w-0">
                         <p class="font-bold text-white truncate">{tTeam(m.away_team)}</p>
-                        <p class="text-xs text-slate-500 uppercase">{isZhTw ? '客隊' : isTh ? 'ทีมเยือน' : 'Away'}</p>
+                        <p class="text-xs text-slate-500 uppercase">{isZhTw ? '客隊' : isTh ? 'ทีมเยือน' : isBn ? 'অ্যাওয়ে' : 'Away'}</p>
                       </div>
                     </div>
                     <div class="flex items-center gap-2 font-mono font-black text-sm">
@@ -99,7 +100,7 @@ const noAnalysis = isZhTw ? '目前尚無歐冠分析文章。' : isTh ? 'ยั
                     <div class="min-w-0 flex items-center justify-end gap-2 text-right">
                       <div class="min-w-0">
                         <p class="font-bold text-white truncate">{tTeam(m.home_team)}</p>
-                        <p class="text-xs text-slate-500 uppercase">{isZhTw ? '主隊' : isTh ? 'เจ้าบ้าน' : 'Home'}</p>
+                        <p class="text-xs text-slate-500 uppercase">{isZhTw ? '主隊' : isTh ? 'เจ้าบ้าน' : isBn ? 'হোম' : 'Home'}</p>
                       </div>
                       <TeamIcon team={m.home_team} class="w-6 h-6" />
                     </div>
@@ -124,10 +125,10 @@ const noAnalysis = isZhTw ? '目前尚無歐冠分析文章。' : isTh ? 'ยั
               return (
                 <li>
                   <a href={`/${lang}/football/champions-league/analysis/${slug}`} class="group block bg-[#211d19] border border-[#3c352c] hover:border-amber-400/40 rounded-2xl p-6 transition-all duration-200">
-                    <time class="text-xs text-slate-500 font-mono">{entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}</time>
+                    <time class="text-xs text-slate-500 font-mono">{entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US')}</time>
                     <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 truncate mt-2">{entry.data.title}</h3>
                     {entry.data.prediction && (
-                      <p class="text-sm font-bold text-amber-400 mt-2">{isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : 'Prediction: '}{entry.data.prediction}</p>
+                      <p class="text-sm font-bold text-amber-400 mt-2">{isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : isBn ? 'পূর্বাভাস: ' : 'Prediction: '}{entry.data.prediction}</p>
                     )}
                   </a>
                 </li>

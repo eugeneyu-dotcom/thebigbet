@@ -548,7 +548,18 @@ export const teamTranslations: Record<string, Record<string, string>> = {
     'Afghanistan': 'อัฟกานิสถาน',
     'Nepal': 'เนปาล',
     'Oman': 'โอมาน',
-  }
+  },
+  // Bengali: competition/league tags only. Club and national-team names stay
+  // in English on purpose — translating just some of them would put a mix of
+  // scripts inside a single match card.
+  'bn': {
+    'Premier League': 'প্রিমিয়ার লিগ',
+    'La Liga': 'লা লিগা',
+    'Serie A': 'সিরি আ',
+    'Bundesliga': 'বুন্দেসলিগা',
+    'Ligue 1': 'লিগ ১',
+    'Champions League': 'চ্যাম্পিয়নস লিগ',
+  },
 };
 
 export const sportTranslations: Record<string, Record<string, string>> = {
@@ -573,6 +584,17 @@ export const sportTranslations: Record<string, Record<string, string>> = {
     'UEFA Champions League': 'ยูฟ่า แชมเปียนส์ลีก',
     'UEFA Europa League': 'ยูฟ่า ยูโรปาลีก',
     'FIFA World Cup': 'ฟีฟ่า เวิลด์คัพ',
+  },
+  'bn': {
+    'Soccer': 'ফুটবল',
+    'EPL': 'ইপিএল',
+    'La Liga': 'লা লিগা',
+    'Serie A': 'সিরি আ',
+    'Bundesliga': 'বুন্দেসলিগা',
+    'Ligue 1': 'লিগ ১',
+    'UEFA Champions League': 'উয়েফা চ্যাম্পিয়নস লিগ',
+    'UEFA Europa League': 'উয়েফা ইউরোপা লিগ',
+    'FIFA World Cup': 'ফিফা বিশ্বকাপ',
   }
 };
 
@@ -590,7 +612,7 @@ export function useTranslations(lang: keyof typeof ui) {
 
 export function useTeamTranslations(lang: keyof typeof ui) {
   return function translateTeam(teamName: string) {
-    if (lang === 'zh-tw' || lang === 'th') {
+    if (lang === 'zh-tw' || lang === 'th' || lang === 'bn') {
       return teamTranslations[lang]?.[teamName] || teamName;
     }
     return teamName;
@@ -599,7 +621,7 @@ export function useTeamTranslations(lang: keyof typeof ui) {
 
 export function useSportTranslations(lang: keyof typeof ui) {
   return function translateSport(sportName: string) {
-    if (lang === 'zh-tw' || lang === 'th') {
+    if (lang === 'zh-tw' || lang === 'th' || lang === 'bn') {
       let translated = sportName;
       Object.keys(sportTranslations[lang]).forEach(key => {
         translated = translated.replace(key, sportTranslations[lang][key]);

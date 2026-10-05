@@ -44,7 +44,7 @@ const t = useTranslations(lang);
             <span class="text-xs font-black text-amber-400 uppercase tracking-widest">{t('strategy.tag')}</span>
             <span class="text-[#544a3e]">·</span>
             <time class="text-sm text-slate-400 font-mono" datetime={entry.data.pubDate.toISOString()}>
-              {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}
+              {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US')}
             </time>
           </div>
           <h1 class="text-3xl md:text-4xl font-black text-white leading-tight">{entry.data.title}</h1>

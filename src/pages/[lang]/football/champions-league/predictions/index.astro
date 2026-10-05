@@ -10,22 +10,23 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+const isBn = lang === 'bn';
 
 const entries = await getCollection('predictions', (entry) =>
   entry.id.startsWith(lang + '/') && entry.data.league === 'champions-league');
 
-const metaTitle = isZhTw ? '歐冠賽事預測 | The Big Bet' : isTh ? 'ทำนายผลแชมเปียนส์ลีก | The Big Bet' : 'Champions League Predictions | The Big Bet';
+const metaTitle = isZhTw ? '歐冠賽事預測 | The Big Bet' : isTh ? 'ทำนายผลแชมเปียนส์ลีก | The Big Bet' : isBn ? 'চ্যাম্পিয়নস লিগ পূর্বাভাস | The Big Bet' : 'Champions League Predictions | The Big Bet';
 const metaDescription = isZhTw
   ? '歐冠近期賽事的即時預測，聚焦焦點球隊每輪對戰。'
   : isTh ? 'ทำนายผลนัดล่าสุดของแชมเปียนส์ลีก เจาะทีมโฟกัสในแต่ละสัปดาห์'
-    : 'Round-by-round predictions for Champions League fixtures, focused on the priority clubs.';
-const tag = isZhTw ? '歐冠' : isTh ? 'แชมเปียนส์ลีก' : 'Champions League';
-const heading = isZhTw ? '歐冠賽事預測' : isTh ? 'ทำนายผลแชมเปียนส์ลีก' : 'Champions League Predictions';
+    : isBn ? 'চ্যাম্পিয়নস লিগের প্রতিটি রাউন্ডের পূর্বাভাস, অগ্রাধিকার পাওয়া ক্লাবগুলোকে কেন্দ্র করে।' : 'Round-by-round predictions for Champions League fixtures, focused on the priority clubs.';
+const tag = isZhTw ? '歐冠' : isTh ? 'แชมเปียนส์ลีก' : isBn ? 'চ্যাম্পিয়নস লিগ' : 'Champions League';
+const heading = isZhTw ? '歐冠賽事預測' : isTh ? 'ทำนายผลแชมเปียนส์ลีก' : isBn ? 'চ্যাম্পিয়নস লিগ পূর্বাভাস' : 'Champions League Predictions';
 const intro = isZhTw
   ? '不是球隊整季走向的觀察，而是針對近期即將開踢的對戰給出的即時預測。'
   : isTh ? 'ไม่ใช่มุมมองทิศทางทีมตลอดฤดูกาล แต่เป็นการทำนายผลนัดที่กำลังจะแข่งในเร็ว ๆ นี้'
-    : 'Not season-long team commentary — quick predictions for fixtures coming up soon.';
-const emptyText = isZhTw ? '目前尚無歐冠賽事預測文章，敬請期待。' : isTh ? 'ยังไม่มีบทความทำนายผลแชมเปียนส์ลีก โปรดกลับมาใหม่' : 'No Champions League predictions yet. Check back soon.';
+    : isBn ? 'মৌসুমজুড়ে দল নিয়ে মন্তব্য নয় — আসন্ন ম্যাচগুলোর দ্রুত পূর্বাভাস।' : 'Not season-long team commentary — quick predictions for fixtures coming up soon.';
+const emptyText = isZhTw ? '目前尚無歐冠賽事預測文章，敬請期待。' : isTh ? 'ยังไม่มีบทความทำนายผลแชมเปียนส์ลีก โปรดกลับมาใหม่' : isBn ? 'এখনও চ্যাম্পিয়নস লিগের কোনো পূর্বাভাস নেই। শীঘ্রই আবার দেখুন।' : 'No Champions League predictions yet. Check back soon.';
 ---
 
 <TrendList

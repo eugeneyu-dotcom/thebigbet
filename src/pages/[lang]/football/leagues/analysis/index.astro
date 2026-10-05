@@ -10,22 +10,23 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+const isBn = lang === 'bn';
 
 const entries = await getCollection('matchAnalysis', (entry) =>
   entry.id.startsWith(lang + '/') && entry.data.league === 'club-football');
 
-const metaTitle = isZhTw ? '五大聯賽賽事分析 | The Big Bet' : isTh ? 'บทวิเคราะห์ 5 ลีกใหญ่ | The Big Bet' : 'Top 5 Leagues Analysis | The Big Bet';
+const metaTitle = isZhTw ? '五大聯賽賽事分析 | The Big Bet' : isTh ? 'บทวิเคราะห์ 5 ลีกใหญ่ | The Big Bet' : isBn ? 'শীর্ষ ৫ লিগ বিশ্লেষণ | The Big Bet' : 'Top 5 Leagues Analysis | The Big Bet';
 const metaDescription = isZhTw
   ? '五大聯賽單場或多場賽事的戰術分析與戰報，聚焦具體比賽本身。'
   : isTh ? 'บทวิเคราะห์เชิงลึกของ 5 ลีกใหญ่ ทั้งรายนัดและสรุปหลายนัด เจาะจงที่ตัวเกมการแข่งขัน'
-    : 'Tactical breakdowns and match reports for Top 5 Leagues fixtures — focused on the games themselves.';
-const tag = isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : 'Top 5 Leagues';
-const heading = isZhTw ? '五大聯賽賽事分析' : isTh ? 'บทวิเคราะห์ 5 ลีกใหญ่' : 'Top 5 Leagues Analysis';
+    : isBn ? 'শীর্ষ ৫ লিগ ম্যাচের কৌশলগত বিশ্লেষণ ও ম্যাচ রিপোর্ট — মূল ফোকাস খোদ ম্যাচগুলোর ওপর।' : 'Tactical breakdowns and match reports for Top 5 Leagues fixtures — focused on the games themselves.';
+const tag = isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : isBn ? 'শীর্ষ ৫ লিগ' : 'Top 5 Leagues';
+const heading = isZhTw ? '五大聯賽賽事分析' : isTh ? 'บทวิเคราะห์ 5 ลีกใหญ่' : isBn ? 'শীর্ষ ৫ লিগ বিশ্লেষণ' : 'Top 5 Leagues Analysis';
 const intro = isZhTw
   ? '針對具體比賽（單場或多場）的戰術與戰況分析，不是球隊整季走向的觀察。'
   : isTh ? 'บทวิเคราะห์เชิงกลยุทธ์และสถานการณ์ของนัดที่แข่งไปแล้ว (นัดเดียวหรือหลายนัด) ไม่ใช่มุมมองทิศทางทีมตลอดฤดูกาล'
-    : 'Tactical and match-state analysis tied to specific games (one or several) — not season-long team commentary.';
-const emptyText = isZhTw ? '目前尚無五大聯賽賽事分析文章，敬請期待。' : isTh ? 'ยังไม่มีบทวิเคราะห์ 5 ลีกใหญ่ โปรดกลับมาใหม่' : 'No Top 5 Leagues analysis yet. Check back soon.';
+    : isBn ? 'নির্দিষ্ট এক বা একাধিক ম্যাচকে ঘিরে কৌশল ও ম্যাচ পরিস্থিতির বিশ্লেষণ — পুরো মৌসুমের দল নিয়ে মন্তব্য নয়।' : 'Tactical and match-state analysis tied to specific games (one or several) — not season-long team commentary.';
+const emptyText = isZhTw ? '目前尚無五大聯賽賽事分析文章，敬請期待。' : isTh ? 'ยังไม่มีบทวิเคราะห์ 5 ลีกใหญ่ โปรดกลับมาใหม่' : isBn ? 'এখনও শীর্ষ ৫ লিগের কোনো বিশ্লেষণ নেই। শীঘ্রই আবার দেখুন।' : 'No Top 5 Leagues analysis yet. Check back soon.';
 ---
 
 <TrendList

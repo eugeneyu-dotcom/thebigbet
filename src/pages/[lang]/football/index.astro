@@ -13,14 +13,15 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+const isBn = lang === 'bn';
 
-const title = isZhTw ? '足球' : isTh ? 'ฟุตบอล' : 'Football';
-const subtitle = isZhTw ? '足球賽事分析與博弈資訊。' : isTh ? 'บทวิเคราะห์และข้อมูลเดิมพันฟุตบอล' : 'Football analysis and betting information.';
+const title = isZhTw ? '足球' : isTh ? 'ฟุตบอล' : isBn ? 'ফুটবল' : 'Football';
+const subtitle = isZhTw ? '足球賽事分析與博弈資訊。' : isTh ? 'บทวิเคราะห์และข้อมูลเดิมพันฟุตบอล' : isBn ? 'ফুটবল বিশ্লেষণ ও বেটিং তথ্য।' : 'Football analysis and betting information.';
 
 const cards = [
-  { href: `/${lang}/football/world-cup`, label: isZhTw ? '2026 世界盃' : isTh ? 'ฟุตบอลโลก 2026' : '2026 World Cup', desc: isZhTw ? '分析、知識、樹狀圖與紀錄' : isTh ? 'บทวิเคราะห์ ความรู้ สาย และสถิติ' : 'Analysis, guides, bracket and records' },
-  { href: `/${lang}/football/leagues`, label: isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : 'Top 5 Leagues', desc: isZhTw ? '英超、西甲、義甲、德甲、法甲即時賠率與分析' : isTh ? 'ราคาสดและบทวิเคราะห์ พรีเมียร์ลีก ลาลีกา เซเรียอา บุนเดสลีกา ลีกเอิง' : 'EPL, La Liga, Serie A, Bundesliga, Ligue 1 — live odds and analysis' },
-  { href: `/${lang}/football/champions-league`, label: isZhTw ? '歐冠' : isTh ? 'แชมเปียนส์ลีก' : 'Champions League', desc: isZhTw ? '歐洲冠軍聯賽即時賠率與深度分析' : isTh ? 'ราคาสดและบทวิเคราะห์เชิงลึกของยูฟ่าแชมเปียนส์ลีก' : 'Live UEFA Champions League odds and in-depth analysis' },
+  { href: `/${lang}/football/world-cup`, label: isZhTw ? '2026 世界盃' : isTh ? 'ฟุตบอลโลก 2026' : isBn ? '২০২৬ বিশ্বকাপ' : '2026 World Cup', desc: isZhTw ? '分析、知識、樹狀圖與紀錄' : isTh ? 'บทวิเคราะห์ ความรู้ สาย และสถิติ' : isBn ? 'বিশ্লেষণ, ম্যাচ গাইড, ব্র্যাকেট ও রেকর্ড' : 'Analysis, guides, bracket and records' },
+  { href: `/${lang}/football/leagues`, label: isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : isBn ? 'শীর্ষ ৫ লিগ' : 'Top 5 Leagues', desc: isZhTw ? '英超、西甲、義甲、德甲、法甲即時賠率與分析' : isTh ? 'ราคาสดและบทวิเคราะห์ พรีเมียร์ลีก ลาลีกา เซเรียอา บุนเดสลีกา ลีกเอิง' : isBn ? 'ইপিএল, লা লিগা, সিরি আ, বুন্দেসলিগা, লিগ ১ — লাইভ অডস ও বিশ্লেষণ' : 'EPL, La Liga, Serie A, Bundesliga, Ligue 1 — live odds and analysis' },
+  { href: `/${lang}/football/champions-league`, label: isZhTw ? '歐冠' : isTh ? 'แชมเปียนส์ลีก' : isBn ? 'চ্যাম্পিয়নস লিগ' : 'Champions League', desc: isZhTw ? '歐洲冠軍聯賽即時賠率與深度分析' : isTh ? 'ราคาสดและบทวิเคราะห์เชิงลึกของยูฟ่าแชมเปียนส์ลีก' : isBn ? 'উয়েফা চ্যাম্পিয়নস লিগের লাইভ অডস ও গভীর বিশ্লেষণ' : 'Live UEFA Champions League odds and in-depth analysis' },
 ];
 ---
 

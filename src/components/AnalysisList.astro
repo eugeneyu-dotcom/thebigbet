@@ -22,6 +22,7 @@ const { lang, entries, basePath, metaTitle, metaDescription, tag, heading, intro
 const tTeam = useTeamTranslations(lang as any);
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+const isBn = lang === 'bn';
 
 const sorted = [...entries].sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
@@ -68,7 +69,7 @@ const sorted = [...entries].sort((a, b) => b.data.pubDate.getTime() - a.data.pub
                           {isZhTw ? `信心 ${entry.data.confidence}/5` : `${entry.data.confidence}/5`}
                         </span>
                         <time class="text-xs text-slate-500 font-mono" datetime={entry.data.pubDate.toISOString()}>
-                          {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}
+                          {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US')}
                         </time>
                       </div>
                       <h2 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 line-clamp-2">
@@ -79,7 +80,7 @@ const sorted = [...entries].sort((a, b) => b.data.pubDate.getTime() - a.data.pub
                       </p>
                       {entry.data.prediction && (
                         <p class="text-sm font-bold text-amber-400 mt-2">
-                          {isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : 'Prediction: '}{entry.data.prediction}
+                          {isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : isBn ? 'পূর্বাভাস: ' : 'Prediction: '}{entry.data.prediction}
                         </p>
                       )}
                     </div>

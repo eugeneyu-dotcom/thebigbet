@@ -14,6 +14,7 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+const isBn = lang === 'bn';
 
 // NBA's own landing page, not the World-Cup-style single-game "analysis"
 // list — the season hasn't started, so there's no schedule/odds data for
@@ -49,24 +50,24 @@ function contentHref({ entry, type }: { entry: any; type: string }) {
   return `/${lang}/nba/${base}/${slug}`;
 }
 function typeBadge(type: string) {
-  if (type === 'guides') return isZhTw ? '賽事知識' : isTh ? 'ความรู้การแข่งขัน' : 'Guides';
-  if (type === 'analysis' || type === 'matchAnalysis') return isZhTw ? '賽事分析' : isTh ? 'บทวิเคราะห์การแข่งขัน' : 'Match Analysis';
-  if (type === 'trends') return isZhTw ? '趨勢分析' : isTh ? 'วิเคราะห์เทรนด์' : 'Trend Analysis';
-  if (type === 'predictions') return isZhTw ? '賽事預測' : isTh ? 'ทำนายผลการแข่งขัน' : 'Predictions';
-  return isZhTw ? '預測驗證' : isTh ? 'ตรวจสอบผลทำนาย' : 'Verification';
+  if (type === 'guides') return isZhTw ? '賽事知識' : isTh ? 'ความรู้การแข่งขัน' : isBn ? 'ম্যাচ গাইড' : 'Guides';
+  if (type === 'analysis' || type === 'matchAnalysis') return isZhTw ? '賽事分析' : isTh ? 'บทวิเคราะห์การแข่งขัน' : isBn ? 'ম্যাচ বিশ্লেষণ' : 'Match Analysis';
+  if (type === 'trends') return isZhTw ? '趨勢分析' : isTh ? 'วิเคราะห์เทรนด์' : isBn ? 'ট্রেন্ড বিশ্লেষণ' : 'Trend Analysis';
+  if (type === 'predictions') return isZhTw ? '賽事預測' : isTh ? 'ทำนายผลการแข่งขัน' : isBn ? 'পূর্বাভাস' : 'Predictions';
+  return isZhTw ? '預測驗證' : isTh ? 'ตรวจสอบผลทำนาย' : isBn ? 'যাচাই' : 'Verification';
 }
 
 const metaTitle = isZhTw ? 'NBA | The Big Bet' : isTh ? 'วิเคราะห์ NBA | The Big Bet' : 'NBA | The Big Bet';
 const metaDescription = isZhTw
   ? 'NBA 分區前瞻、聯盟預測與最新文章總覽。'
   : isTh ? 'วิเคราะห์ NBA ล่าสุด: ภาพรวมแนวโน้มรายดิวิชั่น ทำนายผลลีก และบทความเจาะลึก'
-    : 'NBA division previews, league predictions, and the latest articles all in one place.';
+    : isBn ? 'NBA ডিভিশন প্রিভিউ, লিগ পূর্বাভাস ও সর্বশেষ লেখা — সব এক জায়গায়।' : 'NBA division previews, league predictions, and the latest articles all in one place.';
 const heading = 'NBA';
 const intro = isZhTw
   ? '賽季尚未開打，暫無賠率式賽事分析——這裡改為顯示 NBA 底下所有分類的最新文章。'
   : isTh ? 'ฤดูกาลยังไม่เริ่ม จึงยังไม่มีบทวิเคราะห์แบบราคาต่อรอง หน้านี้จึงแสดงบทความล่าสุดของ NBA จากทุกหมวดหมู่แทน'
-    : "The season hasn't started, so there are no odds-driven game previews yet — this shows the latest NBA articles across every category instead.";
-const emptyText = isZhTw ? '目前尚無 NBA 文章，敬請期待。' : isTh ? 'ยังไม่มีบทความ NBA โปรดกลับมาใหม่' : 'No NBA articles yet. Check back soon.';
+    : isBn ? 'মৌসুম এখনও শুরু হয়নি, তাই অডসভিত্তিক ম্যাচ প্রিভিউ এখনও নেই — এর বদলে এখানে সব বিভাগের সর্বশেষ NBA লেখা দেখানো হচ্ছে।' : "The season hasn't started, so there are no odds-driven game previews yet — this shows the latest NBA articles across every category instead.";
+const emptyText = isZhTw ? '目前尚無 NBA 文章，敬請期待。' : isTh ? 'ยังไม่มีบทความ NBA โปรดกลับมาใหม่' : isBn ? 'এখনও NBA-র কোনো লেখা নেই। শীঘ্রই আবার দেখুন।' : 'No NBA articles yet. Check back soon.';
 ---
 
 <html lang={lang}>
@@ -95,11 +96,11 @@ const emptyText = isZhTw ? '目前尚無 NBA 文章，敬請期待。' : isTh ? 
             <a href={contentHref(item)} class="group block bg-[#211d19] border border-[#3c352c] hover:border-amber-400/40 rounded-2xl p-5 transition-all duration-200">
               <div class="flex items-center gap-2 mb-2">
                 <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-black bg-violet-400/10 border border-violet-400/30 text-violet-300 uppercase">{typeBadge(item.type)}</span>
-                <time class="text-xs text-slate-500 font-mono">{item.entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}</time>
+                <time class="text-xs text-slate-500 font-mono">{item.entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US')}</time>
               </div>
               <h3 class="text-base font-bold text-white group-hover:text-amber-300 transition-colors duration-200 line-clamp-2">{item.entry.data.title}</h3>
               {item.entry.data.prediction && (
-                <p class="text-sm font-bold text-amber-400 mt-2 truncate">{isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : 'Prediction: '}{item.entry.data.prediction}</p>
+                <p class="text-sm font-bold text-amber-400 mt-2 truncate">{isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : isBn ? 'পূর্বাভাস: ' : 'Prediction: '}{item.entry.data.prediction}</p>
               )}
             </a>
           ))}

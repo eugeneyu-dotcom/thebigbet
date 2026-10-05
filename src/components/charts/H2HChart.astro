@@ -16,11 +16,12 @@ const bPercent = total > 0 ? 100 - aPercent - dPercent : 0;
 
 const isZh = lang === 'zh-tw';
 const isTh = lang === 'th';
-const title        = isZh ? '歷史交鋒紀錄' : isTh ? 'สถิติการพบกัน' : 'Head-to-Head Record';
-const homeWinsLabel = isZh ? '主隊勝' : isTh ? 'เจ้าบ้านชนะ' : 'Home Wins';
-const drawsLabel    = isZh ? '平局'   : isTh ? 'เสมอ' : 'Draws';
-const awayWinsLabel = isZh ? '客隊勝' : isTh ? 'ทีมเยือนชนะ' : 'Away Wins';
-const matchesLabel  = isZh ? `共 ${total} 場交鋒紀錄` : isTh ? `รวม ${total} นัด` : `${total} matches all-time`;
+const isBn = lang === 'bn';
+const title        = isZh ? '歷史交鋒紀錄' : isTh ? 'สถิติการพบกัน' : isBn ? 'হেড-টু-হেড রেকর্ড' : 'Head-to-Head Record';
+const homeWinsLabel = isZh ? '主隊勝' : isTh ? 'เจ้าบ้านชนะ' : isBn ? 'হোম জয়' : 'Home Wins';
+const drawsLabel    = isZh ? '平局'   : isTh ? 'เสมอ' : isBn ? 'ড্র' : 'Draws';
+const awayWinsLabel = isZh ? '客隊勝' : isTh ? 'ทีมเยือนชนะ' : isBn ? 'অ্যাওয়ে জয়' : 'Away Wins';
+const matchesLabel  = isZh ? `共 ${total} 場交鋒紀錄` : isTh ? `รวม ${total} นัด` : isBn ? `সর্বকালে ${total}টি ম্যাচ` : `${total} matches all-time`;
 ---
 
 <div class="w-full p-5 rounded-xl border border-[#544a3e]/60 bg-[#211d19]/60 mb-6">

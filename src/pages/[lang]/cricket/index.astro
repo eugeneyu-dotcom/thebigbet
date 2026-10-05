@@ -16,6 +16,7 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+const isBn = lang === 'bn';
 
 // Cricket odds (match-winner) from the cached feed.
 let cricketMatches: any[] = [];
@@ -33,18 +34,18 @@ function moneyline(m: any) {
   return { home, away };
 }
 const fmtTime = (iso: string) =>
-  new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
+  new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
 
 const analysisEntries = (await getCollection('analysis', (entry) =>
   entry.id.startsWith(lang + '/') && entry.data.league === 'cricket' && !entry.data.draft))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
-const metaTitle = isZhTw ? '板球賠率與賽事分析 | The Big Bet' : isTh ? 'ราคาคริกเก็ตและวิเคราะห์ | The Big Bet' : 'Cricket Odds & Analysis | The Big Bet';
-const metaDescription = isZhTw ? 'IPL、PSL 與亞洲盃板球即時賠率與深度賽事分析。' : isTh ? 'ราคาสด IPL, PSL และเอเชียนคัพคริกเก็ต พร้อมบทวิเคราะห์เชิงลึก' : 'Live IPL, PSL and Asia Cup cricket odds and in-depth match analysis.';
-const oddsHeading = isZhTw ? '板球即時賠率（勝方）' : isTh ? 'ราคาคริกเก็ตสด (ผู้ชนะ)' : 'Live Cricket Odds (Match Winner)';
-const analysisHeading = isZhTw ? '板球賽事分析' : isTh ? 'วิเคราะห์คริกเก็ต' : 'Cricket Analysis';
-const noOdds = isZhTw ? '目前暫無板球賠率資料（IPL／PSL 為季節性賽事，休賽期間不會有資料）。' : isTh ? 'ยังไม่มีข้อมูลราคาคริกเก็ต (IPL/PSL เป็นการแข่งขันตามฤดูกาล)' : 'No cricket odds available right now (IPL/PSL are seasonal and will be empty out of season).';
-const noAnalysis = isZhTw ? '目前尚無板球分析文章。' : isTh ? 'ยังไม่มีบทวิเคราะห์คริกเก็ต' : 'No cricket analysis yet.';
+const metaTitle = isZhTw ? '板球賠率與賽事分析 | The Big Bet' : isTh ? 'ราคาคริกเก็ตและวิเคราะห์ | The Big Bet' : isBn ? 'ক্রিকেট অডস ও বিশ্লেষণ | The Big Bet' : 'Cricket Odds & Analysis | The Big Bet';
+const metaDescription = isZhTw ? 'IPL、PSL 與亞洲盃板球即時賠率與深度賽事分析。' : isTh ? 'ราคาสด IPL, PSL และเอเชียนคัพคริกเก็ต พร้อมบทวิเคราะห์เชิงลึก' : isBn ? 'আইপিএল, পিএসএল ও এশিয়া কাপ ক্রিকেটের লাইভ অডস এবং গভীর ম্যাচ বিশ্লেষণ।' : 'Live IPL, PSL and Asia Cup cricket odds and in-depth match analysis.';
+const oddsHeading = isZhTw ? '板球即時賠率（勝方）' : isTh ? 'ราคาคริกเก็ตสด (ผู้ชนะ)' : isBn ? 'ক্রিকেটের লাইভ অডস (ম্যাচ জয়ী)' : 'Live Cricket Odds (Match Winner)';
+const analysisHeading = isZhTw ? '板球賽事分析' : isTh ? 'วิเคราะห์คริกเก็ต' : isBn ? 'ক্রিকেট বিশ্লেষণ' : 'Cricket Analysis';
+const noOdds = isZhTw ? '目前暫無板球賠率資料（IPL／PSL 為季節性賽事，休賽期間不會有資料）。' : isTh ? 'ยังไม่มีข้อมูลราคาคริกเก็ต (IPL/PSL เป็นการแข่งขันตามฤดูกาล)' : isBn ? 'এই মুহূর্তে ক্রিকেটের কোনো অডস নেই (আইপিএল/পিএসএল মৌসুমভিত্তিক টুর্নামেন্ট, অফ-সিজনে কোনো ডেটা থাকে না)।' : 'No cricket odds available right now (IPL/PSL are seasonal and will be empty out of season).';
+const noAnalysis = isZhTw ? '目前尚無板球分析文章。' : isTh ? 'ยังไม่มีบทวิเคราะห์คริกเก็ต' : isBn ? 'এখনও ক্রিকেটের কোনো বিশ্লেষণ নেই।' : 'No cricket analysis yet.';
 ---
 
 <html lang={lang}>
@@ -58,8 +59,8 @@ const noAnalysis = isZhTw ? '目前尚無板球分析文章。' : isTh ? 'ยั
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full min-w-0">
 
       <div class="mb-8">
-        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">{isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket'}</p>
-        <h1 class="text-3xl font-black text-white">{isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket'}</h1>
+        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">{isZhTw ? '板球' : isTh ? 'คริกเก็ต' : isBn ? 'ক্রিকেট' : 'Cricket'}</p>
+        <h1 class="text-3xl font-black text-white">{isZhTw ? '板球' : isTh ? 'คริกเก็ต' : isBn ? 'ক্রিকেট' : 'Cricket'}</h1>
       </div>
 
       <!-- Odds -->
@@ -77,7 +78,7 @@ const noAnalysis = isZhTw ? '目前尚無板球分析文章。' : isTh ? 'ยั
                   <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
                     <div class="min-w-0">
                       <p class="font-bold text-white truncate">{m.away_team}</p>
-                      <p class="text-xs text-slate-500 uppercase">{isZhTw ? '客隊' : isTh ? 'ทีมเยือน' : 'Away'}</p>
+                      <p class="text-xs text-slate-500 uppercase">{isZhTw ? '客隊' : isTh ? 'ทีมเยือน' : isBn ? 'অ্যাওয়ে' : 'Away'}</p>
                     </div>
                     <div class="flex items-center gap-3 font-mono font-black">
                       <span class="text-violet-400">{ml.away}</span>
@@ -86,7 +87,7 @@ const noAnalysis = isZhTw ? '目前尚無板球分析文章。' : isTh ? 'ยั
                     </div>
                     <div class="min-w-0 text-right">
                       <p class="font-bold text-white truncate">{m.home_team}</p>
-                      <p class="text-xs text-slate-500 uppercase">{isZhTw ? '主隊' : isTh ? 'เจ้าบ้าน' : 'Home'}</p>
+                      <p class="text-xs text-slate-500 uppercase">{isZhTw ? '主隊' : isTh ? 'เจ้าบ้าน' : isBn ? 'হোম' : 'Home'}</p>
                     </div>
                   </div>
                 </li>
@@ -109,10 +110,10 @@ const noAnalysis = isZhTw ? '目前尚無板球分析文章。' : isTh ? 'ยั
               return (
                 <li>
                   <a href={`/${lang}/cricket/analysis/${slug}`} class="group block bg-[#211d19] border border-[#3c352c] hover:border-amber-400/40 rounded-2xl p-6 transition-all duration-200">
-                    <time class="text-xs text-slate-500 font-mono">{entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}</time>
+                    <time class="text-xs text-slate-500 font-mono">{entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US')}</time>
                     <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 truncate mt-2">{entry.data.title}</h3>
                     {entry.data.prediction && (
-                      <p class="text-sm font-bold text-amber-400 mt-2">{isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : 'Prediction: '}{entry.data.prediction}</p>
+                      <p class="text-sm font-bold text-amber-400 mt-2">{isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : isBn ? 'পূর্বাভাস: ' : 'Prediction: '}{entry.data.prediction}</p>
                     )}
                   </a>
                 </li>

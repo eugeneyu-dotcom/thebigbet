@@ -10,22 +10,23 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+const isBn = lang === 'bn';
 
 const entries = await getCollection('predictions', (entry) =>
   entry.id.startsWith(lang + '/') && entry.data.league === 'club-football');
 
-const metaTitle = isZhTw ? '五大聯賽賽事預測 | The Big Bet' : isTh ? 'ทำนายผล 5 ลีกใหญ่ | The Big Bet' : 'Top 5 Leagues Predictions | The Big Bet';
+const metaTitle = isZhTw ? '五大聯賽賽事預測 | The Big Bet' : isTh ? 'ทำนายผล 5 ลีกใหญ่ | The Big Bet' : isBn ? 'শীর্ষ ৫ লিগ পূর্বাভাস | The Big Bet' : 'Top 5 Leagues Predictions | The Big Bet';
 const metaDescription = isZhTw
   ? '五大聯賽近期賽事的即時預測，聚焦焦點球隊每輪對戰。'
   : isTh ? 'ทำนายผลนัดล่าสุดของ 5 ลีกใหญ่ เจาะทีมโฟกัสในแต่ละสัปดาห์'
-    : 'Round-by-round predictions for Top 5 Leagues fixtures, focused on the priority clubs.';
-const tag = isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : 'Top 5 Leagues';
-const heading = isZhTw ? '五大聯賽賽事預測' : isTh ? 'ทำนายผล 5 ลีกใหญ่' : 'Top 5 Leagues Predictions';
+    : isBn ? 'শীর্ষ ৫ লিগের প্রতিটি রাউন্ডের পূর্বাভাস, অগ্রাধিকার পাওয়া ক্লাবগুলোকে কেন্দ্র করে।' : 'Round-by-round predictions for Top 5 Leagues fixtures, focused on the priority clubs.';
+const tag = isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : isBn ? 'শীর্ষ ৫ লিগ' : 'Top 5 Leagues';
+const heading = isZhTw ? '五大聯賽賽事預測' : isTh ? 'ทำนายผล 5 ลีกใหญ่' : isBn ? 'শীর্ষ ৫ লিগ পূর্বাভাস' : 'Top 5 Leagues Predictions';
 const intro = isZhTw
   ? '不是球隊整季走向的觀察，而是針對近期即將開踢的對戰給出的即時預測。'
   : isTh ? 'ไม่ใช่มุมมองทิศทางทีมตลอดฤดูกาล แต่เป็นการทำนายผลนัดที่กำลังจะแข่งในเร็ว ๆ นี้'
-    : 'Not season-long team commentary — quick predictions for fixtures coming up soon.';
-const emptyText = isZhTw ? '目前尚無五大聯賽賽事預測文章，敬請期待。' : isTh ? 'ยังไม่มีบทความทำนายผล 5 ลีกใหญ่ โปรดกลับมาใหม่' : 'No Top 5 Leagues predictions yet. Check back soon.';
+    : isBn ? 'মৌসুমজুড়ে দল নিয়ে মন্তব্য নয় — আসন্ন ম্যাচগুলোর দ্রুত পূর্বাভাস।' : 'Not season-long team commentary — quick predictions for fixtures coming up soon.';
+const emptyText = isZhTw ? '目前尚無五大聯賽賽事預測文章，敬請期待。' : isTh ? 'ยังไม่มีบทความทำนายผล 5 ลีกใหญ่ โปรดกลับมาใหม่' : isBn ? 'এখনও শীর্ষ ৫ লিগের কোনো পূর্বাভাস নেই। শীঘ্রই আবার দেখুন।' : 'No Top 5 Leagues predictions yet. Check back soon.';
 ---
 
 <TrendList

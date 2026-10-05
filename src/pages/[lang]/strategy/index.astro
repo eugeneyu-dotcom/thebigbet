@@ -53,7 +53,7 @@ const sorted = allEntries.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDa
                   <div class="flex items-start justify-between gap-4">
                     <div class="flex-grow min-w-0">
                       <time class="text-xs text-slate-500 font-mono" datetime={entry.data.pubDate.toISOString()}>
-                        {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}
+                        {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US')}
                       </time>
                       <h2 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 line-clamp-2 mt-2">
                         {entry.data.title}

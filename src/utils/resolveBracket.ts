@@ -64,14 +64,14 @@ function resolveSlotInternal(
       if (team) return { label: tTeam(team.name), teamName: team.name };
     }
     const ordinal = slot.position === 1
-      ? (lang === 'zh-tw' ? '第一' : lang === 'th' ? 'อันดับ 1' : '1st')
-      : (lang === 'zh-tw' ? '第二' : lang === 'th' ? 'อันดับ 2' : '2nd');
+      ? (lang === 'zh-tw' ? '第一' : lang === 'th' ? 'อันดับ 1' : lang === 'bn' ? '১ম' : '1st')
+      : (lang === 'zh-tw' ? '第二' : lang === 'th' ? 'อันดับ 2' : lang === 'bn' ? '২য়' : '2nd');
     const letter = groupLetter(slot.group);
     const label = lang === 'zh-tw'
       ? `${letter}組${ordinal}`
       : lang === 'th'
         ? `กลุ่ม ${letter} ${ordinal}`
-        : `Group ${letter} ${ordinal}`;
+        : lang === 'bn' ? `গ্রুপ ${letter} ${ordinal}` : `Group ${letter} ${ordinal}`;
     return { label, teamName: null };
   }
 
@@ -95,13 +95,13 @@ function resolveSlotInternal(
       ? `最佳第三名：${letters}`
       : lang === 'th'
         ? `อันดับ 3 ที่ดีที่สุด: ${letters}`
-        : `Best 3rd: ${letters}`;
+        : lang === 'bn' ? `সেরা তৃতীয়: ${letters}` : `Best 3rd: ${letters}`;
     return { label, teamName: null };
   }
 
   if (slot.type === 'winnerOf' || slot.type === 'loserOf') {
     const referencedMatch = bracketMatches.find(m => m.id === slot.matchId);
-    const tbd = lang === 'zh-tw' ? '待定' : lang === 'th' ? 'รอผล' : 'TBD';
+    const tbd = lang === 'zh-tw' ? '待定' : lang === 'th' ? 'รอผล' : lang === 'bn' ? 'নির্ধারিত হয়নি' : 'TBD';
     if (!referencedMatch) return { label: tbd, teamName: null };
 
     const refA = resolveSlotInternal(referencedMatch.slotA, standingsData, knockoutResults, bracketMatches, lang, tTeam);

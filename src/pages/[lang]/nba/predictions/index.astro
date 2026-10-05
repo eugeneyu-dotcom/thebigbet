@@ -10,22 +10,23 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+const isBn = lang === 'bn';
 
 const entries = await getCollection('predictions', (entry) =>
   entry.id.startsWith(lang + '/') && entry.data.league === 'nba');
 
-const metaTitle = isZhTw ? 'NBA 賽事預測 | The Big Bet' : isTh ? 'ทำนายผล NBA | The Big Bet' : 'NBA Predictions | The Big Bet';
+const metaTitle = isZhTw ? 'NBA 賽事預測 | The Big Bet' : isTh ? 'ทำนายผล NBA | The Big Bet' : isBn ? 'NBA পূর্বাভাস | The Big Bet' : 'NBA Predictions | The Big Bet';
 const metaDescription = isZhTw
   ? 'NBA 新賽季戰績與排名預測，包含分區與聯盟整體排名展望。'
   : isTh ? 'ทำนายผลงานและอันดับ NBA ฤดูกาลใหม่ ทั้งระดับดิวิชั่นและภาพรวมสาย'
-    : 'NBA season predictions — division and conference standings outlook.';
+    : isBn ? 'NBA মৌসুমের পূর্বাভাস — ডিভিশন ও কনফারেন্সের পয়েন্ট তালিকার সম্ভাবনা।' : 'NBA season predictions — division and conference standings outlook.';
 const tag = 'NBA';
-const heading = isZhTw ? 'NBA 賽事預測' : isTh ? 'ทำนายผล NBA' : 'NBA Predictions';
+const heading = isZhTw ? 'NBA 賽事預測' : isTh ? 'ทำนายผล NBA' : isBn ? 'NBA পূর্বাভাস' : 'NBA Predictions';
 const intro = isZhTw
   ? '不是球隊整季走向的觀察，而是針對排名與戰績給出的具體預測。'
   : isTh ? 'ไม่ใช่มุมมองทิศทางทีมตลอดฤดูกาล แต่เป็นการทำนายอันดับและผลงานอย่างเจาะจง'
-    : 'Not season-long team commentary — concrete predictions for standings and outcomes.';
-const emptyText = isZhTw ? '目前尚無 NBA 賽事預測文章，敬請期待。' : isTh ? 'ยังไม่มีบทความทำนายผล NBA โปรดกลับมาใหม่' : 'No NBA predictions yet. Check back soon.';
+    : isBn ? 'মৌসুমজুড়ে দল নিয়ে মন্তব্য নয় — পয়েন্ট তালিকা ও ফলাফল নিয়ে সুনির্দিষ্ট পূর্বাভাস।' : 'Not season-long team commentary — concrete predictions for standings and outcomes.';
+const emptyText = isZhTw ? '目前尚無 NBA 賽事預測文章，敬請期待。' : isTh ? 'ยังไม่มีบทความทำนายผล NBA โปรดกลับมาใหม่' : isBn ? 'এখনও NBA-র কোনো পূর্বাভাস নেই। শীঘ্রই আবার দেখুন।' : 'No NBA predictions yet. Check back soon.';
 ---
 
 <TrendList

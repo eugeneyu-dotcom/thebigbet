@@ -22,7 +22,8 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
-const tag = isZhTw ? '五大聯賽 賽事知識' : isTh ? 'ความรู้ 5 ลีกใหญ่' : 'Top 5 Leagues Guide';
+const isBn = lang === 'bn';
+const tag = isZhTw ? '五大聯賽 賽事知識' : isTh ? 'ความรู้ 5 ลีกใหญ่' : isBn ? 'শীর্ষ ৫ লিগ গাইড' : 'Top 5 Leagues Guide';
 ---
 
 <html lang={lang}>
@@ -45,7 +46,7 @@ const tag = isZhTw ? '五大聯賽 賽事知識' : isTh ? 'ความรู้
             <span class="text-xs font-black text-amber-400 uppercase tracking-widest">{tag}</span>
             <span class="text-[#544a3e]">·</span>
             <time class="text-sm text-slate-400 font-mono" datetime={entry.data.pubDate.toISOString()}>
-              {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}
+              {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US')}
             </time>
           </div>
           <h1 class="text-3xl md:text-4xl font-black text-white leading-tight">{entry.data.title}</h1>

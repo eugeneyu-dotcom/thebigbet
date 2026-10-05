@@ -13,19 +13,20 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+const isBn = lang === 'bn';
 
-const title = isZhTw ? '2026 世界盃' : isTh ? 'ฟุตบอลโลก 2026' : '2026 World Cup';
+const title = isZhTw ? '2026 世界盃' : isTh ? 'ฟุตบอลโลก 2026' : isBn ? '২০২৬ বিশ্বকাপ' : '2026 World Cup';
 const subtitle = isZhTw
   ? '2026 FIFA 世界盃的完整內容：賽事分析、賽事知識、對戰樹狀圖與紀錄。'
   : isTh ? 'เนื้อหาครบของฟุตบอลโลก 2026: บทวิเคราะห์ ความรู้ สายการแข่งขัน และสถิติ'
-    : 'Everything from the 2026 FIFA World Cup: analysis, guides, the bracket and records.';
+    : isBn ? '২০২৬ ফিফা বিশ্বকাপের সবকিছু: বিশ্লেষণ, গাইড, ব্র্যাকেট ও রেকর্ড।' : 'Everything from the 2026 FIFA World Cup: analysis, guides, the bracket and records.';
 
 const cards = [
-  { href: `/${lang}/football/world-cup/analysis`, label: isZhTw ? '賽事分析' : isTh ? 'บทวิเคราะห์' : 'Match Analysis', desc: isZhTw ? '每場賽事的深度前瞻與預測' : isTh ? 'บทวิเคราะห์เชิงลึกและการทำนายรายแมตช์' : 'In-depth previews and predictions' },
-  { href: `/${lang}/football/world-cup/guides`, label: isZhTw ? '賽事知識' : isTh ? 'ความรู้ฟุตบอล' : 'Guides', desc: isZhTw ? '賽制、規則與觀賽知識' : isTh ? 'รูปแบบ กติกา และความรู้' : 'Format, rules and know-how' },
-  { href: `/${lang}/football/world-cup/bracket`, label: isZhTw ? '淘汰賽樹狀圖' : isTh ? 'สายการแข่งขัน' : 'Knockout Bracket', desc: isZhTw ? '32強到冠軍的完整對戰表' : isTh ? 'สายตั้งแต่ 32 ทีมถึงแชมป์' : 'Full bracket from R32 to the final' },
-  { href: `/${lang}/football/world-cup/group-stage`, label: isZhTw ? '小組賽事紀錄' : isTh ? 'ผลรอบแบ่งกลุ่ม' : 'Group Results', desc: isZhTw ? '小組排名與最佳第三名' : isTh ? 'อันดับกลุ่มและอันดับ 3 ที่ดีที่สุด' : 'Group standings and best thirds' },
-  { href: `/${lang}/football/world-cup/schedule`, label: isZhTw ? '賽程' : isTh ? 'ตารางแข่ง' : 'Schedule', desc: isZhTw ? '賽事時間與賠率' : isTh ? 'เวลาแข่งและราคา' : 'Fixtures and odds' },
+  { href: `/${lang}/football/world-cup/analysis`, label: isZhTw ? '賽事分析' : isTh ? 'บทวิเคราะห์' : isBn ? 'ম্যাচ বিশ্লেষণ' : 'Match Analysis', desc: isZhTw ? '每場賽事的深度前瞻與預測' : isTh ? 'บทวิเคราะห์เชิงลึกและการทำนายรายแมตช์' : isBn ? 'গভীর প্রিভিউ ও পূর্বাভাস' : 'In-depth previews and predictions' },
+  { href: `/${lang}/football/world-cup/guides`, label: isZhTw ? '賽事知識' : isTh ? 'ความรู้ฟุตบอล' : isBn ? 'ম্যাচ গাইড' : 'Guides', desc: isZhTw ? '賽制、規則與觀賽知識' : isTh ? 'รูปแบบ กติกา และความรู้' : isBn ? 'ফরম্যাট, নিয়ম ও জানার বিষয়' : 'Format, rules and know-how' },
+  { href: `/${lang}/football/world-cup/bracket`, label: isZhTw ? '淘汰賽樹狀圖' : isTh ? 'สายการแข่งขัน' : isBn ? 'নকআউট ব্র্যাকেট' : 'Knockout Bracket', desc: isZhTw ? '32強到冠軍的完整對戰表' : isTh ? 'สายตั้งแต่ 32 ทีมถึงแชมป์' : isBn ? 'রাউন্ড অব ৩২ থেকে ফাইনাল পর্যন্ত পূর্ণ ব্র্যাকেট' : 'Full bracket from R32 to the final' },
+  { href: `/${lang}/football/world-cup/group-stage`, label: isZhTw ? '小組賽事紀錄' : isTh ? 'ผลรอบแบ่งกลุ่ม' : isBn ? 'গ্রুপ পর্বের ফলাফল' : 'Group Results', desc: isZhTw ? '小組排名與最佳第三名' : isTh ? 'อันดับกลุ่มและอันดับ 3 ที่ดีที่สุด' : isBn ? 'গ্রুপের পয়েন্ট তালিকা ও সেরা তৃতীয় স্থান' : 'Group standings and best thirds' },
+  { href: `/${lang}/football/world-cup/schedule`, label: isZhTw ? '賽程' : isTh ? 'ตารางแข่ง' : isBn ? 'সময়সূচি' : 'Schedule', desc: isZhTw ? '賽事時間與賠率' : isTh ? 'เวลาแข่งและราคา' : isBn ? 'ম্যাচের সূচি ও অডস' : 'Fixtures and odds' },
 ];
 ---
 
@@ -39,7 +40,7 @@ const cards = [
     <Header />
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full min-w-0">
       <div class="mb-10">
-        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">{isZhTw ? '足球' : isTh ? 'ฟุตบอล' : 'Football'}</p>
+        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">{isZhTw ? '足球' : isTh ? 'ฟุตบอล' : isBn ? 'ফুটবল' : 'Football'}</p>
         <h1 class="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 italic uppercase tracking-tighter">{title}</h1>
         <p class="text-slate-400 mt-3 text-sm leading-relaxed max-w-2xl">{subtitle}</p>
       </div>

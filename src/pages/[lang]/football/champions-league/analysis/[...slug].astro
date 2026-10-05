@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.params;
 const { entry } = Astro.props;
-const articleTag = lang === 'zh-tw' ? '賽事分析' : lang === 'th' ? 'บทวิเคราะห์การแข่งขัน' : 'Match Analysis';
+const articleTag = lang === 'zh-tw' ? '賽事分析' : lang === 'th' ? 'บทวิเคราะห์การแข่งขัน' : lang === 'bn' ? 'ম্যাচ বিশ্লেষণ' : 'Match Analysis';
 ---
 
 <TrendArticle entry={entry} lang={lang as string} articleTag={articleTag} />

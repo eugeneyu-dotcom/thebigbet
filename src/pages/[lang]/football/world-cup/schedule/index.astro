@@ -29,7 +29,7 @@ const displaySections: { label: string; matches: any[] }[] = [];
 
 if (allGroupsFinished) {
   // Knockout stage: deduplicate and show all matches chronologically in one list
-  const knockoutLabel = lang === 'zh-tw' ? '32強 淘汰賽' : lang === 'th' ? 'รอบ 32 ทีม' : 'Round of 32';
+  const knockoutLabel = lang === 'zh-tw' ? '32強 淘汰賽' : lang === 'th' ? 'รอบ 32 ทีม' : lang === 'bn' ? 'রাউন্ড অব ৩২' : 'Round of 32';
   displaySections.push({ label: knockoutLabel, matches });
 } else {
   // Group stage: group matches by their original group, no duplicates
@@ -54,7 +54,7 @@ const scheduleDescription = lang === 'zh-tw'
   ? '2026 FIFA 世界盃完整賽程表，包含比賽時間、賠率與小組積分，即時更新。'
   : lang === 'th'
     ? 'ตารางฟุตบอลโลก 2026 ฉบับสมบูรณ์ พร้อมเวลาแข่ง อัตราต่อรอง และตารางคะแนน อัปเดตสด'
-    : 'Full 2026 FIFA World Cup schedule with match times, live odds, and group standings, updated in real time.';
+    : lang === 'bn' ? '২০২৬ ফিফা বিশ্বকাপের পূর্ণ সময়সূচি — ম্যাচের সময়, লাইভ অডস ও গ্রুপের পয়েন্ট তালিকা সহ, রিয়েল টাইমে আপডেট করা হয়।' : 'Full 2026 FIFA World Cup schedule with match times, live odds, and group standings, updated in real time.';
 ---
 
 <html lang={lang}>

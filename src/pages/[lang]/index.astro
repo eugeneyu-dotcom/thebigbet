@@ -106,7 +106,7 @@ function moneyline(m: any) {
   return { home, away, draw };
 }
 const fmtTime = (iso: string) =>
-  new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
+  new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
 
 // Latest content across all three article-like collections (match analysis,
 // knowledge guides, team/season trends), unified and sorted by pubDate —
@@ -177,14 +177,14 @@ function contentHref({ entry, type }: { entry: any; type: string }) {
 const leagueLabel = (league: string) => {
   const l = league ?? 'world-cup';
   if (l === 'nba') return 'NBA';
-  if (l === 'cricket') return isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket';
+  if (l === 'cricket') return isZhTw ? '板球' : isTh ? 'คริกเก็ต' : isBn ? 'ক্রিকেট' : 'Cricket';
   if (l === 'club-football') return t('nav.leagues');
   if (l === 'champions-league') return t('nav.championsLeague');
   return t('nav.worldcup');
 };
 function contentBadge({ entry, type }: { entry: any; type: string }) {
   if (type === 'guides') {
-    if (entry.data.sport === 'cricket') return isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket';
+    if (entry.data.sport === 'cricket') return isZhTw ? '板球' : isTh ? 'คริกเก็ต' : isBn ? 'ক্রিকেট' : 'Cricket';
     if (entry.data.sport === 'basketball') return 'NBA';
     if (entry.data.league === 'club-football') return t('nav.leagues');
     if (entry.data.league === 'champions-league') return t('nav.championsLeague');
@@ -195,7 +195,7 @@ function contentBadge({ entry, type }: { entry: any; type: string }) {
 
 const categories = [
   { key: 'football', href: `/${lang}/football`, label: t('nav.football') },
-  { key: 'cricket', href: `/${lang}/cricket`, label: isZhTw ? '板球' : isTh ? 'คริกเก็ต' : 'Cricket' },
+  { key: 'cricket', href: `/${lang}/cricket`, label: isZhTw ? '板球' : isTh ? 'คริกเก็ต' : isBn ? 'ক্রিকেট' : 'Cricket' },
   { key: 'nba', href: `/${lang}/nba`, label: 'NBA' },
   { key: 'strategy', href: `/${lang}/strategy`, label: t('nav.strategy') },
 ].filter((c) => c.key === 'strategy' || visibleSports.includes(c.key));
@@ -208,15 +208,15 @@ const homeDescription = isZhTw
       ? 'thebigbet.org — ফুটবল ও ক্রিকেটের লাইভ অডস, AI ও বিশেষজ্ঞদের পূর্বাভাস এবং গভীর বিশ্লেষণ। সম্পূর্ণ বিনামূল্যে, নিবন্ধন ছাড়াই।'
       : 'thebigbet.org — live odds, AI and expert predictions, and in-depth analysis for football, NBA, and cricket. Free, no sign-up required.';
 
-const latestHeading = isZhTw ? '最新文章' : isTh ? 'บทความล่าสุด' : 'Latest Articles';
-const viewAll = isZhTw ? '看全部' : isTh ? 'ดูทั้งหมด' : 'View all';
+const latestHeading = isZhTw ? '最新文章' : isTh ? 'บทความล่าสุด' : isBn ? 'সর্বশেষ লেখা' : 'Latest Articles';
+const viewAll = isZhTw ? '看全部' : isTh ? 'ดูทั้งหมด' : isBn ? 'সব দেখুন' : 'View all';
 
-const cricketHeading = isZhTw ? '板球賽事預測' : isTh ? 'ทำนายคริกเก็ต' : 'Cricket Predictions';
-const footballHeading = isZhTw ? '足球賽事預測' : isTh ? 'ทำนายฟุตบอล' : 'Football Predictions';
-const internationalHeading = isZhTw ? '國際賽事預測' : isTh ? 'ทำนายเกมทีมชาติ' : 'International Predictions';
-const noCricket = isZhTw ? '目前暫無板球賠率資料（IPL／PSL 為季節性賽事，休賽期間不會有資料）。' : isTh ? 'ยังไม่มีข้อมูลราคาคริกเก็ต (IPL/PSL เป็นการแข่งขันตามฤดูกาล)' : 'No cricket odds available right now (IPL/PSL are seasonal and empty out of season).';
-const noFootball = isZhTw ? '目前暫無足球賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคาฟุตบอล' : 'No football odds available right now.';
-const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคาเกมทีมชาติ' : 'No international match odds available right now.';
+const cricketHeading = isZhTw ? '板球賽事預測' : isTh ? 'ทำนายคริกเก็ต' : isBn ? 'ক্রিকেট পূর্বাভাস' : 'Cricket Predictions';
+const footballHeading = isZhTw ? '足球賽事預測' : isTh ? 'ทำนายฟุตบอล' : isBn ? 'ফুটবল পূর্বাভাস' : 'Football Predictions';
+const internationalHeading = isZhTw ? '國際賽事預測' : isTh ? 'ทำนายเกมทีมชาติ' : isBn ? 'আন্তর্জাতিক ম্যাচের পূর্বাভাস' : 'International Predictions';
+const noCricket = isZhTw ? '目前暫無板球賠率資料（IPL／PSL 為季節性賽事，休賽期間不會有資料）。' : isTh ? 'ยังไม่มีข้อมูลราคาคริกเก็ต (IPL/PSL เป็นการแข่งขันตามฤดูกาล)' : isBn ? 'এই মুহূর্তে ক্রিকেটের কোনো অডস নেই (আইপিএল/পিএসএল মৌসুমভিত্তিক টুর্নামেন্ট, অফ-সিজনে কোনো ডেটা থাকে না)।' : 'No cricket odds available right now (IPL/PSL are seasonal and empty out of season).';
+const noFootball = isZhTw ? '目前暫無足球賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคาฟุตบอล' : isBn ? 'এই মুহূর্তে ফুটবলের কোনো অডস নেই।' : 'No football odds available right now.';
+const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isTh ? 'ยังไม่มีข้อมูลราคาเกมทีมชาติ' : isBn ? 'এই মুহূর্তে আন্তর্জাতিক ম্যাচের কোনো অডস নেই।' : 'No international match odds available right now.';
 ---
 
 <html lang={lang}>
@@ -406,18 +406,18 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
       <section>
         <h2 class="text-2xl font-black text-white mb-6">{latestHeading}</h2>
         {latestEntries.length === 0 ? (
-          <p class="text-slate-500 text-sm">{isZhTw ? '目前尚無文章。' : isTh ? 'ยังไม่มีบทความ' : 'No articles yet.'}</p>
+          <p class="text-slate-500 text-sm">{isZhTw ? '目前尚無文章。' : isTh ? 'ยังไม่มีบทความ' : isBn ? 'এখনও কোনো লেখা নেই।' : 'No articles yet.'}</p>
         ) : (
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {latestEntries.map((item) => (
               <a href={contentHref(item)} class="group block bg-[#211d19] border border-[#3c352c] hover:border-amber-400/40 rounded-2xl p-5 transition-all duration-200">
                 <div class="flex items-center gap-2 mb-2">
                   <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-black bg-violet-400/10 border border-violet-400/30 text-violet-300 uppercase">{contentBadge(item)}</span>
-                  <time class="text-xs text-slate-500 font-mono">{item.entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : 'en-US')}</time>
+                  <time class="text-xs text-slate-500 font-mono">{item.entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US')}</time>
                 </div>
                 <h3 class="text-base font-bold text-white group-hover:text-amber-300 transition-colors duration-200 line-clamp-2">{item.entry.data.title}</h3>
                 {item.entry.data.prediction && (
-                  <p class="text-sm font-bold text-amber-400 mt-2 truncate">{isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : 'Prediction: '}{item.entry.data.prediction}</p>
+                  <p class="text-sm font-bold text-amber-400 mt-2 truncate">{isZhTw ? '預測：' : isTh ? 'ทำนาย: ' : isBn ? 'পূর্বাভাস: ' : 'Prediction: '}{item.entry.data.prediction}</p>
                 )}
               </a>
             ))}

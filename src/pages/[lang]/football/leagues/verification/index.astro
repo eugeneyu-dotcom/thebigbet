@@ -10,22 +10,23 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+const isBn = lang === 'bn';
 
 const entries = await getCollection('verification', (entry) =>
   entry.id.startsWith(lang + '/') && entry.data.league === 'club-football');
 
-const metaTitle = isZhTw ? '五大聯賽預測驗證 | The Big Bet' : isTh ? 'ตรวจสอบผลทำนาย 5 ลีกใหญ่ | The Big Bet' : 'Top 5 Leagues Prediction Verification | The Big Bet';
+const metaTitle = isZhTw ? '五大聯賽預測驗證 | The Big Bet' : isTh ? 'ตรวจสอบผลทำนาย 5 ลีกใหญ่ | The Big Bet' : isBn ? 'শীর্ষ ৫ লিগ পূর্বাভাস যাচাই | The Big Bet' : 'Top 5 Leagues Prediction Verification | The Big Bet';
 const metaDescription = isZhTw
   ? '回頭核對過去預測的命中率，逐場檢視預測邏輯哪裡站得住腳、哪裡失準。'
   : isTh ? 'ย้อนดูอัตราความแม่นยำของการทำนายที่ผ่านมา ตรวจสอบทีละนัดว่าตรงไหนแม่น ตรงไหนพลาด'
-    : 'Looking back at past predictions to check the hit rate — match by match, what held up and what didn\'t.';
-const tag = isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : 'Top 5 Leagues';
-const heading = isZhTw ? '五大聯賽預測驗證' : isTh ? 'ตรวจสอบผลทำนาย 5 ลีกใหญ่' : 'Top 5 Leagues Prediction Verification';
+    : isBn ? 'আগের পূর্বাভাসগুলো ফিরে দেখে সাফল্যের হার যাচাই — ম্যাচ ধরে ধরে, কোনটা মিলেছে আর কোনটা মেলেনি।' : 'Looking back at past predictions to check the hit rate — match by match, what held up and what didn\'t.';
+const tag = isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : isBn ? 'শীর্ষ ৫ লিগ' : 'Top 5 Leagues';
+const heading = isZhTw ? '五大聯賽預測驗證' : isTh ? 'ตรวจสอบผลทำนาย 5 ลีกใหญ่' : isBn ? 'শীর্ষ ৫ লিগ পূর্বাভাস যাচাই' : 'Top 5 Leagues Prediction Verification';
 const intro = isZhTw
   ? '不是新的預測，而是回頭核對過去預測的實際命中結果。'
   : isTh ? 'ไม่ใช่การทำนายใหม่ แต่เป็นการย้อนดูผลจริงของการทำนายที่ผ่านมา'
-    : 'Not a new prediction — a look back at how previous predictions actually turned out.';
-const emptyText = isZhTw ? '目前尚無預測驗證文章，敬請期待。' : isTh ? 'ยังไม่มีบทความตรวจสอบผลทำนาย โปรดกลับมาใหม่' : 'No prediction verification articles yet. Check back soon.';
+    : isBn ? 'নতুন পূর্বাভাস নয় — আগের পূর্বাভাসগুলো আসলে কেমন হয়েছিল তার পর্যালোচনা।' : 'Not a new prediction — a look back at how previous predictions actually turned out.';
+const emptyText = isZhTw ? '目前尚無預測驗證文章，敬請期待。' : isTh ? 'ยังไม่มีบทความตรวจสอบผลทำนาย โปรดกลับมาใหม่' : isBn ? 'এখনও কোনো পূর্বাভাস যাচাই লেখা নেই। শীঘ্রই আবার দেখুন।' : 'No prediction verification articles yet. Check back soon.';
 ---
 
 <TrendList
