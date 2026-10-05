@@ -19,6 +19,7 @@ const t = useTranslations(lang);
 const tTeam = useTeamTranslations(lang);
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
+const isBn = lang === 'bn';
 const visibleSports = getVisibleSports(lang);
 
 function loadJson(relPath: string): any {
@@ -203,7 +204,9 @@ const homeDescription = isZhTw
   ? '運動賽事分析與博弈資訊平台：足球即時賠率、AI 與專家預測、深度分析與博弈攻略。'
   : isTh
     ? 'แพลตฟอร์มวิเคราะห์กีฬาและข้อมูลเดิมพัน: ราคาสดคริกเก็ตและฟุตบอล คำทำนายจาก AI และผู้เชี่ยวชาญ พร้อมบทวิเคราะห์เชิงลึก'
-    : 'thebigbet.org — live odds, AI and expert predictions, and in-depth analysis for football, NBA, and cricket. Free, no sign-up required.';
+    : isBn
+      ? 'thebigbet.org — ফুটবল ও ক্রিকেটের লাইভ অডস, AI ও বিশেষজ্ঞদের পূর্বাভাস এবং গভীর বিশ্লেষণ। সম্পূর্ণ বিনামূল্যে, নিবন্ধন ছাড়াই।'
+      : 'thebigbet.org — live odds, AI and expert predictions, and in-depth analysis for football, NBA, and cricket. Free, no sign-up required.';
 
 const latestHeading = isZhTw ? '最新文章' : isTh ? 'บทความล่าสุด' : 'Latest Articles';
 const viewAll = isZhTw ? '看全部' : isTh ? 'ดูทั้งหมด' : 'View all';

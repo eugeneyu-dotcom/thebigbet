@@ -15,6 +15,12 @@ const isBn = lang === 'bn';
 const entries = await getCollection('trends', (entry) =>
   entry.id.startsWith(lang + '/') && entry.data.league === 'nba');
 
+const relatedGuides = (await getCollection('guides', (entry) =>
+  entry.id.startsWith(lang + '/') && entry.data.sport === 'basketball'))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .map((g) => ({ label: g.data.title, href: `/${lang}/nba/guides/${g.id.split('/').slice(1).join('/')}/` }));
+const relatedHeading = isZhTw ? 'NBA 賽制與投注攻略' : isTh ? 'คู่มือกติกาและการเดิมพัน NBA' : isBn ? 'এনবিএ ফরম্যাট ও বেটিং গাইড' : 'NBA Format & Betting Guides';
+
 const metaTitle = isZhTw ? 'NBA 趨勢分析 | The Big Bet' : isTh ? 'วิเคราะห์เทรนด์ NBA | The Big Bet' : 'NBA Trend Analysis | The Big Bet';
 const metaDescription = isZhTw
   ? 'NBA 球隊整季戰力趨勢分析：陣容、戰績走勢與爭冠形勢。'
@@ -40,4 +46,6 @@ const emptyText = isZhTw ? '目前尚無 NBA 趨勢分析文章，敬請期待�
   heading={heading}
   intro={intro}
   emptyText={emptyText}
+  related={relatedGuides}
+  relatedHeading={relatedHeading}
 />

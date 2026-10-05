@@ -16,9 +16,11 @@ interface Props {
   heading: string;
   intro: string;
   emptyText: string;
+  related?: { label: string; href: string }[];
+  relatedHeading?: string;
 }
 
-const { lang, entries, basePath, metaTitle, metaDescription, tag, heading, intro, emptyText } = Astro.props;
+const { lang, entries, basePath, metaTitle, metaDescription, tag, heading, intro, emptyText, related = [], relatedHeading = '' } = Astro.props;
 const tTeam = useTeamTranslations(lang as any);
 
 const sorted = [...entries].sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
@@ -38,6 +40,16 @@ const sorted = [...entries].sort((a, b) => b.data.pubDate.getTime() - a.data.pub
         <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">{tag}</p>
         <h1 class="text-3xl font-black text-white">{heading}</h1>
         <p class="text-slate-400 mt-2 text-sm leading-relaxed">{intro}</p>
+        {related.length > 0 && (
+          <div class="mt-5">
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">{relatedHeading}</p>
+            <ul class="space-y-1.5">
+              {related.map((r) => (
+                <li><a href={r.href} class="text-sm text-amber-300 hover:text-amber-200 underline underline-offset-2">{r.label}</a></li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       {sorted.length === 0 ? (
