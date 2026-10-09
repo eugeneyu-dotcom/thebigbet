@@ -58419,5 +58419,240 @@
         ]
       }
     ]
+  },
+  {
+    "id": "d0ee3d2f44cf592797f6ecae8de62edd",
+    "sport_key": "soccer_uefa_nations_league",
+    "sport_title": "UEFA Nations League",
+    "commence_time": "2026-11-13T19:45:00Z",
+    "home_team": "Serbia",
+    "away_team": "Germany",
+    "bookmakers": [
+      {
+        "key": "boylesports",
+        "title": "BoyleSports",
+        "last_update": "2026-10-09T10:56:33Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-09T10:56:33Z",
+            "outcomes": [
+              {
+                "name": "Germany",
+                "price": 1.25
+              },
+              {
+                "name": "Serbia",
+                "price": 9
+              },
+              {
+                "name": "Draw",
+                "price": 5.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "onexbet",
+        "title": "1xBet",
+        "last_update": "2026-10-09T10:57:13Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-09T10:57:13Z",
+            "outcomes": [
+              {
+                "name": "Germany",
+                "price": 1.24
+              },
+              {
+                "name": "Serbia",
+                "price": 9
+              },
+              {
+                "name": "Draw",
+                "price": 6.04
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfred_uk",
+        "title": "Betfred (UK)",
+        "last_update": "2026-10-09T10:56:42Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-09T10:56:42Z",
+            "outcomes": [
+              {
+                "name": "Germany",
+                "price": 1.29
+              },
+              {
+                "name": "Serbia",
+                "price": 10
+              },
+              {
+                "name": "Draw",
+                "price": 6
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "paddypower",
+        "title": "Paddy Power",
+        "last_update": "2026-10-09T10:56:27Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-09T10:56:27Z",
+            "outcomes": [
+              {
+                "name": "Germany",
+                "price": 1.22
+              },
+              {
+                "name": "Serbia",
+                "price": 10
+              },
+              {
+                "name": "Draw",
+                "price": 6
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_uk",
+        "title": "Betfair",
+        "last_update": "2026-10-09T10:56:57Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-09T10:56:57Z",
+            "outcomes": [
+              {
+                "name": "Germany",
+                "price": 1.1
+              },
+              {
+                "name": "Serbia",
+                "price": 1.1
+              },
+              {
+                "name": "Draw",
+                "price": 1.1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_eu",
+        "title": "Betfair",
+        "last_update": "2026-10-09T10:57:15Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-09T10:57:14Z",
+            "outcomes": [
+              {
+                "name": "Germany",
+                "price": 1.1
+              },
+              {
+                "name": "Serbia",
+                "price": 1.1
+              },
+              {
+                "name": "Draw",
+                "price": 1.1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_sb_uk",
+        "title": "Betfair Sportsbook",
+        "last_update": "2026-10-09T10:57:13Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-09T10:57:13Z",
+            "outcomes": [
+              {
+                "name": "Germany",
+                "price": 1.22
+              },
+              {
+                "name": "Serbia",
+                "price": 10
+              },
+              {
+                "name": "Draw",
+                "price": 6
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betsson",
+        "title": "Betsson",
+        "last_update": "2026-10-09T10:57:00Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-09T10:57:00Z",
+            "outcomes": [
+              {
+                "name": "Germany",
+                "price": 1.28
+              },
+              {
+                "name": "Serbia",
+                "price": 9.3
+              },
+              {
+                "name": "Draw",
+                "price": 5.7
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "nordicbet",
+        "title": "Nordic Bet",
+        "last_update": "2026-10-09T10:56:45Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-10-09T10:56:45Z",
+            "outcomes": [
+              {
+                "name": "Germany",
+                "price": 1.28
+              },
+              {
+                "name": "Serbia",
+                "price": 9.3
+              },
+              {
+                "name": "Draw",
+                "price": 5.7
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]
