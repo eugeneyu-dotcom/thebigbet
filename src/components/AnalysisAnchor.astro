@@ -22,8 +22,11 @@ if (href?.startsWith('/analysis/')) {
   // back before splitting on it.
   const slugs = href.slice(5).replace(/%7C/gi, '|').split('|');
   const enSlug = slugs[0];
+  // zh-tw links go to zh.wikipedia.org, which uses Chinese titles rather than the English slug;
+  // use `wiki:en_slug|zh_title` for those, or `wiki:en_slug|en` when no zh article exists
+  // (links to the English article instead).
   const zhSlug = slugs[1] ?? slugs[0];
-  resolvedHref = lang === 'zh-tw'
+  resolvedHref = lang === 'zh-tw' && zhSlug !== 'en'
     ? `https://zh.wikipedia.org/wiki/${zhSlug}`
     : `https://en.wikipedia.org/wiki/${enSlug}`;
   isExternal = true;
