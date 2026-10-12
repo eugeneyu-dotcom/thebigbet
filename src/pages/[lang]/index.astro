@@ -7,6 +7,7 @@ import GoogleAnalytics from '../../components/GoogleAnalytics.astro';
 import GoogleAdsense from '../../components/GoogleAdsense.astro';
 import TeamIcon from '../../components/TeamIcon.astro';
 import { languages, useTranslations, useTeamTranslations, getVisibleSports } from '../../i18n/ui';
+import { getLangTimeZone } from '../../utils/timezone';
 import fs from 'fs';
 import path from 'path';
 
@@ -30,11 +31,12 @@ function loadJson(relPath: string): any {
   return null;
 }
 
-// Cricket + football upcoming matches for the homepage's per-match
-// prediction cards. NBA is skipped here for now — the basketball season
-// hasn't started. Football combines World Cup matches (empty once the
+// Cricket + football + NBA upcoming matches for the homepage's per-match
+// prediction cards. Football combines World Cup matches (empty once the
 // tournament ends) with Top 5 Leagues matches, so the section keeps
 // showing real fixtures across tournament cycles instead of going empty.
+// NBA comes from nbaMatches.json (scripts/update_nba.mjs: Pinnacle moneyline,
+// spread and total) and is hidden for locales without NBA (see localeSports).
 const cricketMatches: any[] = loadJson('src/data/cricketMatches.json') ?? [];
 const allLeagueMatches: any[] = loadJson('src/data/leagueMatches.json') ?? [];
 const footballMatches: any[] = [
@@ -42,6 +44,12 @@ const footballMatches: any[] = [
   ...allLeagueMatches.filter((m: any) => m.sport_key !== 'soccer_uefa_nations_league'),
 ];
 cricketMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
+const LIVE_WINDOW_MS = 4 * 60 * 60 * 1000; // keep a game on the page while it is being played
+const nbaMatches: any[] = loadJson('src/data/nbaMatches.json') ?? [];
+const nbaUpcoming = nbaMatches
+  .filter((m: any) => m.bookmakers?.length > 0 && new Date(m.commence_time).getTime() > Date.now() - LIVE_WINDOW_MS)
+  .sort((a: any, b: any) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime())
+  .slice(0, 6);
 
 // International matches (UEFA Nations League etc., added 2026-09-24) — its
 // own homepage section, separate from the club-football section above, kept
@@ -105,8 +113,21 @@ function moneyline(m: any) {
   const draw = h2h?.outcomes?.find((o: any) => o.name === 'Draw')?.price ?? null;
   return { home, away, draw };
 }
+// Pages are built on a UTC server, so the reader's time zone has to be explicit
+// (same per-locale zones as src/utils/timezone.ts) — otherwise kickoff times
+// render in UTC.
 const fmtTime = (iso: string) =>
-  new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
+  new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false, timeZone: getLangTimeZone(lang) });
+
+// NBA cards also show the point spread (favourite's line) and the game total
+// from the same book as the moneyline.
+function nbaLines(m: any) {
+  const book = m.bookmakers?.[0];
+  const spreads: any[] = book?.markets?.find((k: any) => k.key === 'spreads')?.outcomes ?? [];
+  const fav = spreads.find((o: any) => o.point < 0);
+  const total = book?.markets?.find((k: any) => k.key === 'totals')?.outcomes?.find((o: any) => o.name === 'Over')?.point ?? null;
+  return { hasSpread: spreads.length > 0, favTeam: fav?.name ?? null, favPoint: fav?.point ?? null, total };
+}
 
 // Latest content across all three article-like collections (match analysis,
 // knowledge guides, team/season trends), unified and sorted by pubDate —
@@ -208,10 +229,29 @@ const homeDescription = isZhTw
       ? 'thebigbet.org — ফুটবল ও ক্রিকেটের লাইভ অডস, AI ও বিশেষজ্ঞদের পূর্বাভাস এবং গভীর বিশ্লেষণ। সম্পূর্ণ বিনামূল্যে, নিবন্ধন ছাড়াই।'
       : 'thebigbet.org — live odds, AI and expert predictions, and in-depth analysis for football, NBA, and cricket. Free, no sign-up required.';
 
+// Sections with upcoming games come first (NBA, football, international, cricket);
+// ones with nothing to show drop to the bottom in a compact style instead of
+// pushing real content down the page.
+const sectionCounts: Record<string, number> = {
+  nba: nbaUpcoming.length,
+  football: footballUpcoming.length,
+  international: internationalUpcoming.length,
+  cricket: cricketUpcoming.length,
+};
+const SECTION_PRIORITY: Record<string, number> = { nba: 1, football: 2, international: 3, cricket: 4 };
+const sectionOrder = (k: string) => (sectionCounts[k] > 0 ? 0 : 10) + SECTION_PRIORITY[k];
+const sectionGap = (k: string) => (sectionCounts[k] > 0 ? 'mb-14' : 'mb-8');
+const sectionHeadingClass = (k: string) => (sectionCounts[k] > 0 ? 'text-2xl font-black text-white' : 'text-lg font-bold text-slate-400');
+
 const latestHeading = isZhTw ? '最新文章' : isTh ? 'บทความล่าสุด' : isBn ? 'সর্বশেষ লেখা' : 'Latest Articles';
 const viewAll = isZhTw ? '看全部' : isTh ? 'ดูทั้งหมด' : isBn ? 'সব দেখুন' : 'View all';
 
 const cricketHeading = isZhTw ? '板球賽事預測' : isTh ? 'ทำนายคริกเก็ต' : isBn ? 'ক্রিকেট পূর্বাভাস' : 'Cricket Predictions';
+const nbaHeading = isZhTw ? 'NBA 賽事預測' : isTh ? 'ทำนาย NBA' : isBn ? 'NBA পূর্বাভাস' : 'NBA Predictions';
+const homeTag = isZhTw ? '主' : isTh ? 'เจ้าบ้าน' : isBn ? 'হোম' : 'Home';
+const spreadLabel = isZhTw ? '讓分' : isTh ? 'แต้มต่อ' : isBn ? 'স্প্রেড' : 'Spread';
+const totalLabel = isZhTw ? '大小分' : isTh ? 'สกอร์รวม' : isBn ? 'টোটাল' : 'Total';
+const noNba = isZhTw ? '目前沒有可顯示的 NBA 賽事，賽程公布後會在這裡更新。' : isTh ? 'ตอนนี้ยังไม่มีเกม NBA ให้แสดง จะอัปเดตเมื่อประกาศโปรแกรม' : isBn ? 'এখন দেখানোর মতো কোনো NBA ম্যাচ নেই।' : 'No NBA games to show right now — this updates once fixtures are posted.';
 const footballHeading = isZhTw ? '足球賽事預測' : isTh ? 'ทำนายฟุตบอล' : isBn ? 'ফুটবল পূর্বাভাস' : 'Football Predictions';
 const internationalHeading = isZhTw ? '國際賽事預測' : isTh ? 'ทำนายเกมทีมชาติ' : isBn ? 'আন্তর্জাতিক ম্যাচের পূর্বাভাস' : 'International Predictions';
 const noCricket = isZhTw ? '目前暫無板球賠率資料（IPL／PSL 為季節性賽事，休賽期間不會有資料）。' : isTh ? 'ยังไม่มีข้อมูลราคาคริกเก็ต (IPL/PSL เป็นการแข่งขันตามฤดูกาล)' : isBn ? 'এই মুহূর্তে ক্রিকেটের কোনো অডস নেই (আইপিএল/পিএসএল মৌসুমভিত্তিক টুর্নামেন্ট, অফ-সিজনে কোনো ডেটা থাকে না)।' : 'No cricket odds available right now (IPL/PSL are seasonal and empty out of season).';
@@ -231,15 +271,17 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
 
       <div class="mb-10">
         <div class="flex items-center justify-center gap-4 sm:gap-8 md:gap-12">
-          <img
-            src="/images/hero/cricket.webp"
-            alt=""
-            aria-hidden="true"
-            width="1024"
-            height="1024"
-            loading="eager"
-            class="hidden sm:block w-20 h-20 md:w-32 md:h-32 rounded-2xl shrink-0 shadow-lg shadow-amber-500/10 transition-transform duration-300 hover:scale-105"
-          />
+          {!isZhTw && (
+            <img
+              src="/images/hero/cricket.webp"
+              alt=""
+              aria-hidden="true"
+              width="1024"
+              height="1024"
+              loading="eager"
+              class="hidden sm:block w-20 h-20 md:w-32 md:h-32 rounded-2xl shrink-0 shadow-lg shadow-amber-500/10 transition-transform duration-300 hover:scale-105"
+            />
+          )}
           <div class="text-center">
             <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 tracking-tighter uppercase italic mb-4 drop-shadow-lg">
               THE BIG BET
@@ -267,11 +309,74 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
         ))}
       </div>
 
+      <div class="flex flex-col">
+      <!-- NBA predictions (locale-gated — see localeSports in i18n/ui.ts) -->
+      {visibleSports.includes('nba') && (
+        <section class={sectionGap('nba')} style={`order:${sectionOrder('nba')}`}>
+          <div class="flex items-center mb-6">
+            <h2 class={sectionHeadingClass('nba')}>{nbaHeading}</h2>
+            <a href={`/${lang}/nba`} class="ml-auto py-3 -my-3 text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
+          </div>
+          {nbaUpcoming.length === 0 ? (
+            <p class="text-slate-500 text-sm">{noNba}</p>
+          ) : (
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {nbaUpcoming.map((m) => {
+                const ml = moneyline(m);
+                const lines = nbaLines(m);
+                const aiText = pickLang(aiPredictions[m.id]);
+                const humanText = pickLang(homeHumanPredictions[m.id]);
+                return (
+                  <div class="bg-[#211d19] border border-[#3c352c] rounded-xl px-5 py-4">
+                    <div class="text-xs text-slate-500 font-mono mb-2">{fmtTime(m.commence_time)}</div>
+                    <div class="space-y-2 mb-3">
+                      <div class="flex items-center gap-3">
+                        <TeamIcon team={m.away_team} class="w-6 h-6" />
+                        <p class="min-w-0 flex-1 font-bold text-white leading-tight break-words">{tTeam(m.away_team)}</p>
+                        <span class="font-mono font-black text-sm text-violet-400">{ml.away}</span>
+                      </div>
+                      <div class="flex items-center gap-3">
+                        <TeamIcon team={m.home_team} class="w-6 h-6" />
+                        <p class="min-w-0 flex-1 font-bold text-white leading-tight break-words">
+                          {tTeam(m.home_team)}
+                          <span class="ml-1.5 align-middle text-[10px] font-black uppercase tracking-widest text-slate-500">{homeTag}</span>
+                        </p>
+                        <span class="font-mono font-black text-sm text-amber-400">{ml.home}</span>
+                      </div>
+                    </div>
+                    {(lines.hasSpread || lines.total !== null) && (
+                      <div class="flex flex-wrap gap-x-5 gap-y-1 mb-3 text-xs font-mono text-slate-400">
+                        {lines.hasSpread && (
+                          <span>{spreadLabel} <span class="text-slate-200 font-bold">{lines.favTeam ? `${tTeam(lines.favTeam)} ${lines.favPoint}` : 'PK'}</span></span>
+                        )}
+                        {lines.total !== null && (
+                          <span>{totalLabel} <span class="text-slate-200 font-bold">{lines.total}</span></span>
+                        )}
+                      </div>
+                    )}
+                    <div class="pt-3 border-t border-[#3c352c]/60">
+                      <p class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">{t('prediction.ai')}</p>
+                      <p class="text-xs text-slate-300 leading-relaxed">{aiText ?? t('prediction.ai_pending')}</p>
+                    </div>
+                    {humanText && (
+                      <div class="pt-3 mt-3 border-t border-[#3c352c]/60">
+                        <p class="text-[10px] font-black text-violet-300 uppercase tracking-widest mb-1">{t('prediction.human')}</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">{humanText}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </section>
+      )}
+
       <!-- Cricket predictions (locale-gated — see localeSports in i18n/ui.ts) -->
       {visibleSports.includes('cricket') && (
-        <section class="mb-14">
+        <section class={sectionGap('cricket')} style={`order:${sectionOrder('cricket')}`}>
           <div class="flex items-center mb-6">
-            <h2 class="text-2xl font-black text-white">{cricketHeading}</h2>
+            <h2 class={sectionHeadingClass('cricket')}>{cricketHeading}</h2>
             <a href={`/${lang}/cricket`} class="ml-auto py-3 -my-3 text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
           </div>
           {cricketUpcoming.length === 0 ? (
@@ -309,9 +414,9 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
       )}
 
       <!-- Football (World Cup + Top 5 Leagues) predictions -->
-      <section class="mb-14">
+      <section class={sectionGap('football')} style={`order:${sectionOrder('football')}`}>
         <div class="flex items-center mb-6">
-          <h2 class="text-2xl font-black text-white">{footballHeading}</h2>
+          <h2 class={sectionHeadingClass('football')}>{footballHeading}</h2>
           <a href={`/${lang}/football`} class="ml-auto py-3 -my-3 text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
         </div>
         {footballUpcoming.length === 0 ? (
@@ -358,9 +463,9 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
       </section>
 
       <!-- International (UEFA Nations League, etc.) predictions -->
-      <section class="mb-14">
+      <section class={sectionGap('international')} style={`order:${sectionOrder('international')}`}>
         <div class="flex items-center mb-6">
-          <h2 class="text-2xl font-black text-white">{internationalHeading}</h2>
+          <h2 class={sectionHeadingClass('international')}>{internationalHeading}</h2>
           <a href={`/${lang}/football/world-cup`} class="ml-auto py-3 -my-3 text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
         </div>
         {internationalUpcoming.length === 0 ? (
@@ -405,6 +510,8 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
           </div>
         )}
       </section>
+
+      </div>
 
       <!-- Latest content across analysis/guides/trends -->
       <section>
