@@ -282,9 +282,9 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
                   <div class="bg-[#211d19] border border-[#3c352c] rounded-xl px-5 py-4">
                     <div class="text-xs text-slate-500 font-mono mb-2">{fmtTime(m.commence_time)}</div>
                     <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 mb-3">
-                      <div class="min-w-0"><p class="font-bold text-white truncate">{tTeam(m.away_team)}</p></div>
+                      <div class="min-w-0"><p class="font-bold text-white text-sm sm:text-base leading-tight break-words sm:truncate">{tTeam(m.away_team)}</p></div>
                       <div class="flex items-center gap-3 font-mono font-black"><span class="text-violet-400">{ml.away}</span><span class="text-slate-600 text-xs">@</span><span class="text-amber-400">{ml.home}</span></div>
-                      <div class="min-w-0 text-right"><p class="font-bold text-white truncate">{tTeam(m.home_team)}</p></div>
+                      <div class="min-w-0 text-right"><p class="font-bold text-white text-sm sm:text-base leading-tight break-words sm:truncate">{tTeam(m.home_team)}</p></div>
                     </div>
                     <div class="pt-3 border-t border-[#3c352c]/60">
                       <p class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">{t('prediction.ai')}</p>
@@ -324,7 +324,7 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
                   <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 mb-3">
                     <div class="min-w-0 flex items-center gap-2">
                       <TeamIcon team={m.away_team} class="w-6 h-6" />
-                      <p class="font-bold text-white truncate">{tTeam(m.away_team)}</p>
+                      <p class="font-bold text-white text-sm sm:text-base leading-tight break-words sm:truncate">{tTeam(m.away_team)}</p>
                     </div>
                     <div class="flex items-center gap-2 font-mono font-black text-sm">
                       <span class="text-violet-400">{ml.away}</span>
@@ -332,7 +332,7 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
                       <span class="text-amber-400">{ml.home}</span>
                     </div>
                     <div class="min-w-0 flex items-center justify-end gap-2 text-right">
-                      <p class="font-bold text-white truncate">{tTeam(m.home_team)}</p>
+                      <p class="font-bold text-white text-sm sm:text-base leading-tight break-words sm:truncate">{tTeam(m.home_team)}</p>
                       <TeamIcon team={m.home_team} class="w-6 h-6" />
                     </div>
                   </div>
@@ -373,7 +373,7 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
                   <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 mb-3">
                     <div class="min-w-0 flex items-center gap-2">
                       <TeamIcon team={m.away_team} class="w-6 h-6" />
-                      <p class="font-bold text-white truncate">{tTeam(m.away_team)}</p>
+                      <p class="font-bold text-white text-sm sm:text-base leading-tight break-words sm:truncate">{tTeam(m.away_team)}</p>
                     </div>
                     <div class="flex items-center gap-2 font-mono font-black text-sm">
                       <span class="text-violet-400">{ml.away}</span>
@@ -381,7 +381,7 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
                       <span class="text-amber-400">{ml.home}</span>
                     </div>
                     <div class="min-w-0 flex items-center justify-end gap-2 text-right">
-                      <p class="font-bold text-white truncate">{tTeam(m.home_team)}</p>
+                      <p class="font-bold text-white text-sm sm:text-base leading-tight break-words sm:truncate">{tTeam(m.home_team)}</p>
                       <TeamIcon team={m.home_team} class="w-6 h-6" />
                     </div>
                   </div>

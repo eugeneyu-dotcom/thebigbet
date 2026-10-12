@@ -15,3 +15,13 @@ body {
   font-family: var(--font-atkinson), 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
   line-height: 1.6;
 }
+
+/* Wide markdown tables in articles scroll sideways on phones instead of stretching the page */
+@media (max-width: 640px) {
+  .article-body table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

@@ -99,7 +99,7 @@ const leagueLabel = (sportTitle: string) => {
                     <div class="min-w-0 flex items-center gap-2">
                       <TeamIcon team={m.away_team} class="w-6 h-6" />
                       <div class="min-w-0">
-                        <p class="font-bold text-white truncate">{tTeam(m.away_team)}</p>
+                        <p class="font-bold text-white text-sm sm:text-base leading-tight break-words sm:truncate">{tTeam(m.away_team)}</p>
                         <p class="text-xs text-slate-500 uppercase">{isZhTw ? '客隊' : isTh ? 'ทีมเยือน' : isBn ? 'অ্যাওয়ে' : 'Away'}</p>
                       </div>
                     </div>
@@ -110,7 +110,7 @@ const leagueLabel = (sportTitle: string) => {
                     </div>
                     <div class="min-w-0 flex items-center justify-end gap-2 text-right">
                       <div class="min-w-0">
-                        <p class="font-bold text-white truncate">{tTeam(m.home_team)}</p>
+                        <p class="font-bold text-white text-sm sm:text-base leading-tight break-words sm:truncate">{tTeam(m.home_team)}</p>
                         <p class="text-xs text-slate-500 uppercase">{isZhTw ? '主隊' : isTh ? 'เจ้าบ้าน' : isBn ? 'হোম' : 'Home'}</p>
                       </div>
                       <TeamIcon team={m.home_team} class="w-6 h-6" />
