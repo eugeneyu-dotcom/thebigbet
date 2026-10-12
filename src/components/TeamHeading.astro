@@ -20,6 +20,6 @@ const src = matchedTeam ? teamLogos[matchedTeam] : undefined;
 ---
 
 <h2>
-  {src && <img src={src} alt="" class="inline-block w-6 h-6 object-contain align-middle mr-2 -mt-1" loading="lazy" />}
+  {src && <img src={src} alt="" width="24" height="24" class="inline-block w-6 h-6 object-contain align-middle mr-2 -mt-1" loading="lazy" />}
   <Fragment set:html={headingHtml} />
 </h2>

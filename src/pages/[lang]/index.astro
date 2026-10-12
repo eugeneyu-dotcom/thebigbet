@@ -235,6 +235,8 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
             src="/images/hero/cricket.webp"
             alt=""
             aria-hidden="true"
+            width="1024"
+            height="1024"
             loading="eager"
             class="hidden sm:block w-20 h-20 md:w-32 md:h-32 rounded-2xl shrink-0 shadow-lg shadow-amber-500/10 transition-transform duration-300 hover:scale-105"
           />
@@ -248,6 +250,8 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
             src="/images/hero/football.webp"
             alt=""
             aria-hidden="true"
+            width="1024"
+            height="1024"
             loading="eager"
             class="hidden sm:block w-20 h-20 md:w-32 md:h-32 rounded-2xl shrink-0 shadow-lg shadow-violet-500/10 transition-transform duration-300 hover:scale-105"
           />
@@ -257,7 +261,7 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
       <!-- Category quick links -->
       <div class="flex flex-wrap justify-center gap-3 mb-14">
         {categories.map((c) => (
-          <a href={c.href} class="px-4 py-2 rounded-full bg-[#211d19] border border-[#3c352c] hover:border-amber-400/50 text-sm font-bold text-slate-200 hover:text-amber-300 transition-colors duration-200">
+          <a href={c.href} class="px-4 py-2.5 rounded-full bg-[#211d19] border border-[#3c352c] hover:border-amber-400/50 text-sm font-bold text-slate-200 hover:text-amber-300 transition-colors duration-200">
             {c.label}
           </a>
         ))}
@@ -268,7 +272,7 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
         <section class="mb-14">
           <div class="flex items-center mb-6">
             <h2 class="text-2xl font-black text-white">{cricketHeading}</h2>
-            <a href={`/${lang}/cricket`} class="ml-auto text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
+            <a href={`/${lang}/cricket`} class="ml-auto py-3 -my-3 text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
           </div>
           {cricketUpcoming.length === 0 ? (
             <p class="text-slate-500 text-sm">{noCricket}</p>
@@ -308,7 +312,7 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
       <section class="mb-14">
         <div class="flex items-center mb-6">
           <h2 class="text-2xl font-black text-white">{footballHeading}</h2>
-          <a href={`/${lang}/football`} class="ml-auto text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
+          <a href={`/${lang}/football`} class="ml-auto py-3 -my-3 text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
         </div>
         {footballUpcoming.length === 0 ? (
           <p class="text-slate-500 text-sm">{noFootball}</p>
@@ -357,7 +361,7 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
       <section class="mb-14">
         <div class="flex items-center mb-6">
           <h2 class="text-2xl font-black text-white">{internationalHeading}</h2>
-          <a href={`/${lang}/football/world-cup`} class="ml-auto text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
+          <a href={`/${lang}/football/world-cup`} class="ml-auto py-3 -my-3 text-sm font-bold text-amber-400 hover:text-amber-300">{viewAll} →</a>
         </div>
         {internationalUpcoming.length === 0 ? (
           <p class="text-slate-500 text-sm">{noInternational}</p>
