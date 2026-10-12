@@ -1,0 +1,40 @@
+---
+import { getLangFromUrl } from '../i18n/ui';
+
+// Author line shown under every article title, linking to the editorial
+// policy that explains how content is produced (including AI assistance).
+// The site is run by a small anonymous team split into one desk per sport,
+// so the byline names the desk, not a person. Articles without a sport
+// (e.g. betting-knowledge pieces) get the general editorial desk.
+interface Props {
+  sport?: string;
+}
+const { sport } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+
+const desks: Record<string, Record<string, string>> = {
+  'zh-tw': { football: 'The Big Bet 足球組', basketball: 'The Big Bet 籃球組', cricket: 'The Big Bet 板球組', general: 'The Big Bet 編輯部' },
+  en: { football: 'The Big Bet Football Desk', basketball: 'The Big Bet Basketball Desk', cricket: 'The Big Bet Cricket Desk', general: 'The Big Bet Editorial Desk' },
+  th: { football: 'ทีมฟุตบอล The Big Bet', basketball: 'ทีมบาสเกตบอล The Big Bet', cricket: 'ทีมคริกเก็ต The Big Bet', general: 'กองบรรณาธิการ The Big Bet' },
+  bn: { football: 'The Big Bet ফুটবল ডেস্ক', basketball: 'The Big Bet বাস্কেটবল ডেস্ক', cricket: 'The Big Bet ক্রিকেট ডেস্ক', general: 'The Big Bet সম্পাদকীয় ডেস্ক' },
+};
+const deskSet = desks[lang] ?? desks.en;
+const author = deskSet[sport ?? 'general'] ?? deskSet.general;
+
+const label =
+  lang === 'zh-tw' ? '作者' : lang === 'th' ? 'โดย' : lang === 'bn' ? 'লেখক' : 'By';
+const link =
+  lang === 'zh-tw'
+    ? '了解本站如何製作內容'
+    : lang === 'th'
+      ? 'วิธีที่เราผลิตเนื้อหา'
+      : lang === 'bn'
+        ? 'আমরা কীভাবে কনটেন্ট তৈরি করি'
+        : 'How we make our content';
+---
+
+<p class="mt-3 text-sm text-slate-400">
+  {label}{lang === 'zh-tw' ? '：' : ': '}<span class="text-slate-300 font-bold">{author}</span>
+  <span class="text-[#544a3e] mx-1">·</span>
+  <a href={`/${lang}/editorial-policy/`} class="text-amber-400 hover:text-amber-300">{link} →</a>
+</p>

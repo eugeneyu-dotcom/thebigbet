@@ -1,4 +1,5 @@
 ---
+import Byline from '../../../../components/Byline.astro';
 import { getCollection, render } from 'astro:content';
 import Header from '../../../../components/Header.astro';
 import Footer from '../../../../components/Footer.astro';
@@ -50,6 +51,7 @@ const tag = isZhTw ? 'NBA 賽事知識' : isTh ? 'ความรู้ NBA' : i
             </time>
           </div>
           <h1 class="text-3xl md:text-4xl font-black text-white leading-tight">{entry.data.title}</h1>
+          <Byline sport={entry.data.sport} />
         </header>
 
         <div class="article-body prose prose-invert max-w-none prose-img:rounded-xl prose-headings:font-black prose-headings:text-white prose-a:text-amber-400 prose-strong:text-white prose-table:text-sm">

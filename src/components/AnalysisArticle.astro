@@ -1,4 +1,5 @@
 ---
+import Byline from './Byline.astro';
 import { render } from 'astro:content';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
@@ -127,6 +128,7 @@ const hasTwoWayStats = !!(twoWayH2H || homeForm || awayForm);
 
           <!-- Title -->
           <h1 class="text-3xl md:text-4xl font-black text-white leading-tight mb-7">{entry.data.title}</h1>
+          <Byline sport={entry.data.sport} />
 
           <!-- Match info card -->
           <div class="bg-[#0a150f] rounded-2xl border border-[#3c352c] p-6">

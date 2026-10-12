@@ -87,6 +87,17 @@ const strategy = defineCollection({
   }),
 });
 
+// Site-information pages (about, editorial policy, privacy, contact, responsible
+// gambling). Not articles: no pubDate/sport/league, just a "last updated" date.
+const pages = defineCollection({
+  loader: glob({ base: './src/content/pages', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    updated: z.coerce.date(),
+  }),
+});
+
 const guides = defineCollection({
   loader: glob({ base: './src/content/guides', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
@@ -159,4 +170,4 @@ const promotions = defineCollection({
   }),
 });
 
-export const collections = { analysis, trends, matchAnalysis, predictions, verification, strategy, guides, casinos, promotions };
+export const collections = { analysis, trends, matchAnalysis, predictions, verification, strategy, guides, pages, casinos, promotions };

@@ -6,6 +6,15 @@ const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
 const isBn = lang === 'bn';
 const year = new Date().getFullYear();
+
+// Site-information pages (content/pages): trust and transparency links.
+const infoLinks = [
+  { slug: 'about', label: isZhTw ? '關於本站' : isTh ? 'เกี่ยวกับเรา' : isBn ? 'আমাদের সম্পর্কে' : 'About' },
+  { slug: 'editorial-policy', label: isZhTw ? '編輯與方法說明' : isTh ? 'นโยบายบรรณาธิการ' : isBn ? 'সম্পাদকীয় নীতি' : 'Editorial Policy' },
+  { slug: 'privacy-policy', label: isZhTw ? '隱私權政策' : isTh ? 'นโยบายความเป็นส่วนตัว' : isBn ? 'গোপনীয়তা নীতি' : 'Privacy Policy' },
+  { slug: 'contact', label: isZhTw ? '聯絡我們' : isTh ? 'ติดต่อเรา' : isBn ? 'যোগাযোগ' : 'Contact' },
+  { slug: 'responsible-gambling', label: isZhTw ? '責任博彩' : isTh ? 'การพนันอย่างมีความรับผิดชอบ' : isBn ? 'দায়িত্বশীল জুয়া' : 'Responsible Gambling' },
+];
 ---
 
 <footer class="bg-[#0a150f] border-t border-[#3c352c] mt-12">
@@ -61,6 +70,13 @@ const year = new Date().getFullYear();
         </div>
       </div>
     </div>
+
+    <!-- Site information -->
+    <nav aria-label="Site information" class="mb-8 flex flex-wrap gap-x-6 text-sm font-bold">
+      {infoLinks.map((l) => (
+        <a href={`/${lang}/${l.slug}/`} class="py-2.5 text-slate-300 hover:text-amber-300 transition-colors duration-200">{l.label}</a>
+      ))}
+    </nav>
 
     <!-- Disclaimer -->
     <div class="bg-[#211d19]/60 border border-[#3c352c] rounded-xl p-5 space-y-3 text-xs text-slate-300 leading-relaxed">
