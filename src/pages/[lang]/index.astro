@@ -119,6 +119,25 @@ function moneyline(m: any) {
 const fmtTime = (iso: string) =>
   new Date(iso).toLocaleString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false, timeZone: getLangTimeZone(lang) });
 
+// Shown instead of an AI paragraph when none has been written for a match:
+// the chances implied by the moneyline, with the bookmaker margin removed
+// (1/odds, normalised to 100%). Real information from the same odds the card
+// already shows, so no card falls back to a "pending" placeholder.
+const impliedLabel = isZhTw ? '賠率隱含勝率（已扣除莊家水錢）' : isTh ? 'โอกาสชนะตามราคาต่อรอง (หักค่าน้ำแล้ว)' : isBn ? 'অডস অনুযায়ী সম্ভাবনা (মার্জিন বাদে)' : 'Odds-implied chances (margin removed)';
+const drawWord = isZhTw ? '和局' : isTh ? 'เสมอ' : isBn ? 'ড্র' : 'Draw';
+function impliedChances(m: any): string | null {
+  const ml = moneyline(m);
+  const parts = [{ name: tTeam(m.away_team), odds: Number(ml.away) }];
+  if (ml.draw) parts.push({ name: drawWord, odds: Number(ml.draw) });
+  parts.push({ name: tTeam(m.home_team), odds: Number(ml.home) });
+  if (parts.some((p) => !(p.odds > 1))) return null;
+  // Written with Math.pow(x, -1) instead of "1 / x": Astro's frontmatter
+  // scanner mistakes a second "/" on the same line for a regex literal.
+  const inverse = parts.map((p) => Math.pow(p.odds, -1));
+  const norm = Math.pow(inverse.reduce((sum, v) => sum + v, 0), -1);
+  return parts.map((p, i) => p.name + ' ' + Math.round(inverse[i] * norm * 100) + '%').join(' · ');
+}
+
 // NBA cards also show the point spread (favourite's line) and the game total
 // from the same book as the moneyline.
 function nbaLines(m: any) {
@@ -354,10 +373,17 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
                         )}
                       </div>
                     )}
-                    <div class="pt-3 border-t border-[#3c352c]/60">
-                      <p class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">{t('prediction.ai')}</p>
-                      <p class="text-xs text-slate-300 leading-relaxed">{aiText ?? t('prediction.ai_pending')}</p>
-                    </div>
+                    {aiText ? (
+                      <div class="pt-3 border-t border-[#3c352c]/60">
+                        <p class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">{t('prediction.ai')}</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">{aiText}</p>
+                      </div>
+                    ) : impliedChances(m) && (
+                      <div class="pt-3 border-t border-[#3c352c]/60">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{impliedLabel}</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">{impliedChances(m)}</p>
+                      </div>
+                    )}
                     {humanText && (
                       <div class="pt-3 mt-3 border-t border-[#3c352c]/60">
                         <p class="text-[10px] font-black text-violet-300 uppercase tracking-widest mb-1">{t('prediction.human')}</p>
@@ -395,10 +421,17 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
                       <div class="flex items-center gap-3 font-mono font-black"><span class="text-violet-400">{ml.away}</span><span class="text-slate-600 text-xs">@</span><span class="text-amber-400">{ml.home}</span></div>
                       <div class="min-w-0 text-right"><p class="font-bold text-white text-sm sm:text-base leading-tight break-words sm:truncate">{tTeam(m.home_team)}</p></div>
                     </div>
-                    <div class="pt-3 border-t border-[#3c352c]/60">
-                      <p class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">{t('prediction.ai')}</p>
-                      <p class="text-xs text-slate-300 leading-relaxed">{aiText ?? t('prediction.ai_pending')}</p>
-                    </div>
+                    {aiText ? (
+                      <div class="pt-3 border-t border-[#3c352c]/60">
+                        <p class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">{t('prediction.ai')}</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">{aiText}</p>
+                      </div>
+                    ) : impliedChances(m) && (
+                      <div class="pt-3 border-t border-[#3c352c]/60">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{impliedLabel}</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">{impliedChances(m)}</p>
+                      </div>
+                    )}
                     {humanText && (
                       <div class="pt-3 mt-3 border-t border-[#3c352c]/60">
                         <p class="text-[10px] font-black text-violet-300 uppercase tracking-widest mb-1">{t('prediction.human')}</p>
@@ -445,10 +478,17 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
                       <TeamIcon team={m.home_team} class="w-6 h-6" />
                     </div>
                   </div>
-                  <div class="pt-3 border-t border-[#3c352c]/60">
-                    <p class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">{t('prediction.ai')}</p>
-                    <p class="text-xs text-slate-300 leading-relaxed">{aiText ?? t('prediction.ai_pending')}</p>
-                  </div>
+                  {aiText ? (
+                    <div class="pt-3 border-t border-[#3c352c]/60">
+                      <p class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">{t('prediction.ai')}</p>
+                      <p class="text-xs text-slate-300 leading-relaxed">{aiText}</p>
+                    </div>
+                  ) : impliedChances(m) && (
+                    <div class="pt-3 border-t border-[#3c352c]/60">
+                      <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{impliedLabel}</p>
+                      <p class="text-xs text-slate-300 leading-relaxed">{impliedChances(m)}</p>
+                    </div>
+                  )}
                   {humanText && (
                     <div class="pt-3 mt-3 border-t border-[#3c352c]/60">
                       <p class="text-[10px] font-black text-violet-300 uppercase tracking-widest mb-1">{t('prediction.human')}</p>
@@ -494,10 +534,17 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
                       <TeamIcon team={m.home_team} class="w-6 h-6" />
                     </div>
                   </div>
-                  <div class="pt-3 border-t border-[#3c352c]/60">
-                    <p class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">{t('prediction.ai')}</p>
-                    <p class="text-xs text-slate-300 leading-relaxed">{aiText ?? t('prediction.ai_pending')}</p>
-                  </div>
+                  {aiText ? (
+                    <div class="pt-3 border-t border-[#3c352c]/60">
+                      <p class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">{t('prediction.ai')}</p>
+                      <p class="text-xs text-slate-300 leading-relaxed">{aiText}</p>
+                    </div>
+                  ) : impliedChances(m) && (
+                    <div class="pt-3 border-t border-[#3c352c]/60">
+                      <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{impliedLabel}</p>
+                      <p class="text-xs text-slate-300 leading-relaxed">{impliedChances(m)}</p>
+                    </div>
+                  )}
                   {humanText && (
                     <div class="pt-3 mt-3 border-t border-[#3c352c]/60">
                       <p class="text-[10px] font-black text-violet-300 uppercase tracking-widest mb-1">{t('prediction.human')}</p>
