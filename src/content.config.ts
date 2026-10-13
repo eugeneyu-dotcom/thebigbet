@@ -23,6 +23,15 @@ const analysis = defineCollection({
     odds: z.string(),
     prediction: z.string(),
     confidence: z.number().min(1).max(5),
+    // Structured version of `prediction` for the "prediction vs result" box
+    // (PredictionResult.astro): the team backed (English name as in `match`,
+    // e.g. "Argentina") or "Draw". `pickBasis` says what the pick refers to:
+    // "regular" = the 90-minute result (the 1X2 odds shown), "final" = who wins
+    // or advances including extra time / penalties. `pickDouble` marks a
+    // "win or draw" double-chance pick. Omit `pick` to show no result box.
+    pick: z.string().optional(),
+    pickBasis: z.enum(['regular', 'final']).default('regular'),
+    pickDouble: z.boolean().default(false),
     // Football-only extras — optional so non-football sports can omit them.
     // h2hData is [homeWins, draws, awayWins] for football, or
     // [homeWins, awayWins] for two-way sports (basketball/baseball).

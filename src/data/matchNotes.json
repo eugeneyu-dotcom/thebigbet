@@ -1,0 +1,30 @@
+{
+  "spain-vs-argentina": {
+    "note": {
+      "zh-tw": "常規時間 0-0，西班牙射門 20 比 3 佔盡優勢，替補上場的 Ferran Torres 在延長賽第 106 分鐘破門。阿根廷的 Enzo Fernández 在下半場補時吃到第二張黃牌，延長賽少一人作戰。",
+      "en": "Level at 0-0 after 90 minutes, with Spain outshooting Argentina 20-3 before substitute Ferran Torres scored in the 106th minute of extra time. Argentina's Enzo Fernández picked up a second yellow card in second-half stoppage time, leaving them a man down for all of extra time.",
+      "th": "ในเวลาปกติเสมอ 0-0 สเปนยิงมากกว่าอาร์เจนตินา 20 ต่อ 3 ก่อนที่ Ferran Torres ตัวสำรองจะยิงประตูในนาทีที่ 106 ของช่วงต่อเวลา Enzo Fernández ของอาร์เจนตินาโดนใบเหลืองใบที่สองในช่วงทดเวลาครึ่งหลัง ทำให้เหลือ 10 คนตลอดช่วงต่อเวลา"
+    }
+  },
+  "france-vs-morocco": {
+    "note": {
+      "zh-tw": "Mbappé 在上半場罰失點球，下半場第 60 分鐘自己破僵局，Dembélé 六分鐘後追加一球。法國全場射門 21 比 4，射正 8 比 1。",
+      "en": "Mbappé missed a first-half penalty, then broke the deadlock himself in the 60th minute, and Dembélé added a second six minutes later. France led shots 21-4 and shots on target 8-1.",
+      "th": "Mbappé ยิงจุดโทษพลาดในครึ่งแรก ก่อนจะทำลายความเสมอด้วยตัวเองในนาทีที่ 60 และ Dembélé ทำเพิ่มอีกลูกหลังจากนั้นหกนาที ฝรั่งเศสยิงมากกว่า 21 ต่อ 4 และยิงตรงกรอบ 8 ต่อ 1"
+    }
+  },
+  "norway-vs-england": {
+    "note": {
+      "zh-tw": "Schjelderup 第 36 分鐘先讓挪威領先，Bellingham 在上半場補時扳平，並在延長賽第 93 分鐘絕殺。Haaland 本屆世界盃第一次沒有進球，延長賽中被換下。",
+      "en": "Schjelderup put Norway ahead in the 36th minute, Bellingham equalised in first-half stoppage time and scored the winner in the 93rd minute of extra time. Haaland went without a goal for the first time at the tournament and was substituted in extra time.",
+      "th": "Schjelderup ยิงให้นอร์เวย์นำในนาทีที่ 36 Bellingham ตีเสมอในช่วงทดเวลาครึ่งแรก และยิงชัยในนาทีที่ 93 ของช่วงต่อเวลา Haaland ไม่ได้ประตูเป็นครั้งแรกในทัวร์นาเมนต์นี้ และถูกเปลี่ยนตัวออกในช่วงต่อเวลา"
+    }
+  },
+  "usa-vs-australia": {
+    "note": {
+      "zh-tw": "Cameron Burgess 第 11 分鐘烏龍球，Alex Freeman 在上半場結束前頭槌破門。這場美國確定拿下小組第一，賽前就確定少了 Pulisic。",
+      "en": "Cameron Burgess scored an own goal in the 11th minute and Alex Freeman headed in a second just before half-time. The win secured the United States first place in the group, and they did so without Pulisic.",
+      "th": "Cameron Burgess ทำเข้าประตูตัวเองในนาทีที่ 11 และ Alex Freeman โหม่งประตูที่สองก่อนหมดครึ่งแรก ชัยชนะนี้ทำให้สหรัฐฯ ผงาดเป็นจ่าฝูงกลุ่ม โดยไม่มี Pulisic"
+    }
+  }
+}

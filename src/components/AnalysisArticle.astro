@@ -1,5 +1,6 @@
 ---
 import Byline from './Byline.astro';
+import PredictionResult from './PredictionResult.astro';
 import { render } from 'astro:content';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
@@ -166,6 +167,7 @@ const hasTwoWayStats = !!(twoWayH2H || homeForm || awayForm);
               </svg>
               <span class="text-xl font-black text-amber-300">{entry.data.prediction}</span>
             </div>
+            <PredictionResult entry={entry} slug={entry.id.split('/').slice(1).join('/')} lang={lang} homeName={homeName} awayName={awayName} />
           </div>
         </header>
 

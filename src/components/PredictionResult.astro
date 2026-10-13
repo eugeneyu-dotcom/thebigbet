@@ -1,0 +1,133 @@
+---
+import results from '../data/footballResults.json';
+import notes from '../data/matchNotes.json';
+
+// "Prediction vs result" box for finished football matches, fully automatic:
+// the result comes from src/data/footballResults.json (scripts/update_match_results.mjs,
+// football-data.org), matched to the article by team names and date, and the
+// verdict is derived from the article's structured `pick` / `pickBasis` /
+// `pickDouble` frontmatter (see content.config.ts). An optional hand-written
+// highlight can be added per article slug in src/data/matchNotes.json.
+// Renders nothing when the article has no `pick` or the match isn't finished.
+interface Props {
+  entry: any;
+  slug: string;
+  lang: string;
+  homeName: string;
+  awayName: string;
+}
+const { entry, slug, lang, homeName, awayName } = Astro.props;
+const data = entry.data;
+
+// Names used in articles that differ from football-data.org's.
+const ALIAS: Record<string, string> = { USA: 'United States' };
+const api = (n: string) => ALIAS[n] ?? n;
+
+const [rawHome, rawAway] = String(data.match ?? '').split(' vs ').map((x: string) => x.trim());
+const pubMs = new Date(data.pubDate).getTime();
+const DAY = 24 * 60 * 60 * 1000;
+const found = (results as any[])
+  .filter((m) => {
+    const t = new Date(m.utcDate).getTime();
+    return (
+      t >= pubMs - DAY && t <= pubMs + 3 * DAY &&
+      ((m.homeTeam === api(rawHome) && m.awayTeam === api(rawAway)) || (m.homeTeam === api(rawAway) && m.awayTeam === api(rawHome)))
+    );
+  })[0];
+
+const L: any = {
+  'zh-tw': {
+    title: '賽果對照', predicted: '賽前預測', result: '實際結果',
+    hit: '預測命中', partial: '部分命中', miss: '預測失準',
+    stage: { GROUP_STAGE: '小組賽', LAST_32: '32強', LAST_16: '16強', QUARTER_FINALS: '八強', SEMI_FINALS: '四強', THIRD_PLACE: '季軍戰', FINAL: '決賽' },
+    ninety: '90 分鐘', et: '延長賽後', pens: 'PK', advances: '晉級',
+    partialWhy: '賽前預測以 90 分鐘為準，最後晉級的是我們看好的一方，但要到延長賽或 PK 才分出勝負。',
+    source: '資料來自 football-data.org 公開賽事紀錄',
+  },
+  en: {
+    title: 'Prediction vs Result', predicted: 'Pre-match pick', result: 'Final result',
+    hit: 'Correct', partial: 'Partly correct', miss: 'Missed',
+    stage: { GROUP_STAGE: 'Group stage', LAST_32: 'Round of 32', LAST_16: 'Round of 16', QUARTER_FINALS: 'Quarter-final', SEMI_FINALS: 'Semi-final', THIRD_PLACE: 'Third-place match', FINAL: 'Final' },
+    ninety: '90 minutes', et: 'After extra time', pens: 'Penalties', advances: 'advance',
+    partialWhy: 'The pick was for the 90-minute result; the side we backed went through, but only after extra time or penalties.',
+    source: 'Results from football-data.org public match records',
+  },
+  th: {
+    title: 'เทียบคำทำนายกับผลจริง', predicted: 'คำทำนายก่อนเกม', result: 'ผลการแข่งขัน',
+    hit: 'ทายถูก', partial: 'ถูกบางส่วน', miss: 'ทายพลาด',
+    stage: { GROUP_STAGE: 'รอบแบ่งกลุ่ม', LAST_32: 'รอบ 32 ทีม', LAST_16: 'รอบ 16 ทีม', QUARTER_FINALS: 'รอบแปดทีม', SEMI_FINALS: 'รอบรองชนะเลิศ', THIRD_PLACE: 'ชิงอันดับสาม', FINAL: 'รอบชิงชนะเลิศ' },
+    ninety: '90 นาที', et: 'หลังต่อเวลา', pens: 'ดวลจุดโทษ', advances: 'ผ่านเข้ารอบ',
+    partialWhy: 'คำทำนายอิงผล 90 นาที ทีมที่เราเลือกผ่านเข้ารอบ แต่ต้องรอช่วงต่อเวลาหรือดวลจุดโทษจึงตัดสิน',
+    source: 'ผลการแข่งขันจากบันทึกสาธารณะของ football-data.org',
+  },
+  bn: {
+    title: 'পূর্বাভাস বনাম ফলাফল', predicted: 'ম্যাচের আগের পূর্বাভাস', result: 'প্রকৃত ফলাফল',
+    hit: 'সঠিক', partial: 'আংশিক সঠিক', miss: 'ভুল',
+    stage: { GROUP_STAGE: 'গ্রুপ পর্ব', LAST_32: 'রাউন্ড অব ৩২', LAST_16: 'রাউন্ড অব ১৬', QUARTER_FINALS: 'কোয়ার্টার-ফাইনাল', SEMI_FINALS: 'সেমি-ফাইনাল', THIRD_PLACE: 'তৃতীয় স্থান', FINAL: 'ফাইনাল' },
+    ninety: '৯০ মিনিট', et: 'অতিরিক্ত সময়ের পর', pens: 'পেনাল্টি', advances: 'পরবর্তী রাউন্ডে',
+    partialWhy: 'পূর্বাভাস ছিল ৯০ মিনিটের ফলাফলের জন্য; আমাদের বেছে নেওয়া দল এগিয়েছে, তবে অতিরিক্ত সময় বা পেনাল্টিতে।',
+    source: 'ফলাফল football-data.org-এর প্রকাশ্য রেকর্ড থেকে',
+  },
+};
+const txt = L[lang] ?? L.en;
+
+let view: any = null;
+if (found && data.pick) {
+  const swapped = found.homeTeam !== api(rawHome); // article lists the teams in the other order
+  const pair = (s: any) => (s ? (swapped ? { h: s.away, a: s.home } : { h: s.home, a: s.away }) : null);
+  const reg = pair(found.regularTime ?? found.fullTime)!;
+  const full = pair(found.fullTime)!;
+  const pens = pair(found.penalties);
+  const pickTeam = api(data.pick);
+  const dir = (x: { h: number; a: number }, team: string) =>
+    x.h === x.a ? 'draw' : (x.h > x.a) === (api(rawHome) === team) ? 'win' : 'lose';
+  const advancer = found.winner === 'DRAW' ? null : (found.winner === 'HOME_TEAM') === !swapped ? api(rawHome) : api(rawAway);
+
+  let verdict: 'hit' | 'partial' | 'miss';
+  if (data.pick === 'Draw') {
+    verdict = dir(reg, api(rawHome)) === 'draw' ? 'hit' : 'miss';
+  } else if (data.pickBasis === 'final') {
+    verdict = advancer === pickTeam ? 'hit' : 'miss';
+  } else {
+    const d = dir(reg, pickTeam);
+    verdict = d === 'win' || (data.pickDouble && d === 'draw') ? 'hit' : 'miss';
+    if (verdict === 'miss' && found.duration !== 'REGULAR' && advancer === pickTeam) verdict = 'partial';
+  }
+  view = { verdict, reg, full, pens, duration: found.duration, stage: found.stage, advancer, note: (notes as any)[slug]?.note };
+}
+const colors: any = {
+  hit: ['border-emerald-400/30 bg-emerald-400/5', 'bg-emerald-400/15 text-emerald-300', '✅'],
+  partial: ['border-amber-400/30 bg-amber-400/5', 'bg-amber-400/15 text-amber-300', '⚠️'],
+  miss: ['border-rose-400/30 bg-rose-400/5', 'bg-rose-400/15 text-rose-300', '❌'],
+};
+---
+
+{view && (
+  <section class={`mt-5 rounded-xl border px-4 py-4 ${colors[view.verdict][0]}`} aria-label={txt.title}>
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-3">
+      <p class="text-xs font-black uppercase tracking-widest text-slate-300">{txt.title}</p>
+      <span class="text-[#544a3e]">·</span>
+      <p class="text-xs text-slate-400">{txt.stage[view.stage] ?? ''}</p>
+      <span class={`ml-auto text-xs font-black px-2 py-0.5 rounded ${colors[view.verdict][1]}`}>{colors[view.verdict][2]} {txt[view.verdict]}</span>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+      <div>
+        <p class="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-1">{txt.predicted}</p>
+        <p class="font-bold text-amber-300">{data.prediction}</p>
+      </div>
+      <div>
+        <p class="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-1">{txt.result}</p>
+        <p class="font-bold text-white">{homeName}<span class="font-mono text-lg mx-2">{view.reg.h}–{view.reg.a}</span>{awayName}<span class="text-sm text-slate-400"> ({txt.ninety})</span></p>
+        {view.duration === 'EXTRA_TIME' && (
+          <p class="text-sm text-slate-300 mt-0.5">{txt.et}：<span class="font-mono font-bold">{view.full.h}–{view.full.a}</span></p>
+        )}
+        {view.duration === 'PENALTY_SHOOTOUT' && view.pens && (
+          <p class="text-sm text-slate-300 mt-0.5">{txt.pens}：<span class="font-mono font-bold">{view.pens.h}–{view.pens.a}</span></p>
+        )}
+      </div>
+    </div>
+    {view.verdict === 'partial' && <p class="text-sm text-amber-200/90 leading-relaxed mb-2">{txt.partialWhy}</p>}
+    {view.note && <p class="text-sm text-slate-300 leading-relaxed">{view.note[lang] ?? view.note.en}</p>}
+    <p class="mt-2 text-[11px] text-slate-500">{txt.source}</p>
+  </section>
+)}
