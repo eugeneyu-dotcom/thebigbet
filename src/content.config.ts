@@ -141,6 +141,17 @@ const predictions = defineCollection({
     league: z.enum(['world-cup', 'club-football', 'champions-league', 'nba', 'cricket']),
     // Shown as a badge instead of a match VS card — e.g. "Premier League".
     team: z.string(),
+    // Per-match picks for the auto-generated results table (PredictionScoreboard.astro).
+    // `home`/`away` use the site's club names (as in leagueMatches.json); order is
+    // irrelevant. `pick` is a club name or "Draw"; `double` = "win or draw";
+    // `alt` is the fallback market the article named, graded only when the pick misses.
+    matches: z.array(z.object({
+      home: z.string(),
+      away: z.string(),
+      pick: z.string(),
+      double: z.boolean().default(false),
+      alt: z.enum(['btts-yes', 'btts-no', 'over-2.5', 'under-2.5']).optional(),
+    })).optional(),
   }),
 });
 
@@ -160,6 +171,8 @@ const verification = defineCollection({
     league: z.enum(['world-cup', 'club-football', 'champions-league', 'nba', 'cricket']),
     // Shown as a badge instead of a match VS card — e.g. "Premier League".
     team: z.string(),
+    // Slug of the prediction guide this article reviews; its `matches` drive the auto results table.
+    verifies: z.string().optional(),
   }),
 });
 

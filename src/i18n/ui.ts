@@ -361,6 +361,21 @@ export const ui = {
 
 export const teamTranslations: Record<string, Record<string, string>> = {
   'zh-tw': {
+    // Clubs shown in the auto results tables
+    'AS Roma': '羅馬',
+    'Atlético Madrid': '馬德里競技',
+    'Brighton and Hove Albion': '布萊頓',
+    'Coventry City': '高雲地利',
+    'Galatasaray': '加拉塔薩雷',
+    'Hull City': '赫爾城',
+    'Ipswich Town': '伊普斯威奇',
+    'LASK': 'LASK',
+    'Leeds United': '里茲聯',
+    'Lille': '里爾',
+    'Napoli': '拿坡里',
+    'Sabah FK': 'Sabah',
+    'Sunderland': '桑德蘭',
+    'Viking FK': '維京',
     // NBA
     'Atlanta Hawks': '亞特蘭大老鷹',
     'Boston Celtics': '波士頓塞爾提克',
@@ -414,7 +429,6 @@ export const teamTranslations: Record<string, Record<string, string>> = {
     'West Ham United': '西漢姆聯',
     'Wolverhampton Wanderers': '狼隊',
     // NBA
-    'Philadelphia 76ers': '費城76人',
     'Premier League': '英超',
     'La Liga': '西甲',
     'Serie A': '義甲',

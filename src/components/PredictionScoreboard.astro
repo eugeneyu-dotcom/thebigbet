@@ -1,0 +1,154 @@
+---
+import { getEntry } from 'astro:content';
+import results from '../data/footballResults.json';
+import { useTeamTranslations } from '../i18n/ui';
+
+// Auto-generated results table for multi-match prediction guides (and, via the
+// `verifies` frontmatter field, for the verification article that reviews one).
+//
+// Source of truth: the article's `matches` frontmatter list (one entry per
+// match: both teams, `pick`, optional `double`, optional `alt`) plus the cached
+// results in src/data/footballResults.json (scripts/update_match_results.mjs).
+// Grading follows the site's convention: a pick that wins is a hit; if the pick
+// misses but the stated fallback market (`alt`) lands, it is a partial hit;
+// otherwise a miss. `double` means "win or draw". Draw picks need a draw.
+interface Props {
+  entry: any;
+  lang: string;
+}
+const { entry, lang } = Astro.props;
+const tTeam = useTeamTranslations(lang as any);
+
+let source = entry;
+if (!entry.data.matches && entry.data.verifies) {
+  source = (await getEntry('predictions', `${lang}/${entry.data.verifies}`)) ?? entry;
+}
+const matches: any[] = source.data.matches ?? [];
+const pubMs = new Date(source.data.pubDate).getTime();
+const DAY = 24 * 60 * 60 * 1000;
+
+// football-data.org names ("Brighton & Hove Albion FC", "FC Bayern München")
+// vs the site's names ("Brighton and Hove Albion", "Bayern Munich"): compare
+// normalised token sets.
+const STOP = new Set(['fc', 'afc', 'cf', 'sc', 'sk', 'fk', 'kv', 'osc', 'ssc', 'club', 'de', 'the', 'and', 'ac', 'as', 'cd', 'sv', 'vfb', 'balompie', 'linz']);
+const ALIAS: Record<string, string> = { munchen: 'munich', saintgermain: 'saint germain' };
+function tokens(n: string): Set<string> {
+  const base = n
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .toLowerCase().replace(/&/g, ' ').replace(/[^a-z0-9 ]/g, ' ');
+  const out = new Set<string>();
+  for (const raw of base.split(/\s+/)) {
+    const w = ALIAS[raw] ?? raw;
+    for (const part of w.split(' ')) if (part && !STOP.has(part)) out.add(part);
+  }
+  return out;
+}
+function sameTeam(a: string, b: string): boolean {
+  const ta = tokens(a), tb = tokens(b);
+  if (!ta.size || !tb.size) return false;
+  const [small, big] = ta.size <= tb.size ? [ta, tb] : [tb, ta];
+  return [...small].every((w) => big.has(w));
+}
+
+const L: any = {
+  'zh-tw': {
+    title: '賽果對照', pending: '尚未開賽',
+    win: '{t}勝', double: '{t}勝或和', draw: '和局',
+    hit: '命中', partial: '部分命中', miss: '失準',
+    alt: { 'btts-yes': '雙方進球', 'btts-no': '雙方未進球', 'over-2.5': '大於 2.5 球', 'under-2.5': '小於 2.5 球' },
+    altHit: '備案方向命中：', summary: '{n} 場已完賽：{h} 命中、{p} 部分命中、{m} 失準',
+    cols: ['對戰', '賽前預測', '比分', '結果'], source: '資料來自 football-data.org 公開賽事紀錄',
+  },
+  en: {
+    title: 'Results at a glance', pending: 'Not played yet',
+    win: '{t} win', double: '{t} win or draw', draw: 'Draw',
+    hit: 'Correct', partial: 'Partly correct', miss: 'Missed',
+    alt: { 'btts-yes': 'both teams to score', 'btts-no': 'no BTTS', 'over-2.5': 'over 2.5 goals', 'under-2.5': 'under 2.5 goals' },
+    altHit: 'Fallback angle landed: ', summary: '{n} played: {h} correct, {p} partly correct, {m} missed',
+    cols: ['Match', 'Pick', 'Score', 'Result'], source: 'Results from football-data.org public match records',
+  },
+  th: {
+    title: 'สรุปผลทำนาย', pending: 'ยังไม่แข่ง',
+    win: '{t} ชนะ', double: '{t} ชนะหรือเสมอ', draw: 'เสมอ',
+    hit: 'ทายถูก', partial: 'ถูกบางส่วน', miss: 'ทายพลาด',
+    alt: { 'btts-yes': 'ทั้งสองทีมยิงได้', 'btts-no': 'ทั้งสองทีมไม่ได้ยิงครบ', 'over-2.5': 'เกิน 2.5 ประตู', 'under-2.5': 'ต่ำกว่า 2.5 ประตู' },
+    altHit: 'ทางเลือกสำรองเข้าเป้า: ', summary: 'แข่งแล้ว {n} เกม: ถูก {h} ถูกบางส่วน {p} พลาด {m}',
+    cols: ['คู่แข่งขัน', 'คำทำนาย', 'สกอร์', 'ผล'], source: 'ผลการแข่งขันจากบันทึกสาธารณะของ football-data.org',
+  },
+  bn: {
+    title: 'ফলাফলের সারসংক্ষেপ', pending: 'এখনও খেলা হয়নি',
+    win: '{t} জয়', double: '{t} জয় বা ড্র', draw: 'ড্র',
+    hit: 'সঠিক', partial: 'আংশিক সঠিক', miss: 'ভুল',
+    alt: { 'btts-yes': 'দুই দলই গোল করবে', 'btts-no': 'দুই দল গোল করবে না', 'over-2.5': '২.৫ গোলের বেশি', 'under-2.5': '২.৫ গোলের কম' },
+    altHit: 'বিকল্প দিক মিলেছে: ', summary: '{n}টি খেলা শেষ: {h} সঠিক, {p} আংশিক, {m} ভুল',
+    cols: ['ম্যাচ', 'পূর্বাভাস', 'স্কোর', 'ফল'], source: 'ফলাফল football-data.org-এর প্রকাশ্য রেকর্ড থেকে',
+  },
+};
+const txt = L[lang] ?? L.en;
+
+const rows = matches.map((m) => {
+  const r = (results as any[]).find((x) => {
+    const t = new Date(x.utcDate).getTime();
+    return t >= pubMs - DAY && t <= pubMs + 8 * DAY &&
+      ((sameTeam(x.homeTeam, m.home) && sameTeam(x.awayTeam, m.away)) || (sameTeam(x.homeTeam, m.away) && sameTeam(x.awayTeam, m.home)));
+  });
+  const pickText = m.pick === 'Draw' ? txt.draw : (m.double ? txt.double : txt.win).replace('{t}', tTeam(m.pick));
+  if (!r) return { m, pickText, played: false };
+  // oriented to the real fixture (home team first)
+  const homeName = sameTeam(r.homeTeam, m.home) ? m.home : m.away;
+  const awayName = homeName === m.home ? m.away : m.home;
+  const hs = r.fullTime.home, as = r.fullTime.away;
+  const pickHome = m.pick !== 'Draw' && sameTeam(m.pick, homeName);
+  let main: boolean;
+  if (m.pick === 'Draw') main = hs === as;
+  else {
+    const won = pickHome ? hs > as : as > hs;
+    main = won || (!!m.double && hs === as);
+  }
+  const total = hs + as;
+  const altOk = m.alt === 'btts-yes' ? hs > 0 && as > 0 : m.alt === 'btts-no' ? !(hs > 0 && as > 0) : m.alt === 'over-2.5' ? total > 2.5 : m.alt === 'under-2.5' ? total < 2.5 : false;
+  const verdict = main ? 'hit' : altOk ? 'partial' : 'miss';
+  return { m, pickText, played: true, homeName, awayName, hs, as, verdict };
+});
+const played = rows.filter((x: any) => x.played);
+const count = (v: string) => played.filter((x: any) => x.verdict === v).length;
+const icon: any = { hit: '✅', partial: '⚠️', miss: '❌' };
+const tone: any = { hit: 'text-emerald-300', partial: 'text-amber-300', miss: 'text-rose-300' };
+const summary = txt.summary.replace('{n}', String(played.length)).replace('{h}', String(count('hit'))).replace('{p}', String(count('partial'))).replace('{m}', String(count('miss')));
+---
+
+{played.length > 0 && (
+  <section class="my-8 rounded-xl border border-[#3c352c] bg-[#0a150f] px-4 py-4" aria-label={txt.title}>
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-3">
+      <p class="text-xs font-black uppercase tracking-widest text-slate-300">{txt.title}</p>
+      <p class="ml-auto text-xs text-slate-400">{summary}</p>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="text-left text-[11px] uppercase tracking-widest text-slate-500">
+            {txt.cols.map((c: string) => <th class="py-2 pr-4 font-black whitespace-nowrap">{c}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((x: any) => (
+            <tr class="border-t border-[#3c352c]/70">
+              <td class="py-2 pr-4 font-bold text-white min-w-[9rem]">
+                {x.played ? `${tTeam(x.homeName)} vs ${tTeam(x.awayName)}` : `${tTeam(x.m.home)} vs ${tTeam(x.m.away)}`}
+              </td>
+              <td class="py-2 pr-4 text-amber-300 whitespace-nowrap">{x.pickText}</td>
+              <td class="py-2 pr-4 font-mono font-bold text-white whitespace-nowrap">{x.played ? `${x.hs}–${x.as}` : <span class="font-sans font-normal text-slate-500">{txt.pending}</span>}</td>
+              <td class={`py-2 font-bold whitespace-nowrap ${x.played ? tone[x.verdict] : 'text-slate-500'}`}>
+                {x.played ? `${icon[x.verdict]} ${txt[x.verdict]}` : '—'}
+                {x.played && x.verdict === 'partial' && x.m.alt && (
+                  <span class="block text-[11px] font-normal text-amber-200/80">{txt.altHit}{txt.alt[x.m.alt]}</span>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-2 text-[11px] text-slate-500">{txt.source}</p>
+  </section>
+)}

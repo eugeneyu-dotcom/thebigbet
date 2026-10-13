@@ -7,6 +7,7 @@ import BaseHead from './BaseHead.astro';
 import GoogleAnalytics from './GoogleAnalytics.astro';
 import GoogleAdsense from './GoogleAdsense.astro';
 import AnalysisAnchor from './AnalysisAnchor.astro';
+import PredictionScoreboard from './PredictionScoreboard.astro';
 import TeamIcon from './TeamIcon.astro';
 import TeamHeading from './TeamHeading.astro';
 import { useTeamTranslations, useTranslations } from '../i18n/ui';
@@ -70,6 +71,8 @@ const trendTag = articleTag ?? (lang === 'zh-tw' ? '球隊趨勢分析' : lang =
             <span class="text-sm font-black text-white">{teamName}</span>
           </div>
         </header>
+
+        {(entry.data.matches || entry.data.verifies) && <PredictionScoreboard entry={entry} lang={lang} />}
 
         <div class="article-body prose prose-invert max-w-none prose-img:rounded-xl prose-headings:font-black prose-headings:text-white prose-a:text-amber-400 prose-strong:text-white">
           <Content components={{ a: AnalysisAnchor, h2: TeamHeading }} />
