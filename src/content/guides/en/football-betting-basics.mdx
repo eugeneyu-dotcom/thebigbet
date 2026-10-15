@@ -22,6 +22,23 @@ Chelsea 5.20
 
 A $100 bet on an Arsenal win returns $165 (stake included); a $100 bet on a draw returns $380; a $100 bet on a Chelsea win returns $520. The three implied probabilities add up to slightly over 100% (the excess is the bookmaker's margin) — the closer a number is to 1, the more the market favors that outcome.
 
+### Taking the draw apart: Draw No Bet and Double Chance
+
+1X2 treats the draw as a separate outcome, but there are two less common — yet very real — markets built on it: "Draw No Bet" and "Double Chance." And you can work out fair odds for both from the same set of prices. Using the example above (Arsenal 1.65 / Draw 3.80 / Chelsea 5.20):
+
+| Outcome | Odds | Implied probability | Margin removed |
+|------|------|----------|--------|
+| Arsenal win | 1.65 | 60.6% | 57.1% |
+| Draw | 3.80 | 26.3% | 24.8% |
+| Chelsea win | 5.20 | 19.2% | 18.1% |
+| **Total** | | **106.2%** | **100%** |
+
+- **Draw No Bet**: if the match is drawn your stake is refunded, which takes the draw out of the picture and compares only who wins. With Arsenal at 57.1% and Chelsea at 18.1% after the margin is removed, Arsenal's chance once the draw is taken out is 57.1 ÷ (57.1 + 18.1) ≈ **75.9%**, which corresponds to fair odds (no margin) of about 1.32. That's much lower than the 1.65 in 1X2, because you no longer carry the risk of a draw.
+- **Double Chance**: one bet that covers two outcomes. "Arsenal win or draw" (1X) has a probability of 57.1% + 24.8% = **81.9%**, with fair odds of about 1.22; "Chelsea win or draw" (X2) is 24.8% + 18.1% = 42.9%, with fair odds of about 2.33.
+- **The difference between them**: in Double Chance a draw counts as a win, while in Draw No Bet a draw only refunds your stake — so Double Chance odds are always lower than Draw No Bet odds.
+
+(These are "margin-free" fair odds worked out from the example prices; real platform quotes add margin on top, so they come out slightly lower. For how to strip the margin, see [Odds, Implied Probability and Expected Value](/en/strategy/odds-implied-probability-ev/).)
+
 ### Asian Handicap
 
 A genuinely mainstream market in football, and especially popular in Asian markets — its defining feature is **using a handicap to eliminate the draw as a possible outcome entirely**. The logic is similar to a basketball point spread, but because football scores run low, Asian Handicap lines often use quarter-goal increments for finer granularity. A real line looks like this:
@@ -38,6 +55,33 @@ That `-0.75` is actually a combination of two separate handicap lines (-0.5 and 
 
 This "half win" or "half win, half push" outcome is exactly what sets Asian Handicap apart from a standard whole/half-goal spread, and it's the part newcomers most often misread.
 
+### Asian Handicap settlement table
+
+The quarter-ball rules are admittedly harder to follow. This table sets out how the most common handicaps settle under different results (assuming you've backed the side giving the goals — the "favorite"; the headings describe the margin of victory):
+
+| Handicap | Favorite wins by 1 | Favorite wins by 2+ | Draw | Favorite loses |
+|------|------|------|------|------|
+| −0.25 | Full win | Full win | Lose half | Full loss |
+| −0.5 | Full win | Full win | Full loss | Full loss |
+| −0.75 | Win half | Full win | Full loss | Full loss |
+| −1 | Push (stake back) | Full win | Full loss | Full loss |
+| −1.25 | Lose half | Full win | Full loss | Full loss |
+
+(−0.75 is half your stake on −0.5 and half on −1; −0.25 is half on 0 and half on −0.5; −1.25 is half on −1 and half on −1.5. Other handicaps follow the same pattern.)
+
+If you back the **underdog** instead, settlement is the mirror image:
+
+| Handicap | Underdog loses by 1 | Draw | Underdog wins |
+|------|------|------|------|
+| +0.25 | Full loss | Win half | Full win |
+| +0.5 | Full loss | Full win | Full win |
+| +0.75 | Lose half | Full win | Full win |
+| +1 | Push (stake back) | Full win | Full win |
+
+(If the underdog loses by 2 or more, every underdog handicap above is a full loss.)
+
+One simple rule to remember: **a line ending in .25 or .75 is always two lines with half your stake on each**, so the result can only be a full win, a full loss, or "win half / lose half" — never anything else.
+
 ### Over/Under Goals
 
 Betting on whether the combined goals in a match (including stoppage time, but usually not a penalty shootout) go over or under a line — the most common threshold is 2.5 goals:
@@ -48,6 +92,21 @@ Under 2.5 goals (1.95)
 ```
 
 A combined total above 2.5 (i.e., 3 or more) wins the Over; 2 or fewer wins the Under. Because 2.5 is a fractional line, there's no ambiguous push scenario. Over/Under is heavily shaped by both teams' attacking style and defensive solidity — two high-pressing, leaky-defense sides tend to push totals toward the Over, while two counter-attacking, defense-first sides trend toward the Under; a large mismatch in quality also tends to push the Over.
+
+### Over/Under has quarter-balls too — and what "full time" actually covers
+
+Like the Asian Handicap, Over/Under also has quarter-ball thresholds such as 2.25 and 2.75, with the same logic — half your stake on each of two lines:
+
+| Line | 1 goal or fewer | 2 goals | 3 goals | 4 goals or more |
+|------|------|------|------|------|
+| Over 2.25 | Full loss | Lose half | Full win | Full win |
+| Over 2.5 | Full loss | Full loss | Full win | Full win |
+| Over 2.75 | Full loss | Full loss | Win half | Full win |
+| Over 3 | Full loss | Full loss | Push (stake back) | Full win |
+
+For Under, read it the other way round: the fewer total goals, the better the result.
+
+Also, **"full time" usually means 90 minutes plus stoppage time, and does not include extra time or a penalty shootout.** That matters especially in knockout games: in a match that's 1-1 after 90 minutes and only decided in extra time, Over/Under and 1X2 still look only at the 90-minute score. Rules can differ slightly between platforms, so check the platform's published rules before betting.
 
 ### Both Teams to Score (BTTS)
 
@@ -63,6 +122,36 @@ This market rewards understanding both squads' setups more than the others — f
 ### Other common markets: Correct Score, Corners, Cards
 
 Beyond these four main markets, there's also Correct Score (pick the exact final scoreline — huge odds, very low hit rate), plus Corners Over/Under and Cards Over/Under, both of which have grown more popular as corner and card statistics have become more widely tracked. The logic is identical to goals Over/Under — just swap the counted stat for corners or cards.
+
+### Know the base rates before you read a line: this season's first six Premier League rounds
+
+To judge whether a line is reasonable, it helps to know what the league looks like "on average." We worked through the **first six rounds of this Premier League season — 60 matches in all** — that the site tracks:
+
+| Measure | This season's first 60 matches |
+|------|------|
+| Home win / draw / away win | 38.3% / 31.7% / 30.0% |
+| Goals per match | 2.95 |
+| Over 2.5 total goals | 56.7% |
+| Both teams scored | 55.0% |
+
+With these numbers as a baseline, you can ask a more useful question: **is this price higher or lower than the base rate?** For example, if Over 2.5 goals in a match is priced at 1.85, an implied probability of about 54%, while 56.7% of this season's Premier League matches have gone over 2.5, then — assuming nothing unusual about the two teams' styles — betting the over has relatively more value.
+
+But two cautions:
+
+- **60 matches is a small sample.** A home-win rate of just 38%, for instance, is far below the usual idea of home advantage, and is most likely a quirk of the first six rounds — don't treat it as settled.
+- **The base rate is only a starting point.** What adjusts it are the specific teams' attacking power, defensive stability, injuries and schedule (see our [Premier League Matchweek 6 prediction guide](/en/football/leagues/predictions/epl-matchweek-6-six-clubs-prediction-guide/), where every match is broken down this way). In football especially, tactics and styles differ enormously between teams — some attack, some defend — so you can't generalize.
+
+### Different situations, which market should you look at?
+
+| Your read | A better-fitting market | Why |
+|------|------|------|
+| You back the favorite to win but fear a draw | Draw No Bet, Double Chance (1X) | A draw doesn't lose you money, at the cost of worse odds |
+| You expect the favorite to win big | Asian Handicap −1 or −1.5 | They have to win by enough to count, and the price beats 1X2 |
+| You expect both teams to score | BTTS "Yes", Over on goals | The two markets complement each other — BTTS means at least two goals, so going over is also relatively likely |
+| You think the underdog won't lose by much | Underdog line +0.75, +1 | Losing by one goal returns your stake or loses half |
+| You have no idea who'll win | Don't bet | A simple principle: no view, no bet |
+
+That last row is meant seriously: **for a match you have no view on, the best choice is not to bet.** There are dozens of matches a week, so you'll never run short of chances.
 
 ## What actually decides football matches, and where to check it
 
@@ -92,4 +181,23 @@ The case illustrates a point: **team-level match-fixing needs several players to
 
 ## Bottom line
 
-Before you look at a football line, first work out whether it's 1X2, an Asian Handicap, Over/Under, or BTTS — the Asian Handicap's half-win mechanic in particular is where newcomers most often misjudge things. Layer in injury news, fixture-congestion rotation risk, home advantage, and referee tendencies, and you'll get a much better read on where a match is headed than the odds number alone. Football has plenty of variables and plenty of upsets — bet responsibly, and manage your stake size.
+Before you look at a football line, first work out whether it's 1X2, an Asian Handicap, Over/Under, or BTTS — the Asian Handicap's half-win mechanic in particular is where newcomers most often misjudge things. Layer in injury news, fixture-congestion rotation risk, home advantage, and referee tendencies, and you'll get a much better read on where a match is headed than the odds number alone.
+
+Look back at the numbers in this piece: the same Arsenal price of 1.65 is only 57% once the margin is removed; take the draw out and it's 76%; and in the first six rounds of this Premier League season, home teams won just 38% of matches. All of this is a reminder that football results carry a great deal of built-in uncertainty. Football has many variables and no shortage of upsets — bet responsibly and manage your stake size.
+
+## Frequently Asked Questions
+
+**Do extra time and penalty shootouts count in the markets?**
+On most platforms, 1X2, Asian Handicap and Over/Under all look only at 90 minutes plus stoppage time. To include extra time or progression, you usually need to pick a "to qualify" market or one the platform labels as "including extra time" — follow each platform's own rules.
+
+**Why do different platforms set different Over/Under lines for the same match?**
+Each platform sets the line at 2.25, 2.5 or 2.75 according to its own risk management, then compensates through the odds. When the line differs, the odds on both sides adjust with it, so compare "line plus odds" together rather than the line alone.
+
+**What's the difference between the Asian Handicap and the European handicap?**
+The Asian Handicap has only two outcomes — the draw is removed (pushed and refunded). The European handicap still has three outcomes, and a draw after the handicap is applied is its own separate option. This site covers the Asian Handicap.
+
+**Which market should I learn first?**
+Start with 1X2, then Draw No Bet, and only then the Asian Handicap. Getting a firm grip on stripping the margin and implied probability (see [this piece](/en/strategy/odds-implied-probability-ev/)) matters more than rushing to learn every market.
+
+**How should I read the site's prediction reviews?**
+Every round we set our pre-match predictions against the actual results, including the ones that missed — for example the [Premier League Matchweek 6 prediction review](/en/football/leagues/verification/epl-matchweek-6-predictions-verified/). To judge how a method really performs, a long run of reviews is worth more than any single conclusion.
