@@ -1,14 +1,14 @@
 ---
 title: "Odds, Implied Probability and Expected Value: Betting's First Math Lesson"
-description: "To understand betting, first understand the math. This piece walks you through three core concepts in the simplest way — the implied probability behind the odds, the bookmaker's margin (overround), and the expected value (EV) that decides who wins long term. Learn these three and you'll know whether a bet is actually worth placing."
+description: "To understand betting, first understand the math. This piece uses real odds from the site to work through implied probability, strip out the bookmaker's margin, convert between odds formats, and use expected value and the Kelly criterion to judge whether a bet is worth placing — plus a margin study of 121 football matches across 36 bookmakers and the five most common mistakes."
 pubDate: 2026-07-22
 ---
 
-Many people treat betting as "guessing the winner," but those who stay afloat long term never look at wins and losses — they look at the math. This is betting's first lesson: the three most basic yet most important concepts.
+Plenty of people think sports betting is simply guessing who wins — and, well, partly that's true. But if you want steady returns, you can't just look at wins and losses; you have to understand the math behind it to know how to bet in your favor. This is the first lesson in betting: it covers the most basic and most important concepts, using real odds from the site as worked examples. (Updated October 2026: added worked margin-removal examples, an odds-format conversion table, a margin study from the site's own data, the Kelly criterion and common mistakes.)
 
 ## 1. Implied Probability: Odds Are Really a Probability
 
-Decimal odds are the most intuitive. A simple formula converts odds into the probability the market assigns to a win:
+Decimal (European) odds are the most common format. A simple formula converts odds into the probability the market assigns:
 
 **Implied probability = 1 ÷ odds**
 
@@ -16,46 +16,158 @@ Decimal odds are the most intuitive. A simple formula converts odds into the pro
 - Odds 1.50 → 1 ÷ 1.50 ≈ 66.7%
 - Odds 6.50 → 1 ÷ 6.50 ≈ 15.4%
 
-In other words, when you see a team priced at 6.50, the market is saying "we think they have about a 15% chance of winning." That's the starting point for judging whether a bet has value.
+In other words, when you see a team at 6.50, the market is saying it thinks they have roughly a 15% chance of that outcome landing. That probability is where you start judging whether a bet has value: if you believe (from information you have, or any other reason) the true chance is higher than 15.4%, that outcome is worth betting.
 
 ## 2. The Bookmaker's Margin (Overround): Why Probabilities Add Up to More Than 100%
 
-Add up the implied probabilities of every outcome in a match and you'll find they total **more than 100%**. The excess is the bookmaker's profit — the so-called margin (vig / overround).
+If you calculate the implied probabilities of every outcome and add them up, you'll often find the total **exceeds 100%**. Don't doubt your arithmetic — this is normal, because the bookmaker needs to make money. The excess is the bookmaker's profit, usually called the "margin," "vig" or "overround."
 
 For example, a two-way match:
 
-| Outcome | Odds | Implied Probability |
-|---------|------|---------------------|
+| Outcome | Odds | Implied probability |
+|------|------|----------|
 | Home win | 1.90 | 52.6% |
 | Away win | 1.90 | 52.6% |
 | **Total** | | **105.2%** |
 
-That extra 5.2% is the bookmaker's edge. It's also why betting carelessly over the long run guarantees a loss — you have to beat not just your opponent, but this built-in margin first.
+That extra 5.2% is the bookmaker's edge, and it's why bookmakers always come out ahead: they don't only profit when players pick wrong — their biggest source of profit is actually this margin. It also explains why the bigger the operator and the match, the less likely there is to be any suspicion of match-fixing: for these operators, keeping matches clean and fair, and attracting more people to play so they can collect margin over the long run, is worth far more than rigging a single game.
 
-## 3. Expected Value (EV): The Only Metric That Decides Long-Term Results
+## 3. Expected Value (EV): The One Measure That Decides Long-Run Results
 
-Expected Value is the heart of it all. It measures: if you placed the same bet countless times, would you profit or lose on average per bet? The formula:
+With a probability in hand, we can calculate expected value. It's very simple middle-school math: as long as the expected value is positive, your returns will be positive in the long run. It measures something simple too: if you placed the same bet countless times, would you make or lose money on average per bet? The formula is:
 
 **EV = (your estimated win probability × net odds) − (your estimated loss probability × 1)**
 
-where "net odds" = odds − 1. As long as EV is positive, it's profitable over the long run.
+where "net odds" = odds − 1. As long as EV is positive, the bet is profitable in the long run.
 
-**Example:** a team priced at 6.50 needs a 15.4% break-even probability (see section 1). If, after analysis, you believe their true win probability is 30%:
+**Example:** A team is at 6.50, and the break-even probability is 15.4% (see Section 1). Suppose your analysis says their true chance is 30%:
 
 > EV = 0.30 × (6.50 − 1) − 0.70 × 1 = 1.65 − 0.70 = **+0.95**
 
-Positive EV means this is a bet "worth placing" — even though they're more likely to lose. **The point isn't who will win, but whether the odds are higher than the true probability.**
+Positive expected value means this is a bet "worth placing" — even though they're more likely to lose. And in simple terms, if three matches all looked like this and you bet the same amount on each, you'd be in profit as soon as just one of them landed. **The point isn't who wins, but whether the odds are higher than the true probability.** That's the biggest reason I said above that if you want steady returns, you shouldn't just look at wins and losses.
 
-## 4. Bankroll Management: Even Great EV Fears Going Bust
+## 4. Bankroll Management: Even a Great EV Can Go Broke
 
-Even if every bet is positive-EV, staking too much on a single bet means one losing streak can knock you out. A few principles:
+Everything so far is simple math that anyone who finished middle school can do, yet many people still don't make money betting on sports. Apart from misjudging probabilities (overconfidence, trusting false inside information...), the most common problem is bankroll management. Even if every bet is positive EV, many people get beaten by a single moment of greed — staking too much on one bet and losing heavily so that later wins can never make up for it, or miscalculating risk so that a losing run knocks them out. If you want to profit over the long run, stick to these principles:
 
-- **Fixed units**: only stake a small fixed amount per bet (e.g. 1–2% of your total bankroll).
-- **Don't chase**: after a loss, don't pile on to win it back — that's emotion, not math.
-- **Only bet value**: no positive EV, no bet. Sitting out is fine.
+- **Fixed units**: use only a fixed small amount per bet (for example 1–2% of your bankroll), and don't place big bets out of greed.
+- **Don't chase**: don't raise your stakes just to win back what you lost last time — that's emotion, not math.
+- **Only bet value**: if there's no positive EV, don't bet — it's better to stay out. There are plenty of matches in the world; you'll never run short of chances to bet.
 
-## Closing
+## 5. Strip Out the Margin: Work Through a Real Line
 
-Odds are the market's stance, implied probability is its translation, and expected value is your answer to whether you should act. Understand these three and you've graduated from "guessing winners" to "calculating value."
+Sections 1 and 2 showed that the implied probabilities of all outcomes add up to more than 100%. To see the market's "real view," you have to remove that margin. The simplest way takes three steps:
 
-But remember: all of this is probability, not a guarantee. Please bet responsibly and within your means.
+1. Calculate "1 ÷ odds" for each outcome.
+2. Add them all up; the total minus 1 is the margin.
+3. Divide each outcome's implied probability by the total — that's the probability with the margin removed.
+
+**Example 1: NBA opening night, Knicks vs 76ers (two-way market)**
+
+| Outcome | Odds | Implied probability | Margin removed |
+|------|------|----------|--------|
+| Knicks win | 1.47 | 68.0% | 65.8% |
+| 76ers win | 2.83 | 35.3% | 34.2% |
+| **Total** | | **103.4%** | **100%** |
+
+The margin is 3.4%. The market's real view is about 66% Knicks and 34% 76ers, not 68% against 35%.
+
+**Example 2: Champions League, Arsenal vs Lille (three-way market, including the draw)**
+
+| Outcome | Odds | Implied probability | Margin removed |
+|------|------|----------|--------|
+| Arsenal win | 1.19 | 84.0% | 78.3% |
+| Draw | 6.65 | 15.0% | 14.0% |
+| Lille win | 12.14 | 8.2% | 7.7% |
+| **Total** | | **107.3%** | **100%** |
+
+The margin is 7.3%. Three-way markets usually carry a bigger margin than two-way ones, because there's one more outcome to take margin from.
+
+(The odds above are mid-October 2026 lines and keep moving until kick-off — treat them as a demonstration of the method, not betting advice.)
+
+**This is how the "odds-implied chances" under each odds card on the homepage are calculated**: convert the odds into probabilities and then take out the bookmaker's profit, which reflects the market's real view — but note that it is not our prediction. You can go to the [homepage](/en/) and see what today's odds convert to.
+
+This "spread the margin out proportionally" method is the simplest and is fine for everyday use; there are more refined methods in the academic literature, but for ordinary judgment the difference is small.
+
+## 6. Odds-Format Conversion Table
+
+Different regions and platforms use different odds formats. Here are the most common ones side by side, with the implied probability each corresponds to:
+
+| Decimal (European) | American | Fractional | Implied probability |
+|------|------|------|------|
+| 1.25 | −400 | 1/4 | 80.0% |
+| 1.50 | −200 | 1/2 | 66.7% |
+| 1.67 | −150 | 2/3 | 59.9% |
+| 1.91 | −110 | 10/11 | 52.4% |
+| 2.00 | +100 | 1/1 (evens) | 50.0% |
+| 2.50 | +150 | 3/2 | 40.0% |
+| 3.00 | +200 | 2/1 | 33.3% |
+| 4.00 | +300 | 3/1 | 25.0% |
+| 6.50 | +550 | 11/2 | 15.4% |
+| 11.00 | +1000 | 10/1 | 9.1% |
+
+A few small conversion rules:
+
+- **American odds**: a positive +X means you win X on a 100 stake, with decimal odds = 1 + X ÷ 100; a negative −X means you must stake X to win 100, with decimal odds = 1 + 100 ÷ X.
+- **Fractional odds**: a/b means you win a on a stake of b, with decimal odds = 1 + a ÷ b.
+- **Hong Kong odds**: simply the decimal odds minus 1 (net profit only, stake not included) — for example decimal 2.50 equals Hong Kong 1.50.
+- **−110 matters**: American −110 is decimal 1.91, implying 52.4%, which is why, when both sides of a point spread are priced at −110, you need to win 52.4% of the time just to break even (see [NBA Point Spread Explained](/en/nba/guides/nba-point-spread-explained/)).
+
+## 7. What Does the Margin Actually Look Like? A Look at the Site's Own Data
+
+We worked through the three-way odds from every bookmaker for the 121 football matches the site tracks (excluding betting exchanges, which work differently — 36 bookmakers and 2,023 quotes in all), and the results were:
+
+- **The median margin is about 7.9%.**
+- A quarter of quotes carry a margin below 5.9%, and three-quarters below 9.6%.
+- **The lowest is about 1.3% and the highest about 18.7%.**
+
+For the same match, margins can differ by more than ten times between bookmakers. That means two things:
+
+1. **Shopping around is valuable in itself.** You don't need to out-predict the bookmaker; simply picking lines with a lower margin cuts your long-run cost by a lot.
+2. **The margin is a cost you pay on every bet.** If you have no informational edge, then for every 100 you bet, a 7.9% margin means an expected long-run loss of about 7 (the calculation: 1 − 1 ÷ 1.079 ≈ 7.3%); at a 1.3% margin you'd lose only about 1.3.
+
+(This is a sample of the site's own data, not a statistic for the whole market. For the NBA we only keep a single bookmaker's moneyline; across 41 games its average margin is about 2.7%, and two-way markets usually carry a lower margin than three-way ones.)
+
+## 8. The Kelly Criterion: Why You Shouldn't Use It As-Is
+
+Section 4 said to "stake only 1–2% per bet." There's a more mathematical approach called the **Kelly criterion**, which tells you — assuming you know the win probability — the stake size that in theory grows your bankroll fastest over the long run:
+
+**f = (b × p − q) ÷ b**
+
+where b is the net odds (odds − 1), p is your estimated win probability, and q = 1 − p.
+
+Applying it to Section 3's example (odds 6.50, b = 5.5, estimated win probability 30%):
+
+> f = (5.5 × 0.30 − 0.70) ÷ 5.5 = 0.95 ÷ 5.5 ≈ **17.3%**
+
+In other words, if your probability estimate is exactly right, Kelly suggests putting 17% of your bankroll on this one bet. **In reality almost no one dares to use that number**, because:
+
+- The formula assumes your probability estimate is "exactly right," but your 30% is only an estimate — the true probability might be 20%, or 15.4% (which is zero expected value).
+- Full Kelly makes your bankroll swing violently, and a losing streak can cause a very large drawdown.
+
+So in practice, even people who use Kelly usually take only a quarter to a half of it ("fractional Kelly"). The "1–2% per bet" suggested here is more conservative than fractional Kelly, and for someone without a stable edge it's the more sensible starting point.
+
+## 9. The Five Most Common Mistakes
+
+1. **Low odds means it will definitely win.** Arsenal at 1.19 have roughly a 78% chance once the margin is removed — meaning that out of ten such games, two or so still won't be won. Low odds mean "more likely," not "certain."
+2. **Implied probability is the true probability.** Implied probability is the market's quote; it still contains the bookmaker's margin and is also shaped by money flow and public preference. Popular teams with big followings are often backed more than they should be, and those matchups are usually the most profitable ones.
+3. **A positive-EV bet will definitely win.** Positive EV means "on average, it makes money after many repeats," and a single bet can still lose. Example: at odds of 6.50 with a 30% win probability by your estimate, this bet still loses 70% of the time.
+4. **Judging yourself on a few dozen bets.** Suppose you really do have a 55% win rate (at odds of about 1.91): over 100 bets, the chance of winning 50 or fewer is about 18%. That is, even if your judgment really is better than the market's, a run of 100 bets can easily look like a loss. Betting is always about the law of large numbers — the more bets, the more accurate the picture, and you need at least several hundred before you can judge. That's also why we recommended staking just 1–2% per bet: for ordinary players without much capital, a stake that's too large just means you go broke faster.
+5. **Forgetting to strip the margin before comparing.** If you compare margin-inclusive implied probabilities with your own judgment, you'll systematically overestimate every outcome's probability. Strip the margin first, then compare.
+
+## 10. Frequently Asked Questions
+
+**Why do different bookmakers offer different odds on the same match?**
+Each bookmaker has its own margin, risk management and customer base, so odds differ. The numbers in Section 7 are that difference in action.
+
+**How do I know whether my probability estimates are accurate?**
+The only way is to record your predictions and results completely over the long run, then check them against a large enough sample. This site works the same way — we regularly publish prediction reviews that show both hits and misses openly.
+
+**Can the margin-free probability be used as a prediction?**
+It's the market's view and a very good reference, but it isn't the answer. Your job is to find information the market hasn't priced in — injuries, squad changes, schedule density — rather than copy it.
+
+## Conclusion
+
+Odds are the market's attitude, implied probability is its translation, and expected value is the answer to whether you should step in. Looking back at this piece's examples: the Knicks' 66% is a market quote, not a result — it means that out of ten such games you can still expect to lose three or four; and the small-sample example of 100 bets reminds us that a stretch of wins and losses says almost nothing about your skill. Once you understand these things, you've upgraded from "guessing winners" to "calculating value."
+
+But remember: all of the math is probability, not a guarantee. Please bet responsibly and within your means.
