@@ -15,6 +15,12 @@ export function buildRedirects() {
     r[`/${lang}/bracket`] = `/${lang}/football/world-cup/bracket`;
     r[`/${lang}/group-stage`] = `/${lang}/football/world-cup/group-stage`;
     r[`/${lang}/schedule`] = `/${lang}/football/world-cup/schedule`;
+    // Match analysis and predictions are written the same way, so Top 5 Leagues
+    // and Champions League share one "Analysis & Predictions" list (the
+    // predictions index). The old analysis list pages redirect there; individual
+    // analysis articles keep their /analysis/<slug> URLs.
+    r[`/${lang}/football/leagues/analysis`] = `/${lang}/football/leagues/predictions`;
+    r[`/${lang}/football/champions-league/analysis`] = `/${lang}/football/champions-league/predictions`;
     // MLB was retired in favor of cricket — send any already-indexed old URLs
     // to their closest new equivalent.
     r[`/${lang}/mlb`] = `/${lang}/cricket`;

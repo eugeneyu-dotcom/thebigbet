@@ -18,8 +18,7 @@ const footballGroups = [
     href: `/${lang}/football/leagues`,
     items: [
       { label: guidesLbl, href: `/${lang}/football/leagues/guides` },
-      { label: analysisLbl, href: `/${lang}/football/leagues/analysis` },
-      { label: t('nav.predictions'), href: `/${lang}/football/leagues/predictions` },
+      { label: t('nav.analysisPredictions'), href: `/${lang}/football/leagues/predictions` },
       { label: t('nav.verification'), href: `/${lang}/football/leagues/verification` },
       { label: t('nav.trends'), href: `/${lang}/football/leagues/trends` },
     ],
@@ -29,8 +28,7 @@ const footballGroups = [
     href: `/${lang}/football/champions-league`,
     items: [
       { label: guidesLbl, href: `/${lang}/football/champions-league/guides` },
-      { label: analysisLbl, href: `/${lang}/football/champions-league/analysis` },
-      { label: t('nav.predictions'), href: `/${lang}/football/champions-league/predictions` },
+      { label: t('nav.analysisPredictions'), href: `/${lang}/football/champions-league/predictions` },
       { label: t('nav.verification'), href: `/${lang}/football/champions-league/verification` },
       { label: t('nav.trends'), href: `/${lang}/football/champions-league/trends` },
     ],
@@ -55,7 +53,7 @@ const internationalDropdown = {
 };
 
 const simpleDropdowns = [
-  { key: 'nba', label: 'NBA', href: `/${lang}/nba`, items: [ { label: guidesLbl, href: `/${lang}/nba/guides` }, { label: analysisLbl, href: `/${lang}/nba` }, { label: t('nav.predictions'), href: `/${lang}/nba/predictions` }, { label: t('nav.trends'), href: `/${lang}/nba/trends` } ] },
+  { key: 'nba', label: 'NBA', href: `/${lang}/nba`, items: [ { label: guidesLbl, href: `/${lang}/nba/guides` }, { label: t('nav.analysisPredictions'), href: `/${lang}/nba/predictions` }, { label: t('nav.trends'), href: `/${lang}/nba/trends` } ] },
   { key: 'cricket', label: t('nav.cricket'), href: `/${lang}/cricket`, items: [ { label: guidesLbl, href: `/${lang}/cricket/guides` }, { label: analysisLbl, href: `/${lang}/cricket` }, { label: t('nav.trends'), href: `/${lang}/cricket/trends` } ] },
 ].filter((d) => visibleSports.includes(d.key));
 

@@ -52,6 +52,26 @@
       "permanent": true
     },
     {
+      "source": "/zh-tw/football/leagues/analysis",
+      "destination": "/zh-tw/football/leagues/predictions/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/football/leagues/analysis/",
+      "destination": "/zh-tw/football/leagues/predictions/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/football/champions-league/analysis",
+      "destination": "/zh-tw/football/champions-league/predictions/",
+      "permanent": true
+    },
+    {
+      "source": "/zh-tw/football/champions-league/analysis/",
+      "destination": "/zh-tw/football/champions-league/predictions/",
+      "permanent": true
+    },
+    {
       "source": "/zh-tw/mlb",
       "destination": "/zh-tw/cricket/",
       "permanent": true
@@ -569,6 +589,26 @@
     {
       "source": "/en/schedule/",
       "destination": "/en/football/world-cup/schedule/",
+      "permanent": true
+    },
+    {
+      "source": "/en/football/leagues/analysis",
+      "destination": "/en/football/leagues/predictions/",
+      "permanent": true
+    },
+    {
+      "source": "/en/football/leagues/analysis/",
+      "destination": "/en/football/leagues/predictions/",
+      "permanent": true
+    },
+    {
+      "source": "/en/football/champions-league/analysis",
+      "destination": "/en/football/champions-league/predictions/",
+      "permanent": true
+    },
+    {
+      "source": "/en/football/champions-league/analysis/",
+      "destination": "/en/football/champions-league/predictions/",
       "permanent": true
     },
     {
@@ -1092,6 +1132,26 @@
       "permanent": true
     },
     {
+      "source": "/th/football/leagues/analysis",
+      "destination": "/th/football/leagues/predictions/",
+      "permanent": true
+    },
+    {
+      "source": "/th/football/leagues/analysis/",
+      "destination": "/th/football/leagues/predictions/",
+      "permanent": true
+    },
+    {
+      "source": "/th/football/champions-league/analysis",
+      "destination": "/th/football/champions-league/predictions/",
+      "permanent": true
+    },
+    {
+      "source": "/th/football/champions-league/analysis/",
+      "destination": "/th/football/champions-league/predictions/",
+      "permanent": true
+    },
+    {
       "source": "/th/mlb",
       "destination": "/th/cricket/",
       "permanent": true
@@ -1609,6 +1669,26 @@
     {
       "source": "/bn/schedule/",
       "destination": "/bn/football/world-cup/schedule/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/football/leagues/analysis",
+      "destination": "/bn/football/leagues/predictions/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/football/leagues/analysis/",
+      "destination": "/bn/football/leagues/predictions/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/football/champions-league/analysis",
+      "destination": "/bn/football/champions-league/predictions/",
+      "permanent": true
+    },
+    {
+      "source": "/bn/football/champions-league/analysis/",
+      "destination": "/bn/football/champions-league/predictions/",
       "permanent": true
     },
     {

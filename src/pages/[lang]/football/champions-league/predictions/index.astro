@@ -12,27 +12,26 @@ const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
 const isBn = lang === 'bn';
 
-const entries = await getCollection('predictions', (entry) =>
-  entry.id.startsWith(lang + '/') && entry.data.league === 'champions-league');
+// Match analysis and predictions are written the same way, so they share one
+// list: forward-looking predictions plus the post-match / tactical analysis
+// pieces (which keep their own /analysis/ URLs).
+const predictionEntries = await getCollection('predictions', (entry) => entry.id.startsWith(lang + '/') && entry.data.league === 'champions-league');
+const analysisEntries = await getCollection('matchAnalysis', (entry) => entry.id.startsWith(lang + '/') && entry.data.league === 'champions-league');
+const entries = [...predictionEntries, ...analysisEntries];
 
-const metaTitle = isZhTw ? '歐冠賽事預測 | The Big Bet' : isTh ? 'ทำนายผลแชมเปียนส์ลีก | The Big Bet' : isBn ? 'চ্যাম্পিয়নস লিগ পূর্বাভাস | The Big Bet' : 'Champions League Predictions | The Big Bet';
-const metaDescription = isZhTw
-  ? '歐冠近期賽事的即時預測，聚焦焦點球隊每輪對戰。'
-  : isTh ? 'ทำนายผลนัดล่าสุดของแชมเปียนส์ลีก เจาะทีมโฟกัสในแต่ละสัปดาห์'
-    : isBn ? 'চ্যাম্পিয়নস লিগের প্রতিটি রাউন্ডের পূর্বাভাস, অগ্রাধিকার পাওয়া ক্লাবগুলোকে কেন্দ্র করে।' : 'Round-by-round predictions for Champions League fixtures, focused on the priority clubs.';
+const metaTitle = isZhTw ? '歐冠賽事分析與預測 | The Big Bet' : isTh ? 'วิเคราะห์และทำนายผลแชมเปียนส์ลีก | The Big Bet' : isBn ? 'চ্যাম্পিয়নস লিগ বিশ্লেষণ ও পূর্বাভাস | The Big Bet' : 'Champions League Analysis & Predictions | The Big Bet';
+const metaDescription = isZhTw ? '歐冠每輪的賽前分析與預測、賽後戰報與戰術分析，聚焦焦點球隊對戰。' : isTh ? 'บทวิเคราะห์และทำนายผลก่อนเกม รวมถึงสรุปและวิเคราะห์หลังเกมของแชมเปียนส์ลีก เจาะทีมโฟกัสในแต่ละสัปดาห์' : isBn ? 'চ্যাম্পিয়নস লিগের প্রতিটি রাউন্ডের ম্যাচপূর্ব বিশ্লেষণ ও পূর্বাভাস এবং ম্যাচ-পরবর্তী রিপোর্ট, অগ্রাধিকার পাওয়া ক্লাবগুলোকে কেন্দ্র করে।' : 'Pre-match analysis and predictions for each Champions League round, plus post-match reports and tactical breakdowns, focused on our tracked clubs.';
 const tag = isZhTw ? '歐冠' : isTh ? 'แชมเปียนส์ลีก' : isBn ? 'চ্যাম্পিয়নস লিগ' : 'Champions League';
-const heading = isZhTw ? '歐冠賽事預測' : isTh ? 'ทำนายผลแชมเปียนส์ลีก' : isBn ? 'চ্যাম্পিয়নস লিগ পূর্বাভাস' : 'Champions League Predictions';
-const intro = isZhTw
-  ? '不是球隊整季走向的觀察，而是針對近期即將開踢的對戰給出的即時預測。'
-  : isTh ? 'ไม่ใช่มุมมองทิศทางทีมตลอดฤดูกาล แต่เป็นการทำนายผลนัดที่กำลังจะแข่งในเร็ว ๆ นี้'
-    : isBn ? 'মৌসুমজুড়ে দল নিয়ে মন্তব্য নয় — আসন্ন ম্যাচগুলোর দ্রুত পূর্বাভাস।' : 'Not season-long team commentary — quick predictions for fixtures coming up soon.';
-const emptyText = isZhTw ? '目前尚無歐冠賽事預測文章，敬請期待。' : isTh ? 'ยังไม่มีบทความทำนายผลแชมเปียนส์ลีก โปรดกลับมาใหม่' : isBn ? 'এখনও চ্যাম্পিয়নস লিগের কোনো পূর্বাভাস নেই। শীঘ্রই আবার দেখুন।' : 'No Champions League predictions yet. Check back soon.';
+const heading = isZhTw ? '歐冠賽事分析與預測' : isTh ? 'วิเคราะห์และทำนายผลแชมเปียนส์ลีก' : isBn ? 'চ্যাম্পিয়নস লিগ বিশ্লেষণ ও পূর্বাভাস' : 'Champions League Analysis & Predictions';
+const intro = isZhTw ? '針對近期對戰的賽前分析與預測，以及比賽後的戰報與戰術分析。' : isTh ? 'บทวิเคราะห์และทำนายผลสำหรับเกมที่กำลังจะแข่ง รวมถึงสรุปเกมและวิเคราะห์แทคติกหลังเกม' : isBn ? 'আসন্ন ম্যাচের পূর্বাভাস ও বিশ্লেষণ, সঙ্গে ম্যাচ-পরবর্তী রিপোর্ট ও কৌশল বিশ্লেষণ।' : 'Analysis and predictions for upcoming fixtures, plus post-match reports and tactical breakdowns.';
+const emptyText = isZhTw ? '目前尚無歐冠賽事分析與預測文章，敬請期待。' : isTh ? 'ยังไม่มีบทความวิเคราะห์และทำนายผลแชมเปียนส์ลีก โปรดกลับมาใหม่' : isBn ? 'এখনও চ্যাম্পিয়নস লিগের কোনো বিশ্লেষণ বা পূর্বাভাস প্রকাশিত হয়নি, আবার দেখুন।' : 'No Champions League analysis or predictions yet — check back soon.';
 ---
 
 <TrendList
   lang={lang as string}
   entries={entries}
   basePath={`/${lang}/football/champions-league/predictions`}
+  hrefFor={(entry, slug) => (entry.collection === 'matchAnalysis' ? `/${lang}/football/champions-league/analysis/${slug}` : `/${lang}/football/champions-league/predictions/${slug}`)}
   metaTitle={metaTitle}
   metaDescription={metaDescription}
   tag={tag}

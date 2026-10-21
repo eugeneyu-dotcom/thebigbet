@@ -12,6 +12,8 @@ interface Props {
   lang: string;
   entries: any[];
   basePath: string;      // article link prefix, e.g. /zh-tw/nba/trends
+  // Optional per-entry link override, for lists that mix collections that live under different routes.
+  hrefFor?: (entry: any, slug: string) => string;
   metaTitle: string;
   metaDescription: string;
   tag: string;
@@ -22,7 +24,7 @@ interface Props {
   relatedHeading?: string;
 }
 
-const { lang, entries, basePath, metaTitle, metaDescription, tag, heading, intro, emptyText, related = [], relatedHeading = '' } = Astro.props;
+const { lang, entries, basePath, hrefFor, metaTitle, metaDescription, tag, heading, intro, emptyText, related = [], relatedHeading = '' } = Astro.props;
 const tTeam = useTeamTranslations(lang as any);
 
 const sorted = [...entries].sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
@@ -69,7 +71,7 @@ const crestPairs = await Promise.all(sorted.map((e) => getEntryPairs(e, lang)));
             return (
               <li>
                 <a
-                  href={`${basePath}/${slug}`}
+                  href={hrefFor ? hrefFor(entry, slug) : `${basePath}/${slug}`}
                   class="group block bg-[#211d19] border border-[#3c352c] hover:border-amber-400/40 rounded-2xl p-6 transition-all duration-200"
                 >
                   <div class="flex items-start justify-between gap-4">
