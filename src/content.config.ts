@@ -152,6 +152,10 @@ const predictions = defineCollection({
       double: z.boolean().default(false),
       alt: z.enum(['btts-yes', 'btts-no', 'over-2.5', 'under-2.5']).optional(),
     })).optional(),
+    // Team names (as keys of teamLogos.json) for the crest banner when an
+    // article has no structured `matches:` list, e.g. an NBA opening-night
+    // guide. Consecutive names form a matchup: [A, B, C, D] = A vs B, C vs D.
+    banner: z.array(z.string()).optional(),
   }),
 });
 

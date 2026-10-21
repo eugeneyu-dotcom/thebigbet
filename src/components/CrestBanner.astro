@@ -1,0 +1,46 @@
+---
+// Crest banner for prediction / verification articles: one "crest vs crest"
+// chip per fixture the article covers. `hero` (article page, homepage feature
+// card) shows every pair with team names; `thumb` (list pages, small homepage
+// cards) is a compact cluster of crests only.
+import { logoFor, type TeamPair } from '../utils/predictionTeams';
+import { useTeamTranslations } from '../i18n/ui';
+
+interface Props {
+  pairs: TeamPair[];
+  lang: string;
+  variant?: 'hero' | 'thumb';
+  class?: string;
+}
+
+const { pairs, lang, variant = 'hero', class: className = '' } = Astro.props;
+const tTeam = useTeamTranslations(lang as any);
+
+// Distinct crests for the compact cluster (max 6), in fixture order.
+const cluster: string[] = [];
+for (const p of pairs) {
+  for (const team of [p.home, p.away]) {
+    if (!cluster.includes(team) && cluster.length < 6) cluster.push(team);
+  }
+}
+---
+
+{pairs.length > 0 && variant === 'hero' && (
+  <div class={`flex flex-wrap justify-center gap-2.5 sm:gap-3 ${className}`}>
+    {pairs.map((p) => (
+      <div class="flex items-center gap-2 sm:gap-3 rounded-xl bg-[#0a150f] border border-[#3c352c] px-3 py-2" title={`${tTeam(p.home)} vs ${tTeam(p.away)}`}>
+        <img src={logoFor(p.home)} alt={tTeam(p.home)} width="36" height="36" loading="lazy" class="w-8 h-8 sm:w-9 sm:h-9 object-contain" />
+        <span class="text-[10px] font-black text-slate-500 uppercase tracking-widest">vs</span>
+        <img src={logoFor(p.away)} alt={tTeam(p.away)} width="36" height="36" loading="lazy" class="w-8 h-8 sm:w-9 sm:h-9 object-contain" />
+      </div>
+    ))}
+  </div>
+)}
+
+{pairs.length > 0 && variant === 'thumb' && (
+  <div class={`grid-cols-3 gap-1.5 w-[5.5rem] shrink-0 rounded-xl bg-[#0a150f] border border-[#3c352c] p-2 ${className || 'grid'}`} aria-hidden="true">
+    {cluster.map((team) => (
+      <img src={logoFor(team)} alt="" width="24" height="24" loading="lazy" class="w-6 h-6 object-contain" />
+    ))}
+  </div>
+)}

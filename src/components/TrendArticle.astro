@@ -9,6 +9,8 @@ import GoogleAdsense from './GoogleAdsense.astro';
 import AnalysisAnchor from './AnalysisAnchor.astro';
 import PredictionScoreboard from './PredictionScoreboard.astro';
 import TeamIcon from './TeamIcon.astro';
+import CrestBanner from './CrestBanner.astro';
+import { getEntryPairs } from '../utils/predictionTeams';
 import TeamHeading from './TeamHeading.astro';
 import { useTeamTranslations, useTranslations } from '../i18n/ui';
 import teamLogosData from '../data/teamLogos.json';
@@ -30,6 +32,7 @@ const teamName = tTeam(entry.data.team);
 const teamLogos = teamLogosData as Record<string, string>;
 const hasTeamIcon = Boolean(teamLogos[entry.data.team]);
 const sportLabel = t(`sport.${entry.data.sport}` as any);
+const crestPairs = await getEntryPairs(entry, lang);
 const trendTag = articleTag ?? (lang === 'zh-tw' ? '球隊趨勢分析' : lang === 'th' ? 'วิเคราะห์เทรนด์ทีม' : lang === 'bn' ? 'দলের ট্রেন্ড বিশ্লেষণ' : 'Team Trend Analysis');
 ---
 
@@ -71,6 +74,8 @@ const trendTag = articleTag ?? (lang === 'zh-tw' ? '球隊趨勢分析' : lang =
             <span class="text-sm font-black text-white">{teamName}</span>
           </div>
         </header>
+
+        <CrestBanner pairs={crestPairs} lang={lang} class="mb-8" />
 
         {(entry.data.matches || entry.data.verifies) && <PredictionScoreboard entry={entry} lang={lang} />}
 

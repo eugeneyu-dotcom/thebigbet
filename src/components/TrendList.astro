@@ -4,7 +4,9 @@ import Footer from './Footer.astro';
 import BaseHead from './BaseHead.astro';
 import GoogleAnalytics from './GoogleAnalytics.astro';
 import GoogleAdsense from './GoogleAdsense.astro';
+import CrestBanner from './CrestBanner.astro';
 import { useTeamTranslations } from '../i18n/ui';
+import { getEntryPairs } from '../utils/predictionTeams';
 
 interface Props {
   lang: string;
@@ -24,6 +26,8 @@ const { lang, entries, basePath, metaTitle, metaDescription, tag, heading, intro
 const tTeam = useTeamTranslations(lang as any);
 
 const sorted = [...entries].sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+// Crest clusters for prediction / verification lists (empty for other collections).
+const crestPairs = await Promise.all(sorted.map((e) => getEntryPairs(e, lang)));
 ---
 
 <html lang={lang}>
@@ -58,7 +62,7 @@ const sorted = [...entries].sort((a, b) => b.data.pubDate.getTime() - a.data.pub
         </div>
       ) : (
         <ul class="space-y-4">
-          {sorted.map((entry) => {
+          {sorted.map((entry, idx) => {
             const [, ...slugParts] = entry.id.split('/');
             const slug = slugParts.join('/');
 
@@ -69,6 +73,7 @@ const sorted = [...entries].sort((a, b) => b.data.pubDate.getTime() - a.data.pub
                   class="group block bg-[#211d19] border border-[#3c352c] hover:border-amber-400/40 rounded-2xl p-6 transition-all duration-200"
                 >
                   <div class="flex items-start justify-between gap-4">
+                    <CrestBanner pairs={crestPairs[idx]} lang={lang} variant="thumb" class="hidden sm:grid" />
                     <div class="flex-grow min-w-0">
                       <div class="flex items-center gap-2 mb-2">
                         <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-black bg-amber-400 text-[#0a150f] uppercase shrink-0">

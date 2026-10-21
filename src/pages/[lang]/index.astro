@@ -6,6 +6,8 @@ import BaseHead from '../../components/BaseHead.astro';
 import GoogleAnalytics from '../../components/GoogleAnalytics.astro';
 import GoogleAdsense from '../../components/GoogleAdsense.astro';
 import TeamIcon from '../../components/TeamIcon.astro';
+import CrestBanner from '../../components/CrestBanner.astro';
+import { getEntryPairs } from '../../utils/predictionTeams';
 import { languages, useTranslations, useTeamTranslations, getVisibleSports } from '../../i18n/ui';
 import { getLangTimeZone } from '../../utils/timezone';
 import fs from 'fs';
@@ -233,6 +235,47 @@ function contentBadge({ entry, type }: { entry: any; type: string }) {
   return leagueLabel(entry.data.league);
 }
 
+// "Latest predictions" feature block at the top of the page: the newest
+// prediction guide as the large card, then the next three newest prediction /
+// verification articles (any mix) as small cards. Each gets a crest cluster
+// built from the fixtures it covers.
+const feedAll = [
+  ...predictionsAll.map((entry) => ({ entry, type: 'predictions' })),
+  ...verificationAll.map((entry) => ({ entry, type: 'verification' })),
+]
+  .filter((item) => visibleSports.includes(sportBucketOf(item.entry, item.type)))
+  .sort((a, b) => b.entry.data.pubDate.getTime() - a.entry.data.pubDate.getTime());
+const featuredItem = feedAll.find((item) => item.type === 'predictions') ?? feedAll[0] ?? null;
+const featuredPairs = featuredItem ? await getEntryPairs(featuredItem.entry, lang) : [];
+const feedRest = feedAll.filter((item) => item !== featuredItem).slice(0, 3);
+const feedRestPairs = await Promise.all(feedRest.map((item) => getEntryPairs(item.entry, lang)));
+const feedBadge = (item: any) => (item.type === 'verification' ? t('nav.verification') : t('nav.predictions'));
+const fmtDate = (d: Date) => d.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US');
+const feedHeading = isZhTw ? '最新預測與驗證' : isTh ? 'ทำนายและตรวจผลล่าสุด' : isBn ? 'সর্বশেষ পূর্বাভাস ও যাচাই' : 'Latest Predictions & Verifications';
+const feedCta = isZhTw ? '閱讀完整預測' : isTh ? 'อ่านฉบับเต็ม' : isBn ? 'পুরো লেখা পড়ুন' : 'Read the full guide';
+const guideLabel = isZhTw ? '完整預測指導' : isTh ? 'แนวทางทายผลฉบับเต็ม' : isBn ? 'সম্পূর্ণ পূর্বাভাস গাইড' : 'Full prediction guide';
+
+// Odds cards link to the prediction guide that covers the same fixture: the
+// newest guide listing both clubs in `matches:`, published within the 10 days
+// before kickoff (so an older guide about a previous meeting of the same two
+// teams is never picked).
+const guidesByPair = new Map<string, { href: string; time: number }[]>();
+for (const entry of predictionsAll) {
+  for (const m of entry.data.matches ?? []) {
+    const key = [m.home, m.away].sort().join('|');
+    const list = guidesByPair.get(key) ?? [];
+    list.push({ href: contentHref({ entry, type: 'predictions' }), time: entry.data.pubDate.getTime() });
+    guidesByPair.set(key, list);
+  }
+}
+function guideFor(m: any): string | null {
+  const list = guidesByPair.get([m.home_team, m.away_team].sort().join('|'));
+  if (!list) return null;
+  const kickoff = new Date(m.commence_time).getTime();
+  const hit = list.filter((g) => g.time <= kickoff && kickoff - g.time <= 10 * 86400000).sort((a, b) => b.time - a.time)[0];
+  return hit?.href ?? null;
+}
+
 const categories = [
   { key: 'football', href: `/${lang}/football`, label: t('nav.football') },
   { key: 'cricket', href: `/${lang}/cricket`, label: isZhTw ? '板球' : isTh ? 'คริกเก็ต' : isBn ? 'ক্রিকেট' : 'Cricket' },
@@ -327,6 +370,43 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
           </a>
         ))}
       </div>
+
+
+      <!-- Latest predictions / verifications (feature block) -->
+      {featuredItem && (
+        <section class="mb-14">
+          <h2 class="text-2xl font-black text-white mb-6">{feedHeading}</h2>
+          <div class="grid grid-cols-1 lg:grid-cols-5 gap-4">
+            <a href={contentHref(featuredItem)} class="group lg:col-span-3 flex flex-col bg-[#211d19] border border-amber-400/30 hover:border-amber-400/60 rounded-2xl p-6 transition-all duration-200">
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-black bg-amber-400 text-[#0a150f] uppercase">{feedBadge(featuredItem)}</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-black bg-violet-400/10 border border-violet-400/30 text-violet-300 uppercase">{contentBadge(featuredItem)}</span>
+                <time class="text-xs text-slate-500 font-mono" datetime={featuredItem.entry.data.pubDate.toISOString()}>{fmtDate(featuredItem.entry.data.pubDate)}</time>
+              </div>
+              <h3 class="text-xl md:text-2xl font-black text-white group-hover:text-amber-300 transition-colors duration-200 leading-snug line-clamp-3 mb-3">{featuredItem.entry.data.title}</h3>
+              {featuredItem.entry.data.description && (
+                <p class="text-sm text-slate-400 leading-relaxed line-clamp-3 mb-4">{featuredItem.entry.data.description}</p>
+              )}
+              <CrestBanner pairs={featuredPairs} lang={lang} class="mb-4" />
+              <span class="mt-auto text-sm font-bold text-amber-400 group-hover:text-amber-300">{feedCta} →</span>
+            </a>
+            <div class="lg:col-span-2 flex flex-col gap-4">
+              {feedRest.map((item, i) => (
+                <a href={contentHref(item)} class="group flex items-start gap-4 bg-[#211d19] border border-[#3c352c] hover:border-amber-400/40 rounded-2xl p-4 transition-all duration-200">
+                  <CrestBanner pairs={feedRestPairs[i]} lang={lang} variant="thumb" class="hidden sm:grid" />
+                  <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-black bg-amber-400/10 border border-amber-400/30 text-amber-300 uppercase">{feedBadge(item)}</span>
+                      <time class="text-xs text-slate-500 font-mono" datetime={item.entry.data.pubDate.toISOString()}>{fmtDate(item.entry.data.pubDate)}</time>
+                    </div>
+                    <h3 class="text-sm font-bold text-white group-hover:text-amber-300 transition-colors duration-200 line-clamp-3 leading-snug">{item.entry.data.title}</h3>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <div class="flex flex-col">
       <!-- NBA predictions (locale-gated — see localeSports in i18n/ui.ts) -->
@@ -493,6 +573,11 @@ const noInternational = isZhTw ? '目前暫無國際賽事賠率資料。' : isT
                     <div class="pt-3 mt-3 border-t border-[#3c352c]/60">
                       <p class="text-[10px] font-black text-violet-300 uppercase tracking-widest mb-1">{t('prediction.human')}</p>
                       <p class="text-xs text-slate-300 leading-relaxed">{humanText}</p>
+                    </div>
+                  )}
+                  {guideFor(m) && (
+                    <div class="pt-1 mt-2 border-t border-[#3c352c]/60">
+                      <a href={guideFor(m)} class="inline-block py-2 text-xs font-bold text-amber-400 hover:text-amber-300">{guideLabel} →</a>
                     </div>
                   )}
                 </div>
