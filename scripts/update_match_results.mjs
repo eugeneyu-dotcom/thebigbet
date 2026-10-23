@@ -7,7 +7,7 @@ import path from 'path';
 // names and date, so results show up without hand-entering anything.
 //
 // Free tier covers these competitions (10 requests/minute): WC = World Cup,
-// PL = Premier League, CL = Champions League. Add more codes to COMPETITIONS
+// PL = Premier League, CL = Champions League, PD = La Liga. Add more codes to COMPETITIONS
 // when a new competition needs the result box.
 //
 // Like update_nba.mjs, this never exits non-zero: update:all is an `&&` chain
@@ -16,7 +16,7 @@ import path from 'path';
 
 const TOKEN = process.env.FOOTBALL_DATA_ORG_TOKEN || '';
 const OUT = path.resolve('src/data/footballResults.json');
-const COMPETITIONS = ['WC', 'PL', 'CL'];
+const COMPETITIONS = ['WC', 'PL', 'CL', 'PD'];
 
 function slim(m, code) {
   const s = m.score ?? {};
