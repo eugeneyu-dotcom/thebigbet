@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl } from '../i18n/ui';
+import { getDeskName } from '../utils/desks';
 
 // Author line shown under every article title, linking to the editorial
 // policy that explains how content is produced (including AI assistance).
@@ -12,14 +13,7 @@ interface Props {
 const { sport } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 
-const desks: Record<string, Record<string, string>> = {
-  'zh-tw': { football: 'The Big Bet 足球組', basketball: 'The Big Bet 籃球組', cricket: 'The Big Bet 板球組', general: 'The Big Bet 編輯部' },
-  en: { football: 'The Big Bet Football Desk', basketball: 'The Big Bet Basketball Desk', cricket: 'The Big Bet Cricket Desk', general: 'The Big Bet Editorial Desk' },
-  th: { football: 'ทีมฟุตบอล The Big Bet', basketball: 'ทีมบาสเกตบอล The Big Bet', cricket: 'ทีมคริกเก็ต The Big Bet', general: 'กองบรรณาธิการ The Big Bet' },
-  bn: { football: 'The Big Bet ফুটবল ডেস্ক', basketball: 'The Big Bet বাস্কেটবল ডেস্ক', cricket: 'The Big Bet ক্রিকেট ডেস্ক', general: 'The Big Bet সম্পাদকীয় ডেস্ক' },
-};
-const deskSet = desks[lang] ?? desks.en;
-const author = deskSet[sport ?? 'general'] ?? deskSet.general;
+const author = getDeskName(lang, sport);
 
 const label =
   lang === 'zh-tw' ? '作者' : lang === 'th' ? 'โดย' : lang === 'bn' ? 'লেখক' : 'By';

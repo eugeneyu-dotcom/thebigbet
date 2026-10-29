@@ -101,6 +101,8 @@ const hasTwoWayStats = !!(twoWayH2H || homeForm || awayForm);
       description={entry.data.description}
       lang={lang}
       type="article"
+      datePublished={entry.data.pubDate}
+      sport={sport}
     />
     <GoogleAnalytics />
     <GoogleAdsense />

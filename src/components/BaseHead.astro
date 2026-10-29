@@ -1,15 +1,20 @@
 ---
 import '../styles/global.css';
 import { Font } from 'astro:assets';
+import { buildJsonLd } from '../utils/jsonLd';
 
 interface Props {
   title: string;
   description?: string;
   lang?: string;
   type?: 'website' | 'article';
+  // Article pages pass these so the Article JSON-LD carries the publish date
+  // and the same desk name the byline shows.
+  datePublished?: Date;
+  sport?: string;
 }
 
-const { title, description, lang = 'zh-tw', type = 'website' } = Astro.props;
+const { title, description, lang = 'zh-tw', type = 'website', datePublished, sport } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
@@ -24,6 +29,17 @@ const thURL = new URL(thPath, Astro.site);
 const bnURL = new URL(bnPath, Astro.site);
 
 const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
+
+const jsonLdBlocks = buildJsonLd({
+  site: Astro.site!,
+  pathname: currentPath,
+  lang,
+  title: title.replace(/ \| The Big Bet$/, ''),
+  description,
+  isArticle: type === 'article',
+  datePublished,
+  sport,
+});
 ---
 
 <meta charset="utf-8" />
@@ -61,3 +77,6 @@ const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 {description && <meta property="twitter:description" content={description} />}
+
+<!-- Structured data -->
+{jsonLdBlocks.map((block) => <script type="application/ld+json" set:html={JSON.stringify(block).replace(/</g, '\\u003c')} />)}
