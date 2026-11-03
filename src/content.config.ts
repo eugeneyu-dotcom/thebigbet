@@ -150,7 +150,8 @@ const predictions = defineCollection({
       away: z.string(),
       pick: z.string(),
       double: z.boolean().default(false),
-      alt: z.enum(['btts-yes', 'btts-no', 'over-2.5', 'under-2.5']).optional(),
+      // btts-yes | btts-no | over-X.5 | under-X.5 (any half-goal line, e.g. over-3.5)
+      alt: z.string().regex(/^(btts-yes|btts-no|(over|under)-\d+\.5)$/).optional(),
     })).optional(),
     // Team names (as keys of teamLogos.json) for the crest banner when an
     // article has no structured `matches:` list, e.g. an NBA opening-night

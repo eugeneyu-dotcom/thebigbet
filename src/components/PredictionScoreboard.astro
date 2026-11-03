@@ -55,7 +55,7 @@ const L: any = {
     title: '賽果對照', pending: '尚未開賽',
     win: '{t}勝', double: '{t}勝或和', draw: '和局',
     hit: '命中', partial: '部分命中', miss: '失準',
-    alt: { 'btts-yes': '雙方進球', 'btts-no': '雙方未進球', 'over-2.5': '大於 2.5 球', 'under-2.5': '小於 2.5 球' },
+    alt: { 'btts-yes': '雙方進球', 'btts-no': '雙方未進球' }, over: (n: string) => `大於 ${n} 球`, under: (n: string) => `小於 ${n} 球`,
     altHit: '備案方向命中：', summary: '{n} 場已完賽：{h} 命中、{p} 部分命中、{m} 失準',
     cols: ['對戰', '賽前預測', '比分', '結果'], source: '資料來自 football-data.org 公開賽事紀錄',
   },
@@ -63,7 +63,7 @@ const L: any = {
     title: 'Results at a glance', pending: 'Not played yet',
     win: '{t} win', double: '{t} win or draw', draw: 'Draw',
     hit: 'Correct', partial: 'Partly correct', miss: 'Missed',
-    alt: { 'btts-yes': 'both teams to score', 'btts-no': 'no BTTS', 'over-2.5': 'over 2.5 goals', 'under-2.5': 'under 2.5 goals' },
+    alt: { 'btts-yes': 'both teams to score', 'btts-no': 'no BTTS' }, over: (n: string) => `over ${n} goals`, under: (n: string) => `under ${n} goals`,
     altHit: 'Fallback angle landed: ', summary: '{n} played: {h} correct, {p} partly correct, {m} missed',
     cols: ['Match', 'Pick', 'Score', 'Result'], source: 'Results from football-data.org public match records',
   },
@@ -71,7 +71,7 @@ const L: any = {
     title: 'สรุปผลทำนาย', pending: 'ยังไม่แข่ง',
     win: '{t} ชนะ', double: '{t} ชนะหรือเสมอ', draw: 'เสมอ',
     hit: 'ทายถูก', partial: 'ถูกบางส่วน', miss: 'ทายพลาด',
-    alt: { 'btts-yes': 'ทั้งสองทีมยิงได้', 'btts-no': 'ทั้งสองทีมไม่ได้ยิงครบ', 'over-2.5': 'เกิน 2.5 ประตู', 'under-2.5': 'ต่ำกว่า 2.5 ประตู' },
+    alt: { 'btts-yes': 'ทั้งสองทีมยิงได้', 'btts-no': 'ทั้งสองทีมไม่ได้ยิงครบ' }, over: (n: string) => `เกิน ${n} ประตู`, under: (n: string) => `ต่ำกว่า ${n} ประตู`,
     altHit: 'ทางเลือกสำรองเข้าเป้า: ', summary: 'แข่งแล้ว {n} เกม: ถูก {h} ถูกบางส่วน {p} พลาด {m}',
     cols: ['คู่แข่งขัน', 'คำทำนาย', 'สกอร์', 'ผล'], source: 'ผลการแข่งขันจากบันทึกสาธารณะของ football-data.org',
   },
@@ -79,12 +79,18 @@ const L: any = {
     title: 'ফলাফলের সারসংক্ষেপ', pending: 'এখনও খেলা হয়নি',
     win: '{t} জয়', double: '{t} জয় বা ড্র', draw: 'ড্র',
     hit: 'সঠিক', partial: 'আংশিক সঠিক', miss: 'ভুল',
-    alt: { 'btts-yes': 'দুই দলই গোল করবে', 'btts-no': 'দুই দল গোল করবে না', 'over-2.5': '২.৫ গোলের বেশি', 'under-2.5': '২.৫ গোলের কম' },
+    alt: { 'btts-yes': 'দুই দলই গোল করবে', 'btts-no': 'দুই দল গোল করবে না' }, over: (n: string) => `${bnNum(n)} গোলের বেশি`, under: (n: string) => `${bnNum(n)} গোলের কম`,
     altHit: 'বিকল্প দিক মিলেছে: ', summary: '{n}টি খেলা শেষ: {h} সঠিক, {p} আংশিক, {m} ভুল',
     cols: ['ম্যাচ', 'পূর্বাভাস', 'স্কোর', 'ফল'], source: 'ফলাফল football-data.org-এর প্রকাশ্য রেকর্ড থেকে',
   },
 };
 const txt = L[lang] ?? L.en;
+const bnNum = (n: string) => n.replace(/\d/g, (d) => '০১২৩৪৫৬৭৮৯'[Number(d)]);
+// `alt` is btts-yes | btts-no | over-X.5 | under-X.5 (any half-goal line)
+const altLabel = (alt: string) => {
+  const k = alt.match(/^(over|under)-(\d+\.5)$/);
+  return k ? txt[k[1]](k[2]) : txt.alt[alt];
+};
 
 const rows = matches.map((m) => {
   const r = (results as any[]).find((x) => {
@@ -106,7 +112,8 @@ const rows = matches.map((m) => {
     main = won || (!!m.double && hs === as);
   }
   const total = hs + as;
-  const altOk = m.alt === 'btts-yes' ? hs > 0 && as > 0 : m.alt === 'btts-no' ? !(hs > 0 && as > 0) : m.alt === 'over-2.5' ? total > 2.5 : m.alt === 'under-2.5' ? total < 2.5 : false;
+  const ou = typeof m.alt === 'string' ? m.alt.match(/^(over|under)-(\d+\.5)$/) : null;
+  const altOk = m.alt === 'btts-yes' ? hs > 0 && as > 0 : m.alt === 'btts-no' ? !(hs > 0 && as > 0) : ou ? (ou[1] === 'over' ? total > Number(ou[2]) : total < Number(ou[2])) : false;
   const verdict = main ? 'hit' : altOk ? 'partial' : 'miss';
   return { m, pickText, played: true, homeName, awayName, hs, as, verdict };
 });
@@ -141,7 +148,7 @@ const summary = txt.summary.replace('{n}', String(played.length)).replace('{h}',
               <td class={`py-2 font-bold whitespace-nowrap ${x.played ? tone[x.verdict] : 'text-slate-500'}`}>
                 {x.played ? `${icon[x.verdict]} ${txt[x.verdict]}` : '—'}
                 {x.played && x.verdict === 'partial' && x.m.alt && (
-                  <span class="block text-[11px] font-normal text-amber-200/80">{txt.altHit}{txt.alt[x.m.alt]}</span>
+                  <span class="block text-[11px] font-normal text-amber-200/80">{txt.altHit}{altLabel(x.m.alt)}</span>
                 )}
               </td>
             </tr>
