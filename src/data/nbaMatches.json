@@ -10,25 +10,25 @@
       {
         "key": "pinnacle",
         "title": "Pinnacle",
-        "last_update": "2026-11-05T10:26:38Z",
+        "last_update": "2026-11-05T11:40:24Z",
         "markets": [
           {
             "key": "h2h",
-            "last_update": "2026-11-05T10:26:38Z",
+            "last_update": "2026-11-05T11:40:24Z",
             "outcomes": [
               {
                 "name": "Orlando Magic",
-                "price": 1.98
+                "price": 1.99
               },
               {
                 "name": "Phoenix Suns",
-                "price": 1.91
+                "price": 1.9
               }
             ]
           },
           {
             "key": "spreads",
-            "last_update": "2026-11-05T10:26:38Z",
+            "last_update": "2026-11-05T11:40:24Z",
             "outcomes": [
               {
                 "name": "Orlando Magic",
@@ -44,16 +44,16 @@
           },
           {
             "key": "totals",
-            "last_update": "2026-11-05T10:26:38Z",
+            "last_update": "2026-11-05T11:40:24Z",
             "outcomes": [
               {
                 "name": "Over",
-                "price": 1.95,
+                "price": 1.92,
                 "point": 223
               },
               {
                 "name": "Under",
-                "price": 1.92,
+                "price": 1.95,
                 "point": 223
               }
             ]
@@ -73,11 +73,11 @@
       {
         "key": "pinnacle",
         "title": "Pinnacle",
-        "last_update": "2026-11-05T10:26:38Z",
+        "last_update": "2026-11-05T11:40:24Z",
         "markets": [
           {
             "key": "h2h",
-            "last_update": "2026-11-05T10:26:38Z",
+            "last_update": "2026-11-05T11:40:24Z",
             "outcomes": [
               {
                 "name": "Golden State Warriors",
@@ -85,13 +85,13 @@
               },
               {
                 "name": "Miami Heat",
-                "price": 3.26
+                "price": 3.27
               }
             ]
           },
           {
             "key": "spreads",
-            "last_update": "2026-11-05T10:26:38Z",
+            "last_update": "2026-11-05T11:40:24Z",
             "outcomes": [
               {
                 "name": "Golden State Warriors",
@@ -107,16 +107,16 @@
           },
           {
             "key": "totals",
-            "last_update": "2026-11-05T10:26:38Z",
+            "last_update": "2026-11-05T11:40:24Z",
             "outcomes": [
               {
                 "name": "Over",
-                "price": 1.93,
+                "price": 1.94,
                 "point": 235
               },
               {
                 "name": "Under",
-                "price": 1.94,
+                "price": 1.93,
                 "point": 235
               }
             ]
@@ -136,11 +136,11 @@
       {
         "key": "unibet_se",
         "title": "Unibet (SE)",
-        "last_update": "2026-11-05T10:26:18Z",
+        "last_update": "2026-11-05T11:40:03Z",
         "markets": [
           {
             "key": "h2h",
-            "last_update": "2026-11-05T10:26:18Z",
+            "last_update": "2026-11-05T11:40:03Z",
             "outcomes": [
               {
                 "name": "New York Knicks",
@@ -154,7 +154,7 @@
           },
           {
             "key": "spreads",
-            "last_update": "2026-11-05T10:26:18Z",
+            "last_update": "2026-11-05T11:40:03Z",
             "outcomes": [
               {
                 "name": "New York Knicks",
@@ -183,11 +183,11 @@
       {
         "key": "unibet_se",
         "title": "Unibet (SE)",
-        "last_update": "2026-11-05T10:26:18Z",
+        "last_update": "2026-11-05T11:40:03Z",
         "markets": [
           {
             "key": "h2h",
-            "last_update": "2026-11-05T10:26:18Z",
+            "last_update": "2026-11-05T11:40:03Z",
             "outcomes": [
               {
                 "name": "Boston Celtics",
@@ -201,7 +201,7 @@
           },
           {
             "key": "spreads",
-            "last_update": "2026-11-05T10:26:18Z",
+            "last_update": "2026-11-05T11:40:03Z",
             "outcomes": [
               {
                 "name": "Boston Celtics",
@@ -230,11 +230,11 @@
       {
         "key": "unibet_se",
         "title": "Unibet (SE)",
-        "last_update": "2026-11-05T10:26:18Z",
+        "last_update": "2026-11-05T11:40:03Z",
         "markets": [
           {
             "key": "h2h",
-            "last_update": "2026-11-05T10:26:18Z",
+            "last_update": "2026-11-05T11:40:03Z",
             "outcomes": [
               {
                 "name": "Los Angeles Lakers",
@@ -248,7 +248,7 @@
           },
           {
             "key": "spreads",
-            "last_update": "2026-11-05T10:26:18Z",
+            "last_update": "2026-11-05T11:40:03Z",
             "outcomes": [
               {
                 "name": "Los Angeles Lakers",
@@ -277,11 +277,11 @@
       {
         "key": "unibet_se",
         "title": "Unibet (SE)",
-        "last_update": "2026-11-05T10:26:18Z",
+        "last_update": "2026-11-05T11:40:03Z",
         "markets": [
           {
             "key": "h2h",
-            "last_update": "2026-11-05T10:26:18Z",
+            "last_update": "2026-11-05T11:40:03Z",
             "outcomes": [
               {
                 "name": "Denver Nuggets",
@@ -295,7 +295,7 @@
           },
           {
             "key": "spreads",
-            "last_update": "2026-11-05T10:26:18Z",
+            "last_update": "2026-11-05T11:40:03Z",
             "outcomes": [
               {
                 "name": "Denver Nuggets",
