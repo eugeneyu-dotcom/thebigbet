@@ -16,7 +16,7 @@ const lang = getLangFromUrl(Astro.url);
 const author = getDeskName(lang, sport);
 
 const label =
-  lang === 'zh-tw' ? '作者' : lang === 'th' ? 'โดย' : lang === 'bn' ? 'লেখক' : 'By';
+  lang === 'zh-tw' ? '作者' : lang === 'th' ? 'โดย' : lang === 'bn' ? 'লেখক' : lang === 'tl' ? 'Ni' : 'By';
 const link =
   lang === 'zh-tw'
     ? '了解本站如何製作內容'
@@ -24,7 +24,9 @@ const link =
       ? 'วิธีที่เราผลิตเนื้อหา'
       : lang === 'bn'
         ? 'আমরা কীভাবে কনটেন্ট তৈরি করি'
-        : 'How we make our content';
+        : lang === 'tl'
+          ? 'Paano namin ginagawa ang aming nilalaman'
+          : 'How we make our content';
 ---
 
 <p class="mt-3 text-sm text-slate-400">

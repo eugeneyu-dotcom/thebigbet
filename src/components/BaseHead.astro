@@ -19,14 +19,16 @@ const { title, description, lang = 'zh-tw', type = 'website', datePublished, spo
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const currentPath = Astro.url.pathname;
-const zhPath = currentPath.replace(/^\/(en|zh-tw|th|bn)/, '/zh-tw');
-const enPath = currentPath.replace(/^\/(en|zh-tw|th|bn)/, '/en');
-const thPath = currentPath.replace(/^\/(en|zh-tw|th|bn)/, '/th');
-const bnPath = currentPath.replace(/^\/(en|zh-tw|th|bn)/, '/bn');
+const zhPath = currentPath.replace(/^\/(en|zh-tw|th|bn|tl)/, '/zh-tw');
+const enPath = currentPath.replace(/^\/(en|zh-tw|th|bn|tl)/, '/en');
+const thPath = currentPath.replace(/^\/(en|zh-tw|th|bn|tl)/, '/th');
+const bnPath = currentPath.replace(/^\/(en|zh-tw|th|bn|tl)/, '/bn');
+const tlPath = currentPath.replace(/^\/(en|zh-tw|th|bn|tl)/, '/tl');
 const zhURL = new URL(zhPath, Astro.site);
 const enURL = new URL(enPath, Astro.site);
 const thURL = new URL(thPath, Astro.site);
 const bnURL = new URL(bnPath, Astro.site);
+const tlURL = new URL(tlPath, Astro.site);
 
 const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
 
@@ -59,6 +61,7 @@ const jsonLdBlocks = buildJsonLd({
 <link rel="alternate" hreflang="en" href={enURL} />
 <link rel="alternate" hreflang="th" href={thURL} />
 <link rel="alternate" hreflang="bn" href={bnURL} />
+<link rel="alternate" hreflang="tl" href={tlURL} />
 <link rel="alternate" hreflang="x-default" href={enURL} />
 
 <!-- Primary Meta Tags -->

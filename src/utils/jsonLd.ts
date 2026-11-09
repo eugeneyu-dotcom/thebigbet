@@ -2,8 +2,8 @@ import { useTranslations, ui } from '../i18n/ui';
 import { getDeskName } from './desks';
 
 const SITE_NAME = 'The Big Bet';
-const LOCALES = ['zh-tw', 'en', 'th', 'bn'];
-const IN_LANGUAGE: Record<string, string> = { 'zh-tw': 'zh-TW', en: 'en', th: 'th', bn: 'bn' };
+const LOCALES = ['zh-tw', 'en', 'th', 'bn', 'tl'];
+const IN_LANGUAGE: Record<string, string> = { 'zh-tw': 'zh-TW', en: 'en', th: 'th', bn: 'bn', tl: 'tl' };
 
 // URL path segments that appear in breadcrumbs and the label each one shows.
 // A segment not listed here (an article slug, or a page like /about/) is the

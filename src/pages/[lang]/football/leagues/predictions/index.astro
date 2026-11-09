@@ -11,6 +11,7 @@ const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
 const isBn = lang === 'bn';
+const isTl = lang === 'tl';
 
 // Match analysis and predictions are written the same way, so they share one
 // list: forward-looking predictions plus the post-match / tactical analysis
@@ -19,12 +20,12 @@ const predictionEntries = await getCollection('predictions', (entry) => entry.id
 const analysisEntries = await getCollection('matchAnalysis', (entry) => entry.id.startsWith(lang + '/') && entry.data.league === 'club-football');
 const entries = [...predictionEntries, ...analysisEntries];
 
-const metaTitle = isZhTw ? '五大聯賽賽事分析與預測 | The Big Bet' : isTh ? 'วิเคราะห์และทำนายผล 5 ลีกใหญ่ | The Big Bet' : isBn ? 'শীর্ষ ৫ লিগ বিশ্লেষণ ও পূর্বাভাস | The Big Bet' : 'Top 5 Leagues Analysis & Predictions | The Big Bet';
-const metaDescription = isZhTw ? '五大聯賽的賽前分析與預測、賽後戰報與戰術分析，聚焦焦點球隊每輪對戰。' : isTh ? 'บทวิเคราะห์และทำนายผลก่อนเกม รวมถึงสรุปและวิเคราะห์เกมรุกเกมรับหลังเกมของ 5 ลีกใหญ่ เจาะทีมโฟกัสในแต่ละสัปดาห์' : isBn ? 'শীর্ষ ৫ লিগের ম্যাচপূর্ব বিশ্লেষণ ও পূর্বাভাস এবং ম্যাচ-পরবর্তী রিপোর্ট ও কৌশল বিশ্লেষণ, অগ্রাধিকার পাওয়া ক্লাবগুলোকে কেন্দ্র করে।' : 'Pre-match analysis and predictions for the Top 5 Leagues, plus post-match reports and tactical breakdowns, focused on our tracked clubs each round.';
-const tag = isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : isBn ? 'শীর্ষ ৫ লিগ' : 'Top 5 Leagues';
-const heading = isZhTw ? '五大聯賽賽事分析與預測' : isTh ? 'วิเคราะห์และทำนายผล 5 ลีกใหญ่' : isBn ? 'শীর্ষ ৫ লিগ বিশ্লেষণ ও পূর্বাভাস' : 'Top 5 Leagues Analysis & Predictions';
-const intro = isZhTw ? '針對近期對戰的賽前分析與預測，以及比賽後的戰報與戰術分析。' : isTh ? 'บทวิเคราะห์และทำนายผลสำหรับเกมที่กำลังจะแข่ง รวมถึงสรุปเกมและวิเคราะห์แทคติกหลังเกม' : isBn ? 'আসন্ন ম্যাচের পূর্বাভাস ও বিশ্লেষণ, সঙ্গে ম্যাচ-পরবর্তী রিপোর্ট ও কৌশল বিশ্লেষণ।' : 'Analysis and predictions for upcoming fixtures, plus post-match reports and tactical breakdowns.';
-const emptyText = isZhTw ? '目前尚無五大聯賽賽事分析與預測文章，敬請期待。' : isTh ? 'ยังไม่มีบทความวิเคราะห์และทำนายผล 5 ลีกใหญ่ โปรดกลับมาใหม่' : isBn ? 'এখনও শীর্ষ ৫ লিগের কোনো বিশ্লেষণ বা পূর্বাভাস প্রকাশিত হয়নি, আবার দেখুন।' : 'No Top 5 Leagues analysis or predictions yet — check back soon.';
+const metaTitle = isZhTw ? '五大聯賽賽事分析與預測 | The Big Bet' : isTh ? 'วิเคราะห์และทำนายผล 5 ลีกใหญ่ | The Big Bet' : isBn ? 'শীর্ষ ৫ লিগ বিশ্লেষণ ও পূর্বাভাস | The Big Bet' : isTl ? 'Pagsusuri at Hula sa Top 5 Leagues | The Big Bet' : 'Top 5 Leagues Analysis & Predictions | The Big Bet';
+const metaDescription = isZhTw ? '五大聯賽的賽前分析與預測、賽後戰報與戰術分析，聚焦焦點球隊每輪對戰。' : isTh ? 'บทวิเคราะห์และทำนายผลก่อนเกม รวมถึงสรุปและวิเคราะห์เกมรุกเกมรับหลังเกมของ 5 ลีกใหญ่ เจาะทีมโฟกัสในแต่ละสัปดาห์' : isBn ? 'শীর্ষ ৫ লিগের ম্যাচপূর্ব বিশ্লেষণ ও পূর্বাভাস এবং ম্যাচ-পরবর্তী রিপোর্ট ও কৌশল বিশ্লেষণ, অগ্রাধিকার পাওয়া ক্লাবগুলোকে কেন্দ্র করে।' : isTl ? 'Pagsusuri at hula bago ang laro para sa Top 5 Leagues, kasama ang ulat pagkatapos ng laro at pagsusuri ng taktika, nakatuon sa mga koponang sinusubaybayan namin bawat round.' : 'Pre-match analysis and predictions for the Top 5 Leagues, plus post-match reports and tactical breakdowns, focused on our tracked clubs each round.';
+const tag = isZhTw ? '五大聯賽' : isTh ? '5 ลีกใหญ่' : isBn ? 'শীর্ষ ৫ লিগ' : isTl ? 'Top 5 Leagues' : 'Top 5 Leagues';
+const heading = isZhTw ? '五大聯賽賽事分析與預測' : isTh ? 'วิเคราะห์และทำนายผล 5 ลีกใหญ่' : isBn ? 'শীর্ষ ৫ লিগ বিশ্লেষণ ও পূর্বাভাস' : isTl ? 'Pagsusuri at Hula sa Top 5 Leagues' : 'Top 5 Leagues Analysis & Predictions';
+const intro = isZhTw ? '針對近期對戰的賽前分析與預測，以及比賽後的戰報與戰術分析。' : isTh ? 'บทวิเคราะห์และทำนายผลสำหรับเกมที่กำลังจะแข่ง รวมถึงสรุปเกมและวิเคราะห์แทคติกหลังเกม' : isBn ? 'আসন্ন ম্যাচের পূর্বাভাস ও বিশ্লেষণ, সঙ্গে ম্যাচ-পরবর্তী রিপোর্ট ও কৌশল বিশ্লেষণ।' : isTl ? 'Pagsusuri at hula para sa mga paparating na laro, kasama ang ulat pagkatapos ng laro at pagsusuri ng taktika.' : 'Analysis and predictions for upcoming fixtures, plus post-match reports and tactical breakdowns.';
+const emptyText = isZhTw ? '目前尚無五大聯賽賽事分析與預測文章，敬請期待。' : isTh ? 'ยังไม่มีบทความวิเคราะห์และทำนายผล 5 ลีกใหญ่ โปรดกลับมาใหม่' : isBn ? 'এখনও শীর্ষ ৫ লিগের কোনো বিশ্লেষণ বা পূর্বাভাস প্রকাশিত হয়নি, আবার দেখুন।' : isTl ? 'Wala pang pagsusuri o hula sa Top 5 Leagues — balikan muli sa lalong madaling panahon.' : 'No Top 5 Leagues analysis or predictions yet — check back soon.';
 ---
 
 <TrendList

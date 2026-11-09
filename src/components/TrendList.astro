@@ -82,7 +82,7 @@ const crestPairs = await Promise.all(sorted.map((e) => getEntryPairs(e, lang)));
                           {tTeam(entry.data.team)}
                         </span>
                         <time class="text-xs text-slate-500 font-mono" datetime={entry.data.pubDate.toISOString()}>
-                          {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : 'en-US')}
+                          {entry.data.pubDate.toLocaleDateString(lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH' : lang === 'bn' ? 'bn-BD' : lang === 'tl' ? 'fil-PH' : 'en-US')}
                         </time>
                       </div>
                       <h2 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 line-clamp-2">

@@ -5,15 +5,16 @@ const lang = getLangFromUrl(Astro.url);
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
 const isBn = lang === 'bn';
+const isTl = lang === 'tl';
 const year = new Date().getFullYear();
 
 // Site-information pages (content/pages): trust and transparency links.
 const infoLinks = [
-  { slug: 'about', label: isZhTw ? '關於本站' : isTh ? 'เกี่ยวกับเรา' : isBn ? 'আমাদের সম্পর্কে' : 'About' },
-  { slug: 'editorial-policy', label: isZhTw ? '編輯與方法說明' : isTh ? 'นโยบายบรรณาธิการ' : isBn ? 'সম্পাদকীয় নীতি' : 'Editorial Policy' },
-  { slug: 'privacy-policy', label: isZhTw ? '隱私權政策' : isTh ? 'นโยบายความเป็นส่วนตัว' : isBn ? 'গোপনীয়তা নীতি' : 'Privacy Policy' },
-  { slug: 'contact', label: isZhTw ? '聯絡我們' : isTh ? 'ติดต่อเรา' : isBn ? 'যোগাযোগ' : 'Contact' },
-  { slug: 'responsible-gambling', label: isZhTw ? '責任博彩' : isTh ? 'การพนันอย่างมีความรับผิดชอบ' : isBn ? 'দায়িত্বশীল জুয়া' : 'Responsible Gambling' },
+  { slug: 'about', label: isZhTw ? '關於本站' : isTh ? 'เกี่ยวกับเรา' : isBn ? 'আমাদের সম্পর্কে' : isTl ? 'Tungkol Sa Amin' : 'About' },
+  { slug: 'editorial-policy', label: isZhTw ? '編輯與方法說明' : isTh ? 'นโยบายบรรณาธิการ' : isBn ? 'সম্পাদকীয় নীতি' : isTl ? 'Patakarang Editoryal' : 'Editorial Policy' },
+  { slug: 'privacy-policy', label: isZhTw ? '隱私權政策' : isTh ? 'นโยบายความเป็นส่วนตัว' : isBn ? 'গোপনীয়তা নীতি' : isTl ? 'Patakaran sa Privacy' : 'Privacy Policy' },
+  { slug: 'contact', label: isZhTw ? '聯絡我們' : isTh ? 'ติดต่อเรา' : isBn ? 'যোগাযোগ' : isTl ? 'Makipag-ugnayan' : 'Contact' },
+  { slug: 'responsible-gambling', label: isZhTw ? '責任博彩' : isTh ? 'การพนันอย่างมีความรับผิดชอบ' : isBn ? 'দায়িত্বশীল জুয়া' : isTl ? 'Responsableng Pagsusugal' : 'Responsible Gambling' },
 ];
 ---
 
@@ -31,14 +32,14 @@ const infoLinks = [
             ? '運動賽事分析與博弈資訊平台，整合即時賠率、官方戰績與 AI 戰力評估。'
             : isTh
               ? 'แพลตฟอร์มวิเคราะห์กีฬาและข้อมูลเดิมพัน พร้อมอัตราต่อรองสด สถิติทีม และการประเมิน AI'
-              : isBn ? 'লাইভ অডস, অফিশিয়াল পয়েন্ট তালিকা ও এআই-চালিত দলের শক্তি বিশ্লেষণ সহ স্পোর্টস বিশ্লেষণ ও বেটিং তথ্যের প্ল্যাটফর্ম।' : 'Sports analysis and betting info platform with live odds, official standings, and AI-powered team strength analysis.'}
+              : isBn ? 'লাইভ অডস, অফিশিয়াল পয়েন্ট তালিকা ও এআই-চালিত দলের শক্তি বিশ্লেষণ সহ স্পোর্টস বিশ্লেষণ ও বেটিং তথ্যের প্ল্যাটফর্ম।' : isTl ? 'Platapormang may pagsusuri sa sports at impormasyon sa pagtaya, kasama ang live odds, opisyal na standings, at pagsusuri ng lakas ng koponan gamit ang AI.' : 'Sports analysis and betting info platform with live odds, official standings, and AI-powered team strength analysis.'}
         </p>
       </div>
 
       <div class="shrink-0 flex flex-col gap-5">
         <div>
           <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-3">
-            {isZhTw ? '技術支援' : isTh ? 'สนับสนุนโดย' : isBn ? 'সহায়তায়' : 'Powered by'}
+            {isZhTw ? '技術支援' : isTh ? 'สนับสนุนโดย' : isBn ? 'সহায়তায়' : isTl ? 'Pinapagana ng' : 'Powered by'}
           </p>
           <a
             href="https://www.maxora.ai/"
@@ -54,7 +55,7 @@ const infoLinks = [
         </div>
         <div>
           <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-3">
-            {isZhTw ? '賠率資料來源' : isTh ? 'ข้อมูลอัตราต่อรอง' : isBn ? 'অডস ডেটা' : 'Odds Data'}
+            {isZhTw ? '賠率資料來源' : isTh ? 'ข้อมูลอัตราต่อรอง' : isBn ? 'অডস ডেটা' : isTl ? 'Datos ng Odds' : 'Odds Data'}
           </p>
           <a
             href="https://the-odds-api.com/"
@@ -87,7 +88,7 @@ const infoLinks = [
           <line x1="12" y1="17" x2="12.01" y2="17"/>
         </svg>
         <p class="font-bold text-slate-100 uppercase tracking-wider text-xs">
-          {isZhTw ? '博彩警語與免責聲明' : isTh ? 'คำเตือนและข้อจำกัดความรับผิดชอบ' : isBn ? 'দায়িত্বশীল গেমিং ও দাবিত্যাগ' : 'Responsible Gaming & Disclaimer'}
+          {isZhTw ? '博彩警語與免責聲明' : isTh ? 'คำเตือนและข้อจำกัดความรับผิดชอบ' : isBn ? 'দায়িত্বশীল গেমিং ও দাবিত্যাগ' : isTl ? 'Responsableng Paglalaro at Paalala' : 'Responsible Gaming & Disclaimer'}
         </p>
       </div>
 
@@ -109,6 +110,12 @@ const infoLinks = [
           <p>এই সাইট <strong class="text-slate-100">কোনো বেটিং বা জুয়ার সেবা প্রদান করে না</strong> এবং কোনো বাজি বা আর্থিক লেনদেন গ্রহণ করে না। অনুগ্রহ করে আপনার এলাকায় বৈধ লাইসেন্সপ্রাপ্ত ও নিয়ন্ত্রিত অপারেটর ব্যবহার করুন।</p>
           <p class="text-amber-400 font-medium">জুয়ায় ঝুঁকি আছে। অনুগ্রহ করে দায়িত্বশীলভাবে খেলুন। আইনি বয়সসীমার নিচে থাকা ব্যক্তিরা কোনো বেটিং কার্যক্রমে অংশ নিতে পারবেন না। জুয়ার আসক্তি থাকলে স্থানীয় সহায়তা সংস্থার সাহায্য নিন।</p>
         </Fragment>
+      ) : isTl ? (
+        <Fragment>
+          <p>Nagbibigay lamang ang website na ito ng impormasyong pang-sports analytics at pagtatasa ng lakas ng koponan na tinulungan ng AI, para sa sanggunian lamang. Ang lahat ng nilalaman ay <strong class="text-slate-100">hindi payo sa pagtaya, pag-aanyaya, o garantiya ng anumang resulta</strong>.</p>
+          <p>Ang site na ito <strong class="text-slate-100">ay hindi nag-aalok ng anumang serbisyo sa pagtaya o pagsusugal</strong> at hindi tumatanggap ng taya o transaksyong pinansyal. Gumamit lamang ng mga operator na may lisensya at kinokontrol sa inyong hurisdiksyon.</p>
+          <p class="text-amber-400 font-medium">May kaakibat na panganib ang pagsusugal. Maglaro nang responsable. Ipinagbabawal sa mga wala pa sa legal na edad na makilahok sa anumang pagtaya. Kung may problema ka sa pagsusugal, humingi ng tulong sa mga lokal na organisasyong sumusuporta.</p>
+        </Fragment>
       ) : (
         <Fragment>
           <p>This website provides informational sports analytics and AI-assisted team strength assessments for reference purposes only. All content <strong class="text-slate-100">does not constitute betting advice, solicitation, or guarantee of any outcome</strong>.</p>
@@ -122,14 +129,14 @@ const infoLinks = [
     <div class="mt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-slate-200">
       <p>© {year} The Big Bet. All rights reserved.</p>
       <p class="text-slate-400">
-        {isZhTw ? '分析僅供參考，不構成任何投注建議。' : isTh ? 'เพื่อการอ้างอิงเท่านั้น ไม่ใช่คำแนะนำการพนัน' : isBn ? 'শুধুমাত্র তথ্যের উদ্দেশ্যে। এটি বেটিং পরামর্শ নয়।' : 'For informational purposes only. Not betting advice.'}
+        {isZhTw ? '分析僅供參考，不構成任何投注建議。' : isTh ? 'เพื่อการอ้างอิงเท่านั้น ไม่ใช่คำแนะนำการพนัน' : isBn ? 'শুধুমাত্র তথ্যের উদ্দেশ্যে। এটি বেটিং পরামর্শ নয়।' : isTl ? 'Para sa impormasyon lamang. Hindi ito payo sa pagtaya.' : 'For informational purposes only. Not betting advice.'}
       </p>
       <p class="text-slate-400 text-center sm:text-right mt-1">
         {isZhTw
           ? '一群因為 AI 的幫助終於敢於架站來玩的業餘球迷'
           : isTh
             ? 'กลุ่มแฟนบอลมือสมัครเล่นที่กล้าทำเว็บไซต์เล่นๆ ได้ก็เพราะ AI'
-            : isBn ? 'একদল শৌখিন ভক্ত, যারা এআই-এর সাহায্যে অবশেষে একটা সাইট বানানোর সাহস করেছে।' : 'A bunch of amateur fans who finally dared to build a site, thanks to AI.'}
+            : isBn ? 'একদল শৌখিন ভক্ত, যারা এআই-এর সাহায্যে অবশেষে একটা সাইট বানানোর সাহস করেছে।' : isTl ? 'Isang grupo ng mga amateur na tagahanga na sa wakas ay nagkalakas-loob gumawa ng website, salamat sa AI.' : 'A bunch of amateur fans who finally dared to build a site, thanks to AI.'}
       </p>
     </div>
   </div>

@@ -11,6 +11,7 @@ const { lang } = Astro.params;
 const isZhTw = lang === 'zh-tw';
 const isTh = lang === 'th';
 const isBn = lang === 'bn';
+const isTl = lang === 'tl';
 
 // Match analysis and predictions are written the same way, so they share one
 // list: forward-looking predictions plus the post-match / tactical analysis
@@ -18,12 +19,12 @@ const isBn = lang === 'bn';
 const predictionEntries = await getCollection('predictions', (entry) => entry.id.startsWith(lang + '/') && entry.data.league === 'nba');
 const entries = predictionEntries;
 
-const metaTitle = isZhTw ? 'NBA 賽事分析與預測 | The Big Bet' : isTh ? 'วิเคราะห์และทำนายผล NBA | The Big Bet' : isBn ? 'NBA বিশ্লেষণ ও পূর্বাভাস | The Big Bet' : 'NBA Analysis & Predictions | The Big Bet';
-const metaDescription = isZhTw ? 'NBA 賽前分析與預測，從開幕夜單場對戰到分區與聯盟排名展望。' : isTh ? 'บทวิเคราะห์และทำนายผล NBA ตั้งแต่เกมเปิดฤดูกาลไปจนถึงอันดับระดับดิวิชั่นและสาย' : isBn ? 'NBA-র ম্যাচপূর্ব বিশ্লেষণ ও পূর্বাভাস — উদ্বোধনী রাতের ম্যাচ থেকে ডিভিশন ও কনফারেন্সের সম্ভাবনা পর্যন্ত।' : 'NBA pre-game analysis and predictions, from opening-night matchups to division and conference outlooks.';
+const metaTitle = isZhTw ? 'NBA 賽事分析與預測 | The Big Bet' : isTh ? 'วิเคราะห์และทำนายผล NBA | The Big Bet' : isBn ? 'NBA বিশ্লেষণ ও পূর্বাভাস | The Big Bet' : isTl ? 'Pagsusuri at Hula sa NBA | The Big Bet' : 'NBA Analysis & Predictions | The Big Bet';
+const metaDescription = isZhTw ? 'NBA 賽前分析與預測，從開幕夜單場對戰到分區與聯盟排名展望。' : isTh ? 'บทวิเคราะห์และทำนายผล NBA ตั้งแต่เกมเปิดฤดูกาลไปจนถึงอันดับระดับดิวิชั่นและสาย' : isBn ? 'NBA-র ম্যাচপূর্ব বিশ্লেষণ ও পূর্বাভাস — উদ্বোধনী রাতের ম্যাচ থেকে ডিভিশন ও কনফারেন্সের সম্ভাবনা পর্যন্ত।' : isTl ? 'Pagsusuri at hula bago ang laro sa NBA, mula sa opening-night na laban hanggang sa mga division at conference outlook.' : 'NBA pre-game analysis and predictions, from opening-night matchups to division and conference outlooks.';
 const tag = 'NBA';
-const heading = isZhTw ? 'NBA 賽事分析與預測' : isTh ? 'วิเคราะห์และทำนายผล NBA' : isBn ? 'NBA বিশ্লেষণ ও পূর্বাভাস' : 'NBA Analysis & Predictions';
-const intro = isZhTw ? '針對具體比賽與賽季排名給出的分析與預測，不是球隊整季走向的觀察。' : isTh ? 'บทวิเคราะห์และทำนายผลสำหรับเกมและอันดับรายฤดูกาลอย่างเจาะจง ไม่ใช่มุมมองทิศทางทีมตลอดฤดูกาล' : isBn ? 'নির্দিষ্ট ম্যাচ ও মৌসুমের পয়েন্ট তালিকা নিয়ে বিশ্লেষণ ও সুনির্দিষ্ট পূর্বাভাস।' : 'Analysis and predictions for specific games and season standings, not season-long team commentary.';
-const emptyText = isZhTw ? '目前尚無 NBA 賽事分析與預測文章，敬請期待。' : isTh ? 'ยังไม่มีบทความวิเคราะห์และทำนายผล NBA โปรดกลับมาใหม่' : isBn ? 'এখনও NBA-র কোনো বিশ্লেষণ বা পূর্বাভাস প্রকাশিত হয়নি, আবার দেখুন।' : 'No NBA analysis or predictions yet — check back soon.';
+const heading = isZhTw ? 'NBA 賽事分析與預測' : isTh ? 'วิเคราะห์และทำนายผล NBA' : isBn ? 'NBA বিশ্লেষণ ও পূর্বাভাস' : isTl ? 'Pagsusuri at Hula sa NBA' : 'NBA Analysis & Predictions';
+const intro = isZhTw ? '針對具體比賽與賽季排名給出的分析與預測，不是球隊整季走向的觀察。' : isTh ? 'บทวิเคราะห์และทำนายผลสำหรับเกมและอันดับรายฤดูกาลอย่างเจาะจง ไม่ใช่มุมมองทิศทางทีมตลอดฤดูกาล' : isBn ? 'নির্দিষ্ট ম্যাচ ও মৌসুমের পয়েন্ট তালিকা নিয়ে বিশ্লেষণ ও সুনির্দিষ্ট পূর্বাভাস।' : isTl ? 'Pagsusuri at hula para sa partikular na mga laro at standings ng season, hindi komentaryo sa buong season ng koponan.' : 'Analysis and predictions for specific games and season standings, not season-long team commentary.';
+const emptyText = isZhTw ? '目前尚無 NBA 賽事分析與預測文章，敬請期待。' : isTh ? 'ยังไม่มีบทความวิเคราะห์และทำนายผล NBA โปรดกลับมาใหม่' : isBn ? 'এখনও NBA-র কোনো বিশ্লেষণ বা পূর্বাভাস প্রকাশিত হয়নি, আবার দেখুন।' : isTl ? 'Wala pang pagsusuri o hula sa NBA — balikan muli sa lalong madaling panahon.' : 'No NBA analysis or predictions yet — check back soon.';
 ---
 
 <TrendList

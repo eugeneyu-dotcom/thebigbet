@@ -20,7 +20,7 @@ export default defineConfig({
   redirects,
   i18n: {
     defaultLocale: 'zh-tw',
-    locales: ['zh-tw', 'en', 'th', 'bn'],
+    locales: ['zh-tw', 'en', 'th', 'bn', 'tl'],
   },
   integrations: [mdx(), sitemap()],
 

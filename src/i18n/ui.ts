@@ -3,6 +3,7 @@ export const languages = {
   'zh-tw': '繁體中文',
   th: 'ภาษาไทย',
   bn: 'বাংলা',
+  tl: 'Tagalog',
 };
 
 export const defaultLang = 'en';
@@ -18,6 +19,9 @@ export const localeSports: Record<string, string[]> = {
   en: ['football', 'cricket', 'nba'],
   th: ['football', 'cricket', 'nba'],
   bn: ['football', 'cricket'],
+  // tl: Philippine audience — football plus NBA (basketball is hugely popular
+  // there), no cricket.
+  tl: ['football', 'nba'],
 };
 
 export function getVisibleSports(lang: string): string[] {
@@ -361,6 +365,90 @@ export const ui = {
     'dim.fld': 'ফিল্ডিং (FLD)',
     'dim.fin': 'ফিনিশিং (FIN)',
   },
+  tl: {
+    'nav.home': 'Home',
+    'nav.analysis': 'Pagsusuri',
+    'nav.schedule': 'Iskedyul',
+    'nav.groupStage': 'Resulta ng Grupo',
+    'nav.guides': 'Mga Gabay',
+    'nav.bracket': 'Bracket',
+    'nav.trends': 'Pagsusuri ng Trend',
+    'nav.predictions': 'Mga Hula',
+    'nav.analysisPredictions': 'Pagsusuri at Hula',
+    'nav.verification': 'Beripikasyon',
+    'guides.tag': 'Gabay sa Laban',
+    'guides.title': 'Mga Gabay sa Laban',
+    'guides.description': 'Ipinaliwanag ang mga patakaran sa qualification ng World Cup, format, at mga terminolohiya.',
+    'guides.empty': 'Wala pang nailathalang gabay. Balikan muli sa lalong madaling panahon.',
+    'nav.strategy': 'Estratehiya',
+    'nav.football': 'Football',
+    'nav.international': 'International',
+    'nav.worldcup': '2026 World Cup',
+    'nav.leagues': 'Top 5 Leagues',
+    'nav.championsLeague': 'Champions League',
+    'nav.cricket': 'Cricket',
+    'strategy.tag': 'Estratehiya sa Pagtaya',
+    'strategy.title': 'Kaalaman at Estratehiya sa Pagtaya',
+    'strategy.description': 'Mula sa odds, implied probability at expected value hanggang sa pamamahala ng bankroll — kung paano lapitan ang pagtaya nang makatwiran.',
+    'strategy.empty': 'Paparating na ang nilalaman tungkol sa estratehiya. Balikan muli sa lalong madaling panahon.',
+    'odds.home': 'Panalo ng Home',
+    'odds.draw': 'Tabla',
+    'odds.away': 'Panalo ng Away',
+    'label.home': 'Home',
+    'label.away': 'Away',
+    'analysis.tag': 'Malalimang Pagsusuri',
+    'analysis.confidence': 'Kumpiyansa',
+    'analysis.prediction': 'Hula',
+    'analysis.aiSection': 'Malalimang Pagsusuri ng AI',
+    'analysis.statsSection': 'Head-to-Head at Kamakailang Porma',
+    'analysis.h2h': 'Head-to-Head',
+    'analysis.recentForm': 'Kamakailang Porma (Huling 5)',
+    'analysis.noStats': 'Walang data chart para sa laban na ito — tingnan ang pagsusuri sa itaas.',
+    'sport.football': 'Football',
+    'sport.basketball': 'Basketball',
+    'sport.baseball': 'Baseball',
+    'sport.cricket': 'Cricket',
+    'label.win': 'W',
+    'label.loss': 'L',
+    'schedule.viewOdds': 'Tingnan ang Odds',
+    'schedule.timezoneNote': 'Lahat ng oras sa ibaba ay nasa',
+    'home.title': 'The Big Bet — Odds, Hula at Pagsusuri sa Football, NBA at Cricket',
+    'home.tbd': 'Paalala: Hindi pa naka-load ang odds cache — placeholder na data ang ipinapakita. Patakbuhin ang npm run update:all para kunin ang pinakabagong odds.',
+    'trend.up': 'Tumataas',
+    'trend.down': 'Bumababa',
+    'trend.flat': 'Matatag',
+    'stats.title': 'Tingnan ang Ulat ng Malalimang Pagsusuri ng AI',
+    'stats.dim': 'Dimensyon',
+    'stats.trend': 'Trend',
+    'stats.reason': 'Katwiran ng Pagsusuri ng AI',
+    'stats.badge': 'Mga Stats na Kinalkula ng AI',
+    'prediction.ai': 'Hula ng AI sa Odds',
+    'prediction.ai_pending': 'Kinakalkula ang pinakabagong pagsusuri ng odds...',
+    'prediction.human': 'Hula ng Eksperto',
+    'prediction.human_empty': 'Hindi pa naglalathala ng pagsusuri ang aming mga eksperto para sa laban na ito. Balikan muli mamaya.',
+    'status.qualified': 'Qualified',
+    'status.eliminated': 'Eliminated',
+    'thirdplace.title': 'Karera ng Pinakamahusay na mga Pangatlo',
+    'thirdplace.subtitle': 'Lahat ng 12 runner-up ng grupo ay inuuri ayon sa puntos, goal difference, at bilang ng nai-score na goal — ang nangungunang 8 ang kasalukuyang may puwesto sa qualification. Tinatanggap lamang na kumpirmado ang isang koponan kapag matematikal nang nakakandado ang kabuuan ng puntos nito, anuman ang kalabasan ng natitirang laro ng ibang grupo.',
+    'bracket.title': 'Knockout Bracket ng Round of 32',
+    'bracket.titleHome': 'Quarterfinal Bracket',
+    'bracket.subtitle': 'Inayos ayon sa opisyal na wallchart ng FIFA. Kumpirmado na ang lahat ng laban sa Round of 32; lalabas ang mga pangalan ng koponan sa Round of 16 at susunod pa kapag nalaman na ang resulta ng naunang round.',
+    'bracket.r32': 'Round of 32',
+    'bracket.r16': 'Round of 16',
+    'bracket.qf': 'Quarterfinals',
+    'bracket.sf': 'Semifinals',
+    'bracket.third': 'Laban para sa 3rd Place',
+    'bracket.final': 'Final',
+    'dim.atk': 'Atake (ATK)',
+    'dim.def': 'Depensa (DEF)',
+    'dim.pos': 'Possession (POS)',
+    'dim.dis': 'Disiplina (DIS)',
+    'dim.frm': 'Porma (FRM)',
+    'dim.bat': 'Batting (BAT)',
+    'dim.bowl': 'Bowling (BOWL)',
+    'dim.fld': 'Fielding (FLD)',
+    'dim.fin': 'Pagtatapos (FIN)',
+  },
 } as const;
 
 export const teamTranslations: Record<string, Record<string, string>> = {
@@ -640,6 +728,16 @@ export const teamTranslations: Record<string, Record<string, string>> = {
     'Ligue 1': 'লিগ ১',
     'Champions League': 'চ্যাম্পিয়নস লিগ',
   },
+  // Tagalog: competition/league tags only. Club and national-team names stay
+  // in English, same reason as bn — one script/language per match card.
+  'tl': {
+    'Premier League': 'Premier League',
+    'La Liga': 'La Liga',
+    'Serie A': 'Serie A',
+    'Bundesliga': 'Bundesliga',
+    'Ligue 1': 'Ligue 1',
+    'Champions League': 'Champions League',
+  },
 };
 
 export const sportTranslations: Record<string, Record<string, string>> = {
@@ -675,7 +773,18 @@ export const sportTranslations: Record<string, Record<string, string>> = {
     'UEFA Champions League': 'উয়েফা চ্যাম্পিয়নস লিগ',
     'UEFA Europa League': 'উয়েফা ইউরোপা লিগ',
     'FIFA World Cup': 'ফিফা বিশ্বকাপ',
-  }
+  },
+  'tl': {
+    'Soccer': 'Football',
+    'EPL': 'EPL',
+    'La Liga': 'La Liga',
+    'Serie A': 'Serie A',
+    'Bundesliga': 'Bundesliga',
+    'Ligue 1': 'Ligue 1',
+    'UEFA Champions League': 'UEFA Champions League',
+    'UEFA Europa League': 'UEFA Europa League',
+    'FIFA World Cup': 'FIFA World Cup',
+  },
 };
 
 export function getLangFromUrl(url: URL) {
@@ -692,7 +801,7 @@ export function useTranslations(lang: keyof typeof ui) {
 
 export function useTeamTranslations(lang: keyof typeof ui) {
   return function translateTeam(teamName: string) {
-    if (lang === 'zh-tw' || lang === 'th' || lang === 'bn') {
+    if (lang === 'zh-tw' || lang === 'th' || lang === 'bn' || lang === 'tl') {
       return teamTranslations[lang]?.[teamName] || teamName;
     }
     return teamName;
@@ -701,7 +810,7 @@ export function useTeamTranslations(lang: keyof typeof ui) {
 
 export function useSportTranslations(lang: keyof typeof ui) {
   return function translateSport(sportName: string) {
-    if (lang === 'zh-tw' || lang === 'th' || lang === 'bn') {
+    if (lang === 'zh-tw' || lang === 'th' || lang === 'bn' || lang === 'tl') {
       let translated = sportName;
       Object.keys(sportTranslations[lang]).forEach(key => {
         translated = translated.replace(key, sportTranslations[lang][key]);

@@ -19,9 +19,9 @@ export async function getStaticPaths() {
 const { lang } = Astro.params;
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const updatedLabel = lang === 'zh-tw' ? '最後更新' : lang === 'th' ? 'อัปเดตล่าสุด' : lang === 'bn' ? 'সর্বশেষ হালনাগাদ' : 'Last updated';
+const updatedLabel = lang === 'zh-tw' ? '最後更新' : lang === 'th' ? 'อัปเดตล่าสุด' : lang === 'bn' ? 'সর্বশেষ হালনাগাদ' : lang === 'tl' ? 'Huling na-update' : 'Last updated';
 const updatedDate = entry.data.updated.toLocaleDateString(
-  lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH-u-ca-gregory' : lang === 'bn' ? 'bn-BD' : 'en-US',
+  lang === 'zh-tw' ? 'zh-TW' : lang === 'th' ? 'th-TH-u-ca-gregory' : lang === 'bn' ? 'bn-BD' : lang === 'tl' ? 'fil-PH' : 'en-US',
   { timeZone: 'UTC' }
 );
 ---

@@ -4,6 +4,8 @@ const LANG_TIME_ZONES: Record<string, string> = {
   th: 'Asia/Bangkok',
   // Bangladesh is fixed UTC+6 year-round (no DST).
   bn: 'Asia/Dhaka',
+  // Philippines is fixed UTC+8 year-round (no DST).
+  tl: 'Asia/Manila',
 };
 
 // Both zones are fixed UTC+8/+7 year-round (no DST), so a static label is safe.
@@ -12,6 +14,7 @@ const LANG_TIME_ZONE_LABELS: Record<string, string> = {
   en: 'Manila Time (UTC+8)',
   th: 'เวลากรุงเทพ (UTC+7)',
   bn: 'ঢাকার সময় (UTC+6)',
+  tl: 'Oras sa Maynila (UTC+8)',
 };
 
 export function getLangTimeZone(lang: string): string {
@@ -29,6 +32,7 @@ const LANG_LOCALES: Record<string, string> = {
   // year matches what's shown in every other language on the site.
   th: 'th-TH-u-ca-gregory',
   bn: 'bn-BD',
+  tl: 'fil-PH',
 };
 
 const getLocale = (lang: string) => LANG_LOCALES[lang] ?? 'en-US';
@@ -56,6 +60,7 @@ export function formatMatchDateTime(commenceTime: string, lang: string): string 
 
 const EN_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const BN_MONTHS = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
+const TL_MONTHS = ['Enero', 'Pebrero', 'Marso', 'Abril', 'Mayo', 'Hunyo', 'Hulyo', 'Agosto', 'Setyembre', 'Oktubre', 'Nobyembre', 'Disyembre'];
 const TH_MONTHS = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
 
 // For dates known only as a calendar day (no kickoff time published yet) —
@@ -68,5 +73,6 @@ export function formatFullDateLabel(isoDate: string, lang: string): string {
   if (lang === 'zh-tw') return `${y}年${m}月${d}日`;
   if (lang === 'th') return `${d} ${TH_MONTHS[m - 1]} ${y}`;
   if (lang === 'bn') return `${d.toLocaleString('bn-BD')} ${BN_MONTHS[m - 1]} ${y.toLocaleString('bn-BD', { useGrouping: false })}`;
+  if (lang === 'tl') return `${TL_MONTHS[m - 1]} ${d}, ${y}`;
   return `${EN_MONTHS[m - 1]} ${d}, ${y}`;
 }
