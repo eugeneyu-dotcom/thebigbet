@@ -41,6 +41,11 @@ const analysisEntries = (await getCollection('analysis', (entry) =>
   entry.id.startsWith(lang + '/') && entry.data.league === 'cricket' && !entry.data.draft))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
+const predictionEntries = (await getCollection('predictions', (entry) =>
+  entry.id.startsWith(lang + '/') && entry.data.league === 'cricket'))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const predictionsHeading = isZhTw ? '板球賽事預測' : isTh ? 'ทำนายผลคริกเก็ต' : isBn ? 'ক্রিকেট পূর্বাভাস' : isTl ? 'Mga Hula sa Cricket' : 'Cricket Predictions';
+
 const metaTitle = isZhTw ? '板球賠率與賽事分析 | The Big Bet' : isTh ? 'ราคาคริกเก็ตและวิเคราะห์ | The Big Bet' : isBn ? 'ক্রিকেট অডস ও বিশ্লেষণ | The Big Bet' : isTl ? 'Odds at Pagsusuri sa Cricket | The Big Bet' : 'Cricket Odds & Analysis | The Big Bet';
 const metaDescription = isZhTw ? 'IPL、PSL 與亞洲盃板球即時賠率與深度賽事分析。' : isTh ? 'ราคาสด IPL, PSL และเอเชียนคัพคริกเก็ต พร้อมบทวิเคราะห์เชิงลึก' : isBn ? 'আইপিএল, পিএসএল ও এশিয়া কাপ ক্রিকেটের লাইভ অডস এবং গভীর ম্যাচ বিশ্লেষণ।' : isTl ? 'Live odds ng IPL, PSL at Asia Cup sa cricket at malalimang pagsusuri ng laban.' : 'Live IPL, PSL and Asia Cup cricket odds and in-depth match analysis.';
 const oddsHeading = isZhTw ? '板球即時賠率（勝方）' : isTh ? 'ราคาคริกเก็ตสด (ผู้ชนะ)' : isBn ? 'ক্রিকেটের লাইভ অডস (ম্যাচ জয়ী)' : isTl ? 'Live na Odds sa Cricket (Panalo ng Laban)' : 'Live Cricket Odds (Match Winner)';
@@ -97,6 +102,27 @@ const noAnalysis = isZhTw ? '目前尚無板球分析文章。' : isTh ? 'ยั
           </ul>
         )}
       </section>
+
+      <!-- Predictions -->
+      {predictionEntries.length > 0 && (
+        <section class="mb-12">
+          <h2 class="text-xl font-black text-white mb-4">{predictionsHeading}</h2>
+          <ul class="space-y-4">
+            {predictionEntries.map((entry) => {
+              const [, ...slugParts] = entry.id.split('/');
+              const slug = slugParts.join('/');
+              return (
+                <li>
+                  <a href={`/${lang}/cricket/predictions/${slug}`} class="group block bg-[#211d19] border border-[#3c352c] hover:border-amber-400/40 rounded-2xl p-6 transition-all duration-200">
+                    <time class="text-xs text-slate-500 font-mono">{entry.data.pubDate.toISOString().slice(0, 10)}</time>
+                    <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 mt-2">{entry.data.title}</h3>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
 
       <!-- Analysis -->
       <section>

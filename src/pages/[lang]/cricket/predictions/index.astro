@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import { languages } from '../../../../i18n/ui';
+import TrendList from '../../../../components/TrendList.astro';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const isZhTw = lang === 'zh-tw';
+const isTh = lang === 'th';
+const isBn = lang === 'bn';
+const isTl = lang === 'tl';
+
+// Match analysis and predictions are written the same way, so they share one
+// list: forward-looking predictions plus the post-match / tactical analysis
+// pieces (which keep their own /analysis/ URLs).
+const predictionEntries = await getCollection('predictions', (entry) => entry.id.startsWith(lang + '/') && entry.data.league === 'cricket');
+const entries = predictionEntries;
+
+const metaTitle = isZhTw ? '板球賽事分析與預測 | The Big Bet' : isTh ? 'วิเคราะห์และทำนายผลคริกเก็ต | The Big Bet' : isBn ? 'ক্রিকেট বিশ্লেষণ ও পূর্বাভাস | The Big Bet' : isTl ? 'Pagsusuri at Hula sa Cricket | The Big Bet' : 'Cricket Analysis & Predictions | The Big Bet';
+const metaDescription = isZhTw ? '板球賽前分析與預測，涵蓋 Test、ODI 與 T20 單場對戰。' : isTh ? 'บทวิเคราะห์และทำนายผลคริกเก็ตสำหรับแมตช์ Test, ODI และ T20' : isBn ? 'ক্রিকেটের ম্যাচপূর্ব বিশ্লেষণ ও পূর্বাভাস — টেস্ট, ওয়ানডে ও টি-টোয়েন্টি।' : isTl ? 'Pagsusuri at hula bago ang laban sa cricket para sa Test, ODI at T20.' : 'Cricket pre-match analysis and predictions for Test, ODI and T20 matches.';
+const tag = isZhTw ? '板球' : isTh ? 'คริกเก็ต' : isBn ? 'ক্রিকেট' : 'Cricket';
+const heading = isZhTw ? '板球賽事分析與預測' : isTh ? 'วิเคราะห์และทำนายผลคริกเก็ต' : isBn ? 'ক্রিকেট বিশ্লেষণ ও পূর্বাভাস' : isTl ? 'Pagsusuri at Hula sa Cricket' : 'Cricket Analysis & Predictions';
+const intro = isZhTw ? '針對具體比賽給出的分析與預測，不是球隊整體走向的觀察。' : isTh ? 'บทวิเคราะห์และทำนายผลสำหรับแมตช์เฉพาะ ไม่ใช่มุมมองทิศทางของทีมโดยรวม' : isBn ? 'নির্দিষ্ট ম্যাচ নিয়ে বিশ্লেষণ ও সুনির্দিষ্ট পূর্বাভাস।' : isTl ? 'Pagsusuri at hula para sa partikular na mga laban, hindi komentaryo sa kabuuang takbo ng koponan.' : 'Analysis and predictions for specific matches, not general team commentary.';
+const emptyText = isZhTw ? '目前尚無板球賽事分析與預測文章，敬請期待。' : isTh ? 'ยังไม่มีบทความวิเคราะห์และทำนายผลคริกเก็ต โปรดกลับมาใหม่' : isBn ? 'এখনও ক্রিকেটের কোনো বিশ্লেষণ বা পূর্বাভাস প্রকাশিত হয়নি, আবার দেখুন।' : isTl ? 'Wala pang pagsusuri o hula sa cricket — balikan muli sa lalong madaling panahon.' : 'No cricket analysis or predictions yet — check back soon.';
+---
+
+<TrendList
+  lang={lang as string}
+  entries={entries}
+  basePath={`/${lang}/cricket/predictions`}
+
+  metaTitle={metaTitle}
+  metaDescription={metaDescription}
+  tag={tag}
+  heading={heading}
+  intro={intro}
+  emptyText={emptyText}
+/>
