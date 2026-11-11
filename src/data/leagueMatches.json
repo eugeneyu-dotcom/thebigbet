@@ -57181,5 +57181,140 @@
         ]
       }
     ]
+  },
+  {
+    "id": "f0a77086c85d161afcfc2f275e9e29fa",
+    "sport_key": "soccer_uefa_nations_league",
+    "sport_title": "UEFA Nations League",
+    "commence_time": "2026-11-16T19:45:00Z",
+    "home_team": "Greece",
+    "away_team": "Serbia",
+    "bookmakers": [
+      {
+        "key": "betfred_uk",
+        "title": "Betfred (UK)",
+        "last_update": "2026-11-11T11:29:55Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-11T11:29:55Z",
+            "outcomes": [
+              {
+                "name": "Greece",
+                "price": 1.44
+              },
+              {
+                "name": "Serbia",
+                "price": 7
+              },
+              {
+                "name": "Draw",
+                "price": 4.6
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "boylesports",
+        "title": "BoyleSports",
+        "last_update": "2026-11-11T11:29:05Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-11T11:29:05Z",
+            "outcomes": [
+              {
+                "name": "Greece",
+                "price": 1.36
+              },
+              {
+                "name": "Serbia",
+                "price": 7
+              },
+              {
+                "name": "Draw",
+                "price": 4.75
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "paddypower",
+        "title": "Paddy Power",
+        "last_update": "2026-11-11T11:28:23Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-11T11:28:23Z",
+            "outcomes": [
+              {
+                "name": "Greece",
+                "price": 1.4
+              },
+              {
+                "name": "Serbia",
+                "price": 7
+              },
+              {
+                "name": "Draw",
+                "price": 4.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_eu",
+        "title": "Betfair",
+        "last_update": "2026-11-11T11:29:56Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-11T11:29:56Z",
+            "outcomes": [
+              {
+                "name": "Greece",
+                "price": 1.22
+              },
+              {
+                "name": "Serbia",
+                "price": 2
+              },
+              {
+                "name": "Draw",
+                "price": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_uk",
+        "title": "Betfair",
+        "last_update": "2026-11-11T11:29:56Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-11T11:29:56Z",
+            "outcomes": [
+              {
+                "name": "Greece",
+                "price": 1.22
+              },
+              {
+                "name": "Serbia",
+                "price": 2
+              },
+              {
+                "name": "Draw",
+                "price": 2
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]
