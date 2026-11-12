@@ -54013,6 +54013,166 @@
     ]
   },
   {
+    "id": "30b32c194d8c2ae2bc5a209be5df44a9",
+    "sport_key": "soccer_uefa_nations_league",
+    "sport_title": "UEFA Nations League",
+    "commence_time": "2026-11-14T19:45:00Z",
+    "home_team": "Austria",
+    "away_team": "Iceland",
+    "bookmakers": [
+      {
+        "key": "pinnacle",
+        "title": "Pinnacle",
+        "last_update": "2026-11-12T11:55:37Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:36Z",
+            "outcomes": [
+              {
+                "name": "Austria",
+                "price": 1.58
+              },
+              {
+                "name": "Iceland",
+                "price": 5.67
+              },
+              {
+                "name": "Draw",
+                "price": 4.11
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "leovegas",
+        "title": "LeoVegas",
+        "last_update": "2026-11-12T11:53:49Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:53:49Z",
+            "outcomes": [
+              {
+                "name": "Austria",
+                "price": 1.55
+              },
+              {
+                "name": "Iceland",
+                "price": 5.25
+              },
+              {
+                "name": "Draw",
+                "price": 4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betanysports",
+        "title": "BetAnything",
+        "last_update": "2026-11-12T11:55:40Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:39Z",
+            "outcomes": [
+              {
+                "name": "Austria",
+                "price": 1.57
+              },
+              {
+                "name": "Iceland",
+                "price": 5.65
+              },
+              {
+                "name": "Draw",
+                "price": 4.1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "unibet_uk",
+        "title": "Unibet (UK)",
+        "last_update": "2026-11-12T11:55:55Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:55Z",
+            "outcomes": [
+              {
+                "name": "Austria",
+                "price": 1.58
+              },
+              {
+                "name": "Iceland",
+                "price": 5.5
+              },
+              {
+                "name": "Draw",
+                "price": 4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "mybookieag",
+        "title": "MyBookie.ag",
+        "last_update": "2026-11-12T11:55:55Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:55Z",
+            "outcomes": [
+              {
+                "name": "Austria",
+                "price": 1.55
+              },
+              {
+                "name": "Iceland",
+                "price": 5.2
+              },
+              {
+                "name": "Draw",
+                "price": 3.95
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "casumo",
+        "title": "Casumo",
+        "last_update": "2026-11-12T11:55:38Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:38Z",
+            "outcomes": [
+              {
+                "name": "Austria",
+                "price": 1.57
+              },
+              {
+                "name": "Iceland",
+                "price": 5.5
+              },
+              {
+                "name": "Draw",
+                "price": 4
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "c745f84500717bc671c4cd864624cca8",
     "sport_key": "soccer_uefa_nations_league",
     "sport_title": "UEFA Nations League",
@@ -57183,6 +57343,166 @@
     ]
   },
   {
+    "id": "55a62e5cc433daeb03502b34db05647e",
+    "sport_key": "soccer_uefa_nations_league",
+    "sport_title": "UEFA Nations League",
+    "commence_time": "2026-11-16T19:45:00Z",
+    "home_team": "Germany",
+    "away_team": "Netherlands",
+    "bookmakers": [
+      {
+        "key": "boylesports",
+        "title": "BoyleSports",
+        "last_update": "2026-11-12T11:55:21Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:21Z",
+            "outcomes": [
+              {
+                "name": "Germany",
+                "price": 1.8
+              },
+              {
+                "name": "Netherlands",
+                "price": 3.6
+              },
+              {
+                "name": "Draw",
+                "price": 3.8
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfred_uk",
+        "title": "Betfred (UK)",
+        "last_update": "2026-11-12T11:55:37Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:37Z",
+            "outcomes": [
+              {
+                "name": "Germany",
+                "price": 1.8
+              },
+              {
+                "name": "Netherlands",
+                "price": 4
+              },
+              {
+                "name": "Draw",
+                "price": 4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "paddypower",
+        "title": "Paddy Power",
+        "last_update": "2026-11-12T11:54:41Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:54:41Z",
+            "outcomes": [
+              {
+                "name": "Germany",
+                "price": 1.75
+              },
+              {
+                "name": "Netherlands",
+                "price": 3.8
+              },
+              {
+                "name": "Draw",
+                "price": 3.8
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_eu",
+        "title": "Betfair",
+        "last_update": "2026-11-12T11:55:36Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:36Z",
+            "outcomes": [
+              {
+                "name": "Germany",
+                "price": 1.27
+              },
+              {
+                "name": "Netherlands",
+                "price": 1.27
+              },
+              {
+                "name": "Draw",
+                "price": 1.14
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_uk",
+        "title": "Betfair",
+        "last_update": "2026-11-12T11:56:12Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:56:12Z",
+            "outcomes": [
+              {
+                "name": "Germany",
+                "price": 1.27
+              },
+              {
+                "name": "Netherlands",
+                "price": 1.27
+              },
+              {
+                "name": "Draw",
+                "price": 1.14
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "casumo",
+        "title": "Casumo",
+        "last_update": "2026-11-12T11:55:38Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:37Z",
+            "outcomes": [
+              {
+                "name": "Germany",
+                "price": 1.75
+              },
+              {
+                "name": "Netherlands",
+                "price": 3.5
+              },
+              {
+                "name": "Draw",
+                "price": 3.6
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "f0a77086c85d161afcfc2f275e9e29fa",
     "sport_key": "soccer_uefa_nations_league",
     "sport_title": "UEFA Nations League",
@@ -57310,6 +57630,326 @@
               {
                 "name": "Draw",
                 "price": 2
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "770e80269ec2ffddc826bc50330c475b",
+    "sport_key": "soccer_uefa_nations_league",
+    "sport_title": "UEFA Nations League",
+    "commence_time": "2026-11-17T19:45:00Z",
+    "home_team": "Denmark",
+    "away_team": "Norway",
+    "bookmakers": [
+      {
+        "key": "betfred_uk",
+        "title": "Betfred (UK)",
+        "last_update": "2026-11-12T11:55:37Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:37Z",
+            "outcomes": [
+              {
+                "name": "Denmark",
+                "price": 2.5
+              },
+              {
+                "name": "Norway",
+                "price": 2.62
+              },
+              {
+                "name": "Draw",
+                "price": 3.75
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "boylesports",
+        "title": "BoyleSports",
+        "last_update": "2026-11-12T11:55:21Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:21Z",
+            "outcomes": [
+              {
+                "name": "Denmark",
+                "price": 2.4
+              },
+              {
+                "name": "Norway",
+                "price": 2.4
+              },
+              {
+                "name": "Draw",
+                "price": 3.8
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "paddypower",
+        "title": "Paddy Power",
+        "last_update": "2026-11-12T11:54:41Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:54:41Z",
+            "outcomes": [
+              {
+                "name": "Denmark",
+                "price": 2.4
+              },
+              {
+                "name": "Norway",
+                "price": 2.62
+              },
+              {
+                "name": "Draw",
+                "price": 3.7
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_uk",
+        "title": "Betfair",
+        "last_update": "2026-11-12T11:56:12Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:56:12Z",
+            "outcomes": [
+              {
+                "name": "Denmark",
+                "price": 1.16
+              },
+              {
+                "name": "Norway",
+                "price": 1.12
+              },
+              {
+                "name": "Draw",
+                "price": 1.14
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_eu",
+        "title": "Betfair",
+        "last_update": "2026-11-12T11:55:36Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:36Z",
+            "outcomes": [
+              {
+                "name": "Denmark",
+                "price": 1.16
+              },
+              {
+                "name": "Norway",
+                "price": 1.12
+              },
+              {
+                "name": "Draw",
+                "price": 1.14
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "casumo",
+        "title": "Casumo",
+        "last_update": "2026-11-12T11:55:38Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:37Z",
+            "outcomes": [
+              {
+                "name": "Denmark",
+                "price": 2.38
+              },
+              {
+                "name": "Norway",
+                "price": 2.4
+              },
+              {
+                "name": "Draw",
+                "price": 3.6
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "955a201ba2266b8b6b0519e0265eb354",
+    "sport_key": "soccer_uefa_nations_league",
+    "sport_title": "UEFA Nations League",
+    "commence_time": "2026-11-17T19:45:00Z",
+    "home_team": "Wales",
+    "away_team": "Portugal",
+    "bookmakers": [
+      {
+        "key": "betfred_uk",
+        "title": "Betfred (UK)",
+        "last_update": "2026-11-12T11:55:37Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:37Z",
+            "outcomes": [
+              {
+                "name": "Portugal",
+                "price": 1.33
+              },
+              {
+                "name": "Wales",
+                "price": 8.5
+              },
+              {
+                "name": "Draw",
+                "price": 5.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "boylesports",
+        "title": "BoyleSports",
+        "last_update": "2026-11-12T11:55:21Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:21Z",
+            "outcomes": [
+              {
+                "name": "Portugal",
+                "price": 1.3
+              },
+              {
+                "name": "Wales",
+                "price": 8
+              },
+              {
+                "name": "Draw",
+                "price": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "paddypower",
+        "title": "Paddy Power",
+        "last_update": "2026-11-12T11:54:41Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:54:41Z",
+            "outcomes": [
+              {
+                "name": "Portugal",
+                "price": 1.3
+              },
+              {
+                "name": "Wales",
+                "price": 8
+              },
+              {
+                "name": "Draw",
+                "price": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_uk",
+        "title": "Betfair",
+        "last_update": "2026-11-12T11:56:12Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:56:12Z",
+            "outcomes": [
+              {
+                "name": "Portugal",
+                "price": 1.31
+              },
+              {
+                "name": "Wales",
+                "price": 1.1
+              },
+              {
+                "name": "Draw",
+                "price": 1.14
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "betfair_ex_eu",
+        "title": "Betfair",
+        "last_update": "2026-11-12T11:55:36Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:36Z",
+            "outcomes": [
+              {
+                "name": "Portugal",
+                "price": 1.31
+              },
+              {
+                "name": "Wales",
+                "price": 1.1
+              },
+              {
+                "name": "Draw",
+                "price": 1.14
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "casumo",
+        "title": "Casumo",
+        "last_update": "2026-11-12T11:55:38Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-12T11:55:37Z",
+            "outcomes": [
+              {
+                "name": "Portugal",
+                "price": 1.25
+              },
+              {
+                "name": "Wales",
+                "price": 8
+              },
+              {
+                "name": "Draw",
+                "price": 5
               }
             ]
           }
