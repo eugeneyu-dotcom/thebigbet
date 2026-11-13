@@ -40,14 +40,18 @@ function loadJson(relPath: string): any {
 // showing real fixtures across tournament cycles instead of going empty.
 // NBA comes from nbaMatches.json (scripts/update_nba.mjs: Pinnacle moneyline,
 // spread and total) and is hidden for locales without NBA (see localeSports).
+const LIVE_WINDOW_MS = 4 * 60 * 60 * 1000; // keep a game on the page while it is being played
+// leagueMatches.json can still hold fixtures that finished since the last cron
+// run (it only refreshes once a day), so football sections drop anything that
+// kicked off more than LIVE_WINDOW_MS ago instead of showing it as "upcoming".
+const notFinished = (m: any) => new Date(m.commence_time).getTime() > Date.now() - LIVE_WINDOW_MS;
 const cricketMatches: any[] = loadJson('src/data/cricketMatches.json') ?? [];
-const allLeagueMatches: any[] = loadJson('src/data/leagueMatches.json') ?? [];
+const allLeagueMatches: any[] = (loadJson('src/data/leagueMatches.json') ?? []).filter(notFinished);
 const footballMatches: any[] = [
   ...(loadJson('src/data/matches.json') ?? []),
   ...allLeagueMatches.filter((m: any) => m.sport_key !== 'soccer_uefa_nations_league'),
 ];
 cricketMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
-const LIVE_WINDOW_MS = 4 * 60 * 60 * 1000; // keep a game on the page while it is being played
 const nbaMatches: any[] = loadJson('src/data/nbaMatches.json') ?? [];
 const nbaUpcoming = nbaMatches
   .filter((m: any) => m.bookmakers?.length > 0 && new Date(m.commence_time).getTime() > Date.now() - LIVE_WINDOW_MS)
