@@ -53,8 +53,12 @@ const footballMatches: any[] = [
 ];
 cricketMatches.sort((a, b) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime());
 const nbaMatches: any[] = loadJson('src/data/nbaMatches.json') ?? [];
+// Only the next few days: The Odds API also returns far-off fixtures (e.g. the
+// Christmas games, weeks ahead, priced by whichever book posted first), and
+// they would otherwise fill the cards whenever the cached slate is thin.
+const NBA_HORIZON_MS = 3 * 24 * 60 * 60 * 1000;
 const nbaUpcoming = nbaMatches
-  .filter((m: any) => m.bookmakers?.length > 0 && new Date(m.commence_time).getTime() > Date.now() - LIVE_WINDOW_MS)
+  .filter((m: any) => m.bookmakers?.length > 0 && new Date(m.commence_time).getTime() > Date.now() - LIVE_WINDOW_MS && new Date(m.commence_time).getTime() < Date.now() + NBA_HORIZON_MS)
   .sort((a: any, b: any) => new Date(a.commence_time).getTime() - new Date(b.commence_time).getTime())
   .slice(0, 6);
 
