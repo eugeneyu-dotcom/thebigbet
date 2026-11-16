@@ -1,312 +1,60 @@
 [
   {
-    "id": "de475830b5df0d1aae4fcd8f9bbaead9",
+    "id": "7c2ac54a119f461bf8fc1a23da536f29",
     "sport_key": "basketball_nba",
     "sport_title": "NBA",
-    "commence_time": "2026-11-15T18:10:00Z",
-    "home_team": "Philadelphia 76ers",
-    "away_team": "Indiana Pacers",
-    "bookmakers": [
-      {
-        "key": "pinnacle",
-        "title": "Pinnacle",
-        "last_update": "2026-11-15T11:34:33Z",
-        "markets": [
-          {
-            "key": "h2h",
-            "last_update": "2026-11-15T11:34:33Z",
-            "outcomes": [
-              {
-                "name": "Indiana Pacers",
-                "price": 3.24
-              },
-              {
-                "name": "Philadelphia 76ers",
-                "price": 1.38
-              }
-            ]
-          },
-          {
-            "key": "spreads",
-            "last_update": "2026-11-15T11:34:33Z",
-            "outcomes": [
-              {
-                "name": "Indiana Pacers",
-                "price": 1.93,
-                "point": 7
-              },
-              {
-                "name": "Philadelphia 76ers",
-                "price": 1.96,
-                "point": -7
-              }
-            ]
-          },
-          {
-            "key": "totals",
-            "last_update": "2026-11-15T11:34:33Z",
-            "outcomes": [
-              {
-                "name": "Over",
-                "price": 1.93,
-                "point": 224
-              },
-              {
-                "name": "Under",
-                "price": 1.93,
-                "point": 224
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "29b8bbf05645162d89780189eed390c2",
-    "sport_key": "basketball_nba",
-    "sport_title": "NBA",
-    "commence_time": "2026-11-15T21:10:00Z",
-    "home_team": "Phoenix Suns",
-    "away_team": "Los Angeles Lakers",
-    "bookmakers": [
-      {
-        "key": "pinnacle",
-        "title": "Pinnacle",
-        "last_update": "2026-11-15T11:34:33Z",
-        "markets": [
-          {
-            "key": "h2h",
-            "last_update": "2026-11-15T11:34:33Z",
-            "outcomes": [
-              {
-                "name": "Los Angeles Lakers",
-                "price": 1.69
-              },
-              {
-                "name": "Phoenix Suns",
-                "price": 2.27
-              }
-            ]
-          },
-          {
-            "key": "spreads",
-            "last_update": "2026-11-15T11:34:33Z",
-            "outcomes": [
-              {
-                "name": "Los Angeles Lakers",
-                "price": 1.99,
-                "point": -3.5
-              },
-              {
-                "name": "Phoenix Suns",
-                "price": 1.89,
-                "point": 3.5
-              }
-            ]
-          },
-          {
-            "key": "totals",
-            "last_update": "2026-11-15T11:34:33Z",
-            "outcomes": [
-              {
-                "name": "Over",
-                "price": 1.93,
-                "point": 227.5
-              },
-              {
-                "name": "Under",
-                "price": 1.93,
-                "point": 227.5
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "db26abc3cfd070ab012227413abafeb2",
-    "sport_key": "basketball_nba",
-    "sport_title": "NBA",
-    "commence_time": "2026-11-15T21:40:00Z",
-    "home_team": "Los Angeles Clippers",
-    "away_team": "Charlotte Hornets",
-    "bookmakers": [
-      {
-        "key": "pinnacle",
-        "title": "Pinnacle",
-        "last_update": "2026-11-15T11:34:33Z",
-        "markets": [
-          {
-            "key": "h2h",
-            "last_update": "2026-11-15T11:34:33Z",
-            "outcomes": [
-              {
-                "name": "Charlotte Hornets",
-                "price": 2.06
-              },
-              {
-                "name": "Los Angeles Clippers",
-                "price": 1.83
-              }
-            ]
-          },
-          {
-            "key": "spreads",
-            "last_update": "2026-11-15T11:34:33Z",
-            "outcomes": [
-              {
-                "name": "Charlotte Hornets",
-                "price": 1.98,
-                "point": 1.5
-              },
-              {
-                "name": "Los Angeles Clippers",
-                "price": 1.91,
-                "point": -1.5
-              }
-            ]
-          },
-          {
-            "key": "totals",
-            "last_update": "2026-11-15T11:34:33Z",
-            "outcomes": [
-              {
-                "name": "Over",
-                "price": 1.94,
-                "point": 214.5
-              },
-              {
-                "name": "Under",
-                "price": 1.93,
-                "point": 214.5
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "b2ffb781fe21df092fae2cff6c4c8c89",
-    "sport_key": "basketball_nba",
-    "sport_title": "NBA",
-    "commence_time": "2026-11-15T22:10:00Z",
-    "home_team": "Utah Jazz",
-    "away_team": "San Antonio Spurs",
-    "bookmakers": [
-      {
-        "key": "pinnacle",
-        "title": "Pinnacle",
-        "last_update": "2026-11-15T11:34:33Z",
-        "markets": [
-          {
-            "key": "h2h",
-            "last_update": "2026-11-15T11:34:33Z",
-            "outcomes": [
-              {
-                "name": "San Antonio Spurs",
-                "price": 1.07
-              },
-              {
-                "name": "Utah Jazz",
-                "price": 9.94
-              }
-            ]
-          },
-          {
-            "key": "spreads",
-            "last_update": "2026-11-15T11:34:33Z",
-            "outcomes": [
-              {
-                "name": "San Antonio Spurs",
-                "price": 1.97,
-                "point": -17
-              },
-              {
-                "name": "Utah Jazz",
-                "price": 1.92,
-                "point": 17
-              }
-            ]
-          },
-          {
-            "key": "totals",
-            "last_update": "2026-11-15T11:34:33Z",
-            "outcomes": [
-              {
-                "name": "Over",
-                "price": 1.89,
-                "point": 222.5
-              },
-              {
-                "name": "Under",
-                "price": 1.98,
-                "point": 222.5
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "956532b58659658093d93e24e83f5213",
-    "sport_key": "basketball_nba",
-    "sport_title": "NBA",
-    "commence_time": "2026-11-15T23:10:00Z",
+    "commence_time": "2026-11-17T00:10:00Z",
     "home_team": "Boston Celtics",
-    "away_team": "Dallas Mavericks",
+    "away_team": "Orlando Magic",
     "bookmakers": [
       {
         "key": "pinnacle",
         "title": "Pinnacle",
-        "last_update": "2026-11-15T11:34:33Z",
+        "last_update": "2026-11-16T12:08:31Z",
         "markets": [
           {
             "key": "h2h",
-            "last_update": "2026-11-15T11:34:33Z",
+            "last_update": "2026-11-16T12:08:31Z",
             "outcomes": [
               {
                 "name": "Boston Celtics",
-                "price": 1.12
+                "price": 1.29
               },
               {
-                "name": "Dallas Mavericks",
-                "price": 6.8
+                "name": "Orlando Magic",
+                "price": 3.84
               }
             ]
           },
           {
             "key": "spreads",
-            "last_update": "2026-11-15T11:34:33Z",
+            "last_update": "2026-11-16T12:08:31Z",
             "outcomes": [
               {
                 "name": "Boston Celtics",
-                "price": 2,
-                "point": -14.5
+                "price": 1.93,
+                "point": -8.5
               },
               {
-                "name": "Dallas Mavericks",
-                "price": 1.89,
-                "point": 14.5
+                "name": "Orlando Magic",
+                "price": 1.95,
+                "point": 8.5
               }
             ]
           },
           {
             "key": "totals",
-            "last_update": "2026-11-15T11:34:33Z",
+            "last_update": "2026-11-16T12:08:31Z",
             "outcomes": [
               {
                 "name": "Over",
-                "price": 1.93,
-                "point": 216.5
+                "price": 1.86,
+                "point": 212
               },
               {
                 "name": "Under",
-                "price": 1.93,
-                "point": 216.5
+                "price": 2.02,
+                "point": 212
               }
             ]
           }
@@ -315,43 +63,106 @@
     ]
   },
   {
-    "id": "78f61a78b70b9d79f38eb7648eac1a08",
+    "id": "39dbdb7fdc78bd01ceac2fc7048bc1fd",
     "sport_key": "basketball_nba",
     "sport_title": "NBA",
-    "commence_time": "2026-11-15T23:10:00Z",
-    "home_team": "Toronto Raptors",
-    "away_team": "New York Knicks",
+    "commence_time": "2026-11-17T00:10:00Z",
+    "home_team": "Cleveland Cavaliers",
+    "away_team": "Chicago Bulls",
     "bookmakers": [
       {
         "key": "pinnacle",
         "title": "Pinnacle",
-        "last_update": "2026-11-15T11:34:33Z",
+        "last_update": "2026-11-16T12:08:31Z",
         "markets": [
           {
             "key": "h2h",
-            "last_update": "2026-11-15T11:34:33Z",
+            "last_update": "2026-11-16T12:08:31Z",
             "outcomes": [
               {
-                "name": "New York Knicks",
-                "price": 1.53
+                "name": "Chicago Bulls",
+                "price": 3.84
               },
               {
-                "name": "Toronto Raptors",
-                "price": 2.63
+                "name": "Cleveland Cavaliers",
+                "price": 1.29
               }
             ]
           },
           {
             "key": "spreads",
-            "last_update": "2026-11-15T11:34:33Z",
+            "last_update": "2026-11-16T12:08:31Z",
             "outcomes": [
               {
-                "name": "New York Knicks",
+                "name": "Chicago Bulls",
+                "price": 1.97,
+                "point": 8.5
+              },
+              {
+                "name": "Cleveland Cavaliers",
+                "price": 1.92,
+                "point": -8.5
+              }
+            ]
+          },
+          {
+            "key": "totals",
+            "last_update": "2026-11-16T12:08:31Z",
+            "outcomes": [
+              {
+                "name": "Over",
+                "price": 1.91,
+                "point": 241.5
+              },
+              {
+                "name": "Under",
+                "price": 1.96,
+                "point": 241.5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a613d212acef6f86d71b6ef99049fb7b",
+    "sport_key": "basketball_nba",
+    "sport_title": "NBA",
+    "commence_time": "2026-11-17T00:10:00Z",
+    "home_team": "Washington Wizards",
+    "away_team": "Memphis Grizzlies",
+    "bookmakers": [
+      {
+        "key": "pinnacle",
+        "title": "Pinnacle",
+        "last_update": "2026-11-16T12:08:31Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-16T12:08:31Z",
+            "outcomes": [
+              {
+                "name": "Memphis Grizzlies",
+                "price": 1.58
+              },
+              {
+                "name": "Washington Wizards",
+                "price": 2.51
+              }
+            ]
+          },
+          {
+            "key": "spreads",
+            "last_update": "2026-11-16T12:08:31Z",
+            "outcomes": [
+              {
+                "name": "Memphis Grizzlies",
                 "price": 1.94,
                 "point": -4.5
               },
               {
-                "name": "Toronto Raptors",
+                "name": "Washington Wizards",
                 "price": 1.94,
                 "point": 4.5
               }
@@ -359,17 +170,17 @@
           },
           {
             "key": "totals",
-            "last_update": "2026-11-15T11:34:33Z",
+            "last_update": "2026-11-16T12:08:31Z",
             "outcomes": [
               {
                 "name": "Over",
-                "price": 1.95,
-                "point": 217.5
+                "price": 1.88,
+                "point": 229.5
               },
               {
                 "name": "Under",
-                "price": 1.92,
-                "point": 217.5
+                "price": 1.99,
+                "point": 229.5
               }
             ]
           }
@@ -378,61 +189,124 @@
     ]
   },
   {
-    "id": "488c2bc1e099361f06015cf126f95fd6",
+    "id": "efd4d1a289cc2aca91d30116e3629d1f",
     "sport_key": "basketball_nba",
     "sport_title": "NBA",
-    "commence_time": "2026-11-16T00:10:00Z",
-    "home_team": "Washington Wizards",
+    "commence_time": "2026-11-17T00:40:00Z",
+    "home_team": "Brooklyn Nets",
+    "away_team": "Philadelphia 76ers",
+    "bookmakers": [
+      {
+        "key": "pinnacle",
+        "title": "Pinnacle",
+        "last_update": "2026-11-16T12:08:31Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-16T12:08:31Z",
+            "outcomes": [
+              {
+                "name": "Brooklyn Nets",
+                "price": 2.86
+              },
+              {
+                "name": "Philadelphia 76ers",
+                "price": 1.46
+              }
+            ]
+          },
+          {
+            "key": "spreads",
+            "last_update": "2026-11-16T12:08:31Z",
+            "outcomes": [
+              {
+                "name": "Brooklyn Nets",
+                "price": 1.94,
+                "point": 5.5
+              },
+              {
+                "name": "Philadelphia 76ers",
+                "price": 1.94,
+                "point": -5.5
+              }
+            ]
+          },
+          {
+            "key": "totals",
+            "last_update": "2026-11-16T12:08:31Z",
+            "outcomes": [
+              {
+                "name": "Over",
+                "price": 1.88,
+                "point": 224.5
+              },
+              {
+                "name": "Under",
+                "price": 1.99,
+                "point": 224.5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "11be2fc6d73e2a4e187a643b4c051093",
+    "sport_key": "basketball_nba",
+    "sport_title": "NBA",
+    "commence_time": "2026-11-17T00:40:00Z",
+    "home_team": "Miami Heat",
     "away_team": "Houston Rockets",
     "bookmakers": [
       {
         "key": "pinnacle",
         "title": "Pinnacle",
-        "last_update": "2026-11-15T11:34:33Z",
+        "last_update": "2026-11-16T12:08:31Z",
         "markets": [
           {
             "key": "h2h",
-            "last_update": "2026-11-15T11:34:33Z",
+            "last_update": "2026-11-16T12:08:31Z",
             "outcomes": [
               {
                 "name": "Houston Rockets",
-                "price": 1.3
+                "price": 1.87
               },
               {
-                "name": "Washington Wizards",
-                "price": 3.78
+                "name": "Miami Heat",
+                "price": 2.02
               }
             ]
           },
           {
             "key": "spreads",
-            "last_update": "2026-11-15T11:34:33Z",
+            "last_update": "2026-11-16T12:08:31Z",
             "outcomes": [
               {
                 "name": "Houston Rockets",
                 "price": 1.94,
-                "point": -8.5
+                "point": -1.5
               },
               {
-                "name": "Washington Wizards",
+                "name": "Miami Heat",
                 "price": 1.94,
-                "point": 8.5
+                "point": 1.5
               }
             ]
           },
           {
             "key": "totals",
-            "last_update": "2026-11-15T11:34:33Z",
+            "last_update": "2026-11-16T12:08:31Z",
             "outcomes": [
               {
                 "name": "Over",
-                "price": 1.93,
-                "point": 223
+                "price": 1.92,
+                "point": 230
               },
               {
                 "name": "Under",
-                "price": 1.93,
-                "point": 223
+                "price": 1.95,
+                "point": 230
               }
             ]
           }
@@ -441,124 +315,187 @@
     ]
   },
   {
-    "id": "b931a21d34e414ee92b1a4b8e63774aa",
+    "id": "77094bf6e4d9bf58f3cb98b6a4fb3b22",
     "sport_key": "basketball_nba",
     "sport_title": "NBA",
-    "commence_time": "2026-11-16T01:10:00Z",
-    "home_team": "Milwaukee Bucks",
-    "away_team": "Atlanta Hawks",
+    "commence_time": "2026-11-17T01:10:00Z",
+    "home_team": "New Orleans Pelicans",
+    "away_team": "Golden State Warriors",
     "bookmakers": [
       {
         "key": "pinnacle",
         "title": "Pinnacle",
-        "last_update": "2026-11-15T11:34:33Z",
+        "last_update": "2026-11-16T12:08:31Z",
         "markets": [
           {
             "key": "h2h",
-            "last_update": "2026-11-15T11:34:33Z",
+            "last_update": "2026-11-16T12:08:31Z",
             "outcomes": [
               {
-                "name": "Atlanta Hawks",
-                "price": 1.33
+                "name": "Golden State Warriors",
+                "price": 1.66
               },
               {
-                "name": "Milwaukee Bucks",
-                "price": 3.52
+                "name": "New Orleans Pelicans",
+                "price": 2.33
               }
             ]
           },
           {
             "key": "spreads",
-            "last_update": "2026-11-15T11:34:33Z",
+            "last_update": "2026-11-16T12:08:31Z",
             "outcomes": [
               {
-                "name": "Atlanta Hawks",
-                "price": 1.94,
-                "point": -8
+                "name": "Golden State Warriors",
+                "price": 1.87,
+                "point": -2.5
               },
               {
-                "name": "Milwaukee Bucks",
-                "price": 1.94,
-                "point": 8
+                "name": "New Orleans Pelicans",
+                "price": 2.02,
+                "point": 2.5
               }
             ]
           },
           {
             "key": "totals",
-            "last_update": "2026-11-15T11:34:33Z",
+            "last_update": "2026-11-16T12:08:31Z",
             "outcomes": [
               {
                 "name": "Over",
-                "price": 1.93,
-                "point": 235.5
+                "price": 1.96,
+                "point": 225.5
               },
               {
                 "name": "Under",
-                "price": 1.93,
-                "point": 235.5
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "f8334b355cf9346d423fa9eb93b425f0",
-    "sport_key": "basketball_nba",
-    "sport_title": "NBA",
-    "commence_time": "2026-11-16T02:10:00Z",
-    "home_team": "Sacramento Kings",
-    "away_team": "Oklahoma City Thunder",
-    "bookmakers": [
-      {
-        "key": "pinnacle",
-        "title": "Pinnacle",
-        "last_update": "2026-11-15T11:34:33Z",
-        "markets": [
-          {
-            "key": "h2h",
-            "last_update": "2026-11-15T11:34:33Z",
-            "outcomes": [
-              {
-                "name": "Oklahoma City Thunder",
-                "price": 1.22
-              },
-              {
-                "name": "Sacramento Kings",
-                "price": 4.61
-              }
-            ]
-          },
-          {
-            "key": "spreads",
-            "last_update": "2026-11-15T11:34:33Z",
-            "outcomes": [
-              {
-                "name": "Oklahoma City Thunder",
                 "price": 1.91,
+                "point": 225.5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "b9dd15890ac45468b3e3ec1092f67c18",
+    "sport_key": "basketball_nba",
+    "sport_title": "NBA",
+    "commence_time": "2026-11-17T01:10:00Z",
+    "home_team": "Minnesota Timberwolves",
+    "away_team": "Portland Trail Blazers",
+    "bookmakers": [
+      {
+        "key": "pinnacle",
+        "title": "Pinnacle",
+        "last_update": "2026-11-16T12:08:31Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-16T12:08:31Z",
+            "outcomes": [
+              {
+                "name": "Minnesota Timberwolves",
+                "price": 1.79
+              },
+              {
+                "name": "Portland Trail Blazers",
+                "price": 2.12
+              }
+            ]
+          },
+          {
+            "key": "spreads",
+            "last_update": "2026-11-16T12:08:31Z",
+            "outcomes": [
+              {
+                "name": "Minnesota Timberwolves",
+                "price": 1.93,
+                "point": -2
+              },
+              {
+                "name": "Portland Trail Blazers",
+                "price": 1.95,
+                "point": 2
+              }
+            ]
+          },
+          {
+            "key": "totals",
+            "last_update": "2026-11-16T12:08:31Z",
+            "outcomes": [
+              {
+                "name": "Over",
+                "price": 1.94,
+                "point": 228.5
+              },
+              {
+                "name": "Under",
+                "price": 1.93,
+                "point": 228.5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c2c9d9729305c19d4a453f92c83feae8",
+    "sport_key": "basketball_nba",
+    "sport_title": "NBA",
+    "commence_time": "2026-11-17T02:10:00Z",
+    "home_team": "Denver Nuggets",
+    "away_team": "Phoenix Suns",
+    "bookmakers": [
+      {
+        "key": "pinnacle",
+        "title": "Pinnacle",
+        "last_update": "2026-11-16T12:08:31Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-11-16T12:08:31Z",
+            "outcomes": [
+              {
+                "name": "Denver Nuggets",
+                "price": 1.23
+              },
+              {
+                "name": "Phoenix Suns",
+                "price": 4.51
+              }
+            ]
+          },
+          {
+            "key": "spreads",
+            "last_update": "2026-11-16T12:08:31Z",
+            "outcomes": [
+              {
+                "name": "Denver Nuggets",
+                "price": 1.96,
                 "point": -10.5
               },
               {
-                "name": "Sacramento Kings",
-                "price": 1.98,
+                "name": "Phoenix Suns",
+                "price": 1.93,
                 "point": 10.5
               }
             ]
           },
           {
             "key": "totals",
-            "last_update": "2026-11-15T11:34:33Z",
+            "last_update": "2026-11-16T12:08:31Z",
             "outcomes": [
               {
                 "name": "Over",
-                "price": 1.93,
-                "point": 222.5
+                "price": 1.98,
+                "point": 228.5
               },
               {
                 "name": "Under",
-                "price": 1.93,
-                "point": 222.5
+                "price": 1.89,
+                "point": 228.5
               }
             ]
           }
