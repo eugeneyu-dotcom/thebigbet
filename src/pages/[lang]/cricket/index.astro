@@ -44,6 +44,10 @@ const analysisEntries = (await getCollection('analysis', (entry) =>
 const predictionEntries = (await getCollection('predictions', (entry) =>
   entry.id.startsWith(lang + '/') && entry.data.league === 'cricket'))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const verificationEntries = (await getCollection('verification', (entry) =>
+  entry.id.startsWith(lang + '/') && entry.data.league === 'cricket'))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const verificationHeading = isZhTw ? '板球預測驗證' : isTh ? 'ตรวจสอบผลทำนายคริกเก็ต' : isBn ? 'ক্রিকেট পূর্বাভাস যাচাই' : isTl ? 'Beripikasyon ng Hula sa Cricket' : 'Cricket Prediction Verification';
 const predictionsHeading = isZhTw ? '板球賽事預測' : isTh ? 'ทำนายผลคริกเก็ต' : isBn ? 'ক্রিকেট পূর্বাভাস' : isTl ? 'Mga Hula sa Cricket' : 'Cricket Predictions';
 
 const metaTitle = isZhTw ? '板球賠率與賽事分析 | The Big Bet' : isTh ? 'ราคาคริกเก็ตและวิเคราะห์ | The Big Bet' : isBn ? 'ক্রিকেট অডস ও বিশ্লেষণ | The Big Bet' : isTl ? 'Odds at Pagsusuri sa Cricket | The Big Bet' : 'Cricket Odds & Analysis | The Big Bet';
@@ -114,6 +118,27 @@ const noAnalysis = isZhTw ? '目前尚無板球分析文章。' : isTh ? 'ยั
               return (
                 <li>
                   <a href={`/${lang}/cricket/predictions/${slug}`} class="group block bg-[#211d19] border border-[#3c352c] hover:border-amber-400/40 rounded-2xl p-6 transition-all duration-200">
+                    <time class="text-xs text-slate-500 font-mono">{entry.data.pubDate.toISOString().slice(0, 10)}</time>
+                    <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 mt-2">{entry.data.title}</h3>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
+
+      <!-- Verification -->
+      {verificationEntries.length > 0 && (
+        <section class="mb-12">
+          <h2 class="text-xl font-black text-white mb-4">{verificationHeading}</h2>
+          <ul class="space-y-4">
+            {verificationEntries.map((entry) => {
+              const [, ...slugParts] = entry.id.split('/');
+              const slug = slugParts.join('/');
+              return (
+                <li>
+                  <a href={`/${lang}/cricket/verification/${slug}`} class="group block bg-[#211d19] border border-[#3c352c] hover:border-amber-400/40 rounded-2xl p-6 transition-all duration-200">
                     <time class="text-xs text-slate-500 font-mono">{entry.data.pubDate.toISOString().slice(0, 10)}</time>
                     <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors duration-200 mt-2">{entry.data.title}</h3>
                   </a>
