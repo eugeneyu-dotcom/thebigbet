@@ -3,7 +3,7 @@
 //
 // - `predictions` entries list their fixtures in `matches:` (same club names as
 //   leagueMatches.json), so the pairs come straight from there.
-// - `verification` entries point at their prediction guide through `verifies`.
+// - `verification` entries point at their prediction guide(s) through `verifies` (one slug or a list).
 // - Articles without a structured match list (e.g. an NBA opening-night guide)
 //   can name teams in an optional `banner:` list; consecutive names form a pair.
 //
@@ -27,18 +27,22 @@ export async function getEntryPairs(entry: any, lang: string): Promise<TeamPair[
   const collection = entry.collection;
   if (collection !== 'predictions' && collection !== 'verification') return [];
 
-  let source = entry;
+  // A verification piece may review several guides (`verifies` is a slug or a list of slugs).
+  let sources: any[] = [entry];
   if (collection === 'verification' && entry.data.verifies) {
-    source = (await getEntry('predictions', `${lang}/${entry.data.verifies}`)) ?? null;
-    if (!source) return [];
+    const slugs: string[] = Array.isArray(entry.data.verifies) ? entry.data.verifies : [entry.data.verifies];
+    sources = (await Promise.all(slugs.map((s) => getEntry('predictions', `${lang}/${s}`)))).filter(Boolean);
+    if (!sources.length) return [];
   }
 
-  let pairs: TeamPair[] = [];
-  if (source.data.matches?.length) {
-    pairs = source.data.matches.map((m: any) => ({ home: m.home, away: m.away }));
-  } else if (source.data.banner?.length) {
-    const names: string[] = source.data.banner;
-    for (let i = 0; i + 1 < names.length; i += 2) pairs.push({ home: names[i], away: names[i + 1] });
+  const pairs: TeamPair[] = [];
+  for (const source of sources) {
+    if (source.data.matches?.length) {
+      pairs.push(...source.data.matches.map((m: any) => ({ home: m.home, away: m.away })));
+    } else if (source.data.banner?.length) {
+      const names: string[] = source.data.banner;
+      for (let i = 0; i + 1 < names.length; i += 2) pairs.push({ home: names[i], away: names[i + 1] });
+    }
   }
   return pairs.filter((p) => logoFor(p.home) && logoFor(p.away));
 }

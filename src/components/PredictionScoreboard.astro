@@ -19,12 +19,19 @@ interface Props {
 const { entry, lang } = Astro.props;
 const tTeam = useTeamTranslations(lang as any);
 
-let source = entry;
-if (!entry.data.matches && entry.data.verifies) {
-  source = (await getEntry('predictions', `${lang}/${entry.data.verifies}`)) ?? entry;
+// `verifies` is one slug or a list (a weekly verification can review several guides);
+// each match keeps the publish date of the guide it came from, so its result window is right.
+const verifiesList: string[] = entry.data.verifies
+  ? (Array.isArray(entry.data.verifies) ? entry.data.verifies : [entry.data.verifies])
+  : [];
+let sources: any[] = [entry];
+if (!entry.data.matches && verifiesList.length) {
+  const found = (await Promise.all(verifiesList.map((s) => getEntry('predictions', `${lang}/${s}`)))).filter(Boolean);
+  sources = found.length ? found : [entry];
 }
-const matches: any[] = source.data.matches ?? [];
-const pubMs = new Date(source.data.pubDate).getTime();
+const matches: any[] = sources.flatMap((src) =>
+  (src.data.matches ?? []).map((m: any) => ({ ...m, _pubMs: new Date(src.data.pubDate).getTime() })),
+);
 const DAY = 24 * 60 * 60 * 1000;
 
 // football-data.org names ("Brighton & Hove Albion FC", "FC Bayern München")
@@ -95,7 +102,7 @@ const altLabel = (alt: string) => {
 const rows = matches.map((m) => {
   const r = (results as any[]).find((x) => {
     const t = new Date(x.utcDate).getTime();
-    return t >= pubMs - DAY && t <= pubMs + 8 * DAY &&
+    return t >= m._pubMs - DAY && t <= m._pubMs + 8 * DAY &&
       ((sameTeam(x.homeTeam, m.home) && sameTeam(x.awayTeam, m.away)) || (sameTeam(x.homeTeam, m.away) && sameTeam(x.awayTeam, m.home)));
   });
   const pickText = m.pick === 'Draw' ? txt.draw : (m.double ? txt.double : txt.win).replace('{t}', tTeam(m.pick));

@@ -177,7 +177,8 @@ const verification = defineCollection({
     // Shown as a badge instead of a match VS card — e.g. "Premier League".
     team: z.string(),
     // Slug of the prediction guide this article reviews; its `matches` drive the auto results table.
-    verifies: z.string().optional(),
+    // A weekly batch piece can review several guides at once: pass a list of slugs.
+    verifies: z.union([z.string(), z.array(z.string()).min(1)]).optional(),
   }),
 });
 
